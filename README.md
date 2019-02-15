@@ -26,14 +26,23 @@ This project is supported by the [National Institute of Health (NIH)](https://ww
 ***        
 ### set_grid ###
 
-Define the computational domain   
+Define the computational domain    
 
 mgrid = set_grid(dt, tlen, dx, xlen)     
 mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen)     
 mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen)     
 
-dt dx dy dz           temporal and spatial step size     
-tlen xlen ylen zlen   total domain size in the temproal and spatial domain              
+INPUT | PROPERTIES              
+------------ | -------------             
+dx  | step size in the x direction           
+dy  | step size in the y direction           
+dz  | step size in the z direction            
+dt  | step size in the time domain           
+xlen |  total domain size in the x direction         
+ylen |  total domain size in the y direction                  
+zlen |  total domain size in the z direction                     
+tlen |  total domain size in the temporal domain                   
+ 
 
 OPTPUT | PROPERTIES              
 ------------ | -------------            
