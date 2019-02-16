@@ -1,173 +1,52 @@
-# Introduction #
-***        
-MDM-series is an open-source toolbox for [MATLAB](https://www.mathworks.com/products/matlab.html) and it is developed for modeling one-way linear/nonlinear wave propagation in biological tissue with arbitrary heterogeneities, in which speed of sound, density, attenuation coefficients, power law exponent and nonlinear coefficients are all spatially varying functions. In the current version, MDM-series contains two methods for modeling nonlinear wave proapgation and they are transient mixed-domain method (TMDM) and frequency-specific mixed-domain method (FSMDM). TMDM can generate the simulaiton results in the transient domain and FSMDM generates the simulaiton results directly at the specific frequencies of interest.  
- 
-<p align="justify">Since FSMDM is dubbed from the TMDM based on the quasilinear approximation (Mach number epsilon << 1), therefore, TMDM should be chosen for strongly nonlinear wave propagation simulation.</p>   
+## About
+Emerald is a minimal theme created for Jekyll. The main purpose of Emerald is to provide a clear theme for those who want a blog ready to use, focused on the content and mobile-first.
 
-# Download #
-***        
-- **<a href="https://github.com/MDM-series/FileDownloader/blob/master/MDM_code.zip" download="MDM_code.zip">Download MDM-series</a>**   
+![Emerald](/img/Emerald01.png "Emerald")
 
-# License #   
-***          
-This project is licensed under the GNU General Public License v3.0  
+## Setup & usage
+Emerald may be installed by simply downloading the .zip folder from the [repository on Github](https://github.com/KingFelix/emerald/archive/master.zip).
 
-# References #   
-***           
-<p align="justify">[ 1 ] J. Gu and Y. Jing, “Numerical Modeling of Ultrasound Propagation in Weakly Heterogeneous Media Using a Mixed Domain Method,” IEEE Trans. Ultrason., Ferroelect., Freq. Control, vol. 65, no. 7, pp. 1258-1267, Jul. 2018. <a href="https://github.com/MDM-series/FileDownloader/blob/master/MDM.pdf" download="MDM.pdf">Download pdf</a></p>
-   
-<p align="justify">[ 2 ]  J. Gu and Y. Jing, “Simulation of the second harmonic ultrasound field in heterogeneous soft tissue using a mixed domain method,”  IEEE Trans. Ultrason., Ferroelect., Freq. Control, accepted. <a href="https://github.com/MDM-series/FileDownloader/blob/master/FSMDM.pdf" download="FSMDM.pdf">Download pdf</a></p>
- 
-# Acknowledgment #   
-***                    
-This project is supported by the [National Institute of Health (NIH)](https://www.nih.gov/) under the Grant R01EB025205. Juanjuan Gu was also supported by a fellowship from China Scholarship Council (CSC) during her Ph.D. study in [North Carolina State University](https://www.ncsu.edu/).
+After extracting the content from the folder into the selected directory, you can type ``jekyll serve`` from the terminal, than open your browser to ``0.0.0.0:4000/emerald/`` and you will find it there.
 
-# Functions #            
-***        
-### set_grid ###
+Additionally it is possible to fork the repository and use Github Pages as hosting. By following this way it will be enough to change the ``baseurl`` value into the ``_config.yml`` file, with the directory name of your project (for example /blog) or simply with a "/" (slash) if you want install Emerald in the root.
 
-Define the computational domain    
+### Options
+Starting from the 1.1.0 version, you can customize Emerald thanks to a few options. Now it is possible to set a custom header tag by setting the related option in the ``_config.yml`` file to "true". Then insert your custom code into the ``header-custom.html`` file.
+In the same way, you can customize the footer of the navigation menu, by setting to "true" the related option and put your code into the ``nav-footer-custom.html`` file.
+Moreover it is now possible to select a reverse option that allows to move the navigation menu to the left side, by setting it to "true".
 
-mgrid = set_grid(dt, tlen, dx, xlen)     
-mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen)     
-mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen)     
+### Colors
+The basic colors are set into the ``base.scss`` file:
+- $main-color: used for the menu, title, link and footer
+- $background-color: used for background and links in the navigation menu
+- $text-color: used for text and title in posts and pages 
 
-INPUT | PROPERTIES              
------------- | -------------             
-dx  | step size in the x direction           
-dy  | step size in the y direction           
-dz  | step size in the z direction            
-dt  | step size in the time domain           
-xlen |  total domain size in the x direction         
-ylen |  total domain size in the y direction                  
-zlen |  total domain size in the z direction                     
-tlen |  total domain size in the temporal domain                   
- 
+To customize the colors, just set the values in HEX, RGB (or RGBa) or any other format accepted by CSS.
 
-OPTPUT | PROPERTIES              
------------- | -------------            
-mgrid.x  | coordinates in the x direction          
-mgrid.y  | coordinates in the y direction          
-mgrid.z  | coordinates in the z direction           
-mgrid.t  | time array           
-mgrid.kx |  wavevector in the x direction            
-mgrid.ky |  wavevector in the y direction              
-mgrid.kz |  wavevector in the z direction               
-mgrid.w  | angular freuqency              
-mgrid.numx | number of grid points in the x direction                
-mgrid.numy | number of grid points in the x direction
-mgrid.numz | number of grid points in the x direction
-mgrid.numt | number of time steps         
+### Navigation menu
+Starting from the 1.1.0 version, the links inside the navigation menu are autogenerated from pages having the layout set to ``page``.
+You can set custom links, by putting in the ``<a>`` tag into the ``link.html`` file.
 
-### Forward1D ###         
+### Branch
+Emerald has two branch: 
+- ``master``: is for developing pourpose.
+- ``gh-pages``: is only for demo site.  
 
-1D mixed-domain simulation of wave propagation, can give transient results directly               
+### Baseurl
+Emerald was thought to be used mainly with Github, in particular into [project site](https://pages.github.com/). For this reason several tags have been included ``{{ site.baseurl }}`` to refer to the "/emerald/" directory.
+You can change the "baseurl" value into the ``config.yml`` file, to match your directory (for example "/blog/") or the root of your project. In that case you must set the "baseurl" value to "/".
 
-Forward1D(mgrid, medium,excit_p)            
+### Typography
+To maintain the vertical rhythm, it has been applied a **Typographic scale** as a modular scale, with a baseline set to 24px. To maintain this rhythm you need to insert elements like image, video or other contents with a 24px (or multiple) height as refer.
 
-INPUT | PROPERTIES               
------------- | -------------    
-mgrid    |input strucutre defined the computational domain            
-medium   |input strucutre defined the media properties             
-excit_p  |excitation signal        
+Last but not least: the [Jekyll documentation](http://jekyllrb.com) is the best starting point! 
 
-OUTPUTS                 
-Time-domain pressure dirtribution through the whole domain         
+## Author
 
-### Forward2D ###         
+### Jacopo Rabolini
 
-2D mixed-domain simulation of wave propagation, can give transient results directly                     
+- Web site: [www.jacoporabolini.com](http://www.jacoporabolini.com)
+- Google+: [+JacopoRabolini](https://plus.google.com/u/0/+JacopoRabolini/posts)
 
-Forward2D(mgrid, medium,excit_p)              
-
-INPUT | PROPERTIES                
------------- | -------------     
-mgrid    |input strucutre defined the computational domain     
-medium   |input strucutre defined the media properties              
-excit_p  |excitation signal          
-
-OUTPUTS    
-Time-domain pressure dirtribution through the whole domain   
-
-### Forward3D ###         
-
-3D mixed-domain simulation of wave propagation, can give transient results directly        
-
-Forward1D(mgrid, medium,excit_p)           
-
-INPUT | PROPERTIES               
------------- | -------------    
-mgrid    |input strucutre defined the computational domain     
-medium   |input strucutre defined the media properties             
-excit_p  |excitation signal               
-
-OUTPUTS     
-Time-domain pressure dirtribution through the whole domain                
-
-### Forward2D_fund ###         
-
-2D frequency-domain simulation of wave propagation at the fundamental frequency                 
-
-Forward2D_fund(mgrid, medium, excit_p, omegac)           
-
-INPUT | PROPERTIES               
------------- | -------------    
-mgrid    |input strucutre defined the computational domain     
-medium   |input strucutre defined the media properties               
-excit_p  |excitation signal               
-omegac   |fundamental frequency     
-
-OUTPUTS     
-Pressure dirtribution through the domain at the fundamental frequecncy        
-
-### Forward2D_secd ###         
-
-2D frequency-domain simulation of wave propagation at the second-harmonic frequency           
-
-Forward2D_secd(mgrid, medium, P_fundamental,omegac)     
-
-INPUT | PROPERTIES               
------------- | -------------    
-mgrid          |input strucutre defined the computational domain     
-medium         |input strucutre defined the media properties               
-P_fundamental  |excitation signal               
-omegac         |fundamental frequency      
-
-OUTPUTS     
-Pressure dirtribution through the domain at the second-harmonic frequecncy    
-
-### Forward3D_fund ###         
-
-3D frequency-domain simulation of wave propagation at the fundamental frequency                  
-
-Forward3D_fund(mgrid, medium, excit_p, omegac)           
-
-INPUT | PROPERTIES               
------------- | -------------    
-mgrid    |input strucutre defined the computational domain     
-medium   |input strucutre defined the media properties               
-excit_p  |excitation signal               
-omegac   |fundamental frequency     
-
-OUTPUTS      
-Pressure dirtribution through the domain at the fundamental frequecncy      
-
-### Forward3D_secd ###         
-
-3D frequency-domain simulation of wave propagation at the second-harmonic frequency                   
-
-Forward3D_secd(mgrid, medium, P_fundamental,omegac)     
-
-INPUT | PROPERTIES               
------------- | -------------    
-mgrid          |input strucutre defined the computational domain     
-medium         |input strucutre defined the media properties               
-P_fundamental  |excitation signal               
-omegac         |fundamental frequency      
-
-OUTPUTS     
-Pressure dirtribution through the domain at the second-harmonic frequecncy         
-
-
-# Examples #       
-***                      
+## License
+Emerald is released under [MIT License](license.md).
