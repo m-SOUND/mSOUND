@@ -22,4 +22,4 @@ This project is supported by the [National Institute of Health (NIH)](https://ww
 
 
 ## License
-This project is licensed under the GNU General Public License v3.0 [GNU License](license.md).             
+This project is licensed under the [GNU General Public License v3.0](license.md).             
