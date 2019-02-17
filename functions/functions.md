@@ -11,10 +11,7 @@ Define the computational domain
 
 mgrid = set_grid(dt, tlen, dx, xlen)     
 mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen)     
-mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen)     
-
-dt dx dy dz           temporal and spatial step size     
-tlen xlen ylen zlen   total domain size in the temproal and spatial domain              
+mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen)           
 
 INPUT | PROPERTIES               
 ------------ | -------------                              
