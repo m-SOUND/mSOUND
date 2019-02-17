@@ -7,11 +7,13 @@ title: Functions
 ***        
 ### set_grid 
 
-Define the computational domain   
+Define the computational domain      
 
 mgrid = set_grid(dt, tlen, dx, xlen)     
 mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen)     
-mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen)           
+mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen)     
+
+Input parameters and descriptions        
 
 INPUT | PROPERTIES               
 ------------ | -------------                              
@@ -23,6 +25,8 @@ xlen |  total domain size in the x direction
 ylen |  total domain size in the y direction                
 zlen |  total domain size in the z direction                  
 tlen | total temporal domain size             
+
+Input parameters and descriptions        
 
 OPTPUT | PROPERTIES                     
 ------------ | -------------                                
