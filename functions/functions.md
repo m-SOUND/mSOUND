@@ -3,7 +3,7 @@ layout: page
 title: Functions
 ---
  
-## Functions 
+## Functions <span style="color: #FDFDFD">
 ***        
 ### set_grid 
 
