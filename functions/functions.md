@@ -1,4 +1,5 @@
 ---
+
 layout: page
 title: Functions
 ---
@@ -17,7 +18,8 @@ dt dx dy dz           temporal and spatial step size
 tlen xlen ylen zlen   total domain size in the temproal and spatial domain              
 
 
-OPTPUT | PROPERTIES              
+OPTPUT | PROPERTIES   
+
 ------------ | -------------           
 mgrid.x  | coordinates in the x direction          
 mgrid.y  | coordinates in the y direction          
