@@ -2,8 +2,7 @@
 layout: page
 title: Functions
 ---
-
-# Functions             
+        
 ***        
 ### set_grid 
 
