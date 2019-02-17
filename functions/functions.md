@@ -16,21 +16,31 @@ mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen)
 dt dx dy dz           temporal and spatial step size     
 tlen xlen ylen zlen   total domain size in the temproal and spatial domain              
 
-
-OPTPUT | PROPERTIES               
+INPUT | PROPERTIES               
 ------------ | -------------                              
+dx   | spatial step size in the x direction          
+dy   | spatial step size in the y direction           
+dz   | spatial step size in the z direction             
+dt   | temporal step size in the time domain       
+xlen |  total domain size in the x direction        
+ylen |  total domain size in the y direction                
+zlen |  total domain size in the z direction                  
+tlen | total temporal domain size             
+
+OPTPUT | PROPERTIES                     
+------------ | -------------                                
 mgrid.x  | coordinates in the x direction          
 mgrid.y  | coordinates in the y direction          
 mgrid.z  | coordinates in the z direction           
-mgrid.t  | time array           
+mgrid.t  | time array            
 mgrid.kx |  wavevector in the x direction            
 mgrid.ky |  wavevector in the y direction              
 mgrid.kz |  wavevector in the z direction               
 mgrid.w  | angular freuqency              
-mgrid.numx | number of grid points in the x direction                
-mgrid.numy | number of grid points in the x direction
-mgrid.numz | number of grid points in the x direction
-mgrid.numt | number of time steps         
+mgrid.numx | number of grid points in the x direction                  
+mgrid.numy | number of grid points in the x direction     
+mgrid.numz | number of grid points in the x direction    
+mgrid.numt | number of time steps          
 
 ### Forward1D ###         
 
