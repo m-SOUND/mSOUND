@@ -52,13 +52,13 @@ mgrid.numt | number of time steps
 
 Forward1D(mgrid, medium,excit_p)            
 
-### Inputs                
+### Inputs                  
 
 INPUT | PROPERTIES               
 ------------ | -------------    
 mgrid    |input strucutre defined the computational domain            
 medium   |input strucutre defined the media properties             
-excit_p  |excitation signal        
+excit_p  |excitation signal         
 
 ### Output    
 
@@ -71,15 +71,15 @@ Time-domain pressure dirtribution through the whole domain
 
 Forward2D(mgrid, medium,excit_p)      
 
-### Inputs      
+### Inputs            
 
-INPUT | PROPERTIES                
------------- | -------------     
+INPUT | PROPERTIES                        
+------------ | -------------      
 mgrid    |input strucutre defined the computational domain     
 medium   |input strucutre defined the media properties              
-excit_p  |excitation signal   
+excit_p  |excitation signal              
  
-### Output                  
+### Output                          
 Time-domain pressure dirtribution through the whole domain   
 
 ## Forward3D 
@@ -164,7 +164,8 @@ Pressure dirtribution through the domain at the fundamental frequecncy
 
 Forward3D_secd(mgrid, medium, P_fundamental,omegac)     
 
-### Inputs          
+### Inputs      
+
 INPUT | PROPERTIES               
 ------------ | -------------    
 mgrid          |input strucutre defined the computational domain     
