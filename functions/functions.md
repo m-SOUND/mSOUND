@@ -41,10 +41,10 @@ mgrid.kx |  wavevector in the x direction
 mgrid.ky |  wavevector in the y direction              
 mgrid.kz |  wavevector in the z direction               
 mgrid.w  | angular freuqency              
-mgrid.numx | number of grid points in the x direction                  
-mgrid.numy | number of grid points in the x direction     
-mgrid.numz | number of grid points in the x direction    
-mgrid.numt | number of time steps          
+mgrid.num_x | number of grid points in the x direction                  
+mgrid.num_y | number of grid points in the x direction     
+mgrid.num_z | number of grid points in the x direction    
+mgrid.num_t | number of time steps          
 
 ## Forward1D         
 ***      
