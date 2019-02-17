@@ -11,7 +11,7 @@ Since FSMDM is dubbed from the TMDM based on the quasilinear approximation (Mach
 ![Emerald](/img/Emerald01.png "Emerald")              
 
 ## Download
-[Download](https://github.com/MDM-series/FileDownloader/blob/master/MDM_code.zip" download="MDM_code.zip).          
+[Download](https://github.com/MDM-series/FileDownloader/MDM_code.zip" download="MDM_code.zip).          
 
 
 ## Acknowledgment
