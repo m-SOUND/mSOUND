@@ -106,7 +106,7 @@
 .fixed {
   position: fixed;
   width: 100%;
-  @media (min-width: 1240px) {
+  @media (min-width: 940px) {
     position: static;
   }
 }
