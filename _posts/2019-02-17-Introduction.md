@@ -27,7 +27,9 @@ TR_radius = 4.5*lambda;                                     % Transducer diamete
 num_el    = round(TR_radius*2/mgrid.dx);                    % [grid points]
 
 el_x  = -floor(num_el/2):floor(num_el/2);                    % [grid points]
-delay = sqrt((el_x*mgrid.dx).^2 + (TR_focus)^2)/medium.c0;   %  calculate the time delay for each transducer element[s]
+
+% calculate the time delay for each transducer element[s]
+delay = sqrt((el_x*mgrid.dx).^2 + (TR_focus)^2)/medium.c0;   
 delay = delay - min(delay);
 ```
 
