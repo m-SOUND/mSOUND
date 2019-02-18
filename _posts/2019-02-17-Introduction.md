@@ -2,7 +2,7 @@
 title: wave propagation in 2D heterogeneous media
 ---
 
-#### generate the grid structure in the compputational domain       
+#### Generate the grid structure in the compputational domain       
 ***
 For 2D time domain simulation, we need six inputs to define the mgrid structure with funciton [mgrid](\functions.md). Coordinates defined with the mgrid functiions are all in Cartesian coordinates.
 
