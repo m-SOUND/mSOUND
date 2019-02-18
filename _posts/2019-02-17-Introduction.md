@@ -44,7 +44,7 @@ ts    = repmat(ts, 1,length(el_x));
 excit_ps = p0*sin(2*pi*fc*(ts+delay)).*exp(-(ts+delay).^2*fc^2/2);     % define the pulse    
 ```
  
-#### define the heterogeneous media        
+#### Define the media     
 ***       
 ```
 medium.c    = c;                 % speed of sound   [m/s]
