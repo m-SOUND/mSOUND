@@ -1,14 +1,14 @@
 # Site settings
-title: MDM | A mixed-domain wave propagation simulation toolbox
+title: mSOUND | A mixed-domain wave propagation simulation toolbox
 description: "A mixed-domain wave propagation simulation toolbox."
-url: "https://mdm-series.github.io/MDM"
+url: "https://m-SOUND.github.io/mSOUND/home"
 author:
   name: "Juanjuan Gu"
   email: ""
   url: ""
 
 # Build settings
-baseurl: /MDM # Change this to your relative path (ex: /blog/), or leave just a /
+baseurl: /m-SOUND # Change this to your relative path (ex: /blog/), or leave just a /
 markdown: kramdown
 source: .
 destination: ./_site
