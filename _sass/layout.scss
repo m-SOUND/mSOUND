@@ -106,14 +106,14 @@
 .fixed {
   position: fixed;
   width: 100%;
-  @media (min-width: 940px) {
+  @media (min-width: 1080px) {
     position: static;
   }
 }
 
 #container {
 	margin:0 auto;
-	max-width: 730px;
+	max-width: 830px;
 	padding: 0 1.5rem;
 }
 
