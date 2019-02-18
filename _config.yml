@@ -8,7 +8,7 @@ author:
   url: ""
 
 # Build settings
-baseurl: /m-SOUND # Change this to your relative path (ex: /blog/), or leave just a /
+baseurl: /mSOUND # Change this to your relative path (ex: /blog/), or leave just a /
 markdown: kramdown
 source: .
 destination: ./_site
