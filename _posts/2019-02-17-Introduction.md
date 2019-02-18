@@ -2,7 +2,7 @@
 title: wave propagation in 2D heterogeneous media
 ---
 
-## generate the grid structure in the compputational domain       
+#### generate the grid structure in the compputational domain       
 ***
 For 2D time domain simulation, we need six inputs to define the mgrid structure with funciton [mgrid](\functions.md). Coordinates defined with the mgrid functiions are all in Cartesian coordinates.
 
@@ -17,7 +17,7 @@ tlen = num_cycles/fc*11.0;     % total computatoinal domain size in the temporal
 
 mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen);              
 ``` 
-## Define a phased array transducer      
+#### Define a phased array transducer      
 ***
 In this example, phased array transducer is used to generate the foucsed ultrasound beam. Here shows the details of defining the phased array transducer. 
           
@@ -33,7 +33,7 @@ delay = sqrt((el_x*mgrid.dx).^2 + (TR_focus)^2)/medium.c0;
 delay = delay - min(delay);
 ```
 
-## Excitation signal
+#### Excitation signal
 *** 
 A 4-cycles gaussian-modulated pulse is used for the excitation signal.            
 ```
@@ -44,7 +44,7 @@ ts    = repmat(ts, 1,length(el_x));
 excit_ps = p0*sin(2*pi*fc*(ts+delay)).*exp(-(ts+delay).^2*fc^2/2);     % define the pulse    
 ```
  
-## define the heterogeneous media        
+#### define the heterogeneous media        
 ***       
 ```
 medium.c    = c;                 % speed of sound   [m/s]
@@ -54,14 +54,14 @@ medium.ca   = ca;                % attenuation coefficient  [dB/(MHz^y cm)]
 medium.cb   =cb;                 % power law exponent    
 ```
 
-## 2D forward Simulation
+#### 2D forward Simulation
 ***
 Transient pressure field results are calculated with the 2D forward simulation function [Forward2D](\functions.md).    
 ```
 p_total = Forward2D(mgrid, medium, excit_p);
 ```
 
-## Results
+#### Results
 ***     
 
 
