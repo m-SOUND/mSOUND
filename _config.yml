@@ -1,7 +1,7 @@
 # Site settings
 title: mSOUND | A mixed-domain wave propagation simulation toolbox
 description: "A mixed-domain wave propagation simulation toolbox."
-url: "https://m-SOUND.github.io/mSOUND/home"
+url: "https://m-SOUND.github.io/mSOUND"
 author:
   name: "Juanjuan Gu"
   email: ""
