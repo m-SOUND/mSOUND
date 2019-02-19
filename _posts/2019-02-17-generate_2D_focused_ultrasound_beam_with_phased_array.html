@@ -17,9 +17,9 @@ title: Generate the 2D focused ultrasound beam with a phased array
 <br>dy = 3.75e-04;         <font color="#a5bad3"> %  step size in the y direction [m]</font> 
 <br>dt = 6.25e-08;         <font color="#a5bad3"> %  time step size [s]</font> 
 
-<br>xlen = 0.0735;         <font color="#a5bad3"> % total computatoinal domain size in x direction [m]</font> 
+<br>xlen = 0.0454;         <font color="#a5bad3"> % total computatoinal domain size in x direction [m]</font> 
 <br>ylen = 0.0210;         <font color="#a5bad3"> % total computatoinal domain size in y direction [m]</font> 
-<br>tlen = 4.40e-05;       <font color="#a5bad3"> % total temporal domain size [s]</font> 
+<br>tlen = 2.00e-05;       <font color="#a5bad3"> % total temporal domain size [s]</font> 
 <br>mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen);              
 </code>   
  <br>
@@ -33,8 +33,8 @@ title: Generate the 2D focused ultrasound beam with a phased array
  In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
 <code>
 <br>
-<br>TR_focus  = 0.0210;      <font color="#a5bad3"> % transducer focus length [m]</font>         
-<br>TR_radius = 0.0135;      <font color="#a5bad3"> % Transducer diameter [m]</font>   
+<br>TR_focus  = 0.0150;      <font color="#a5bad3"> % transducer focus length [m]</font>         
+<br>TR_radius = 0.0075;      <font color="#a5bad3"> % Transducer diameter [m]</font>   
 <br>delay = sqrt((mgrid.x).^2 + TR_focus^2)/medium.c0; <font color="#a5bad3"> % calculate the delay for each element [m]</font>   
 <br> delay = delay - min(delay);
 <br>TR_mask = ones(mgrid.num_x,1);<font color="#a5bad3"> % define the transducer mask</font>  
@@ -77,7 +77,8 @@ Define the homogeneous medium.
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <p>
- Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
+ Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>. 
+ Pressure field generated with the phased array transducer is shown in the figure below.
 <code>
   <br>
 <br> p_total = Forward2D(mgrid, medium, excit_p); 
@@ -85,5 +86,5 @@ Define the homogeneous medium.
  </code>
  </p>
 
- 
+  <img src="/mSOUND/img/phased_array_2D.jpg" alt="Pressure field generated with the phased array">
  
