@@ -3,8 +3,9 @@ layout: default
 ---
 <h2>My Wave propagation in 2D heterogeneous media</h2>
 <p>
- For 2D time domain simulation, we need six inputs to define the mgrid structure with funciton [mgrid](\functions.md). Coordinates defined with the mgrid functiions are all in Cartesian coordinates.
-<code>        
+ For 2D time domain simulation, we need six inputs to define the mgrid structure with funciton <a href="/mSOUND/functions">mgrid</a>. Coordinates defined with the mgrid functiions are all in Cartesian coordinates.
+</p>
+ <code>        
 dx = lambda/4;                 %  step size in the x direction   [m]
 dy = lambda/4;                 %  step size in the y direction   [m]  
 dt = 1/fc/16;                  %  time step    
@@ -15,4 +16,4 @@ tlen = num_cycles/fc*11.0;     % total computatoinal domain size in the temporal
 
 mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen);              
 </code>    
-</p>
+
