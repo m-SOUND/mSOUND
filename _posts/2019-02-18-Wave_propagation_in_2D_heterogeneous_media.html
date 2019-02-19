@@ -17,7 +17,6 @@ title: Wave propagation in 2D heterogeneous meida
 <br>xlen = 0.0735;         <font color="$cc-color"> % total computatoinal domain size in x direction [m]</font> 
 <br>ylen = 0.0210;         <font color="$cc-color"> % total computatoinal domain size in y direction [m]</font> 
 <br>tlen = 4.40e-05;       <font color="$cc-color"> % total temporal domain size [s]</font> 
-<br>
 <br>mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen);              
 </code>   
  <br>
@@ -25,41 +24,56 @@ title: Wave propagation in 2D heterogeneous meida
 
 
 <!---define the phased array transducer--->
-<h6>Generate the grid structure in the compputational domain</h6>
+<h6>Define the phased array transducer</h6>
 <hr>
 <p>
  In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
  Details of defining a phased array transducer can refer to <a href="/mSOUND/phased_array">phased array</a>.
 <code>
+ <br>
 <br>TR_focus  = 0.0210;      <font color="$cc-color"> % transducer focus length [m]</font>         
-<br>TR_radius = 0.0135;      <font color="$cc-color"> % Transducer diameter [m]</font>                                 
+<br>TR_radius = 0.0135;      <font color="$cc-color"> % Transducer diameter [m]</font>   
+  <br>
  </code>
  
  </p>
 
 <!---define the Excitation signal--->
-<h6>Define the Excitation signal</h6>
+<h6>Define the excitation signal</h6>
 <hr>
 <p>
 A 4-cycles gaussian-modulated pulse is used for the excitation signal.
 <code>
+  <br>
 <br>TR_focus  = 0.0210;      <font color="$cc-color"> % transducer focus length [m]</font>         
-<br>TR_radius = 0.0135;      <font color="$cc-color"> % Transducer diameter [m]</font>                                 
+<br>TR_radius = 0.0135;      <font color="$cc-color"> % Transducer diameter [m]</font>     
+  <br>
  </code> 
 </p>
 
 
 <!---2D forward Simulation--->
-<h6>2D forward Simulation</h6>
+<h6>2D forward simulation</h6>
 <p>
  Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
 <code>
+  <br>
 <br> p_total = Forward2D(mgrid, medium, excit_p); 
+  <br>
  </code>
  </p>
 
 
-
+<!---Simulation results--->
+<h6>2D Simulation results</h6>
+<p>
+ Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
+<code>
+  <br>
+<br> p_total = Forward2D(mgrid, medium, excit_p); 
+  <br>
+ </code>
+ </p>
 
 
 
