@@ -6,13 +6,13 @@ layout: default
  <br>To define the temporal and spatial computational domain in 2D forward simulations, we start from the funciton <a href="/mSOUND/functions">mgrid</a>. For 2D problems, six inputs are required to to call this function. Coordinates defined with the mgrid functiions are all in Cartesian coordinates.
  <br>
  <code>        
-<br>dx = lambda/4;               <font color="#92b0d3"> %  step size in the x direction [m]</font> 
-<br>dy = lambda/4;                 %  step size in the y direction   [m]  
-<br>dt = 1/fc/16;                  %  time step    
+<br>dx = 3.75e-04;         <font color="#92b0d3"> %  step size in the x direction [m]</font> 
+<br>dy = 3.75e-04;         <font color="#92b0d3"> %  step size in the y direction [m]</font> 
+<br>dt = 6.25e-08;         <font color="#92b0d3"> %  time step size [s]</font> 
 
-<br>ylen = lambda*18;              % total computatoinal domain size in x direction    [m]
-<br>xlen = lambda*40;              % total computatoinal domain size in y direction    [m]
-<br>tlen = num_cycles/fc*11.0;     % total computatoinal domain size in the temporal domain [s]
+<br>xlen = 0.0735;         <font color="#92b0d3">% total computatoinal domain size in x direction [m]</font> 
+<br>ylen = 0.0210;         <font color="#92b0d3">% total computatoinal domain size in y direction [m]</font> 
+<br>tlen = 4.40e-05;       <font color="#92b0d3">% total temporal domain size [s]</font> 
 <br>
 <br>mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen);              
 </code>    
