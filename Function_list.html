@@ -6,7 +6,7 @@ layout: default
 
 	{% for post in paginator.fcts %}
 
-	  <li class="fcts">
+	  <li class="posts">
 	  	<h2><a href="{% if site.baseurl == "/" %}{{ fcts.url }}{% else %}{{ fcts.url | prepend: site.baseurl }}{% endif %}">{{ fcts.title }}</a></h2>
 	  	<p>{{ fcts.content | strip_html | truncatewords:50 }}</p>
 	  </li>
