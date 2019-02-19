@@ -36,8 +36,10 @@ title: Generate the 3D focused ultrasound beam with a phased array
 <code>
 <br>
 <br>TR_focus  = 0.0150;      <font color="#a5bad3"> % transducer focus length [m]</font>         
-<br>TR_radius = 0.0075;      <font color="#a5bad3"> % Transducer diameter [m]</font>   
-<br>delay = sqrt((mgrid.x).^2 +(mgrid.y).^2 + TR_focus^2)/medium.c0; <font color="#a5bad3"> % calculate the delay for each element [m]</font>   
+<br>TR_radius = 0.0075;      <font color="#a5bad3"> % Transducer diameter [m]</font>  
+<br>X = ones(mgrid.numy,1)*mgrid.x;
+<br>Y = (ones(mgrid.numx,1)*mgrid.y).';
+<br>delay = sqrt(X.^2 + Y.^2 + TR_focus^2)/medium.c0; <font color="#a5bad3"> % calculate the delay for each element [m]</font>   
 <br>delay = delay - min(min(delay));
 <br> 
 </code>
@@ -58,8 +60,6 @@ A four-cycles gaussian-modulated pulse is used for the excitation signal.
 <br>&nbsp;&nbsp;&nbsp;&nbsp;excit_ps(:, cel1, cel2) = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2);
 <br> &nbsp;&nbsp;end
 <br> end
-<br>X = ones(mgrid.numy,1)*mgrid.x;
-<br>Y = (ones(mgrid.numx,1)*mgrid.y).';
 <br>RHO = sqrt(X.^2+Y.^2);
 <br>excit_p(:, RHO>TR_radius) = 0; 
 </code>
