@@ -42,9 +42,8 @@ layout: default
  
  </p>
 
-
 <!---define the Excitation signal--->
-<h6>define the Excitation signal</h6>
+<h6>Define the Excitation signal</h6>
 <hr>
 <p>
 A 4-cycles gaussian-modulated pulse is used for the excitation signal.
@@ -52,12 +51,20 @@ A 4-cycles gaussian-modulated pulse is used for the excitation signal.
 <br>TR_focus  = 0.0210;      <font color="$cc-color"> % transducer focus length [m]</font>         
 <br>TR_radius = 0.0135;      <font color="$cc-color"> % Transducer diameter [m]</font>                                 
  </code> 
-ts    = [-num_cycles/fc:dt:num_cycles/fc].';      <font color="$cc-color"> % define the pulse length [s]</font>     
-delay = repmat(delay, length(ts),1);
-ts    = repmat(ts, 1,length(el_x));        <font color="$cc-color"> % transducer focus length [m]</font>   
- 
-excit_ps = p0*sin(2*pi*fc*(ts+delay)).*exp(-(ts+delay).^2*fc^2/2);     % define the pulse  
 </p>
+
+
+<!---2D forward Simulation--->
+<h6>2D forward Simulation</h6>
+<p>
+ Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/Functions">Forward2D.</a>.
+<code>
+<br> p_total = Forward2D(mgrid, medium, excit_p);
+ </code>
+ </p>
+
+
+
 
 
 
