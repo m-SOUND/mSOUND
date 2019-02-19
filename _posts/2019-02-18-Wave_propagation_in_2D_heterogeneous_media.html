@@ -30,9 +30,10 @@ To define the temporal and spatial computational domain in 2D forward simulation
 <h6>Define the phased array transducer</h6>
 <hr>
 <p>
- In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
- Details of defining a phased array transducer can refer to <a href="/mSOUND/phased_array">phased array</a>.
-<code>
+ In this example, phased array transducer is used to generate the foucsed ultrasound beam. Transducer parameters are shown in the code below.
+ Details of defining a phased array transducer can refer to <a href="/mSOUND/Generate the 2D focused ultrasound beam with a phased array">phased array</a>.
+
+ <code>
  <br>
 <br>TR_focus  = 0.0210;      <font color="#a5bad3"> % transducer focus length [m]</font>         
 <br>TR_radius = 0.0135;      <font color="#a5bad3"> % Transducer diameter [m]</font>   
@@ -45,13 +46,14 @@ To define the temporal and spatial computational domain in 2D forward simulation
 <h6>Define the excitation signal</h6>
 <hr>
 <p>
-A 4-cycles gaussian-modulated pulse is used for the excitation signal.
+A four-cycles gaussian-modulated pulse is used for the excitation signal and can read 
+ <a href="/mSOUND/Generate the 2D focused ultrasound beam with a phased array">Generate the 2D focused ultrasound beam with a phased array</a> for details.
 </p>
 
 <!---Define the media--->
 <h6>Define the media</h6>
 <p>
- Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
+ Speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent can all be spatially varying functions.
  <code>
   <br>   
   <br>medium.c    = c;         <font color="#a5bad3">% speed of sound [m/s]</font>      
@@ -77,9 +79,6 @@ A 4-cycles gaussian-modulated pulse is used for the excitation signal.
  </code>
  </p>
 
-
-<!---Simulation results--->
-<h6>2D Simulation results</h6>
 <p>
  Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
 <br>
