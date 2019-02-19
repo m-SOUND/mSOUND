@@ -47,7 +47,7 @@ title: Generate the 2D focused ultrasound beam with a phased array
 <h6>Excitation signal</h6>
 <hr>
 <p>
-A 4-cycles gaussian-modulated pulse is used for the excitation signal. The pulse is illustrated in the figure below.           
+A four-cycles gaussian-modulated pulse is used for the excitation signal. The pulse is illustrated in the figure below.           
 <code>
 <br>ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#a5bad3"> % define the pulse length [s]</font>    
 <br>ts = repmat(ts, 1,mgrid.num_x);     
@@ -63,7 +63,7 @@ A 4-cycles gaussian-modulated pulse is used for the excitation signal. The pulse
 <!---Define the medium--->
 <h6>Define the medium</h6>
 <p>
- Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
+Define the homogeneous medium.
  <code>
   <br>   
   <br>medium.c    = 1500;       <font color="#a5bad3">% speed of sound [m/s]</font>      
