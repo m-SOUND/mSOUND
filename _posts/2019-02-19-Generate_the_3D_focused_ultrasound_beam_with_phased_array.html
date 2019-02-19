@@ -18,11 +18,80 @@ title: Generate the 3D focused ultrasound beam with a phased array
 <br>dz = 3.75e-04;         <font color="#a5bad3"> %  step size in the z direction [m]</font> 
 <br>dt = 6.25e-08;         <font color="#a5bad3"> %  time step size [s]</font> 
 
-<br>xlen = 0.0735;         <font color="#a5bad3"> % total computatoinal domain size in x direction [m]</font> 
-<br>ylen = 0.0735;         <font color="#a5bad3"> % total computatoinal domain size in y direction [m]</font> 
+<br>xlen = 0.0450;         <font color="#a5bad3"> % total computatoinal domain size in x direction [m]</font> 
+<br>ylen = 0.0450;         <font color="#a5bad3"> % total computatoinal domain size in y direction [m]</font> 
 <br>zlen = 0.0210;         <font color="#a5bad3"> % total computatoinal domain size in z direction [m]</font> 
-<br>tlen = 4.40e-05;       <font color="#a5bad3"> % total temporal domain size [s]</font> 
+<br>tlen = 2.00e-05;       <font color="#a5bad3"> % total temporal domain size [s]</font> 
 <br>mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen);              
 </code>   
  <br>
 </p>
+
+
+<!---define the 3D phased array transducer--->
+<h6>Define the 3D phased array transducer</h6>
+<hr>
+<p>
+ In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
+<code>
+<br>
+<br>TR_focus  = 0.0150;      <font color="#a5bad3"> % transducer focus length [m]</font>         
+<br>TR_radius = 0.0075;      <font color="#a5bad3"> % Transducer diameter [m]</font>   
+<br>delay = sqrt((mgrid.x).^2 +(mgrid.y).^2 + TR_focus^2)/medium.c0; <font color="#a5bad3"> % calculate the delay for each element [m]</font>   
+<br>delay = delay - min(min(delay));
+<br> 
+</code>
+</p>
+
+
+<!---Excitation signal--->
+<h6>Excitation signal</h6>
+<hr>
+<p>
+A four-cycles gaussian-modulated pulse is used for the excitation signal.     
+<code>
+<br>ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#a5bad3"> % define the pulse length [s]</font>    
+<br>ts = repmat(ts, 1,mgrid.num_x);     
+<br>for cel1 = 1:mgrid.num_x
+<br> &nbsp;&nbsp;for cel2 = 1:mgrid.num_y
+<br>&nbsp;&nbsp;&nbsp;&nbsp;excit_ps(:, cel1, cel2) = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2);
+<br> &nbsp;&nbsp;end
+<br> end
+<br>X = ones(mgrid.numy,1)*mgrid.x;
+<br>Y = (ones(mgrid.numx,1)*mgrid.y).';
+<br>RHO = sqrt(X.^2+Y.^2);
+<br>excit_p(:, RHO>TR_radius) = 0; 
+</code>
+ </p>
+
+<!---Define the medium--->
+<h6>Define the medium</h6>
+<p>
+Define the homogeneous medium.
+ <code>
+  <br>   
+  <br>medium.c    = 1500;       <font color="#a5bad3">% speed of sound [m/s]</font>      
+  <br>medium.rho  = 1000;       <font color="#a5bad3">% density [kg/m^3]</font>             
+  <br>medium.beta = 0;          <font color="#a5bad3">% nonlinear coefficient </font>    
+  <br>medium.ca   = 0;          <font color="#a5bad3">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+  <br>medium.cb   = 2.0;        <font color="#a5bad3">% power law exponent</font>    
+ </code>
+ </p>
+
+<!--3D forward Simulation--->
+<h6>3D forward simulation</h6>
+<p>
+ Transient pressure field results are calculated with the 3D forward simulation function <a href="/mSOUND/functions">Forward3D</a>. 
+ Pressure field generated with the phased array transducer is shown in the figure below.
+<code>
+  <br>
+<br> p_total = Forward3D(mgrid, medium, excit_p); 
+  <br>
+ </code>
+ <br>
+   <img src="/mSOUND/img/phased_array_3D.jpg" alt="Pressure field generated with the phased array">
+ </p>
+
+
+
+
