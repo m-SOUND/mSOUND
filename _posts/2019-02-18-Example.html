@@ -1,12 +1,18 @@
 
----
-layout: default
----
-
+---     
+layout: default           
+---            
 <h4>Simulation in 2D heterogeneous media</h4>
 <hr>
+
+
+<!---define the structure grid--->
+<h6>Generate the grid structure in the compputational domain</h6>
+<hr>
 <p>
- <br>To define the temporal and spatial computational domain in 2D forward simulations, we start from the funciton <a href="/mSOUND/functions">mgrid</a>. For 2D problems, six inputs are required to to call this function. Coordinates defined with the mgrid functiions are all in Cartesian coordinates.
+ <br>To define the temporal and spatial computational domain in 2D forward simulations, 
+ we start from the funciton <a href="/mSOUND/functions">mgrid</a>. For 2D problems,
+ six inputs are required to to call this function. Coordinates defined with the mgrid functiions are all in Cartesian coordinates.
  <br>
  <code>        
 <br>dx = 3.75e-04;         <font color="$cc-color"> %  step size in the y direction [m]</font> 
@@ -20,7 +26,39 @@ layout: default
 <br>mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen);              
 </code>   
  <br>
- 
- 
- 
 </p>
+
+
+<!---define the phased array transducer--->
+<h6>Generate the grid structure in the compputational domain</h6>
+<hr>
+<p>
+ In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
+ Details of defining a phased array transducer can refer to <a href="/mSOUND/phased_array">phased array.</a>
+<code>
+<br>TR_focus  = 0.0210;      <font color="$cc-color"> % transducer focus length [m]</font>         
+<br>TR_radius = 0.0135;      <font color="$cc-color"> % Transducer diameter [m]</font>                                 
+ </code>
+ 
+ </p>
+
+
+<!---define the Excitation signal--->
+<h6>define the Excitation signal</h6>
+<hr>
+<p>
+A 4-cycles gaussian-modulated pulse is used for the excitation signal.
+<code>
+<br>TR_focus  = 0.0210;      <font color="$cc-color"> % transducer focus length [m]</font>         
+<br>TR_radius = 0.0135;      <font color="$cc-color"> % Transducer diameter [m]</font>                                 
+ </code> 
+ts    = [-num_cycles/fc:dt:num_cycles/fc].';      <font color="$cc-color"> % define the pulse length [s]</font>     
+delay = repmat(delay, length(ts),1);
+ts    = repmat(ts, 1,length(el_x));        <font color="$cc-color"> % transducer focus length [m]</font>   
+ 
+excit_ps = p0*sin(2*pi*fc*(ts+delay)).*exp(-(ts+delay).^2*fc^2/2);     % define the pulse  
+</p>
+
+
+
+
