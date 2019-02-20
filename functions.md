@@ -12,9 +12,12 @@ title: Functions
 
 Define the computational domain      
 
-mgrid = set_grid(dt, tlen, dx, xlen)     
-mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen)     
-mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen)     
+```
+mgrid = set_grid(dt, tlen, dx, xlen);                         
+mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen);     
+mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen);     
+
+```
 
 ### Inputs     
 
@@ -49,8 +52,9 @@ mgrid.num_t | number of time steps
 ## Forward1D         
 ***      
 1D mixed-domain simulation of wave propagation, can give transient results directly                   
-
-Forward1D(mgrid, medium,excit_p)            
+```
+p = Forward1D(mgrid, medium,excit_p);
+```
 
 ### Inputs                  
 
@@ -68,8 +72,9 @@ Time-domain pressure dirtribution through the whole domain
 ***      
 
 2D mixed-domain simulation of wave propagation, can give transient results directly                     
-
-Forward2D(mgrid, medium,excit_p)      
+```
+p = Forward2D(mgrid, medium,excit_p); 
+```
 
 ### Inputs            
 
@@ -86,9 +91,9 @@ Time-domain pressure dirtribution through the whole domain
 ***      
 
 3D mixed-domain simulation of wave propagation, can give transient results directly        
-
-Forward1D(mgrid, medium,excit_p)           
-
+```
+p = Forward1D(mgrid, medium,excit_p);           
+```
 ### Inputs            
 
 INPUT | PROPERTIES               
@@ -104,9 +109,9 @@ Time-domain pressure dirtribution through the whole domain
 ***      
 
 2D frequency-domain simulation of wave propagation at the fundamental frequency                 
-
-Forward2D_fund(mgrid, medium, excit_p, omegac)           
-
+```     
+p = Forward2D_fund(mgrid, medium, excit_p, omegac);        
+```     
 ### Inputs     
 
 INPUT | PROPERTIES               
@@ -123,8 +128,9 @@ Pressure dirtribution through the domain at the fundamental frequecncy
 ***      
 
 2D frequency-domain simulation of wave propagation at the second-harmonic frequency           
-
-Forward2D_secd(mgrid, medium, P_fundamental,omegac)     
+```       
+p = Forward2D_secd(mgrid, medium, P_fundamental,omegac);    
+```     
 
 ### Inputs          
 
@@ -142,9 +148,9 @@ Pressure dirtribution through the domain at the second-harmonic frequecncy
 ***      
 
 3D frequency-domain simulation of wave propagation at the fundamental frequency                  
-
-Forward3D_fund(mgrid, medium, excit_p, omegac)           
-
+```
+p = Forward3D_fund(mgrid, medium, excit_p, omegac);           
+``` 
 ### Inputs       
 
 INPUT | PROPERTIES               
@@ -161,9 +167,9 @@ Pressure dirtribution through the domain at the fundamental frequecncy
 ***      
 
 3D frequency-domain simulation of wave propagation at the second-harmonic frequency                   
-
-Forward3D_secd(mgrid, medium, P_fundamental,omegac)     
-
+``` 
+p = Forward3D_secd(mgrid, medium, P_fundamental,omegac);     
+``` 
 ### Inputs      
 
 INPUT | PROPERTIES               
