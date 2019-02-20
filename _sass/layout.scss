@@ -35,7 +35,7 @@
   @include open(-14rem);
 }
 
-#nav-left.menu-open-left {
+#nav-right.menu-open-right {
   @include open(14rem);
 }
 
@@ -53,11 +53,11 @@
 /* Icon menu */
 
 #nav-menu {
-  @include icon-position(right);
+  @include icon-position(left);
 }
 
-#nav-menu-left {
-  @include icon-position(left);
+#nav-menu-right {
+  @include icon-position(right);
 }
 
 #menu {
