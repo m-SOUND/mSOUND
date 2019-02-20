@@ -65,6 +65,7 @@
   width: 4.5em;
   background-color: lighten($main-color, 10%);
   margin-top: 20px;
+  margin-right: 30px;
   &:after, &:before {
     content: "";
     display: block;
