@@ -2,7 +2,7 @@
 
 /* Navigation */
 
-#nav, #nav-right { 
+#nav, #nav-left { 
   a {
     display: block;
     color: $background-color;
@@ -25,7 +25,7 @@
   @include nav-position(left);
 }
 
-#nav-right {
+#nav-left {
   @include nav-position(right);
 }
 
@@ -35,7 +35,7 @@
   @include open(-14rem);
 }
 
-#nav-right.menu-open-right {
+#nav-left.menu-open-left {
   @include open(14rem);
 }
 
@@ -56,7 +56,7 @@
   @include icon-position(left);
 }
 
-#nav-menu-right {
+#nav-menu-left {
   @include icon-position(right);
 }
 
