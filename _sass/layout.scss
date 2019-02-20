@@ -68,7 +68,7 @@
   &:after, &:before {
     content: "";
     display: block;
-    position: fixed;
+    position: relative;
     height: 4px;
     width: 4.5em;
     background-color: lighten($main-color, 10%);
@@ -200,8 +200,8 @@ img[title="Emerald"] {
   }
 
 code {
-  color: lighten($text-color, 5%);
-  background-color: lighten($main-color, 80%);
+  color: lighten($text-color, 10%);
+  background-color: lighten($main-color,70%);
 }
 
 /* Set the vertical rhythm (and padding-left) for lists inside post content */
