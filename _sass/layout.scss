@@ -61,15 +61,15 @@
 }
 
 #menu {
-  height: 8px;
+  height: 4px;
   width: 4.5em;
   background-color: lighten($main-color, 10%);
-  margin-top: 16px;
+  margin-top: 8px;
   &:after, &:before {
     content: "";
     display: block;
     position: fixed;
-    height: 8px;
+    height: 4px;
     width: 4.5em;
     background-color: lighten($main-color, 10%);
     transition: all 0.3s ease-in;
@@ -78,7 +78,7 @@
     top: -8px;
   }
   &:after {
-    top: 20px;
+    top: 4px;
   }
   &.btn-close {
     background: none;
