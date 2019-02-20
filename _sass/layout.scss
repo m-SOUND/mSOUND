@@ -61,7 +61,7 @@
 }
 
 #menu {
-  height: 12px;
+  height: 5px;
   width: 4.5em;
   background-color: lighten($main-color, 10%);
   margin-top: 20px;
@@ -70,16 +70,16 @@
     content: "";
     display: block;
     position: relative;
-    height: 12px;
+    height: 5px;
     width: 4.5em;
     background-color: lighten($main-color, 10%);
     transition: all 0.3s ease-in;
   }
   &:before {
-    top: -8px;
+    top: -10px;
   }
   &:after {
-    top: 4px;
+    top: 5px;
   }
   &.btn-close {
     background: none;
