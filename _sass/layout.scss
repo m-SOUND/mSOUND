@@ -26,7 +26,7 @@
 }
 
 #nav-left {
-  @include nav-position(right);
+  @include nav-position(left);
 }
 
 /* Toggle class to open menu */
@@ -57,7 +57,7 @@
 }
 
 #nav-menu-left {
-  @include icon-position(right);
+  @include icon-position(left);
 }
 
 #menu {
