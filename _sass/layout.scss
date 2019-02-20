@@ -63,14 +63,14 @@
 #menu {
   height: 5px;
   width: 2.5em;
-  background-color: lighten($main-color, 35%);
+  background-color: $main-color;
   margin-top: 8px;
   &:after, &:before {
     content: "";
     display: block;
     position: relative;
-    height: 4px;
-    width: 1.5em;
+    height: 5px;
+    width: 2.5em;
     background-color: lighten($main-color, 35%);
     transition: all 0.3s ease-in;
   }
