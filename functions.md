@@ -138,7 +138,7 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid          |input strucutre defined the computational domain     
 medium         |input strucutre defined the media properties               
-P_fundamental  |excitation signal               
+P_fundamental  |pressure at the fundamental frequency/the output pressure from ```Forward2D_fun```        
 omegac         |fundamental frequency      
 
 ### Output   
@@ -176,7 +176,7 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid          |input strucutre defined the computational domain     
 medium         |input strucutre defined the media properties               
-P_fundamental  |excitation signal               
+P_fundamental  |pressure at the fundamental frequency/the output pressure from function ```Forward3D_fun```           
 omegac         |fundamental frequency      
 
 ### Output             
