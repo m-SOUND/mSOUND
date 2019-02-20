@@ -32,7 +32,7 @@
 /* Toggle class to open menu */
 
 #nav.menu-open {
-  @include open(-14rem);
+  @include open(14rem);
 }
 
 #nav-left.menu-open-left {
