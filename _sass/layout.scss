@@ -61,7 +61,7 @@
 }
 
 #menu {
-  height: 4px;
+  height: 12px;
   width: 4.5em;
   background-color: lighten($main-color, 10%);
   margin-top: 20px;
@@ -69,7 +69,7 @@
     content: "";
     display: block;
     position: relative;
-    height: 4px;
+    height: 12px;
     width: 4.5em;
     background-color: lighten($main-color, 10%);
     transition: all 0.3s ease-in;
