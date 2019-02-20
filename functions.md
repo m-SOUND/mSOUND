@@ -13,9 +13,9 @@ title: Functions
 Define the computational domain      
 
 ```
-mgrid = set_grid(dt, tlen, dx, xlen);                         
-mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen);     
-mgrid = set_grid(dt, tlen, dx, xlen, dy, ylen, dz, zlen);     
+mgrid = set_grid(dt, t_length, dx, x_length);                         
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);     
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);     
 
 ```
 
@@ -27,10 +27,10 @@ dx   | spatial step size in the x direction
 dy   | spatial step size in the y direction           
 dz   | spatial step size in the z direction             
 dt   | temporal step size in the time domain       
-xlen |  total domain size in the x direction        
-ylen |  total domain size in the y direction                
-zlen |  total domain size in the z direction                  
-tlen | total temporal domain size             
+x_length |  total domain size in the x direction        
+y_length |  total domain size in the y direction                
+z_length |  total domain size in the z direction                  
+t_length | total temporal domain size             
 
 ### Outputs          
 
@@ -41,19 +41,18 @@ mgrid.y  | coordinates in the y direction
 mgrid.z  | coordinates in the z direction           
 mgrid.t  | time array            
 mgrid.kx |  wavevector in the x direction            
-mgrid.ky |  wavevector in the y direction              
-mgrid.kz |  wavevector in the z direction               
+mgrid.ky |  wavevector in the y direction                          
 mgrid.w  | angular freuqency              
 mgrid.num_x | number of grid points in the x direction                  
-mgrid.num_y | number of grid points in the x direction     
-mgrid.num_z | number of grid points in the x direction    
+mgrid.num_y | number of grid points in the y direction     
+mgrid.num_z | number of grid points in the z direction    
 mgrid.num_t | number of time steps          
 
 ## Forward1D         
 ***      
-1D mixed-domain simulation of wave propagation, can give transient results directly                   
+Simulation of 1D wave propagation, based on the transient mixed domain method.              
 ```
-p = Forward1D(mgrid, medium,excit_p);
+p = Forward1D(mgrid, medium, source_p);      
 ```
 
 ### Inputs                  
@@ -62,18 +61,19 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid    |input strucutre defined the computational domain            
 medium   |input strucutre defined the media properties             
-excit_p  |excitation signal         
+source_p |excitation signal         
 
 ### Output    
 
-Time-domain pressure dirtribution through the whole domain         
+Time-domain results      
 
 ## Forward2D   
 ***      
 
-2D mixed-domain simulation of wave propagation, can give transient results directly                     
+Simulation of the 2D wave propagation and it is based on the transient mixed domain method.       
+
 ```
-p = Forward2D(mgrid, medium,excit_p); 
+p = Forward2D(mgrid, medium, source_p); 
 ```
 
 ### Inputs            
@@ -82,17 +82,17 @@ INPUT | PROPERTIES
 ------------ | -------------      
 mgrid    |input strucutre defined the computational domain     
 medium   |input strucutre defined the media properties              
-excit_p  |excitation signal              
+source_p |excitation signal               
  
 ### Output                          
-Time-domain pressure dirtribution through the whole domain   
+Time-domain results  
 
 ## Forward3D 
 ***      
 
-3D mixed-domain simulation of wave propagation, can give transient results directly        
+Simulation of 3D wave propagation and it is based on the transient mixed domain method.               
 ```
-p = Forward1D(mgrid, medium,excit_p);           
+p = Forward3D(mgrid, medium,source_p);           
 ```
 ### Inputs            
 
@@ -100,26 +100,26 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid    |input strucutre defined the computational domain     
 medium   |input strucutre defined the media properties             
-excit_p  |excitation signal               
+source_p |excitation signal               
 
 ### Output                   
-Time-domain pressure dirtribution through the whole domain                
+Time-domain results          
 
 ## Forward2D_fund 
 ***      
 
-2D frequency-domain simulation of wave propagation at the fundamental frequency                 
+Simulation of the 2D wave propagation at the fundamental freqeuncy and it is based on the frequency-specific mixed domain method.                       
 ```     
-p = Forward2D_fund(mgrid, medium, excit_p, omegac);        
+p = Forward2D_fund(mgrid, medium, source_p, omega_c);        
 ```     
 ### Inputs     
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid    |input strucutre defined the computational domain     
-medium   |input strucutre defined the media properties               
-excit_p  |excitation signal               
-omegac   |fundamental frequency     
+mgrid     |input strucutre defined the computational domain     
+medium    |input strucutre defined the media properties               
+source_p  |excitation signal               
+omega_c   |fundamental frequency     
 
 ### Output               
 Pressure dirtribution through the domain at the fundamental frequecncy        
@@ -127,9 +127,9 @@ Pressure dirtribution through the domain at the fundamental frequecncy
 ## Forward2D_sec
 ***      
 
-2D frequency-domain simulation of wave propagation at the second-harmonic frequency           
+Simulation of the 2D wave propagation at the second-harmonic freqeuncy and it is based on the frequency-specific mixed domain method.     
 ```       
-p = Forward2D_secd(mgrid, medium, P_fundamental,omegac);    
+p = Forward2D_secd(mgrid, medium, P_fundamental, omega_c);    
 ```     
 
 ### Inputs          
@@ -139,36 +139,36 @@ INPUT | PROPERTIES
 mgrid          |input strucutre defined the computational domain     
 medium         |input strucutre defined the media properties               
 P_fundamental  |pressure at the fundamental frequency/the output pressure of ```Forward2D_fun```        
-omegac         |fundamental frequency      
+omega_c        |fundamental frequency      
 
 ### Output   
-Pressure dirtribution through the domain at the second-harmonic frequecncy    
+Pressure distribution throughout the spatial domain at the second-harmonic frequecncy    
 
 ## Forward3D_fund 
 ***      
 
-3D frequency-domain simulation of wave propagation at the fundamental frequency                  
+Simulation of the 3D wave propagation at the fundamental freqeuncy and it is based on the frequency-specific mixed domain method.            
 ```
-p = Forward3D_fund(mgrid, medium, excit_p, omegac);           
+p = Forward3D_fund(mgrid, medium,  source_p, omega_c);           
 ``` 
 ### Inputs       
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid    |input strucutre defined the computational domain     
-medium   |input strucutre defined the media properties               
-excit_p  |excitation signal               
-omegac   |fundamental frequency     
+mgrid     |input strucutre defined the computational domain     
+medium    |input strucutre defined the media properties               
+source_p  |excitation signal               
+omega_c   |fundamental frequency       
 
 ### Output   
-Pressure dirtribution through the domain at the fundamental frequecncy      
+Pressure dirtribution throughout the domain at the fundamental frequecncy      
 
 ## Forward3D_sec      
 ***      
 
-3D frequency-domain simulation of wave propagation at the second-harmonic frequency                   
+Simulation of the 3D wave propagation at the second-harmonic freqeuncy, based on the frequency-specific mixed domain method.               
 ``` 
-p = Forward3D_secd(mgrid, medium, P_fundamental,omegac);     
+p = Forward3D_secd(mgrid, medium, P_fundamental, omega_c);     
 ``` 
 ### Inputs      
 
@@ -177,7 +177,7 @@ INPUT | PROPERTIES
 mgrid          |input strucutre defined the computational domain     
 medium         |input strucutre defined the media properties               
 P_fundamental  |pressure at the fundamental frequency/the output pressure of ```Forward3D_fun```           
-omegac         |fundamental frequency      
+omega_c        |fundamental frequency      
 
 ### Output             
-Pressure dirtribution through the domain at the second-harmonic frequecncy         
+Pressure dirtribution throught the spatial domain at the second-harmonic frequecncy.      
