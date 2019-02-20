@@ -124,7 +124,7 @@ omegac   |fundamental frequency
 ### Output               
 Pressure dirtribution through the domain at the fundamental frequecncy        
 
-## Forward2D_secd 
+## Forward2D_sec
 ***      
 
 2D frequency-domain simulation of wave propagation at the second-harmonic frequency           
@@ -163,7 +163,7 @@ omegac   |fundamental frequency
 ### Output   
 Pressure dirtribution through the domain at the fundamental frequecncy      
 
-## Forward3D_secd        
+## Forward3D_sec      
 ***      
 
 3D frequency-domain simulation of wave propagation at the second-harmonic frequency                   
