@@ -68,7 +68,7 @@
   &:after, &:before {
     content: "";
     display: block;
-    position: relative;
+    position: fixed;
     height: 8px;
     width: 4.5em;
     background-color: lighten($main-color, 10%);
