@@ -62,16 +62,16 @@
 
 #menu {
   height: 5px;
-  width: 2.5em;
-  background-color: $main-color;
+  width: 4.5em;
+  background-color: lighten($main-color, 10%);
   margin-top: 8px;
   &:after, &:before {
     content: "";
     display: block;
     position: relative;
     height: 5px;
-    width: 2.5em;
-    background-color: lighten($main-color, 35%);
+    width: 4.5em;
+    background-color: lighten($main-color, 10%);
     transition: all 0.3s ease-in;
   }
   &:before {
