@@ -61,9 +61,9 @@
 }
 
 #menu {
-  height: 4px;
-  width: 1.5em;
-  background-color: lighten($text-color, 35%);
+  height: 5px;
+  width: 2.5em;
+  background-color: lighten($main-color, 35%);
   margin-top: 8px;
   &:after, &:before {
     content: "";
@@ -71,7 +71,7 @@
     position: relative;
     height: 4px;
     width: 1.5em;
-    background-color: lighten($text-color, 35%);
+    background-color: lighten($main-color, 35%);
     transition: all 0.3s ease-in;
   }
   &:before {
