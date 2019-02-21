@@ -22,14 +22,14 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 
 INPUT | PROPERTIES               
 ------------ | -------------                              
-dx   | spatial step size in the x direction          
-dy   | spatial step size in the y direction           
-dz   | spatial step size in the z direction             
-dt   | temporal step size in the time domain       
-x_length |  total domain size in the x direction        
-y_length |  total domain size in the y direction                
-z_length |  total domain size in the z direction                  
-t_length | total temporal domain size             
+dx   | spatial step size in the x direction [m]          
+dy   | spatial step size in the y direction [m]            
+dz   | spatial step size in the z direction [m]           
+dt   | temporal step size in the time domain [s]       
+x_length |  total domain size in the x direction [m]        
+y_length |  total domain size in the y direction [m]              
+z_length |  total domain size in the z direction [m]                  
+t_length | total temporal domain size [s]             
 
 ### Outputs          
 
