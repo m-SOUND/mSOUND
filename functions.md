@@ -35,10 +35,10 @@ t_length | total temporal domain size
 
 OPTPUT | PROPERTIES                     
 ------------ | -------------                                
-mgrid.x  | coordinates in the x direction          
-mgrid.y  | coordinates in the y direction          
-mgrid.z  | coordinates in the z direction           
-mgrid.t  | time array            
+mgrid.x  | coordinates in the x direction [m]          
+mgrid.y  | coordinates in the y direction [m]          
+mgrid.z  | coordinates in the z direction [m]           
+mgrid.t  | time array [s]              
 mgrid.kx |  wavevector in the x direction            
 mgrid.ky |  wavevector in the y direction                          
 mgrid.w  | angular freuqency              
@@ -49,7 +49,7 @@ mgrid.num_t | number of time steps
 
 ## Forward1D         
 ***      
-Simulation of 1D wave propagation, based on the transient mixed domain method.              
+Simulation of 1D wave propagation and it is based on the transient mixed domain method.              
 ```
 p = Forward1D(mgrid, medium, source_p);      
 ```
@@ -60,7 +60,7 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid    |input strucutre defined the computational domain            
 medium   |input strucutre defined the media properties             
-source_p |excitation signal         
+source_p |excitation signal [Pa]      
 
 ### Output    
 
@@ -81,7 +81,7 @@ INPUT | PROPERTIES
 ------------ | -------------      
 mgrid    |input strucutre defined the computational domain     
 medium   |input strucutre defined the media properties              
-source_p |excitation signal               
+source_p |excitation signal [Pa]                       
  
 ### Output                          
 Time-domain results  
@@ -99,7 +99,7 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid    |input strucutre defined the computational domain     
 medium   |input strucutre defined the media properties             
-source_p |excitation signal               
+source_p |excitation signal [Pa]                        
 
 ### Output                   
 Time-domain results          
@@ -117,7 +117,7 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid     |input strucutre defined the computational domain     
 medium    |input strucutre defined the media properties               
-source_p  |excitation signal               
+source_p  |excitation signal [Pa]                      
 omega_c   |fundamental frequency     
 
 ### Output               
@@ -137,7 +137,7 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid          |input strucutre defined the computational domain     
 medium         |input strucutre defined the media properties               
-P_fundamental  |pressure at the fundamental frequency/the output pressure of ```Forward2D_fun```        
+P_fundamental  |pressure at the fundamental frequency  [Pa] /the output pressure of ```Forward2D_fun```        
 omega_c        |fundamental frequency      
 
 ### Output   
@@ -156,7 +156,7 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid     |input strucutre defined the computational domain     
 medium    |input strucutre defined the media properties               
-source_p  |excitation signal               
+source_p  |excitation signal [Pa]               
 omega_c   |fundamental frequency       
 
 ### Output   
@@ -175,7 +175,7 @@ INPUT | PROPERTIES
 ------------ | -------------    
 mgrid          |input strucutre defined the computational domain     
 medium         |input strucutre defined the media properties               
-P_fundamental  |pressure at the fundamental frequency/the output pressure of ```Forward3D_fun```           
+P_fundamental  |pressure at the fundamental frequency  [Pa] /the output pressure of ```Forward3D_fun```           
 omega_c        |fundamental frequency      
 
 ### Output             
