@@ -1,0 +1,80 @@
+---
+title: Simulation with the pahsed array in the 3D homogeneous medium using the FSMDM
+---
+<hr>
+<hr>
+<br>
+<!---define the structure grid--->
+<h6>Generate the grid structure in the computational domain</h6>
+<hr>
+<p>
+ <br>This simulation setup is based on the 
+   <a href="https://m-sound.github.io/mSOUND/generate_3D_focused_ultrasound_beam_with_phased_array">Generate the 3D focused ultrasound beam with a phased array</a>.
+  The phase delay for each element in the transducer are the same in the two cases. 
+  We first need to define the temporal and spatial computational domain in 2D forward simulations. In FSMDM, we can set
+  time step and temporal domain size to 0. 
+   <code>        
+<br>dx = 3.75e-04;         <font color="#03a852"> %  step size in the x direction [m]</font> 
+<br>dy = 3.75e-04;         <font color="#03a852"> %  step size in the y direction [m]</font> 
+<br>dz = 3.75e-04;         <font color="#03a852"> %  step size in the z direction [m]</font> 
+<br>dt =0;         <font color="#03a852"> %  time step size [s]</font> 
+
+<br>x_length = 0.0454;         <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
+<br>y_length = 0.0454;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
+<br>z_length = 0.0210;         <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
+<br>t_length = 0;       <font color="#03a852"> % total temporal domain size [s]</font> 
+<br>mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);              
+</code>   
+ <br>
+</p>
+
+
+<!---Excitation signal--->
+<h6>Excitation signal</h6>
+<hr>
+<p>
+Continuous sine wave is used as the excitation signal.
+ <br>
+<code>  
+<br> p0 = 1.0e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
+<br>source_p = p0*exp(1i*omega_c*delay); <font color="#03a852"> % define the pulse </font>  
+<br>source_p = source_p.*TR_mask.'; <font color="#03a852"> % apply the transducer mask </font>  
+<br>
+</code>
+
+ </p>
+
+
+Define the homogeneous medium.
+ <code>
+  <br>   
+  <br>medium.c    = 1500;       <font color="#03a852">% speed of sound [m/s]</font>      
+  <br>medium.rho  = 1000;       <font color="#03a852">% density [kg/m^3]</font>             
+  <br>medium.beta = 3.6;          <font color="#03a852">% nonlinear coefficient </font>    
+  <br>medium.ca   = 0;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+  <br>medium.cb   = 2.0;        <font color="#03a852">% power law exponent</font>    
+ </code>
+ </p>
+
+
+
+<!---3D forward Simulation--->
+<h6>3D forward simulation</h6>
+<hr>
+<p>
+Fundamental pressure field results are calculated with the 3D forward simulation function <a href="/mSOUND/functions">Forward3D_fund</a>. 
+and the pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/functions">Forward3D_sec</a>. 
+<code>
+  <br>
+<br> p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
+  <br> p_second = Forward3D_fund(mgrid, medium, p_fundamental, omega_c); 
+ </code>
+ <br>
+   <img src="/mSOUND/img/phased_array_3D_fund.jpg" alt="fundamental pressure field generated with the phased array">
+  <br>
+    <img src="/mSOUND/img/phased_array_3D_sec.jpg" alt="second pressure field generated with the phased array">
+ </p>
+
+
+
+
