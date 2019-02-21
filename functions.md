@@ -1,7 +1,6 @@
----
-layout: page
-title: Functions
----
+---         
+title: Functions     
+---   
  
 # Functions
 ***    
