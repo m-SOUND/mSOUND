@@ -1,6 +1,53 @@
 ---
-title: Simulation of the second harmonic wave field in the heterogeneous medium using the FSMDM 
+title: Simulation of the second harmonic wave field in the heterogeneous medium using the frequency-specific mixed domain method
 ---
 <hr>
 <hr>
 <br>
+<p>
+ This example shows how to simulate the second-harmonic wave field in the heterogeneous 
+  medium using the frequency-specific mixed domain method.
+</p>
+
+
+<p>
+<br>
+Details of defining the computational domain and the phased-array transducer are shown in the case
+ <a href="https://m-sound.github.io/mSOUND/generate_2D_focused_ultrasound_beam_with_phased_array">
+   Generate the 2D focused ultrasound beam with a phased array using the transient mixed domain method</a>.   
+<br>
+</p>
+
+
+ <p>
+Define the heterogeneous medium.
+ <code>
+  <br>   
+  <br>medium.c    = c;       <font color="#03a852">% speed of sound [m/s]</font>      
+  <br>medium.rho  = rho;       <font color="#03a852">% density [kg/m^3]</font>             
+  <br>medium.beta = beta;          <font color="#03a852">% nonlinear coefficient </font>    
+  <br>medium.ca   = ca;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+  <br>medium.cb   = cb;        <font color="#03a852">% power law exponent</font>    
+ </code>
+ </p>
+
+
+<!---2D forward Simulation--->
+<h6>2D forward simulation</h6>
+<hr>
+<p>
+The fundamental pressure field is first calculated with the 2D forward simulation function
+ <a href="/mSOUND/functions">Forward2D_fund</a>. 
+and the pressure at the second-harmonic frequency is then calculated with the function <a href="/mSOUND/functions">Forward2D_sec</a>. 
+<code>
+  <br>
+<br> p_fundamental = Forward2D_fund(mgrid, medium, source_p); 
+  <br> p_second = Forward2D_fund(mgrid, medium, p_fundamental, omega_c); 
+ </code>
+ <br>
+   <img src="/mSOUND/img/phased_array_2D_fund.jpg" alt="fundamental pressure field">
+  <br>
+    <img src="/mSOUND/img/phased_array_2D_sec.jpg" alt="second-harmonic pressure field">
+ </p>
+
+
