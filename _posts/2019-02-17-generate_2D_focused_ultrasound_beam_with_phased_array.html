@@ -50,9 +50,9 @@ title: Generate the 2D focused ultrasound beam with a phased array
 A four-cycles Gaussian-modulated pulse is used for the excitation signal. The pulse is illustrated in the figure below.  
  <br>
 <code>
-<br>ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>    
-<br>ts = repmat(ts, 1,mgrid.num_x);     
+<br>ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>  
 <br>delay = repmat(delay, length(ts),1);    
+<br>ts = repmat(ts, 1,mgrid.num_x);     
 <br>source_p = p0*sin(2*pi*fc*(ts+delay)).*exp(-(ts+delay).^2*fc^2/2); <font color="#03a852"> % define the pulse </font>  
 <br>source_p = source_p.*repmat(TR_mask.', length(ts),1); <font color="#03a852"> % apply the transducer mask </font>  
 <br>
