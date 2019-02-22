@@ -1,0 +1,14 @@
+---
+title: Implementation of k-Wave for abbitrary shape transducer
+---
+<p>
+<br>
+<hr>
+<hr>
+This example shows how to implement the <a href="http://www.k-wave.org/">k-Wave</a> for simulations with curved transducer.
+Temporally, only phased array transducer can be used for simulating focused beams in the mSOUND. If other transducer settings
+are required, people can first use k-Wave to propagate the wave field for a small distance and record the data at a plane. 
+Then implement the recorded data at the plane to the TMDM. 
+<hr>
+<hr>
+</p>
