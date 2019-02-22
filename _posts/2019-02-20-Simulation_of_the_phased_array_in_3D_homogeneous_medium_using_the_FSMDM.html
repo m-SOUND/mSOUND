@@ -25,7 +25,7 @@ This example shows how to simulate the wave propagation in the 3D homogeneous me
 
 <br>x_length = 0.0454;         <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
 <br>y_length = 0.0454;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
-<br>z_length = 0.0210;         <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
+<br>z_length = 0.0330;         <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
 <br>t_length = 0;       <font color="#03a852"> % total temporal domain size [s]</font> 
 <br>mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
@@ -73,9 +73,11 @@ and the pressure at the second-harmonic frequency is calculated with the functio
 <br> p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
   <br> p_second = Forward3D_fund(mgrid, medium, p_fundamental, omega_c); 
  </code>
- <br>
+ <br> The three figures below show the fundamental pressure field distribution in the xz plane, yz plane and xy plane crossing the
+ focal point.
    <img src="/mSOUND/img/FSMDM_homo_3Dfund.jpg" alt="fundamental pressure field generated with the phased array">
-  <br>
+  <br>The three figures below show the second-harmonic pressure field distribution in the xz plane, yz plane and xy plane crossing the
+ focal point.
     <img src="/mSOUND/img/FSMDM_homo_3Dsec.jpg" alt="second-harmonic pressure field generated with the phased array">
  </p>
 
