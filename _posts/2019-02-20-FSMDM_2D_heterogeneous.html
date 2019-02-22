@@ -27,7 +27,7 @@ In this heterogeneous medium, density, speed of sound, nonlinear coefficient and
   <br>medium.rho  = rho;       <font color="#03a852">% density [kg/m^3]</font>             
   <br>medium.beta = beta;          <font color="#03a852">% nonlinear coefficient </font>    
   <br>medium.ca   = ca;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-  <br>medium.cb   = cb;        <font color="#03a852">% power law exponent</font>    
+  <br>medium.cb   = cb;        <font color="#03a852">% power law exponent</font>  
  </code>
  </p>
 
@@ -43,9 +43,11 @@ and the pressure at the second-harmonic frequency is then calculated with the fu
   <br>
 <br> p_fundamental = Forward2D_fund(mgrid, medium, source_p); 
   <br> p_second = Forward2D_sec(mgrid, medium, p_fundamental, omega_c); 
+  <br>
  </code>
  <br> The left figure shows the spatial distribution of the fundamental pressure and
  the right figure shows the second-harmonic pressure distribution.
+
    <img src="/mSOUND/img/FSMDM_hete_2D.jpg" alt="fundamental and the second-harmonic pressure field">
  </p>
 
