@@ -74,9 +74,11 @@ Define the homogeneous medium.
 Fundamental pressure field results are calculated with the 3D forward simulation function <a href="/mSOUND/functions">Forward3D_fund</a>. 
 and the pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/functions">Forward3D_sec</a>. 
 <code>
-  <br>
+<br><font color="#03a852">% forward propagation of the fundamental pressure</font>   
 <br> p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
-  <br> p_second = Forward3D_fund(mgrid, medium, p_fundamental, omega_c); 
+<br><font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
+<br> p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
+<br>
  </code>
  <br> The three figures below show the fundamental pressure field distribution in the xz plane, yz plane and xy plane crossing the
  focal point.
