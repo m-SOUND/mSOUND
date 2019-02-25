@@ -29,7 +29,7 @@ dt   | temporal step size in the time domain [s]
 x_length |  total domain size in the x direction [m]        
 y_length |  total domain size in the y direction [m]              
 z_length |  total domain size in the z direction [m]                  
-t_length | total temporal domain size [s]             
+t_length | total temporal domain size [s]               
 
 #### Outputs          
 
@@ -45,8 +45,9 @@ mgrid.w  | angular freuqency
 mgrid.num_x | number of grid points in the x direction                  
 mgrid.num_y | number of grid points in the y direction     
 mgrid.num_z | number of grid points in the z direction    
-mgrid.num_t | number of time steps          
+mgrid.num_t | number of time steps           
 
+<br>
 <h3 style="color: #c64949;"> Forward1D   </h3>           
 ***      
 Simulation of 1D wave propagation and it is based on the transient mixed domain method.              
