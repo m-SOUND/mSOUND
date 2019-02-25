@@ -6,7 +6,7 @@ title: Functions
 ***    
 ***      
 
-## set_grid            
+<h2> set_grid <h2>             
 ***      
 
 Define the computational domain      
