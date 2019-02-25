@@ -6,7 +6,7 @@ title: Functions
 ***    
 ***      
 
-<h2> set_grid </h2>             
+<h2 style="color: #c64949;"> set_grid </h2>             
 ***      
 
 Define the computational domain      
