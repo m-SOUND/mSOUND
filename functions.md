@@ -128,7 +128,7 @@ Pressure dirtribution through the domain at the fundamental frequecncy
 
 Simulation of the 2D wave propagation at the second-harmonic freqeuncy and it is based on the frequency-specific mixed domain method.     
 ```       
-p = Forward2D_secd(mgrid, medium, P_fundamental, omega_c);    
+p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);    
 ```     
 
 ### Inputs          
@@ -167,7 +167,7 @@ Pressure dirtribution throughout the domain at the fundamental frequecncy
 
 Simulation of the 3D wave propagation at the second-harmonic freqeuncy, based on the frequency-specific mixed domain method.               
 ``` 
-p = Forward3D_secd(mgrid, medium, P_fundamental, omega_c);     
+p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);     
 ``` 
 ### Inputs      
 
