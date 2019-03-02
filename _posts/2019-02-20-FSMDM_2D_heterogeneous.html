@@ -1,34 +1,29 @@
 ---
-title: Simulation in the 2D heterogeneous medium using the frequency-specific mixed domain method
+title: Simulation in the 2D heterogeneous media using the frequency-specific mixed domain method
 ---
 <p>
 <br>
 <hr>
 <hr>
  This example shows how to simulate the second-harmonic wave field in the heterogeneous 
-  medium using the frequency-specific mixed domain method.
+  media using the frequency-specific mixed domain method.
 <hr>
 <hr>
 </p>
 
 <!---2D heterogeneous medium--->
-<h6>Define the 2D heterogeneous medium</h6>
+<h6>Define the 2D heterogeneous media</h6>
 <hr>
 <br>
  <p>
   Details of defining the computational domain and the phased-array transducer are shown in the case
- <a href="https://m-sound.github.io/mSOUND/generate_2D_focused_ultrasound_beam_with_phased_array">
-   Generate the 2D focused ultrasound beam with a phased array using the transient mixed domain method</a>.   
-In this heterogeneous medium, density, speed of sound, nonlinear coefficient and attenuation coefficients are all
-  spatially varying functions.
- <code>
-  <br>   
-  <br>medium.c    = c;       <font color="#03a852">% speed of sound [m/s]</font>      
-  <br>medium.rho  = rho;       <font color="#03a852">% density [kg/m^3]</font>             
-  <br>medium.beta = beta;          <font color="#03a852">% nonlinear coefficient </font>    
-  <br>medium.ca   = ca;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-  <br>medium.cb   = cb;        <font color="#03a852">% power law exponent</font>  
- </code>
+ <a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
+   Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a>.   
+In this heterogeneous media, density, speed of sound, nonlinear coefficient and attenuation coefficients are all
+  spatially varying functions. Media properties are the same as that define in 
+  <a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+   Simulation in the 2D heterogeneous media using the transient mixed domain method</a>.
+
  </p>
 
 
