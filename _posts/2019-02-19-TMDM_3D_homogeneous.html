@@ -5,14 +5,14 @@ title: Simulation in a 3D homogeneous medium using the transient mixed domain me
 <br>
 <hr>
 <hr>
- This example shows how to simulate the wave propagation in the 3D 
- homogeneous medium with the transient mixed domain method and the focused beam is generated with the phased-array.
+ This example shows how to simulate the wave propagation in a 3D 
+ homogeneous medium with the transient mixed domain method. The focused beam is generated with a phased-array.
 <hr>
 <hr>
 </p>
 
 <!---define the structure grid--->
-<h6>Generate the grid structure in the computational domain</h6>
+<h6>Generate the grid structure to define the computational domain</h6>
 <hr>
 <p>
  <br>To define the temporal and spatial computational domain in 3D forward simulations, 
@@ -35,8 +35,8 @@ title: Simulation in a 3D homogeneous medium using the transient mixed domain me
 </p>
 
 
-<!---define the 3D phased array transducer--->
-<h6>Define the 3D phased array transducer</h6>
+<!---define a 3D phased array transducer--->
+<h6>Define a 3D phased array transducer</h6>
 <hr>
 <p>
  In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
@@ -57,27 +57,28 @@ title: Simulation in a 3D homogeneous medium using the transient mixed domain me
 <h6>Excitation signal</h6>
 <hr>
 <p>
-A four-cycles gaussian-modulated pulse is used for the excitation signal.     
+A four-cycles gaussian-modulated pulse is used as the excitation signal.     
 <code>
  <br>
+ <br>num_cycles = 4 ;<font color="#03a852"> % number of cycles +/- over which to define the pulse</font>    
 <br>ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>    
-<br>ts = repmat(ts, 1,mgrid.num_x);  
- <br>source_p = zeros(length(ts), mgrid.num_x, mgrid.num_y); %allocate space for excitation signal
-<br>for cel1 = 1:mgrid.num_x
+<br>ts = repmat(ts, 1,mgrid.num_x);   
+ <br>source_p = zeros(length(ts), mgrid.num_x, mgrid.num_y); <font color="#03a852"> %allocate space for excitation signal</font>   
+<br>for cel1 = 1:mgrid.num_x  <font color="#03a852"> % assign signals to source element</font>  
 <br> &nbsp;&nbsp;for cel2 = 1:mgrid.num_y
 <br>&nbsp;&nbsp;&nbsp;&nbsp;source_p(:, cel1, cel2) = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2);
 <br> &nbsp;&nbsp;end
 <br> end
 <br>RHO = sqrt(X.^2+Y.^2);
-<br>source_p(:, RHO>TR_radius) = 0; 
+<br>source_p(:, RHO>TR_radius) = 0; <font color="#03a852"> %generate a circular transducer</font>  
 </code>
  </p>
 
-<!---Define the medium--->
-<h6>Define the medium</h6>
+<!---Define the media--->
+<h6>Define the media</h6>
 <hr>
 <p>
-Define the homogeneous medium.
+Define a homogeneous medium.
  <code>
   <br>   
   <br>medium.c    = 1500;       <font color="#03a852">% speed of sound [m/s]</font>      
