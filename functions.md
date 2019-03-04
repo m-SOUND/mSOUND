@@ -48,20 +48,21 @@ mgrid.num_z | number of grid points in the z direction
 mgrid.num_t | number of time steps           
 
 <br>
-<h3 style="color: #c64949;"> Forward1D   </h3>           
+<h3 style="color: #c64949;"> Forward1D </h3>           
 ***      
 Simulation of 1D wave propagation and it is based on the transient mixed domain method.              
 ```
-p = Forward1D(mgrid, medium, source_p);      
+p = Forward1D(mgrid, medium, source_p, sensor_mask);      
 ```
 
 #### Inputs                  
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid    |input strucutre defined the computational domain            
-medium   |input strucutre defined the media properties             
-source_p |excitation signal [Pa]      
+mgrid       |input strucutre defined the computational domain            
+medium      |input strucutre defined the media properties             
+source_p    |excitation signal [Pa]   
+sensor_mask |a set of Cartesian points where the pressure is recorded 
 
 #### Output    
 
@@ -73,16 +74,17 @@ Time-domain results
 Simulation of the 2D wave propagation and it is based on the transient mixed domain method.       
 
 ```
-p = Forward2D(mgrid, medium, source_p); 
+p = Forward2D(mgrid, medium, source_p, sensor_mask); 
 ```
 
 #### Inputs            
 
 INPUT | PROPERTIES                        
 ------------ | -------------      
-mgrid    |input strucutre defined the computational domain     
-medium   |input strucutre defined the media properties              
-source_p |excitation signal [Pa]                       
+mgrid       |input strucutre defined the computational domain     
+medium      |input strucutre defined the media properties              
+source_p    |excitation signal [Pa]     
+sensor_mask |a set of Cartesian points where the pressure is recorded 
  
 #### Output                          
 Time-domain results  
@@ -92,15 +94,16 @@ Time-domain results
 
 Simulation of 3D wave propagation and it is based on the transient mixed domain method.               
 ```
-p = Forward3D(mgrid, medium,source_p);           
+p = Forward3D(mgrid, medium,source_p, sensor_mask);           
 ```
 #### Inputs            
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid    |input strucutre defined the computational domain     
-medium   |input strucutre defined the media properties             
-source_p |excitation signal [Pa]                        
+mgrid      |input strucutre defined the computational domain     
+medium     |input strucutre defined the media properties             
+source_p   |excitation signal [Pa]   
+sensor_mask|a set of Cartesian points where the pressure is recorded 
 
 #### Output                   
 Time-domain results          
