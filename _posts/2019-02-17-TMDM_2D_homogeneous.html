@@ -93,7 +93,8 @@ Define the homogeneous medium. When dispersion is not considered, power law expo
  Pressure field generated with the phased array transducer is shown in the figure below.
 <code>
   <br>
-<br> p = Forward2D(mgrid, medium, source_p); 
+ <br> sensor_mask = ones(mgrid.num_x, mgrid.num_y);  <font color="#03a852">% define where the pressure will be recorded</font>    
+<br> p = Forward2D(mgrid, medium, source_p, sensor_mask); 
   <br>
  </code>
  <br>
