@@ -15,10 +15,11 @@ This example provides the demenstration of using the transiment mixed domain met
 <p>
  <br>
   This example is based on the simulation case 
-  <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation in a 2D homogeneous medium using the transient mixed domain method</a>.
- Definition of the computational domain and transducer setting are the same in the two examples.
+  <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation in a 
+   2D homogeneous medium using the transient mixed domain method</a>.
+ Definition of the computational domain and transducer settings are similar in the two examples.
  In this example, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
- all spatially varying functions. 
+ all spatially varying functions. One thing to be careful is that medium.c0 is defined as the minimum value in the medium.c.
  The 2D tissue model used in this case is shown in the figure below. 
  <code>
   <br>   
@@ -41,15 +42,16 @@ This example provides the demenstration of using the transiment mixed domain met
  Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
 <code>
   <br>
- <br> sensor_mask = ones(mgrid.num_x, mgrid.num_y); <font color="#03a852">% define where the pressure will be recorded</font>    
-<br> p_total = Forward2D(mgrid, medium, source_p, sensor_mask); 
+ <br>sensor_mask = zeros(mgrid.num_x, mgrid.num_y);<font color="#03a852">% define where the pressure will be recorded</font>  
+ <br>sensor_mask(60:180, :) = 1;
+ <br> p_total = Forward2D(mgrid, medium, source_p, sensor_mask); 
   <br>
  </code>
  </p>
 
 <p>
 <br>
-  <img src="/mSOUND/img/cylinders_field.PNG" alt="fundamental and the second-harmonic pressure field">
+  <img src="/mSOUND/img/TMDM_2D_heterogeneous.PNG" alt="fundamental and the second-harmonic pressure field">
  
  </p>
 
