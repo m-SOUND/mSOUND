@@ -22,8 +22,11 @@ This example provides the demenstration of using the transiment mixed domain met
  all spatially varying functions. One thing to be careful is that medium.c0 is defined as the minimum value in the medium.c.
  The 2D tissue model used in this case is shown in the figure below. 
  <code>
-  <br>   
-  <br> load tissue_model.mat;   <font color="#03a852">% load the tissue properties</font>      
+  <br>  
+  <br>p0 = 2.0e6;  <font color="#03a852"> % Source pressure magnitude [Pa]</font>  
+  <br>fc = 1.0e6;  <font color="#03a852"> % Fundamental frequency [Hz]</font>  
+  <br>TR_focus  = 0.0207;      <font color="#03a852"> % transducer focus length [m]</font>         
+  <br>TR_radius = 0.0111;      <font color="#03a852"> % Transducer diameter [m]</font> 
   <br>medium.c    = c;         <font color="#03a852">% speed of sound [m/s]</font>      
   <br>medium.rho  = rho;       <font color="#03a852">% density [kg/m^3]</font>             
   <br>medium.beta = beta;      <font color="#03a852">% nonlinear coefficient </font>    
