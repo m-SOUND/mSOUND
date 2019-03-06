@@ -25,8 +25,8 @@ title: Simulation in a 2D homogeneous medium using the transient mixed domain me
 <br>dt = 6.25e-08;         <font color="#03a852"> %  time step size [s]</font> 
 
 <br>x_length = 0.0454;         <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
-<br>y_length = 0.0210;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
-<br>t_length = 2.00e-05;       <font color="#03a852"> % total temporal domain size [s]</font> 
+<br>y_length = 0.0240;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
+<br>t_length = 3.20e-05;       <font color="#03a852"> % total temporal domain size [s]</font> 
 <br>mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
 </code>   
  <br>
@@ -40,6 +40,7 @@ title: Simulation in a 2D homogeneous medium using the transient mixed domain me
  In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
 <code>
 <br>
+ <br> fc = 1.0e6; <font color="#03a852"> % Fundamental frequency [Hz]</font>   
 <br>TR_focus  = 0.0150;      <font color="#03a852"> % transducer focus length [m]</font>         
 <br>TR_radius = 0.0075;      <font color="#03a852"> % Transducer diameter [m]</font>   
 <br>delay = sqrt((mgrid.x).^2 + TR_focus^2)/medium.c0; <font color="#03a852"> % calculate the delay for each element [m]</font>   
@@ -90,15 +91,18 @@ Define the homogeneous medium. When dispersion is not considered, power law expo
 <hr>
 <p>
  Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>. 
- Pressure field generated with the phased array transducer is shown in the figure below.
+ Time domain result recorded at the transducer focal point and fundamental pressure distribution
+ through the sensor mask are shown below.
 <code>
   <br>
- <br> sensor_mask = ones(mgrid.num_x, mgrid.num_y);  <font color="#03a852">% define where the pressure will be recorded</font>    
+ <br>sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
+ <br> sensor_mask(30:90,:) = 1;  <font color="#03a852">% define where the pressure will be recorded</font>    
 <br> p = Forward2D(mgrid, medium, source_p, sensor_mask); 
   <br>
  </code>
  <br>
-   <img src="/mSOUND/img/phased_array_2D.jpg" alt="Pressure field generated with the phased array">
+   <img src="/mSOUND/img/TMDM_2D_homogeneous.jpg" alt="(a) Time-domain singal recorded at the transducer focus
+                                                       (b) Fundamental pressure distribution through the sensor mask">
  </p>
 
 
