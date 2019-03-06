@@ -65,9 +65,9 @@ A four-cycles gaussian-modulated pulse is used as the excitation signal.
 <br>ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>    
 <br>ts = repmat(ts, 1,mgrid.num_x);   
  <br>source_p = zeros(length(ts), mgrid.num_x, mgrid.num_y); <font color="#03a852"> % allocate space for excitation signal</font>   
-<br>for cel1 = 1:mgrid.num_x  <font color="#03a852"> % assign signals to source element</font>  
-<br> &nbsp;&nbsp;for cel2 = 1:mgrid.num_y
-<br>source_p(:,cel1,cel2)=p0*sin(2*pi*fc*(ts+delay(cel1,cel2))).*exp(-(ts+delay(cel1,cel2)).^2*fc^2/2);
+<br>for ix = 1:mgrid.num_x  <font color="#03a852"> % assign signals to source element</font>  
+<br> &nbsp;&nbsp;for iy = 1:mgrid.num_y
+<br>source_p(:,ix,iy)=p0*sin(2*pi*fc*(ts+delay(ix,iy))).*exp(-(ts+delay(ix,iy)).^2*fc^2/2);
 <br> &nbsp;&nbsp;end
 <br> end
 <br>RHO = sqrt(X.^2+Y.^2);
