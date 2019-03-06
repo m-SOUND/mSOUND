@@ -1,5 +1,5 @@
 ---
-title: Simulation in 3D nonlinear media using the transient mixed domain method
+title: Simulation in a 3D homogeneous medium using the transient mixed domain method
 ---
 <p>
 <br>
@@ -42,6 +42,7 @@ title: Simulation in 3D nonlinear media using the transient mixed domain method
  In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
 <code>
 <br>
+ <br> p0 = 1.0e6;   <font color="#03a852"> %source pressure magnitude [Pa]</font>   
 <br>TR_focus  = 0.0150;      <font color="#03a852"> % transducer focus length [m]</font>         
 <br>TR_radius = 0.0075;      <font color="#03a852"> % Transducer diameter [m]</font>  
 <br>X = ones(mgrid.numy,1)*mgrid.x;
@@ -60,14 +61,13 @@ title: Simulation in 3D nonlinear media using the transient mixed domain method
 A four-cycles gaussian-modulated pulse is used as the excitation signal.     
 <code>
  <br>
- <br>p0 = 1.0e6; <font color="#03a852"> % source pressure magnitude</font> 
  <br>num_cycles = 4 ;<font color="#03a852"> % number of cycles +/- over which to define the pulse</font>    
 <br>ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>    
 <br>ts = repmat(ts, 1,mgrid.num_x);   
  <br>source_p = zeros(length(ts), mgrid.num_x, mgrid.num_y); <font color="#03a852"> % allocate space for excitation signal</font>   
-<br>for ix = 1:mgrid.num_x  <font color="#03a852"> % assign signals to source element</font>  
-<br> &nbsp;&nbsp;for iy = 1:mgrid.num_y
-<br>&nbsp;&nbsp;&nbsp;&nbsp;source_p(:,ix,iy)=p0*sin(2*pi*fc*(ts+delay(ix,iy))).*exp(-(ts+delay(ix,iy)).^2*fc^2/2);
+<br>for cel1 = 1:mgrid.num_x  <font color="#03a852"> % assign signals to source element</font>  
+<br> &nbsp;&nbsp;for cel2 = 1:mgrid.num_y
+<br>&nbsp;&nbsp;&nbsp;&nbsp;source_p(:, cel1, cel2) = sin(2*pi*fc*(ts+delay(cel1, cel2))).*exp(-(ts+delay(cel1, cel2)).^2*fc^2/2);
 <br> &nbsp;&nbsp;end
 <br> end
 <br>RHO = sqrt(X.^2+Y.^2);
@@ -79,13 +79,13 @@ A four-cycles gaussian-modulated pulse is used as the excitation signal.
 <h6>Define the media</h6>
 <hr>
 <p>
-Define the medium.
+A nonlinear homogeneous medium with attenuation is defined.
  <code>
   <br>   
   <br>medium.c    = 1500;       <font color="#03a852">% speed of sound [m/s]</font>      
   <br>medium.rho  = 1000;       <font color="#03a852">% density [kg/m^3]</font>             
   <br>medium.beta = 3.6;          <font color="#03a852">% nonlinear coefficient </font>    
-  <br>medium.ca   = 0.005;        <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+  <br>medium.ca   = 0;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
   <br>medium.cb   = 2.0;        <font color="#03a852">% power law exponent</font>    
  </code>
  </p>
@@ -95,15 +95,18 @@ Define the medium.
 <hr>
 <p>
  Transient pressure field results are calculated with the 3D forward simulation function <a href="/mSOUND/functions">Forward3D</a>. 
- Pressure field generated with the phased array transducer is shown in the figure below.
+ Pressure field generated with the phased array transducer is shown in the figure below. The 
+ top two figures show the fundamental pressure field at the xz and xy plane. The bottom two figures show the second harmonic 
+ pressure at the xz and xy plane.
 <code>
   <br>
-  <br> sensor_mask = ones(mgrid.num_x, mgrid.num_y, mgrid.num_z); <font color="#03a852">% define where the pressure will be recorded</font>    
-<br> p_total = Forward3D(mgrid, medium, source_p, sensor_mask); 
+ <br>sensor_mask = zeros(mgrid.num_x, mgrid.num_y, mgrid.num_z); <font color="#03a852">% define where the pressure will be recorded</font>    
+<br>sensor_mask(20:60, 20:60, :) = 1;
+ <br> p_total = Forward3D(mgrid, medium, source_p, sensor_mask); 
   <br>
  </code>
  <br>
-   <img src="/mSOUND/img/phased_array_3D.jpg" alt="Pressure field generated with the phased array">
+   <img src="/mSOUND/img/TMDM_3D_homogeneous.jpg" alt="Pressure field generated with the phased array">
  </p>
 
 
