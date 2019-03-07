@@ -25,10 +25,10 @@ title: Simulation in a 3D homogeneous medium using the transient mixed domain me
 <br>dz = 3.75e-04;         <font color="#03a852"> %  step size in the z direction [m]</font> 
 <br>dt = 6.25e-08;         <font color="#03a852"> %  time step size [s]</font> 
 
-<br>x_length = 0.0450;         <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
-<br>y_length = 0.0450;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
-<br>z_length = 0.0210;         <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
-<br>t_length = 2.40e-05;       <font color="#03a852"> % total temporal domain size [s]</font> 
+<br>x_length = 0.0300;         <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
+<br>y_length = 0.0300;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
+<br>z_length = 0.0150;         <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
+<br>t_length = 1.60e-05;       <font color="#03a852"> % total temporal domain size [s]</font> 
 <br>mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
  <br>
@@ -43,7 +43,7 @@ title: Simulation in a 3D homogeneous medium using the transient mixed domain me
 <code>
 <br>
  <br> p0 = 1.0e6;   <font color="#03a852"> %source pressure magnitude [Pa]</font>   
-<br>TR_focus  = 0.0150;      <font color="#03a852"> % transducer focus length [m]</font>         
+<br>TR_focus  = 0.0120;      <font color="#03a852"> % transducer focus length [m]</font>         
 <br>TR_radius = 0.0075;      <font color="#03a852"> % Transducer diameter [m]</font>  
 <br>X = ones(mgrid.numy,1)*mgrid.x;
 <br>Y = (ones(mgrid.numx,1)*mgrid.y).';
@@ -85,7 +85,7 @@ A nonlinear homogeneous medium with attenuation is defined.
   <br>medium.c    = 1500;       <font color="#03a852">% speed of sound [m/s]</font>      
   <br>medium.rho  = 1000;       <font color="#03a852">% density [kg/m^3]</font>             
   <br>medium.beta = 3.6;          <font color="#03a852">% nonlinear coefficient </font>    
-  <br>medium.ca   = 0;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+  <br>medium.ca   = 0.005;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
   <br>medium.cb   = 2.0;        <font color="#03a852">% power law exponent</font>    
  </code>
  </p>
