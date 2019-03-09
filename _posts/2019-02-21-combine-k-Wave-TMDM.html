@@ -87,7 +87,8 @@ with k-Wave.
 <p>
  Results recorded at the sensor from k-Wave simulation will be used as the source pressure for the TMDM simulation.
  One thing to be notice is that sensor data from k-Wave is in indexed as [time, sensor_positions], while in the 
- TMDM is [sensor_positions, time]. 
+ TMDM is [sensor_positions, time]. If the time step or transverse domain size or spatial step size in the k-Wave is different from TMDM, 
+ sensor_data from the k-Wave needs to be resized.
 <code>
 <br>  
 <br>xlength = kgrid.dx*kgrid.Nx;
@@ -96,7 +97,8 @@ with k-Wave.
 <br> dt = 6.2500e-08; <font color="#03a852"> % a larger time step is applied</font>  
 
 <br>mgrid = set_grid(dt, tlength, dx, xlength, dy, ylength);  
-<br>source_p = sensor_data(:, 1:2:end).';
+ <br><font color="#03a852"> % need to resize the sensor data as a large time step is appled in the TMDM</font>  
+<br>source_p = sensor_data(:, 1:2:end).'; 
 <br>
  <br><font color="#03a852"> % medium properties in the TMDM</font>   
 <br>medium.c    = 1500; <font color="#03a852"> % speed of sound [m/s]</font>   
@@ -110,7 +112,7 @@ with k-Wave.
 <br>sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
 <br>sensor_mask(:, end) = 1;
 
-<font color="#03a852"> % run the simulation with TMDM</font>   
+<br><font color="#03a852"> % run the simulation with TMDM</font>   
 <br>p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
 
 </code> 
