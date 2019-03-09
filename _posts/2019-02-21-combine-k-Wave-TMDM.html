@@ -19,6 +19,7 @@ with k-Wave.
 <hr>
 <p>
  <br>
+ Define the computational domain in the k-Wave calculation. 
  <code>        
 <br>dx = 1.8750e-04;   <font color="#03a852"> %  step size in the x direction [m]</font> 
 <br>dy = 1.8750e-04;   <font color="#03a852"> %  step size in the y direction [m]</font> 
@@ -35,7 +36,8 @@ with k-Wave.
 <h6>Define a curved transducer with k-Wave</h6>
 <hr>
 <p>
- In this example, a curved transducer is defined with k-Wave. 
+ In this example, a curved transducer is defined with k-Wave using the function 
+   <a href="http://www.k-wave.org/documentation/makeCircle.php">makeCircle</a>. 
 <code>
 <br>  
 <br>TR_radius = 0.0060;  <font color="#03a852"> % Transducer radius [m] </font> 
@@ -51,7 +53,7 @@ with k-Wave.
 <br>arc_angle3 = pi*2 - arc_angle1;
 <br>circle3 = makeCircle(Nx, Ny, cx, cy, focus, arc_angle3, false);
 <br>circle = circle2 - circle3 + circle1;
-  
+<br>  
 <br>source.p_mask = zeros(Nx, Ny);
 <br>source.p_mask = circle; <font color="#03a852"> % define source mask </font>   
 <br>sensor.mask = zeros(Nx, Ny); 
@@ -70,10 +72,10 @@ with k-Wave.
 <br>excit_p = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2);
 <br>source.p = excit_p*source_mag;
 
-<br>input_args  = {'DisplayMask', source.p_mask, 'DataCast', 'single',...
-                   'PlotScale',[-source_mag/2, source_mag/2]};
+<br>input_args  = {'DisplayMask', source.p_mask, 'DataCast', 'single'};
 <font color="#03a852"> % run the simulation</font>   
 <br>sensor_data = kspaceFirstOrder2D(kgrid, medium, source, sensor, input_args{:});
+ <br><font color="#03a852"> % Reshape the output data for further simulation</font>   
 <br>sensor_data = reshape(sensor_data,  Nx,length(kgrid.t_array));
 </code> 
 </p>
@@ -82,12 +84,15 @@ with k-Wave.
 <!---implement signal to the TMDM--->
 <h6>Implement signals to the TMDM</h6>
 <p>
+ Results recorded at the sensor from k-Wave simulation will be used as the source pressure for the TMDM simulation.
+ One thing to be notice is that sensor data from k-Wave is in indexed as [time,sensor_positions], while in the 
+ TMDM is [sensor_positions, time]. 
 <code>
 <br>  
 <br>xlength = kgrid.dx*kgrid.Nx;
 <br>ylength = TR_focus - kgrid.dy*(Ny-20);
 <br>tlength = max(kgrid.t_array); 
-<br> dt = 6.2500e-08;
+<br> dt = 6.2500e-08; <font color="#03a852"> % a larger time step is applied</font>  
 
 <br>mgrid = set_grid(dt, tlength, dx, xlength, dy, ylength);  
 <br>source_p = sensor_data(:, 1:2:end).';
@@ -106,13 +111,17 @@ with k-Wave.
 
 <font color="#03a852"> % run the simulation with TMDM</font>   
 <br>p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
+
 </code> 
 </p>
 
 <!---Results--->
 <h6>Results</h6>
 <p>
- <br>
+ <code>
+  <br><font color="#03a852"> % Reshape the data from simulation</font>   
+ <br>p_time = reshape(p_time, mgrid.num_t, mgrid.num_x);
+   </code>
 The figure below shows the time domain results at the geometrical focus of the transducer and the result generated
 with MDM is compared with the result directly simulated with k-Wave.
 
