@@ -120,17 +120,17 @@ with k-Wave.
 <!---Results--->
 <h6>Results</h6>
 <p>
- Continue the simulation with TMDM.
+ Continue the simulation with TMDM.The figure below shows the time domain results 
+ at the geometrical focus of the transducer and the result generated
+with MDM is compared with the result directly simulated with k-Wave.
  <code>
   <br><font color="#03a852"> % run the simulation with TMDM</font>   
 <br>p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
   <br><font color="#03a852"> % Reshape the data from simulation</font>   
  <br>p_time = reshape(p_time, mgrid.num_t, mgrid.num_x);
    </code>
-<br>The figure below shows the time domain results at the geometrical focus of the transducer and the result generated
-with MDM is compared with the result directly simulated with k-Wave.
-
- <br> <img src="/mSOUND/img/combine_kwave.jpg" alt="Time-domain singal recorded at the transducer focus">
+ <br> 
+ <img src="/mSOUND/img/combine_kwave.jpg" alt="Time-domain singal recorded at the transducer focus">
 
 </p>
 
