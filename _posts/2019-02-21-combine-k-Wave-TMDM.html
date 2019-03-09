@@ -112,8 +112,7 @@ with k-Wave.
 <br>sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
 <br>sensor_mask(:, end) = 1;
 
-<br><font color="#03a852"> % run the simulation with TMDM</font>   
-<br>p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
+
 
 </code> 
 </p>
@@ -121,7 +120,10 @@ with k-Wave.
 <!---Results--->
 <h6>Results</h6>
 <p>
+ Continue the simulation with TMDM.
  <code>
+  <br><font color="#03a852"> % run the simulation with TMDM</font>   
+<br>p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
   <br><font color="#03a852"> % Reshape the data from simulation</font>   
  <br>p_time = reshape(p_time, mgrid.num_t, mgrid.num_x);
    </code>
