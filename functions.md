@@ -9,8 +9,8 @@ title: Functions
 <h3 style="color: #c64949;"> set_grid </h3>             
 ***      
 
-set_grid is the grid class used across the mSOUND Toolbox. An object of the set_grid class contains the Cartesian grid coordinates, 	
-evenly spaced array of time values and wavenumber matrices used within the simulation in mSOUND.
+set_grid is the grid class used across the mSOUND Toolbox and it can generate a structure contains the Cartesian grid coordinates, 	
+evenly spaced time array and wavenumber matrices used within the simulation in mSOUND.
 
 ```
 mgrid = set_grid(dt, t_length, dx, x_length);                         
@@ -26,7 +26,7 @@ INPUT | PROPERTIES
 dx   | spatial step size in the x direction [m]          
 dy   | spatial step size in the y direction [m]            
 dz   | spatial step size in the z direction [m]           
-dt   | temporal step size in the time domain [s]       
+dt   | temporal step size [s]       
 x_length |  total domain size in the x direction [m]        
 y_length |  total domain size in the y direction [m]              
 z_length |  total domain size in the z direction [m]                  
@@ -39,9 +39,9 @@ OUTPUT | PROPERTIES
 mgrid.x  | coordinates in the x direction [m]          
 mgrid.y  | coordinates in the y direction [m]          
 mgrid.z  | coordinates in the z direction [m]           
-mgrid.t  | time array [s]              
-mgrid.kx |  wavevector in the x direction            
-mgrid.ky |  wavevector in the y direction                          
+mgrid.t  | evenly spaced time array [s]              
+mgrid.kx | wavevector in the x direction            
+mgrid.ky | wavevector in the y direction                          
 mgrid.w  | angular freuqency              
 mgrid.num_x | number of grid points in the x direction                  
 mgrid.num_y | number of grid points in the y direction     
@@ -60,10 +60,10 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid       |	grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
-medium      | input strucutre including the media properties             
-source_p    | excitation signal [Pa]   
-sensor_mask | a set of Cartesian points where the pressure is recorded 
+mgrid          |	grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
+medium         | input strucutre including the media properties             
+source_p       | excitation signal [Pa]   
+sensor_mask    | a set of Cartesian points where the pressure is recorded 
 
 #### Output    
 
@@ -83,10 +83,10 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask);
 
 INPUT | PROPERTIES                        
 ------------ | -------------      
-mgrid       |grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
-medium      |input strucutre including the media properties              
-source_p    |excitation signal [Pa]     
-sensor_mask |a set of Cartesian points where the pressure is recorded 
+mgrid         |grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
+medium        |input strucutre including the media properties              
+source_p      |excitation signal [Pa]     
+sensor_mask   |a set of Cartesian points where the pressure is recorded 
  
 #### Output                          
 Time-domain results recorded at the sensor positions given by sensor_mask        
@@ -102,10 +102,10 @@ p = Forward3D(mgrid, medium,source_p, sensor_mask);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid      |grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
-medium     |input strucutre including the media properties             
-source_p   |excitation signal [Pa]   
-sensor_mask|a set of Cartesian points where the pressure is recorded 
+mgrid         |grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
+medium        |input strucutre including the media properties             
+source_p      |excitation signal [Pa]   
+sensor_mask   |a set of Cartesian points where the pressure is recorded 
 
 #### Output                   
 Time-domain results recorded at the sensor positions given by sensor_mask            
