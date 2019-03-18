@@ -20,7 +20,7 @@ title: Simulation in the 2D heterogeneous media using the frequency-specific mix
  <a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
    Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a>.   
 In this heterogeneous media, density, speed of sound, nonlinear coefficient and attenuation coefficients are all
-  spatially varying functions. Media properties are the same as that define in 
+  spatially varying functions. In this example, media properties are the same as that defined in 
   <a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
    Simulation in the 2D heterogeneous media using the transient mixed domain method</a>.
 
@@ -40,8 +40,8 @@ and the pressure at the second-harmonic frequency is then calculated with the fu
   <br> p_second = Forward2D_sec(mgrid, medium, p_fundamental, omega_c); 
   <br>
  </code>
- <br> The left figure shows the spatial distribution of the fundamental pressure and
- the right figure shows the second-harmonic pressure distribution.
+ <br> The left figure below the spatial distribution of the fundamental pressure and
+ the right one ws the second-harmonic pressure.
 
    <img src="/mSOUND/img/FSMDM_hete_2D.jpg" alt="fundamental and the second-harmonic pressure field">
  </p>
