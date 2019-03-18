@@ -15,15 +15,14 @@ title: Simulation in the 2D heterogeneous media using the frequency-specific mix
 <h6>Define the 2D heterogeneous media</h6>
 <hr>
 <br>
- <p>
-  Details of defining the computational domain and the phased-array transducer are shown in the case
- <a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
-   Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a>.   
+<p>
+ Details of defining the computational domain and the phased-array transducer are shown in the case
+<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
+ Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a>.   
 In this heterogeneous media, density, speed of sound, nonlinear coefficient and attenuation coefficients are all
   spatially varying functions. In this example, media properties are the same as that defined in 
   <a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
    Simulation in the 2D heterogeneous media using the transient mixed domain method</a>.
-
  </p>
 
 
@@ -34,14 +33,14 @@ In this heterogeneous media, density, speed of sound, nonlinear coefficient and 
 The fundamental pressure field is first calculated with the 2D forward simulation function
  <a href="/mSOUND/functions">Forward2D_fund</a>, 
 and the pressure at the second-harmonic frequency is then calculated with the function <a href="/mSOUND/functions">Forward2D_sec</a>. 
+ <pre>
 <code>
-  <br>
-<br> p_fundamental = Forward2D_fund(mgrid, medium, source_p); 
-  <br> p_second = Forward2D_sec(mgrid, medium, p_fundamental, omega_c); 
-  <br>
- </code>
- <br> The left figure below the spatial distribution of the fundamental pressure and
- the right one ws the second-harmonic pressure.
+p_fundamental = Forward2D_fund(mgrid, medium, source_p); 
+p_second = Forward2D_sec(mgrid, medium, p_fundamental, omega_c); 
+</code>
+</pre>
+<br> The left figure below the spatial distribution of the fundamental pressure and
+the right one ws the second-harmonic pressure.
 
    <img src="/mSOUND/img/FSMDM_hete_2D.jpg" alt="fundamental and the second-harmonic pressure field">
  </p>
