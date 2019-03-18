@@ -60,7 +60,7 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid       |	grid object returned by set_grid containing Cartesian grid fields, wavenumber matrices and time arrays  
+mgrid       |	grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
 medium      | input strucutre including the media properties             
 source_p    | excitation signal [Pa]   
 sensor_mask | a set of Cartesian points where the pressure is recorded 
@@ -83,7 +83,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask);
 
 INPUT | PROPERTIES                        
 ------------ | -------------      
-mgrid       |grid object returned by set_grid containing Cartesian grid fields, wavenumber matrices and time arrays  
+mgrid       |grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
 medium      |input strucutre including the media properties              
 source_p    |excitation signal [Pa]     
 sensor_mask |a set of Cartesian points where the pressure is recorded 
@@ -102,7 +102,7 @@ p = Forward3D(mgrid, medium,source_p, sensor_mask);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid      |grid object returned by set_grid containing Cartesian grid fields, wavenumber matrices and time arrays  
+mgrid      |grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
 medium     |input strucutre including the media properties             
 source_p   |excitation signal [Pa]   
 sensor_mask|a set of Cartesian points where the pressure is recorded 
@@ -121,7 +121,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid     |grid object returned by set_grid containing Cartesian grid fields
+mgrid     |grid object returned by ```set_grid``` containing Cartesian grid fields
 medium    |input strucutre defined the media properties               
 source_p  |excitation signal [Pa]                      
 omega_c   |fundamental frequency     
@@ -141,7 +141,7 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid          |grid object returned by set_grid containing Cartesian grid fields
+mgrid          |grid object returned by ```set_grid``` containing Cartesian grid fields
 medium         |input strucutre defined the media properties                    
 P_fundamental  |pressure at the fundamental frequency  [Pa] /the output pressure of ```Forward2D_fun```        
 omega_c        |fundamental frequency      
@@ -160,7 +160,7 @@ p = Forward3D_fund(mgrid, medium,  source_p, omega_c);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid     |grid object returned by set_grid containing Cartesian grid fields
+mgrid     |grid object returned by ```set_grid``` containing Cartesian grid fields
 medium    |input strucutre defined the media properties                  
 source_p  |excitation signal [Pa]               
 omega_c   |fundamental frequency       
@@ -179,7 +179,7 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid          |grid object returned by set_grid containing Cartesian grid fields
+mgrid          |grid object returned by ```set_grid``` containing Cartesian grid fields
 medium         |input strucutre defined the media properties                  
 P_fundamental  |pressure at the fundamental frequency  [Pa] /the output pressure of ```Forward3D_fun```           
 omega_c        |fundamental frequency      
