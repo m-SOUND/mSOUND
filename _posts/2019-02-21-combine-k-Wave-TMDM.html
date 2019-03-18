@@ -37,17 +37,17 @@ kgrid = kWaveGrid(Nx, dx, Ny, dy);
  In this example, a curved transducer is defined with k-Wave using the function 
    <a href="http://www.k-wave.org/documentation/makeCircle.php">makeCircle</a>. 
 <pre> <code> 
-TR_radius = 0.0060;  <font color="#03a852"> % Transducer radius [m] </font> 
-TR_focus  = 0.0150;  <font color="#03a852">  % Transducer focal length [m]</font>       
-focus  = round(TR_focus/dx);  <font color="#03a852">  % Transducer focal length [grid points]</font>   
+TR_radius = 0.0060;  <font color="#03a852"> % transducer radius [m] </font> 
+TR_focus  = 0.0150;  <font color="#03a852"> % transducer focal length [m]</font>       
+focus  = round(TR_focus/dx);  <font color="#03a852">  % transducer focal length [grid points]</font>   
 cx = round(Nx/2);  <font color="#03a852"> % x coordinate of the tranducer center[grid points] </font>   
 cy = 10 + focus;   <font color="#03a852"> % y coordinate of the tranducer center[grid points] </font>   
 
 arc_angle1 = asin(TR_radius/TR_focus);  <font color="#03a852"> % [radians] </font>     
+arc_angle2 = pi*2;                      <font color="#03a852"> % [radians] </font>    
+arc_angle3 = pi*2 - arc_angle1;         <font color="#03a852"> % [radians] </font>    
 circle1    = makeCircle(Nx, Ny, cx, cy, focus, arc_angle1, false);
-arc_angle2 = pi*2;  <font color="#03a852"> % [radians] </font>    
 circle2    = makeCircle(Nx, Ny, cx, cy, focus, arc_angle2, false);
-arc_angle3 = pi*2 - arc_angle1;  <font color="#03a852"> % [radians] </font>    
 circle3    = makeCircle(Nx, Ny, cx, cy, focus, arc_angle3, false);
 circle     = circle2 - circle3 + circle1;
 
