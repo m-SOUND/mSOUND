@@ -23,15 +23,16 @@ This example shows how to simulate the wave propagation in a 2D homogeneous medi
   The phase delay for each element in the transducer are the same in the two cases. 
   We first need to define the temporal and spatial computational domain in 2D forward simulations. In FSMDM, time step and 
  temporal domain size are set to 0. 
- <br>
-   <code>        
-<br>dx = 3.75e-04;         <font color="#03a852"> %  step size in the x direction [m]</font> 
-<br>dy = 3.75e-04;         <font color="#03a852"> %  step size in the y direction [m]</font> 
+ <pre>
+ <code>        
+dx = 3.75e-04;  <font color="#03a852"> %  step size in the x direction [m]</font> 
+dy = 3.75e-04;  <font color="#03a852"> %  step size in the y direction [m]</font> 
 
-<br>x_length = 0.0600;         <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
-<br>y_length = 0.0330;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
-<br>mgrid = set_grid(0, 0, dx, x_length, dy, y_length);              
-</code>   
+x_length = 0.0600;  <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
+y_length = 0.0330;  <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
+mgrid = set_grid(0, 0, dx, x_length, dy, y_length);              
+</code>  
+</pre>
  <br>
 </p>
 
@@ -41,29 +42,28 @@ This example shows how to simulate the wave propagation in a 2D homogeneous medi
 <hr>
 <p>
 Continuous sine wave is used as the excitation signal.
- <br>
+<pre>
 <code>  
-<br> p0 = 1.0e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
-<br>source_p = p0*exp(1i*omega_c*delay); <font color="#03a852"> % define the pulse </font>  
-<br>source_p = source_p.*TR_mask.'; <font color="#03a852"> % apply the transducer mask </font>  
-<br>
+p0 = 1.0e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
+source_p = p0*exp(1i*omega_c*delay); <font color="#03a852"> % define the pulse </font>  
+source_p = source_p.*TR_mask.'; <font color="#03a852"> % apply the transducer mask </font>  
 </code>
+</pre>
  </p>
 
 
  <p>
 Define the homogeneous medium.
- <code>
-  <br>   
-  <br>medium.c    = 1500;       <font color="#03a852">% speed of sound [m/s]</font>      
-  <br>medium.rho  = 1000;       <font color="#03a852">% density [kg/m^3]</font>             
-  <br>medium.beta = 3.6;          <font color="#03a852">% nonlinear coefficient </font>    
-  <br>medium.ca   = 0;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-  <br>medium.cb   = 2.0;        <font color="#03a852">% power law exponent</font>    
+<pre>
+<code>
+medium.c    = 1500;   <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = 1000;   <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = 3.6;    <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = 0;      <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = 2.0;    <font color="#03a852">% power law exponent</font>    
  </code>
+ </pre>
  </p>
-
-
 
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
@@ -71,19 +71,16 @@ Define the homogeneous medium.
 <p>
 Fundamental pressure field is calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D_fund</a>. 
 Pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/functions">Forward2D_sec</a>. 
+ <pre>
 <code>
-  <br>
- <br><font color="#03a852">% forward propagation of the fundamental pressure</font>   
-<br> p_fundamental = Forward2D_fund(mgrid, medium, source_p); 
- <br><font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-  <br> p_second = Forward2D_sec(mgrid, medium, p_fundamental, omega_c); 
- <br>
- </code>
- <br>
-   <img src="/mSOUND/img/FSMDM_homo_2D.jpg" alt="fundamental and the second-harmonic pressure field generated with the phased array">
-  <br>
-
- </p>
+<font color="#03a852">% forward propagation of the fundamental pressure</font>   
+p_fundamental = Forward2D_fund(mgrid, medium, source_p); 
+<font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
+p_second = Forward2D_sec(mgrid, medium, p_fundamental, omega_c); 
+</code>
+</pre>
+<img src="/mSOUND/img/FSMDM_homo_2D.jpg" alt="fundamental and the second-harmonic pressure field generated with the phased array">
+</p>
 
 
 
