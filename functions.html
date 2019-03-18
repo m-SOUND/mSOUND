@@ -1,0 +1,54 @@
+---         
+title: Functions     
+---   
+ 
+<h2>Functions</h2> 
+<hr>  
+<hr>   
+<h3 style="color: #c64949;"> set_grid </h3>             
+<hr>   
+<p>
+set_grid is the grid class used across the mSOUND Toolbox and it can generate a structure contains the Cartesian grid coordinates, 	
+evenly spaced time array and wavenumber matrices used within the simulation in mSOUND.
+
+<pre> <code>
+mgrid = set_grid(dt, t_length, dx, x_length);                         
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);     
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);     
+</code>  </pre>
+</p>
+
+<h2>Inputs </h2> 
+
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>dx</td><td>spatial step size in the x direction [m]</td>
+  </tr>
+  <tr>
+    <td>dy</td><td>spatial step size in the y direction [m]</td>
+  </tr>
+  <tr>
+    <td>dz</td><td>spatial step size in the z direction [m]</td>
+  </tr>
+  <tr>
+    <td>dt</td><td>temporal step size [s]</td>
+  </tr>
+  <tr>
+    <td>x_length</td><td>total domain size in the x direction [m]</td>
+  </tr>  
+  <tr>
+    <td>y_length</td><td>total domain size in the y direction [m]</td>
+  </tr>    
+  <tr>
+    <td>z_length</td><td>total domain size in the z direction [m]</td>
+  </tr>      
+  <tr>
+    <td>t_length</td><td>total temporal domain size [s]</td>
+  </tr> 
+ </table> 
+
+<br>       
+
