@@ -21,19 +21,19 @@ This example shows how to simulate the wave propagation in a 3D homogeneous medi
   The phase delay for each element in the transducer are the same in the two cases. 
   We first need to define the temporal and spatial computational domain in 3D forward simulations. In FSMDM, 
   time step and temporal domain size are set to 0. 
- <br>
+ <pre>
 <code>      
-<br>dx = 3.75e-04;         <font color="#03a852"> %  step size in the x direction [m]</font> 
-<br>dy = 3.75e-04;         <font color="#03a852"> %  step size in the y direction [m]</font> 
-<br>dz = 3.75e-04;         <font color="#03a852"> %  step size in the z direction [m]</font> 
+dx = 3.75e-04;  <font color="#03a852"> %  step size in the x direction [m]</font> 
+dy = 3.75e-04;  <font color="#03a852"> %  step size in the y direction [m]</font> 
+dz = 3.75e-04;  <font color="#03a852"> %  step size in the z direction [m]</font> 
 
-<br>x_length = 0.0454;         <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
-<br>y_length = 0.0454;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
-<br>z_length = 0.0330;         <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
+x_length = 0.0454;  <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
+y_length = 0.0454;  <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
+z_length = 0.0330;  <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
     
-<br>mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);              
+mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
- <br>
+</pre>
 </p>
 
 
@@ -43,28 +43,30 @@ This example shows how to simulate the wave propagation in a 3D homogeneous medi
 <p>
 Continuous sine wave is used as the excitation signal.
  <br>
+ <pre>
 <code>  
-<br> p0 = 1.0e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
-<br>source_p = p0*exp(1i*omega_c*delay); <font color="#03a852"> % define the pulse </font>  
-<br>RHO = sqrt(X.^2+Y.^2);
-<br>source_p(RHO>TR_radius) = 0; <font color="#03a852"> % filter out the signals outside of the transducer </font>  
-<br>
+p0 = 1.0e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
+source_p = p0*exp(1i*omega_c*delay);  <font color="#03a852"> % define the pulse </font>  
+RHO = sqrt(X.^2+Y.^2);
+source_p(RHO>TR_radius) = 0;  <font color="#03a852"> % filter out the signals outside of the transducer </font>  
 </code>
+</pre>
  </p>
 
 <p>
 <h6>Define the homogeneous medium</h6>
 <hr>
 Define the homogeneous medium.
+ <pre>
  <code>
-  <br>   
-  <br>medium.c    = 1500;       <font color="#03a852">% speed of sound [m/s]</font>      
-  <br>medium.rho  = 1000;       <font color="#03a852">% density [kg/m^3]</font>             
-  <br>medium.beta = 3.6;          <font color="#03a852">% nonlinear coefficient </font>    
-  <br>medium.ca   = 0;          <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-  <br>medium.cb   = 2.0;        <font color="#03a852">% power law exponent</font>    
- </code>
- </p>
+medium.c    = 1500;   <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = 1000;   <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = 3.6;    <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = 0;      <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = 2.0;    <font color="#03a852">% power law exponent</font>    
+</code>
+</pre>
+</p>
 
 
 
@@ -74,18 +76,16 @@ Define the homogeneous medium.
 <p>
 Fundamental pressure field is calculated with the 3D forward simulation function <a href="/mSOUND/functions">Forward3D_fund</a>. 
 The pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/functions">Forward3D_sec</a>. 
-<code>
- <br>
-<br><font color="#03a852">% forward propagation of the fundamental pressure</font>   
-<br> p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
-<br><font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-<br> p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
-<br>
- </code>
- <br> The three figures below show the fundamental pressure field distribution in the xz plane, yz plane and xy plane crossing the
+<pre> <code>
+<font color="#03a852">% forward propagation of the fundamental pressure</font>   
+p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
+<font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
+p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
+</code> </pre>
+The three figures below show the fundamental pressure field distribution in the xz plane, yz plane and xy plane crossing the
  focal point.
-   <img src="/mSOUND/img/FSMDM_homo_3Dfund.jpg" alt="fundamental pressure field generated with the phased array">
-  <br>The three figures below show the second-harmonic pressure field distribution in the xz plane, yz plane and xy plane crossing the
+<img src="/mSOUND/img/FSMDM_homo_3Dfund.jpg" alt="fundamental pressure field generated with the phased array">
+<br>The three figures below show the second-harmonic pressure field distribution in the xz plane, yz plane and xy plane crossing the
  focal point.
     <img src="/mSOUND/img/FSMDM_homo_3Dsec.jpg" alt="second-harmonic pressure field generated with the phased array">
  </p>
