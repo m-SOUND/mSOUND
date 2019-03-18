@@ -6,7 +6,7 @@ title: Simulation in a 2D homogeneous medium using the transient mixed domain me
 <hr>
 <hr>
  This example shows how to simulate the wave propagation in a 2D 
- homogeneous medium with the transient mixed domain method. The focused beam is generated with the phased-array.
+ homogeneous medium with the transient mixed domain method. The focused beam is generated with a phased-array.
 <hr>
 <hr>
 </p>
@@ -40,7 +40,7 @@ title: Simulation in a 2D homogeneous medium using the transient mixed domain me
  In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
 <code>
 <br>
- <br> fc = 1.0e6; <font color="#03a852"> % Fundamental frequency [Hz]</font>   
+ <br> fc = 1.0e6; <font color="#03a852"> % fundamental frequency [Hz]</font>   
 <br>TR_focus  = 0.0150;      <font color="#03a852"> % transducer focus length [m]</font>         
 <br>TR_radius = 0.0075;      <font color="#03a852"> % Transducer diameter [m]</font>   
 <br>delay = sqrt((mgrid.x).^2 + TR_focus^2)/medium.c0; <font color="#03a852"> % calculate the delay for each element [m]</font>   
@@ -59,7 +59,7 @@ A four-cycles Gaussian-modulated pulse is used for the excitation signal. The pu
  <br>
 <code>
 
-<br>num_cycles = 4;<font color="#03a852"> % number of cycles +/- over which to define the pulse</font>  
+<br>num_cycles = 4;<font color="#03a852"> % number of cycles over which to define the pulse</font>  
 <br>ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>  
  <br>ts_length = length(ts);
 <br>delay = repmat(delay, ts_length,1);    
@@ -91,9 +91,8 @@ Define the homogeneous medium. When dispersion is not considered, power law expo
 <h6>2D forward simulation</h6>
 <hr>
 <p>
- Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>. 
- Time domain result recorded at the transducer focal point and fundamental pressure distribution
- through the sensor mask are shown below.
+ Transient pressure is calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>. 
+ Time domain result recorded at the transducer focal point and spatially distributed fundamental pressure are shown below.
 <code>
   <br>
  <br>sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
