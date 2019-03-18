@@ -34,7 +34,7 @@ t_length |  total temporal domain size [s]
 
 #### Outputs          
 
-OPTPUT | PROPERTIES                     
+OUTPUT | PROPERTIES                     
 ------------ | -------------                                
 mgrid.x  | coordinates in the x direction [m]          
 mgrid.y  | coordinates in the y direction [m]          
