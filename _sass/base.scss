@@ -51,3 +51,11 @@ a {
 code {
 	font-size: 14px;
 }
+
+/*- pre -*/
+code {
+	display: block;
+	font-family: monospace;
+        white-space: pre;
+	padding: 20px;
+}
