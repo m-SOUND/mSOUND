@@ -13,52 +13,48 @@ This example provides the demenstration of using the transiment mixed domain met
 <!---Define the media--->
 <h6>Define the media</h6>
 <p>
- <br>
-  Definition of the computational domain and transducer settings in this example to the case 
-  <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation in a 
-   2D homogeneous medium using the transient mixed domain method</a>.
- In this example, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
- all spatially varying functions. One thing to be careful is that medium.c0 is defined as the minimum value in the medium.c.
- The 2D tissue model used in this case is shown in the figure below. 
+<br>
+Definition of the computational domain and transducer settings in this example to the case 
+<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation in a 
+2D homogeneous medium using the transient mixed domain method</a>.
+In this example, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
+all spatially varying functions. One thing to be careful is that medium.c0 is defined as the minimum value in the medium.c.
+The 2D tissue model used in this case is shown in the figure below. 
+ <pre>
  <code>
-  <br>  
-  <br>p0 = 2.0e6;  <font color="#03a852"> % Source pressure magnitude [Pa]</font>  
-  <br>fc = 1.0e6;  <font color="#03a852"> % Fundamental frequency [Hz]</font>  
-  <br>TR_focus  = 0.0207;      <font color="#03a852"> % transducer focus length [m]</font>         
-  <br>TR_radius = 0.0111;      <font color="#03a852"> % Transducer diameter [m]</font> 
-  
-  <br>
-  <br> load tissue_model.mat   <font color="#03a852">% load the tissue model data</font>   
-  <br>medium.c    = c;         <font color="#03a852">% speed of sound [m/s]</font>      
-  <br>medium.rho  = rho;       <font color="#03a852">% density [kg/m^3]</font>             
-  <br>medium.beta = beta;      <font color="#03a852">% nonlinear coefficient </font>    
-  <br>medium.ca   = ca;        <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-  <br>medium.cb   = cb;        <font color="#03a852">% power law exponent</font>    
- </code>
-  <br>
-  <br>
- <img src="/mSOUND/img/tissue_model.jpg" alt="2D tissue model">
- </p>
+p0 = 2.0e6;   <font color="#03a852"> % Source pressure magnitude [Pa]</font>  
+fc = 1.0e6;   <font color="#03a852"> % Fundamental frequency [Hz]</font>  
+TR_focus  = 0.0207;      <font color="#03a852"> % transducer focus length [m]</font>         
+TR_radius = 0.0111;      <font color="#03a852"> % Transducer diameter [m]</font> 
+
+load tissue_model.mat    <font color="#03a852">% load the tissue model data</font>   
+medium.c    = c;         <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = rho;       <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = beta;      <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = ca;        <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = cb;        <font color="#03a852">% power law exponent</font>    
+</code>
+</pre>
+<img src="/mSOUND/img/tissue_model.jpg" alt="2D tissue model">
+</p>
 
 
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <p>
- Transient pressure fields are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
+Transient pressure fields are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
+<pre>
 <code>
-  <br>
- <br>sensor_mask = zeros(mgrid.num_x, mgrid.num_y);<font color="#03a852">% define where the pressure will be recorded</font>  
- <br>sensor_mask(100:300, :) = 1;
- <br> p_total = Forward2D(mgrid, medium, source_p, sensor_mask); 
-  <br>
- </code>
- </p>
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y);<font color="#03a852">% define where the pressure will be recorded</font>  
+sensor_mask(100:300, :) = 1;
+p_total = Forward2D(mgrid, medium, source_p, sensor_mask); 
+</code>
+</pre>
+</p>
 
 <p>
-<br>
-  <img src="/mSOUND/img/TMDM_2D_heterogeneous.jpg" alt="fundamental and the second-harmonic pressure field">
- 
- </p>
+<img src="/mSOUND/img/TMDM_2D_heterogeneous.jpg" alt="fundamental and the second-harmonic pressure field">
+</p>
 
 
 
