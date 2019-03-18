@@ -67,7 +67,8 @@ sensor_mask | a set of Cartesian points where the pressure is recorded
 
 #### Output    
 
-Time-domain results      
+Time-domain results recorded at the sensor positions given by sensor_mask            
+
 
 <h3 style="color: #c64949;">Forward2D  </h3>      
 ***      
@@ -88,7 +89,7 @@ source_p    |excitation signal [Pa]
 sensor_mask |a set of Cartesian points where the pressure is recorded 
  
 #### Output                          
-Time-domain results  
+Time-domain results recorded at the sensor positions given by sensor_mask        
 
 <h3 style="color: #c64949;">Forward3D</h3>      
 ***      
@@ -107,7 +108,7 @@ source_p   |excitation signal [Pa]
 sensor_mask|a set of Cartesian points where the pressure is recorded 
 
 #### Output                   
-Time-domain results          
+Time-domain results recorded at the sensor positions given by sensor_mask            
 
 <h3 style="color: #c64949;">Forward2D_fund</h3>      
 ***      
