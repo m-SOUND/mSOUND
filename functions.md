@@ -60,7 +60,7 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid          |	grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
+mgrid          |	structure returned by ```set_grid```    
 medium         | input strucutre including the media properties             
 source_p       | excitation signal [Pa]     
 sensor_mask    | a set of Cartesian points where the pressure is recorded         
@@ -83,7 +83,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask);
 
 INPUT | PROPERTIES                        
 --------------| -------------      
-mgrid         |grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
+mgrid         |structure returned by ```set_grid```      
 medium        |input strucutre including the media properties              
 source_p      |excitation signal [Pa]     
 sensor_mask   |a set of Cartesian points where the pressure is recorded           
@@ -102,7 +102,7 @@ p = Forward3D(mgrid, medium,source_p, sensor_mask);
 
 INPUT | PROPERTIES               
 --------------| -------------    
-mgrid         |grid object returned by ```set_grid``` containing Cartesian grid fields, wavenumber matrices and time arrays  
+mgrid         |structure returned by ```set_grid```     
 medium        |input strucutre including the media properties             
 source_p      |excitation signal [Pa]   
 sensor_mask   |a set of Cartesian points where the pressure is recorded             
