@@ -5,7 +5,7 @@ title: Simulation in a 2D homogeneous medium using the frequency-specific mixed 
 <br>
 <hr>
 <hr>
-This example shows how to simulate the wave propagation in the 2D homogeneous medium with the frequency-specific 
+This example shows how to simulate the wave propagation in a 2D homogeneous medium with the frequency-specific 
  mixed domain method and the focused beam is generated with the phased-array.
 <hr>
 <hr>
@@ -21,8 +21,8 @@ This example shows how to simulate the wave propagation in the 2D homogeneous me
    <a href="https://m-sound.github.io/mSOUND/generate_2D_focused_ultrasound_beam_with_phased_array">
   Generate the 2D focused ultrasound beam with a phased array using the transient mixed domain method</a>.
   The phase delay for each element in the transducer are the same in the two cases. 
-  We first need to define the temporal and spatial computational domain in 2D forward simulations. In FSMDM, we can set
-  time step and temporal domain size to 0. 
+  We first need to define the temporal and spatial computational domain in 2D forward simulations. In FSMDM, time step and 
+ temporal domain size are set to 0. 
  <br>
    <code>        
 <br>dx = 3.75e-04;         <font color="#03a852"> %  step size in the x direction [m]</font> 
@@ -69,8 +69,8 @@ Define the homogeneous medium.
 <h6>2D forward simulation</h6>
 <hr>
 <p>
-Fundamental pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D_fund</a>. 
-and the pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/functions">Forward2D_sec</a>. 
+Fundamental pressure field is calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D_fund</a>. 
+Pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/functions">Forward2D_sec</a>. 
 <code>
   <br>
  <br><font color="#03a852">% forward propagation of the fundamental pressure</font>   
