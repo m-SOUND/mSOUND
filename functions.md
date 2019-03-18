@@ -9,7 +9,8 @@ title: Functions
 <h3 style="color: #c64949;"> set_grid </h3>             
 ***      
 
-Define the computational domain      
+set_grid is the grid class used across the mSOUND Toolbox. An object of the set_grid class contains the Cartesian grid coordinates, 	
+evenly spaced array of time values and wavenumber matrices used within the simulation in mSOUND.
 
 ```
 mgrid = set_grid(dt, t_length, dx, x_length);                         
@@ -29,7 +30,7 @@ dt   | temporal step size in the time domain [s]
 x_length |  total domain size in the x direction [m]        
 y_length |  total domain size in the y direction [m]              
 z_length |  total domain size in the z direction [m]                  
-t_length | total temporal domain size [s]               
+t_length |  total temporal domain size [s]               
 
 #### Outputs          
 
@@ -59,10 +60,10 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid       |input strucutre defined the computational domain            
-medium      |input strucutre defined the media properties             
-source_p    |excitation signal [Pa]   
-sensor_mask |a set of Cartesian points where the pressure is recorded 
+mgrid       |	grid object returned by set_grid containing Cartesian grid fields, wavenumber matrices and time arrays  
+medium      | input strucutre including the media properties             
+source_p    | excitation signal [Pa]   
+sensor_mask | a set of Cartesian points where the pressure is recorded 
 
 #### Output    
 
@@ -81,8 +82,8 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask);
 
 INPUT | PROPERTIES                        
 ------------ | -------------      
-mgrid       |input strucutre defined the computational domain     
-medium      |input strucutre defined the media properties              
+mgrid       |grid object returned by set_grid containing Cartesian grid fields, wavenumber matrices and time arrays  
+medium      |input strucutre including the media properties              
 source_p    |excitation signal [Pa]     
 sensor_mask |a set of Cartesian points where the pressure is recorded 
  
@@ -100,8 +101,8 @@ p = Forward3D(mgrid, medium,source_p, sensor_mask);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid      |input strucutre defined the computational domain     
-medium     |input strucutre defined the media properties             
+mgrid      |grid object returned by set_grid containing Cartesian grid fields, wavenumber matrices and time arrays  
+medium     |input strucutre including the media properties             
 source_p   |excitation signal [Pa]   
 sensor_mask|a set of Cartesian points where the pressure is recorded 
 
@@ -119,7 +120,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid     |input strucutre defined the computational domain     
+mgrid     |grid object returned by set_grid containing Cartesian grid fields
 medium    |input strucutre defined the media properties               
 source_p  |excitation signal [Pa]                      
 omega_c   |fundamental frequency     
@@ -139,8 +140,8 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid          |input strucutre defined the computational domain     
-medium         |input strucutre defined the media properties               
+mgrid          |grid object returned by set_grid containing Cartesian grid fields
+medium         |input strucutre defined the media properties                    
 P_fundamental  |pressure at the fundamental frequency  [Pa] /the output pressure of ```Forward2D_fun```        
 omega_c        |fundamental frequency      
 
@@ -158,8 +159,8 @@ p = Forward3D_fund(mgrid, medium,  source_p, omega_c);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid     |input strucutre defined the computational domain     
-medium    |input strucutre defined the media properties               
+mgrid     |grid object returned by set_grid containing Cartesian grid fields
+medium    |input strucutre defined the media properties                  
 source_p  |excitation signal [Pa]               
 omega_c   |fundamental frequency       
 
@@ -177,10 +178,10 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);
 
 INPUT | PROPERTIES               
 ------------ | -------------    
-mgrid          |input strucutre defined the computational domain     
-medium         |input strucutre defined the media properties               
+mgrid          |grid object returned by set_grid containing Cartesian grid fields
+medium         |input strucutre defined the media properties                  
 P_fundamental  |pressure at the fundamental frequency  [Pa] /the output pressure of ```Forward3D_fun```           
 omega_c        |fundamental frequency      
 
 #### Output             
-Pressure dirtribution throught the spatial domain at the second-harmonic frequecncy.      
+Pressure distribution throught the spatial domain at the second-harmonic frequecncy.      
