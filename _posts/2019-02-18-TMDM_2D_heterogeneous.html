@@ -14,10 +14,9 @@ This example provides the demenstration of using the transiment mixed domain met
 <h6>Define the media</h6>
 <p>
  <br>
-  This example is based on the simulation case 
+  Definition of the computational domain and transducer settings in this example to the case 
   <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation in a 
    2D homogeneous medium using the transient mixed domain method</a>.
- Definition of the computational domain and transducer settings are similar in the two examples.
  In this example, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
  all spatially varying functions. One thing to be careful is that medium.c0 is defined as the minimum value in the medium.c.
  The 2D tissue model used in this case is shown in the figure below. 
@@ -45,7 +44,7 @@ This example provides the demenstration of using the transiment mixed domain met
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <p>
- Transient pressure field results are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
+ Transient pressure fields are calculated with the 2D forward simulation function <a href="/mSOUND/functions">Forward2D</a>.
 <code>
   <br>
  <br>sensor_mask = zeros(mgrid.num_x, mgrid.num_y);<font color="#03a852">% define where the pressure will be recorded</font>  
