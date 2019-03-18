@@ -18,9 +18,8 @@ title: Simulation in a 2D homogeneous medium using the transient mixed domain me
  <br>We first need to define the temporal and spatial computational domain in 2D forward simulations 
  with the funciton <a href="/mSOUND/functions">set_grid</a>. For 2D problems,
  six inputs are required to to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates.
- <br>
- <pre>
- <code>        
+<pre>
+<code>        
 dx = 3.75e-04;   <font color="#03a852"> %  step size in the x direction [m]</font> 
 dy = 3.75e-04;   <font color="#03a852"> %  step size in the y direction [m]</font> 
 dt = 6.25e-08;   <font color="#03a852"> %  time step size [s]</font> 
@@ -30,7 +29,7 @@ y_length = 0.0240;     <font color="#03a852"> % total computatoinal domain size 
 t_length = 3.20e-05;   <font color="#03a852"> % total temporal domain size [s]</font> 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
 </code>   
- </pre>
+</pre>
 </p>
 
 
@@ -38,10 +37,9 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);
 <h6>Define the phased array transducer</h6>
 <hr>
 <p>
- In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
-  <pre>
+In this example, phased array transducer is used to generate the foucsed ultrasound beam.  
+<pre>
 <code>
-<br>
 fc = 1.0e6;           <font color="#03a852"> % fundamental frequency [Hz]</font>   
 TR_focus  = 0.0150;   <font color="#03a852"> % transducer focus length [m]</font>         
 TR_radius = 0.0075;   <font color="#03a852"> % Transducer diameter [m]</font>   
@@ -51,15 +49,14 @@ TR_mask = ones(mgrid.num_x,1);          <font color="#03a852"> % define the tran
 TR_mask(abs(mgrid.x)>TR_radius,:) = 0;  <font color="#03a852"> % a 2D phased array</font>  
 </code>
 </pre>
- </p>
+</p>
 
 <!---Excitation signal--->
 <h6>Excitation signal</h6>
 <hr>
 <p>
 A four-cycles Gaussian-modulated pulse is used for the excitation signal. The pulse is illustrated in the figure below.  
- <br>
- <pre>
+<pre>
 <code>
 num_cycles = 4;  <font color="#03a852"> % number of cycles over which to define the pulse</font>  
 ts = [-num_cycles/fc:dt:num_cycles/fc].';   <font color="#03a852"> % define the pulse length [s]</font>  
@@ -70,7 +67,6 @@ source_p = p0*sin(2*pi*fc*(ts+delay)).*exp(-(ts+delay).^2*fc^2/2);   <font color
 source_p = source_p.*repmat(TR_mask.', ts_length,1);   <font color="#03a852"> % apply the transducer mask </font>  
 </code>
 </pre>
-
  <img src="/mSOUND/img/Gaussian_pulse.jpg" alt="Guassian modulated pulse">
  </p>
 
@@ -79,8 +75,8 @@ source_p = source_p.*repmat(TR_mask.', ts_length,1);   <font color="#03a852"> % 
 <hr>
 <p>
 Define the homogeneous medium. When dispersion is not considered, power law exponent is set to 2.0.
- <pre>
- <code>  
+<pre>
+<code>  
 medium.c    = 1500;    <font color="#03a852">% speed of sound [m/s]</font>      
 medium.rho  = 1000;    <font color="#03a852">% density [kg/m^3]</font>             
 medium.beta = 0;       <font color="#03a852">% nonlinear coefficient </font>    
@@ -101,9 +97,9 @@ Time domain result recorded at the transducer focal point and spatially distribu
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
 sensor_mask(30:90,:) = 1;  <font color="#03a852">% define where the pressure will be recorded</font>    
 p = Forward2D(mgrid, medium, source_p, sensor_mask); 
- </code>
- </pre>
+</code>
+</pre>
 <img src="/mSOUND/img/TMDM_2D_homogeneous.jpg" alt="(a) Time-domain singal recorded at the transducer focus                                                    (b) Fundamental pressure distribution through the sensor mask">
- </p>
+</p>
 
  
