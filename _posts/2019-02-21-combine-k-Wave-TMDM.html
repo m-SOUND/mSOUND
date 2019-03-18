@@ -6,10 +6,10 @@ title: Implementation of k-Wave for arbitrary shape transducer
 <hr>
 <hr>
 This example shows how to implement the <a href="http://www.k-wave.org/">k-Wave</a> for simulations with curved transducer.
-Currently, only phased array transducer can be used for simulating focused beams in the mSOUND. If other transducer settings
+Currently, only phased array transducer can be directly simulated in the mSOUND to generate focused beams. If other transducer settings
 are required, people can first use k-Wave to propagate the wave field for a small distance and record the data at a plane. 
-Then implement the recorded data at that plane to the TMDM as source pressure. In this example, a curved transduce is first modeled
-with k-Wave.
+Then implement the recorded data at that plane to the mSOUND as source pressure. In this example, a curved transduce is first modeled
+with k-Wave and then continues with the mSOUND.
 <hr>
 <hr>
 </p>
@@ -41,16 +41,16 @@ with k-Wave.
 <code>
 <br>  
 <br>TR_radius = 0.0060;  <font color="#03a852"> % Transducer radius [m] </font> 
-<br>TR_focus  = 0.0150;  <font color="#03a852">  % Transducer focus length [m]</font>       
-<br>focus  = round(TR_focus/dx);  <font color="#03a852">  % Transducer focus length [grid point]</font>   
+<br>TR_focus  = 0.0150;  <font color="#03a852">  % Transducer focal length [m]</font>       
+<br>focus  = round(TR_focus/dx);  <font color="#03a852">  % Transducer focal length [grid points]</font>   
 <br>cx = round(Nx/2); <font color="#03a852"> % x coordinate of the tranducer center[grid points] </font>   
 <br>cy = 10 + focus; <font color="#03a852"> % y coordinate of the tranducer center[grid points] </font>   
 
-<br>arc_angle1 = asin(TR_radius/TR_focus);
+<br>arc_angle1 = asin(TR_radius/TR_focus); <font color="#03a852"> % [radians] </font>     
 <br>circle1 = makeCircle(Nx, Ny, cx, cy, focus, arc_angle1, false);
-<br>arc_angle2 = pi*2;
+<br>arc_angle2 = pi*2; <font color="#03a852"> % [radians] </font>    
 <br>circle2 = makeCircle(Nx, Ny, cx, cy, focus, arc_angle2, false);
-<br>arc_angle3 = pi*2 - arc_angle1;
+<br>arc_angle3 = pi*2 - arc_angle1; <font color="#03a852"> % [radians] </font>    
 <br>circle3 = makeCircle(Nx, Ny, cx, cy, focus, arc_angle3, false);
 <br>circle = circle2 - circle3 + circle1;
 <br>  
@@ -64,20 +64,20 @@ with k-Wave.
 <!---excitation signale--->
 <h6>Excitation signal</h6>
 <p>
- A four-cycles Gaussian-modulated pulse is used for the excitation signal. 
+ A four-cycles Gaussian-modulated pulse is used as the excitation signal. 
 <code>
 <br>   
 <br>source_mag = 1;    <font color="#03a852"> % [Pa] </font>   
-<br>fc = 1.0e6;  % [Hz] <font color="#03a852"> % [Pa] </font>   
+<br>fc = 1.0e6;   <font color="#03a852"> % [Hz] </font>   
 <br>ts = [-num_cycles/fc:dt:num_cycles/fc]; <font color="#03a852"> % excitation pulse length </font>   
-<br>excit_p = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2);
+<br>excit_p = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2); <font color="#03a852"> % excitation </font>     
 <br>source.p = excit_p*source_mag;
 
 <br>input_args  = {'DisplayMask', source.p_mask, 'DataCast', 'single'};
 <br><font color="#03a852"> % run the simulation</font>   
 <br>sensor_data = kspaceFirstOrder2D(kgrid, medium, source, sensor, input_args{:});
  <br><font color="#03a852"> % Reshape the output data for further simulation</font>   
-<br>sensor_data = reshape(sensor_data,  Nx,length(kgrid.t_array));
+<br>sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
 </code> 
 </p>
 
@@ -85,9 +85,9 @@ with k-Wave.
 <!---implement signal to the TMDM--->
 <h6>Implement signals to the TMDM</h6>
 <p>
- Results recorded at the sensor from k-Wave simulation will be used as the source pressure for the TMDM simulation.
+ Pressure recorded at the sensor positions from k-Wave simulation will be used as the source pressure for the TMDM simulation.
  One thing to be notice is that sensor data from k-Wave is in indexed as [time, sensor_positions], while in the 
- TMDM is [sensor_positions, time]. If the time step or transverse domain size or spatial step size in the k-Wave is different from TMDM, 
+ TMDM is [sensor_positions, time]. If the time step or transverse saptial domain size in the k-Wave is different from TMDM, 
  sensor_data from the k-Wave needs to be resized.
 <code>
 <br>  
@@ -120,9 +120,9 @@ with k-Wave.
 <!---Results--->
 <h6>Results</h6>
 <p>
- Continue the simulation with TMDM.The figure below shows the time domain results 
+ Now we finish the simulation with TMDM. The figure below shows the time domain results 
  at the geometrical focus of the transducer and the result generated
-with MDM is compared with the result directly simulated with k-Wave.
+with TMDM is compared with the result directly simulated with k-Wave.
  <code>
   <br><font color="#03a852"> % run the simulation with TMDM</font>   
 <br>p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
