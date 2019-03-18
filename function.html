@@ -4,7 +4,9 @@ layout: default
  
 <h2>Functions</h2> 
 <hr>  
-<hr>   
+<hr> 
+
+
 <h3 style="color: #c64949;"> set_grid </h3>             
 <hr>   
 <p>
@@ -18,8 +20,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 </code>  </pre>
 </p>
 
-<h2>Inputs </h2> 
-
+<h3>Inputs </h3> 
 <table>
   <tr>
     <th>INPUT</th><th>PROPERTIES</th>
@@ -51,4 +52,288 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
  </table> 
 
 <br>       
+
+<h3>Outputs</h3> 
+<table>
+  <tr>
+    <th>OUTPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid.x</td><td>coordinates in the x direction [m] </td>
+  </tr>
+  <tr>
+    <td>mgrid.y</td><td>coordinates in the y direction [m] </td>
+  </tr>
+  <tr>
+    <td>mgrid.z</td><td>coordinates in the z direction [m] </td>
+  </tr>
+  <tr>
+    <td>mgrid.t</td><td>evenly spaced time array [s]</td>
+  </tr>
+  <tr>
+    <td>mgrid.kx</td><td>wavevector in the x direction</td>
+  </tr>  
+  <tr>
+    <td>mgrid.ky</td><td>wavevector in the y direction</td>
+  </tr>    
+  <tr>
+    <td>mgrid.w</td><td>angular freuqency</td>
+  </tr>      
+  <tr>
+    <td>mgrid.num_x</td>number of grid points in the x direction </td>
+  </tr> 
+  <tr>
+    <td>mgrid.num_y</td>number of grid points in the y direction </td>
+  </tr> 
+  <tr>
+    <td>mgrid.num_z</td>number of grid points in the z direction </td>
+  </tr> 
+  <tr>
+    <td>mgrid.num_t</td>number of time steps </td>
+  </tr>
+ </table> 
+<br>
+
+
+
+<h3 style="color: #c64949;"> Forward1D </h3>    
+<hr>
+<p>
+Simulation of 1D wave propagation and it is based on the transient mixed domain method. 
+<pre> <code>
+p = Forward1D(mgrid, medium, source_p, sensor_mask);  
+</code>  </pre>
+</p>
+
+<h3>Inputs</h3> 
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid</td><td>structure returned by set_grid</td>
+  </tr>
+  <tr>
+    <td>medium </td><td>input strucutre including the media properties</td>
+  </tr>
+   <tr>
+    <td>source_p</td><td>excitation signal [Pa]</td>
+  </tr>
+  <tr>
+    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+  </tr>
+ </table> 
+<br>
+<h3>Outputs</h3> 
+<p>
+Time-domain results recorded at the sensor positions given by sensor_mask.
+ </pr>
+
+
+
+<h3 style="color: #c64949;">Forward2D </h3>   
+<hr>
+<p>
+Simulation of the 2D wave propagation and it is based on the transient mixed domain method.       
+<pre>  <code>
+p = Forward2D(mgrid, medium, source_p, sensor_mask); 
+</code>  </pre>
+</p>
+<h3>Inputs</h3> 
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid</td><td>structure returned by set_grid</td>
+  </tr>
+  <tr>
+    <td>medium </td><td>input strucutre including the media properties</td>
+  </tr>
+   <tr>
+    <td>source_p</td><td>excitation signal [Pa]</td>
+  </tr>
+  <tr>
+    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+  </tr>
+ </table> 
+<br>
+<h3>Outputs</h3> 
+<p>
+Time-domain results recorded at the sensor positions given by sensor_mask.
+ </pr>
+
+<h3 style="color: #c64949;">Forward3D</h3>     
+<hr>
+<p>
+Simulation of 3D wave propagation and it is based on the transient mixed domain method.               
+<pre>  <code>
+p = Forward3D(mgrid, medium,source_p, sensor_mask);
+</code>  </pre>
+</p>
+<h3>Inputs</h3> 
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid</td><td>structure returned by set_grid</td>
+  </tr>
+  <tr>
+    <td>medium </td><td>input strucutre including the media properties</td>
+  </tr>
+  <tr>
+    <td>source_p</td><td>excitation signal [Pa]</td>
+  </tr> 
+  <tr>
+    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+  </tr>
+ </table> 
+<h3>Outputs</h3> 
+<p>
+Time-domain results recorded at the sensor positions given by sensor_mask.
+ </pr>
+
+
+
+<h3 style="color: #c64949;">Forward2D_fund</h3>     
+<hr>
+<p>
+Simulation of the 2D wave propagation at the fundamental freqeuncy and it is 
+based on the frequency-specific mixed domain method.              
+<pre>  <code>
+p = Forward2D_fund(mgrid, medium, source_p, omega_c);  
+</code>  </pre>
+</p>
+<h3>Inputs</h3> 
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid</td><td>structure returned by set_grid</td>
+  </tr>
+  <tr>
+    <td>medium </td><td>input strucutre including the media properties</td>
+  </tr>
+  <tr>
+    <td>source_p</td><td>excitation signal [Pa]</td>
+  </tr>
+   <tr>
+    <td>omega_c </td><td>fundamental frequency </td>
+  </tr>
+ </table> 
+<h3>Outputs</h3> 
+<p>
+Pressure dirtribution through the domain at the fundamental frequecncy      
+</pr>
+
+
+
+
+<h3 style="color: #c64949;">Forward2D_sec</h3>    
+<hr>
+<p>
+Simulation of the 2D wave propagation at the second-harmonic freqeuncy 
+ and it is based on the frequency-specific mixed domain method.      
+<pre>  <code>
+p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);  
+</code>  </pre>
+</p>
+<h3>Inputs</h3> 
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid</td><td>structure returned by set_grid</td>
+  </tr>
+  <tr>
+    <td>medium </td><td>input strucutre including the media properties</td>
+  </tr>
+  <tr>
+    <td>P_fundamental</td><td>pressure at the fundamental frequency  [Pa] /the output pressure of Forward2D_fun </td>
+  </tr>
+   <tr>
+    <td>omega_c </td><td>fundamental frequency </td>
+  </tr>
+ </table> 
+<h3>Outputs</h3> 
+<p>
+Pressure distribution throughout the spatial domain at the second-harmonic frequecncy    
+</pr>
+
+
+
+<h3 style="color: #c64949;">Forward3D_fund</h3>   
+<hr>
+<p>
+Simulation of the 3D wave propagation at the fundamental freqeuncy and 
+it is based on the frequency-specific mixed domain method.      
+<pre>  <code>
+p = Forward3D_fund(mgrid, medium,  source_p, omega_c);  
+</code>  </pre>
+</p>
+<h3>Inputs</h3> 
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid</td><td>structure returned by set_grid</td>
+  </tr>
+  <tr>
+    <td>medium </td><td>input strucutre including the media properties</td>
+  </tr>
+  <tr>
+    <td>source_p</td><td>excitation signal [Pa]</td>
+  </tr>
+   <tr>
+    <td>omega_c </td><td>fundamental frequency </td>
+  </tr>
+ </table> 
+<h3>Outputs</h3> 
+<p>
+Pressure dirtribution throughout the domain at the fundamental frequecncy    
+</pr>
+
+
+
+<h3 style="color: #c64949;">Forward3D_sec</h3>   
+<hr>
+<p>
+Simulation of the 3D wave propagation at the second-harmonic freqeuncy, 
+based on the frequency-specific mixed domain method.    
+<pre>  <code>
+p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);   
+</code>  </pre>
+</p>
+<h3>Inputs</h3> 
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid</td><td>structure returned by set_grid</td>
+  </tr>
+  <tr>
+    <td>medium </td><td>input strucutre including the media properties</td>
+  </tr>
+  <tr>
+    <td>P_fundamental</td><td>pressure at the fundamental frequency  [Pa] /the output pressure of Forward3D_fun</td>
+  </tr>
+   <tr>
+    <td>omega_c </td><td>fundamental frequency </td>
+  </tr>
+ </table> 
+<h3>Outputs</h3> 
+<p>
+Pressure distribution throughout the spatial domain at the second-harmonic frequecncy    
+</pr>
+
+
+
+
+
+
 
