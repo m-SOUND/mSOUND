@@ -70,14 +70,14 @@ sensor_mask    | a set of Cartesian points where the pressure is recorded
 Time-domain results recorded at the sensor positions given by sensor_mask            
 
 
-<h3 style="color: #c64949;">Forward2D  </h3>      
+<h3 style="color: #c64949;">Forward2D </h3>      
 ***      
 
 Simulation of the 2D wave propagation and it is based on the transient mixed domain method.       
 
 ```
 p = Forward2D(mgrid, medium, source_p, sensor_mask); 
-```
+``` 
 
 #### Inputs            
 
