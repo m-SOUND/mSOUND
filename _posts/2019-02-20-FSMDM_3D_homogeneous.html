@@ -5,7 +5,7 @@ title: Simulation in a 3D homogeneous medium using the frequency-specific mixed 
 <br>
 <hr>
 <hr>
-This example shows how to simulate the wave propagation in the 3D homogeneous medium with the frequency-specific mixed 
+This example shows how to simulate the wave propagation in a 3D homogeneous medium with the frequency-specific mixed 
  domain method and the focused beam is generated with the phased-array.
 <hr>
 <hr>
@@ -72,9 +72,10 @@ Define the homogeneous medium.
 <h6>3D forward simulation</h6>
 <hr>
 <p>
-Fundamental pressure field results are calculated with the 3D forward simulation function <a href="/mSOUND/functions">Forward3D_fund</a>. 
-and the pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/functions">Forward3D_sec</a>. 
+Fundamental pressure field is calculated with the 3D forward simulation function <a href="/mSOUND/functions">Forward3D_fund</a>. 
+The pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/functions">Forward3D_sec</a>. 
 <code>
+ <br>
 <br><font color="#03a852">% forward propagation of the fundamental pressure</font>   
 <br> p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
 <br><font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
