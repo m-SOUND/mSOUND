@@ -202,8 +202,20 @@ img[title="Emerald"] {
 
 code {
   color: lighten($text-color, 10%);
-  background-color: lighten($main-color,70%);
+  font-size: 16px;
+  background-color:#f7f7f7;
+  // background-color: lighten($main-color,70%);
+  //display:block;
+	
 }
+
+/*- pre -*/
+pre {
+	display: block;
+	font-family: monospace;
+	background-color:#f7f7f7;
+}
+
 
 p{
 	
