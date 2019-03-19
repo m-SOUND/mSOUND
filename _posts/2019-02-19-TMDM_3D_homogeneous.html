@@ -61,9 +61,9 @@ A four-cycles gaussian-modulated pulse is used as the excitation signal.
 <pre>
 <code>
 num_cycles = 4 ;<font color="#03a852"> % number of cycles +/- over which to define the pulse</font>    
-ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>    
-ts = repmat(ts, 1,mgrid.num_x);   
-source_p = zeros(length(ts), mgrid.num_x, mgrid.num_y); <font color="#03a852"> % allocate space for excitation signal</font>   
+ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>   
+<font color="#03a852"> % allocate space for excitation signal</font> 
+source_p = zeros(length(ts), mgrid.num_x, mgrid.num_y);   
 <font color="#03a852"> % assign signals to source element</font>   
 for cel1 = 1:mgrid.num_x  
     for cel2 = 1:mgrid.num_y
@@ -103,7 +103,8 @@ top two figures show the fundamental pressure field at the xz and xy plane. The 
 pressure at the xz and xy plane.
 <pre>
 <code>
-sensor_mask = zeros(mgrid.num_x, mgrid.num_y, mgrid.num_z); <font color="#03a852">% define where the pressure will be recorded</font>    
+<font color="#03a852">% define where the pressure will be recorded</font>    
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y, mgrid.num_z); 
 sensor_mask(20:60, 20:60, :) = 1;
 p_total = Forward3D(mgrid, medium, source_p, sensor_mask); 
 </code>
