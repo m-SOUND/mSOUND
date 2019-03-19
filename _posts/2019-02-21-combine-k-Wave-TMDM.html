@@ -119,7 +119,7 @@ with TMDM is compared with the result directly simulated with k-Wave.
  <pre> <code>
 <font color="#03a852"> % run the simulation with TMDM</font>   
 p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
-<font color="#03a852"> % Reshape the data from simulation</font>   
+<font color="#03a852"> % reshape the data from simulation</font>   
 p_time = reshape(p_time, mgrid.num_t, mgrid.num_x);
 </code>  </pre>
  <img src="/mSOUND/img/combine_kwave.jpg" alt="Time-domain singal recorded at the transducer focus">
