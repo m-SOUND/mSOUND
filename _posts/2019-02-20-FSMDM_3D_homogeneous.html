@@ -6,7 +6,7 @@ title: Simulation in a 3D homogeneous medium using the frequency-specific mixed 
 <hr>
 <hr>
 This example shows how to simulate the wave propagation in a 3D homogeneous medium with the frequency-specific mixed 
- domain method and the focused beam is generated with the phased-array.
+ domain method and the focused beam is generated with the phased-array. 
 <hr>
 <hr>
 </p>
@@ -15,7 +15,8 @@ This example shows how to simulate the wave propagation in a 3D homogeneous medi
 <h6>Generate the grid structure in the computational domain</h6>
 <hr>
 <p>
- <br>This simulation setup is based on the 
+ <br>
+ This simulation setup is based on the 
    <a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
     Simulation in a 3D homogeneous medium using the transient mixed domain method</a>.
   The phase delay for each element in the transducer are the same in the two cases. 
@@ -74,14 +75,17 @@ medium.cb   = 2.0;    <font color="#03a852">% power law exponent</font>
 <h6>3D forward simulation</h6>
 <hr>
 <p>
-Fundamental pressure field is calculated with the 3D forward simulation function <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. 
-The pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/function.html#Forward3D_sec">Forward3D_sec</a>. 
+Fundamental pressure field is calculated with the 3D forward simulation function
+ <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. 
+The pressure at the second-harmonic frequency is calculated with the function
+ <a href="/mSOUND/function.html#Forward3D_sec">Forward3D_sec</a>. 
 <pre> <code>
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
 p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
 p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
 </code> </pre>
+
 The three figures below show the fundamental pressure field distribution in the xz plane, yz plane and xy plane crossing the
  focal point.
 <img src="/mSOUND/img/FSMDM_homo_3Dfund.jpg" alt="fundamental pressure field generated with the phased array">
