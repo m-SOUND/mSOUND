@@ -16,7 +16,7 @@ title: Simulation in a 2D homogeneous medium using the transient mixed domain me
 <hr>
 <p>  
  <br>We first need to define the temporal and spatial computational domain in 2D forward simulations 
- with the funciton <a href="/mSOUND/function.html#L10">set_grid</a>. For 2D problems,
+ with the funciton <a href="/mSOUND/function.html#set_grid">set_grid</a>. For 2D problems,
  six inputs are required to to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates.
 <pre>
 <code>        
@@ -90,7 +90,7 @@ medium.cb   = 2.0;     <font color="#03a852">% power law exponent</font>
 <h6>2D forward simulation</h6>
 <hr>
 <p>  
-Transient pressure is calculated with the 2D forward simulation function <a href="/mSOUND/function.html#L134">Forward2D</a>. 
+Transient pressure is calculated with the 2D forward simulation function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>. 
 Time domain result recorded at the transducer focal point and spatially distributed fundamental pressure are shown below.
 <pre>
 <code>
