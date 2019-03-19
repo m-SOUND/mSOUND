@@ -43,11 +43,12 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
  <pre>
 <code>
 p0 = 1.0e6;   <font color="#03a852"> %source pressure magnitude [Pa]</font>   
-TR_focus  = 0.0120;      <font color="#03a852"> % transducer focus length [m]</font>         
-TR_radius = 0.0075;      <font color="#03a852"> % Transducer diameter [m]</font>  
+TR_focus  = 0.0120;   <font color="#03a852"> % transducer focus length [m]</font>         
+TR_radius = 0.0075;   <font color="#03a852"> % Transducer diameter [m]</font>  
 X = ones(mgrid.num_y,1)*mgrid.x;
 Y = (ones(mgrid.num_x,1)*mgrid.y).';
-delay = sqrt(X.^2 + Y.^2 + TR_focus^2)/medium.c0;  <font color="#03a852"> % calculate the delay for each element [m]</font>   
+<font color="#03a852"> % calculate the delay for each element [m]</font> 
+delay = sqrt(X.^2 + Y.^2 + TR_focus^2)/medium.c0;    
 delay = delay - min(min(delay));
 </code>
 </pre>
@@ -67,7 +68,8 @@ source_p = zeros(length(ts), mgrid.num_x, mgrid.num_y);
 <font color="#03a852"> % assign signals to source element</font>   
 for cel1 = 1:mgrid.num_x  
     for cel2 = 1:mgrid.num_y
-        source_p(:, cel1, cel2) = sin(2*pi*fc*(ts+delay(cel1, cel2))).*exp(-(ts+delay(cel1, cel2)).^2*fc^2/2);
+        source_p(:, cel1, cel2) = sin(2*pi*fc*(ts+delay(cel1, cel2))).*...
+                                  exp(-(ts+delay(cel1, cel2)).^2*fc^2/2);
     end
 end
 RHO = sqrt(X.^2+Y.^2);
