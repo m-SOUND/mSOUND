@@ -25,15 +25,15 @@ The 2D tissue model used in this case is shown in the figure below.
  <code>
 p0 = 2.0e6;   <font color="#03a852"> % Source pressure magnitude [Pa]</font>  
 fc = 1.0e6;   <font color="#03a852"> % Fundamental frequency [Hz]</font>  
-TR_focus  = 0.0207;      <font color="#03a852"> % transducer focus length [m]</font>         
-TR_radius = 0.0111;      <font color="#03a852"> % Transducer diameter [m]</font> 
+TR_focus  = 0.0207;   <font color="#03a852"> % transducer focus length [m]</font>         
+TR_radius = 0.0111;   <font color="#03a852"> % Transducer diameter [m]</font> 
 
-load tissue_model.mat    <font color="#03a852">% load the tissue model data</font>   
-medium.c    = c;         <font color="#03a852">% speed of sound [m/s]</font>      
-medium.rho  = rho;       <font color="#03a852">% density [kg/m^3]</font>             
-medium.beta = beta;      <font color="#03a852">% nonlinear coefficient </font>    
-medium.ca   = ca;        <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = cb;        <font color="#03a852">% power law exponent</font>    
+load tissue_model.mat   <font color="#03a852">% load the tissue model data</font>   
+medium.c    = c;        <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = rho;      <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = beta;     <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = ca;       <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = cb;       <font color="#03a852">% power law exponent</font>    
 </code>
 </pre>
 <img src="/mSOUND/img/tissue_model.jpg" alt="2D tissue model">
@@ -44,13 +44,12 @@ medium.cb   = cb;        <font color="#03a852">% power law exponent</font>
 <h6>2D forward simulation</h6>
 <p>
 Transient pressure fields are calculated with the 2D forward simulation function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>.
-<pre>
-<code>
-sensor_mask = zeros(mgrid.num_x, mgrid.num_y);<font color="#03a852">% define where the pressure will be recorded</font>  
+<pre><code>
+<font color="#03a852">% define where the pressure will be recorded</font>  
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
 sensor_mask(100:300, :) = 1;
 p_total = Forward2D(mgrid, medium, source_p, sensor_mask); 
-</code>
-</pre>
+</code></pre>
 </p>
 
 <p>
