@@ -63,16 +63,16 @@ sensor.mask(:, Ny/2+offcenter) = 1;  <font color="#03a852"> % define sensor mask
 <p>
  A four-cycles Gaussian-modulated pulse is used as the excitation signal. 
 <pre> <code>  
-source_mag = 1;    <font color="#03a852"> % [Pa] </font>   
-fc = 1.0e6;   <font color="#03a852"> % [Hz] </font>   
+source_mag = 1;  <font color="#03a852"> % [Pa] </font>   
+fc = 1.0e6;      <font color="#03a852"> % [Hz] </font>   
 ts = [-num_cycles/fc:dt:num_cycles/fc]; <font color="#03a852"> % excitation pulse length </font>   
-excit_p = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2); <font color="#03a852"> % excitation </font>     
+excit_p = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2); <font color="#03a852"> % excitation pulse</font>     
 source.p = excit_p*source_mag;
 
 input_args  = {'DisplayMask', source.p_mask, 'DataCast', 'single'};
 <font color="#03a852"> % run the simulation</font>   
 sensor_data = kspaceFirstOrder2D(kgrid, medium, source, sensor, input_args{:});
-<font color="#03a852"> % Reshape the output data for further simulation</font>   
+<font color="#03a852"> % reshape the output data for further simulation</font>   
 sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
 </code> </pre>
 </p>
@@ -95,7 +95,7 @@ mgrid = set_grid(dt, tlength, dx, xlength, dy, ylength);
 <font color="#03a852"> % need to resize the sensor data as a large time step is appled in the TMDM</font>  
 source_p = sensor_data(:, 1:2:end).'; 
 
-<font color="#03a852"> % medium properties in the TMDM</font>   
+<font color="#03a852"> % define medium properties in the TMDM</font>   
 medium.c    = 1500;  <font color="#03a852"> % speed of sound [m/s]</font>   
 medium.rho  = 1000;  <font color="#03a852"> % density [kg/m^3]</font>   
 medium.beta = 0.0;   <font color="#03a852"> % nonlinear coefficient</font>   
@@ -103,10 +103,9 @@ medium.ca   = 0;     <font color="#03a852"> % attenuation coefficient [dB/(MHz^y
 medium.cb   = 2.0;   <font color="#03a852"> % power law exponent</font>   
 medium.c0   = 1500;  <font color="#03a852"> % reference speed of sound [m/s]</font>    
 
-<font color="#03a852"> % sensor mask in the TMDM</font>   
+<font color="#03a852"> % define sensor mask in the TMDM</font>   
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
 sensor_mask(:, end) = 1;
-
 </code> </pre>
 </p>
 
