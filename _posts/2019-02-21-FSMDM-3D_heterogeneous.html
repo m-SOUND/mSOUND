@@ -1,3 +1,51 @@
 ---
 title:Simulation in the 3D heterogeneous medium using the frequency-specific mixed domain method
 ---
+<p>
+<br>
+<hr>
+<hr>
+This example shows how to simulate the wave propagation in the 3D heterogeneous media with the frequency-specific mixed 
+ domain method and the focused beam is generated with the phased-array.
+<hr>
+<hr>
+</p>
+
+<!---define the structure grid--->
+<h6>Define the 3D heterogeneous media</h6>
+<hr>
+<p>
+ <br>Details of defining the computational domain and the phased array settings are shown in the case
+   <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
+    Simulation in a 3D homogeneous medium using the frequency-specific mixed domain method</a>.
+   <pre>
+ <code>
+load 3D_heterogeneous_model.mat; 
+medium.c    = c;   <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = rho;   <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = beta;    <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = ca;      <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = beta;    <font color="#03a852">% power law exponent</font>    
+</code>
+</pre>
+</p>
+
+
+<!---3D forward simulation--->
+<h6>3D forward simulation</h6>
+<hr>
+<p>
+ <br>The fundamental pressure field is first calculated with the 3D forward simulation function 
+  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>, 
+  and the pressure at the second-harmonic frequency is then calculated with the function 
+  <a href="/mSOUND/function.html#Forward3D_sec">Forward3D_sec</a>.
+  
+<pre> <code>
+<font color="#03a852">% forward propagation of the fundamental pressure</font>   
+p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
+<font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
+p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
+</code> </pre>
+
+
+</p>
