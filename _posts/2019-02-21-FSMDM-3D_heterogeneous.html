@@ -17,17 +17,19 @@ This example shows how to simulate the wave propagation in the 3D heterogeneous 
 <p>
  <br>Details of defining the computational domain and the phased array settings are shown in the case
    <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
-    Simulation in a 3D homogeneous medium using the frequency-specific mixed domain method</a>.
+    Simulation in a 3D homogeneous medium using the frequency-specific mixed domain method</a>. A 2D view in the xz plane
+ of the 3D model used in this simulation is illustrated in the figure below.
    <pre>
  <code>
 load 3D_heterogeneous_model.mat; 
-medium.c    = c;   <font color="#03a852">% speed of sound [m/s]</font>      
-medium.rho  = rho;   <font color="#03a852">% density [kg/m^3]</font>             
-medium.beta = beta;    <font color="#03a852">% nonlinear coefficient </font>    
-medium.ca   = ca;      <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = beta;    <font color="#03a852">% power law exponent</font>    
+medium.c    = c;      <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = rho;    <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = beta;   <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = ca;     <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = beta;   <font color="#03a852">% power law exponent</font>    
 </code>
 </pre>
+<img src="/mSOUND/img/3D_heterogeneous_model.jpg" alt="3D model
 </p>
 
 
@@ -46,10 +48,20 @@ p_fundamental = Forward3D_fund(mgrid, medium, source_p);
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
 p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
 </code> </pre>
-
-
+                     
 </p>
+<p>
+The figure below shows the fundamental pressure in the (a)xz plane, (b)yz plane and (x)xy plane.
+<img src="/mSOUND/img/FSMDM_3D_heterogeneous_fund.jpg" alt="fundamental and the second-harmonic pressure field">
+</p>
+                                                                                                        
 
+<p>
+The figure below shows the second-harmonic pressure in the (a)xz plane, (b)yz plane and (x)xy plane.                                                                                                              
+<img src="/mSOUND/img/FSMDM_3D_heterogeneous_sec.jpg" alt="fundamental and the second-harmonic pressure field">
+</p>
+                                                                                                               
+                                                                                                               
 <h6>Other examples</h6>
 <hr>
 <p>
