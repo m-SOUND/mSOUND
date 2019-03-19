@@ -24,13 +24,13 @@ This example shows how to simulate the wave propagation in a 3D homogeneous medi
   time step and temporal domain size are set to 0. 
  <pre>
 <code>      
-dx = 3.75e-04;  <font color="#03a852"> %  step size in the x direction [m]</font> 
-dy = 3.75e-04;  <font color="#03a852"> %  step size in the y direction [m]</font> 
-dz = 3.75e-04;  <font color="#03a852"> %  step size in the z direction [m]</font> 
+dx = 1.8750e-04;  <font color="#03a852"> %  step size in the x direction [m]</font> 
+dy = 1.8750e-04;  <font color="#03a852"> %  step size in the y direction [m]</font> 
+dz = 1.8750e-04;  <font color="#03a852"> %  step size in the z direction [m]</font> 
 
-x_length = 0.0454;  <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
-y_length = 0.0454;  <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
-z_length = 0.0330;  <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
+x_length = 0.0300;  <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
+y_length = 0.0300;  <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
+z_length = 0.0210;  <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
     
 mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
@@ -63,7 +63,7 @@ Define the homogeneous medium.
 medium.c    = 1500;   <font color="#03a852">% speed of sound [m/s]</font>      
 medium.rho  = 1000;   <font color="#03a852">% density [kg/m^3]</font>             
 medium.beta = 3.6;    <font color="#03a852">% nonlinear coefficient </font>    
-medium.ca   = 0;      <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.ca   = 0.005;  <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
 medium.cb   = 2.0;    <font color="#03a852">% power law exponent</font>    
 </code>
 </pre>
