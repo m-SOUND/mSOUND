@@ -35,7 +35,9 @@ The fundamental pressure field is first calculated with the 2D forward simulatio
 and the pressure at the second-harmonic frequency is then calculated with the function <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>. 
  <pre>
 <code>
+<font color="#03a852">% forward propagation of the fundamental pressure</font>   
 p_fundamental = Forward2D_fund(mgrid, medium, source_p); 
+<font color="#03a852">% forward propagation of the second-harmonic pressure  </font>   
 p_second = Forward2D_sec(mgrid, medium, p_fundamental, omega_c); 
 </code>
 </pre>
