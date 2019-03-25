@@ -20,15 +20,15 @@ title: Simulation in a 3D homogeneous medium using the transient mixed domain me
  eight inputs are required to to call this function. Coordinates generated with the mgrid functiions are all in Cartesian coordinates.
  <pre>
  <code>        
-dx = 3.75e-04;         <font color="#03a852"> %  step size in the x direction [m]</font> 
-dy = 3.75e-04;         <font color="#03a852"> %  step size in the y direction [m]</font> 
-dz = 3.75e-04;         <font color="#03a852"> %  step size in the z direction [m]</font> 
-dt = 6.25e-08;         <font color="#03a852"> %  time step size [s]</font> 
+dx = 3.75e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = 3.75e-04;   <font color="#03a852"> % step size in the y direction [m]</font> 
+dz = 3.75e-04;   <font color="#03a852"> % step size in the z direction [m]</font> 
+dt = 6.25e-08;   <font color="#03a852"> % time step size [s]</font> 
 
-x_length = 0.0300;         <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
-y_length = 0.0300;         <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
-z_length = 0.0150;         <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
-t_length = 1.60e-05;       <font color="#03a852"> % total temporal domain size [s]</font> 
+x_length = 0.0300;     <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
+y_length = 0.0300;     <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
+z_length = 0.0150;     <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
+t_length = 1.60e-05;   <font color="#03a852"> % total temporal domain size [s]</font> 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
 </pre>
@@ -42,12 +42,12 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
  In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
  <pre>
 <code>
-p0 = 1.0e6;   <font color="#03a852"> %source pressure magnitude [Pa]</font>   
+p0 = 1.0e6;   <font color="#03a852"> % source pressure magnitude [Pa]</font>   
 TR_focus  = 0.0120;   <font color="#03a852"> % transducer focus length [m]</font>         
 TR_radius = 0.0075;   <font color="#03a852"> % Transducer diameter [m]</font>  
 X = ones(mgrid.num_y,1)*mgrid.x;
 Y = (ones(mgrid.num_x,1)*mgrid.y).';
-<font color="#03a852"> % calculate the delay for each element [m]</font> 
+<font color="#03a852">% calculate the delay for each element [m]</font> 
 delay = sqrt(X.^2 + Y.^2 + TR_focus^2)/medium.c0;    
 delay = delay - min(min(delay));
 </code>
@@ -63,9 +63,9 @@ A four-cycles gaussian-modulated pulse is used as the excitation signal.
 <code>
 num_cycles = 4 ;<font color="#03a852"> % number of cycles +/- over which to define the pulse</font>    
 ts = [-num_cycles/fc:dt:num_cycles/fc].';<font color="#03a852"> % define the pulse length [s]</font>   
-<font color="#03a852"> % allocate space for excitation signal</font> 
+<font color="#03a852">% allocate space for excitation signal</font> 
 source_p = zeros(length(ts), mgrid.num_x, mgrid.num_y);   
-<font color="#03a852"> % assign signals to source element</font>   
+<font color="#03a852">% assign signals to source element</font>   
 for cel1 = 1:mgrid.num_x  
     for cel2 = 1:mgrid.num_y
         source_p(:, cel1, cel2) = sin(2*pi*fc*(ts+delay(cel1, cel2))).*...
@@ -73,7 +73,7 @@ for cel1 = 1:mgrid.num_x
     end
 end
 RHO = sqrt(X.^2+Y.^2);
-source_p(:, RHO>TR_radius) = 0; <font color="#03a852"> %generate a circular transducer</font>  
+source_p(:, RHO>TR_radius) = 0; <font color="#03a852">% generate a circular transducer</font>  
 </code>
 </pre>
 </p>
