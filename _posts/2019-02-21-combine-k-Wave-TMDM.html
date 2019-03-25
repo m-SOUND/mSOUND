@@ -86,12 +86,12 @@ sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
  TMDM is [sensor_positions, time]. If the time step or transverse saptial domain size in the k-Wave is different from TMDM, 
  sensor_data from the k-Wave needs to be resized.
 <pre> <code>
-xlength = kgrid.dx*kgrid.Nx;
-ylength = TR_focus - kgrid.dy*(Ny-20);
-tlength = max(kgrid.t_array); 
+x_length = kgrid.dx*kgrid.Nx;
+y_length = TR_focus - kgrid.dy*(Ny-20);
+t_length = max(kgrid.t_array); 
 dt = 6.2500e-08;  <font color="#03a852"> % a larger time step is applied</font>  
 
-mgrid = set_grid(dt, tlength, dx, xlength, dy, ylength);  
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);  
 <font color="#03a852"> % need to resize the sensor data as a large time step is appled in the TMDM</font>  
 source_p = sensor_data(:, 1:2:end).'; 
 
