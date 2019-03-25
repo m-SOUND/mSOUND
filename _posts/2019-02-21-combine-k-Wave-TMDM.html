@@ -20,12 +20,12 @@ with k-Wave and then continues with the mSOUND.
 <p>
 Define the computational domain in the k-Wave calculation. 
 <pre> <code>        
-dx = 1.8750e-04;   <font color="#03a852"> %  step size in the x direction [m]</font> 
-dy = 1.8750e-04;   <font color="#03a852"> %  step size in the y direction [m]</font> 
-dt = 3.1250e-08;   <font color="#03a852"> %  time step size [s]</font> 
+dx = 1.8750e-04;   <font color="#03a852">%  step size in the x direction [m]</font> 
+dy = 1.8750e-04;   <font color="#03a852">%  step size in the y direction [m]</font> 
+dt = 3.1250e-08;   <font color="#03a852">%  time step size [s]</font> 
 
-Nx = 240;    <font color="#03a852"> % total computatoinal domain size in x direction [grid points]</font> 
-Ny = 40;     <font color="#03a852"> % total computatoinal domain size in y direction [grid points]</font> 
+Nx = 240;    <font color="#03a852">% total computatoinal domain size in x direction [grid points]</font> 
+Ny = 40;     <font color="#03a852">% total computatoinal domain size in y direction [grid points]</font> 
 kgrid = kWaveGrid(Nx, dx, Ny, dy);              
 </code>  </pre>
 </p>
@@ -37,24 +37,24 @@ kgrid = kWaveGrid(Nx, dx, Ny, dy);
  In this example, a curved transducer is defined with k-Wave using the function 
    <a href="http://www.k-wave.org/documentation/makeCircle.php">makeCircle</a>. 
 <pre> <code> 
-TR_radius = 0.0060;  <font color="#03a852"> % transducer radius [m] </font> 
-TR_focus  = 0.0150;  <font color="#03a852"> % transducer focal length [m]</font>       
+TR_radius = 0.0060;  <font color="#03a852">% transducer radius [m] </font> 
+TR_focus  = 0.0150;  <font color="#03a852">% transducer focal length [m]</font>       
 focus  = round(TR_focus/dx);  <font color="#03a852">  % transducer focal length [grid points]</font>   
-cx = round(Nx/2);  <font color="#03a852"> % x coordinate of the tranducer center[grid points] </font>   
-cy = 10 + focus;   <font color="#03a852"> % y coordinate of the tranducer center[grid points] </font>   
+cx = round(Nx/2);  <font color="#03a852">% x coordinate of the tranducer center[grid points] </font>   
+cy = 10 + focus;   <font color="#03a852">% y coordinate of the tranducer center[grid points] </font>   
 
-arc_angle1 = asin(TR_radius/TR_focus);  <font color="#03a852"> % [radians] </font>     
-arc_angle2 = pi*2;                      <font color="#03a852"> % [radians] </font>    
-arc_angle3 = pi*2 - arc_angle1;         <font color="#03a852"> % [radians] </font>    
+arc_angle1 = asin(TR_radius/TR_focus);  <font color="#03a852">% [radians] </font>     
+arc_angle2 = pi*2;                      <font color="#03a852">% [radians] </font>    
+arc_angle3 = pi*2 - arc_angle1;         <font color="#03a852">% [radians] </font>    
 circle1    = makeCircle(Nx, Ny, cx, cy, focus, arc_angle1, false);
 circle2    = makeCircle(Nx, Ny, cx, cy, focus, arc_angle2, false);
 circle3    = makeCircle(Nx, Ny, cx, cy, focus, arc_angle3, false);
 circle     = circle2 - circle3 + circle1;
 
 source.p_mask = zeros(Nx, Ny);
-source.p_mask = circle;  <font color="#03a852"> % define source mask </font>   
+source.p_mask = circle;  <font color="#03a852">% define source mask </font>   
 sensor.mask   = zeros(Nx, Ny); 
-sensor.mask(:, Ny/2+offcenter) = 1;  <font color="#03a852"> % define sensor mask </font>   
+sensor.mask(:, Ny/2+offcenter) = 1;  <font color="#03a852">% define sensor mask </font>   
 </code> </pre>
  </p>
 
@@ -63,16 +63,16 @@ sensor.mask(:, Ny/2+offcenter) = 1;  <font color="#03a852"> % define sensor mask
 <p>
  A four-cycles Gaussian-modulated pulse is used as the excitation signal. 
 <pre> <code>  
-source_mag = 1;  <font color="#03a852"> % [Pa] </font>   
-fc = 1.0e6;      <font color="#03a852"> % [Hz] </font>   
-ts = [-num_cycles/fc:dt:num_cycles/fc]; <font color="#03a852"> % excitation pulse length </font>   
-excit_p = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2); <font color="#03a852"> % excitation pulse</font>     
+source_mag = 1;  <font color="#03a852">% [Pa] </font>   
+fc = 1.0e6;      <font color="#03a852">% [Hz] </font>   
+ts = [-num_cycles/fc:dt:num_cycles/fc]; <font color="#03a852">% excitation pulse length </font>   
+excit_p = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2); <font color="#03a852">% excitation pulse</font>     
 source.p = excit_p*source_mag;
 
 input_args  = {'DisplayMask', source.p_mask, 'DataCast', 'single'};
-<font color="#03a852"> % run the simulation</font>   
+<font color="#03a852">% run the simulation</font>   
 sensor_data = kspaceFirstOrder2D(kgrid, medium, source, sensor, input_args{:});
-<font color="#03a852"> % reshape the output data for further simulation</font>   
+<font color="#03a852">% reshape the output data for further simulation</font>   
 sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
 </code> </pre>
 </p>
@@ -89,13 +89,13 @@ sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
 x_length = kgrid.dx*kgrid.Nx;
 y_length = TR_focus - kgrid.dy*(Ny-20);
 t_length = max(kgrid.t_array); 
-dt = 6.2500e-08;  <font color="#03a852"> % a larger time step is applied</font>  
+dt = 6.2500e-08;  <font color="#03a852">% a larger time step is applied</font>  
 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);  
-<font color="#03a852"> % need to resize the sensor data as a large time step is appled in the TMDM</font>  
+<font color="#03a852">% need to resize the sensor data as a large time step is appled in the TMDM</font>  
 source_p = sensor_data(:, 1:2:end).'; 
 
-<font color="#03a852"> % define medium properties in the TMDM</font>   
+<font color="#03a852">% define medium properties in the TMDM</font>   
 medium.c    = 1500;  <font color="#03a852"> % speed of sound [m/s]</font>   
 medium.rho  = 1000;  <font color="#03a852"> % density [kg/m^3]</font>   
 medium.beta = 0.0;   <font color="#03a852"> % nonlinear coefficient</font>   
@@ -103,7 +103,7 @@ medium.ca   = 0;     <font color="#03a852"> % attenuation coefficient [dB/(MHz^y
 medium.cb   = 2.0;   <font color="#03a852"> % power law exponent</font>   
 medium.c0   = 1500;  <font color="#03a852"> % reference speed of sound [m/s]</font>    
 
-<font color="#03a852"> % define sensor mask in the TMDM</font>   
+<font color="#03a852">% define sensor mask in the TMDM</font>   
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
 sensor_mask(:, end) = 1;
 </code> </pre>
@@ -112,13 +112,13 @@ sensor_mask(:, end) = 1;
 <!---Results--->
 <h6>Results</h6>
 <p>
- Now we finish the simulation with TMDM. The figure below shows the time domain results 
- at the geometrical focus of the transducer and the result generated
+ The figure below shows the time domain results 
+ at the geometrical focus of the transducer. The result generated
 with TMDM is compared with the result directly simulated with k-Wave.
  <pre> <code>
-<font color="#03a852"> % run the simulation with TMDM</font>   
+<font color="#03a852">% run the simulation with TMDM</font>   
 p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
-<font color="#03a852"> % reshape the data from simulation</font>   
+<font color="#03a852">% reshape the data from simulation</font>   
 p_time = reshape(p_time, mgrid.num_t, mgrid.num_x);
 </code>  </pre>
  <img src="/mSOUND/img/combine_kwave.jpg" alt="Time-domain singal recorded at the transducer focus">
