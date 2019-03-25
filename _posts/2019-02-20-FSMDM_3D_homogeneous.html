@@ -24,9 +24,9 @@ This example shows how to simulate the wave propagation in a 3D homogeneous medi
   time step and temporal domain size are set to 0. 
  <pre>
 <code>      
-dx = 1.8750e-04;  <font color="#03a852"> %  step size in the x direction [m]</font> 
-dy = 1.8750e-04;  <font color="#03a852"> %  step size in the y direction [m]</font> 
-dz = 1.8750e-04;  <font color="#03a852"> %  step size in the z direction [m]</font> 
+dx = 1.8750e-04;  <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = 1.8750e-04;  <font color="#03a852"> % step size in the y direction [m]</font> 
+dz = 1.8750e-04;  <font color="#03a852"> % step size in the z direction [m]</font> 
 
 x_length = 0.0300;  <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
 y_length = 0.0300;  <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
@@ -46,7 +46,7 @@ Continuous sine wave is used as the excitation signal.
  <br>
  <pre>
 <code>  
-p0 = 1.0e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
+p0 = 1.0e6;   <font color="#03a852">% pressure magnitude at the source [Pa] </font>  
 source_p = p0*exp(1i*omega_c*delay);  <font color="#03a852"> % define the pulse </font>  
 RHO = sqrt(X.^2+Y.^2);
 source_p(RHO>TR_radius) = 0;  <font color="#03a852"> % filter out the signals outside of the transducer </font>  
