@@ -15,7 +15,7 @@ with k-Wave and then continues with the mSOUND.
 </p>
 
 <!---k-Wave simulation--->
-<h6>Generate the source pressure with k-Wave</h6>
+<h6>Generating the source pressure with k-Wave</h6>
 <hr>
 <p>
 Define the computational domain in the k-Wave calculation. 
@@ -31,7 +31,7 @@ kgrid = kWaveGrid(Nx, dx, Ny, dy);
 </p>
 
 <!---define a curved transducer with k-Wave--->
-<h6>Define a curved transducer with k-Wave</h6>
+<h6>Defining a curved transducer with k-Wave</h6>
 <hr>
 <p>
  In this example, a curved transducer is defined with k-Wave using the function 
@@ -79,7 +79,7 @@ sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
 
 
 <!---implement signal to the TMDM--->
-<h6>Implement signals to the TMDM</h6>
+<h6>Implementing signals to the TMDM</h6>
 <p>
  Pressure recorded at the sensor positions from k-Wave simulation will be used as the source pressure for the TMDM simulation.
  One thing to be notice is that sensor data from k-Wave is in indexed as [time, sensor_positions], while in the 
@@ -95,7 +95,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);
 <font color="#03a852">% need to resize the sensor data as a large time step is appled in the TMDM</font>  
 source_p = sensor_data(:, 1:2:end).'; 
 
-<font color="#03a852">% define medium properties in the TMDM</font>   
+<font color="#03a852">% Defining the medium properties in the TMDM</font>   
 medium.c    = 1500;  <font color="#03a852"> % speed of sound [m/s]</font>   
 medium.rho  = 1000;  <font color="#03a852"> % density [kg/m^3]</font>   
 medium.beta = 0.0;   <font color="#03a852"> % nonlinear coefficient</font>   
