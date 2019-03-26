@@ -11,8 +11,8 @@ title: Simulation in a 2D homogeneous medium using the transient mixed domain me
 <hr>
 </p>
 
-<!---define the structure grid--->
-<h6>Generate the grid structure in the computational domain</h6>
+<!---defining the structure grid--->
+<h6>Generating the grid structure in the computational domain</h6>
 <hr>
 <p>  
  <br>We first need to define the temporal and spatial computational domain in 2D forward simulations 
@@ -33,8 +33,8 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);
 </p>
 
 
-<!---define the phased array transducer--->
-<h6>Define the phased array transducer</h6>
+<!---defining the phased array transducer--->
+<h6>Defining the phased array transducer</h6>
 <hr>
 <p>
 In this example, phased array transducer is used to generate the foucsed ultrasound beam.  
@@ -72,8 +72,8 @@ source_p = source_p.*repmat(TR_mask.', ts_length,1);  <font color="#03a852"> % a
  <img src="/mSOUND/img/Gaussian_pulse.jpg" alt="Guassian modulated pulse">
  </p>
 
-<!---Define the medium--->
-<h6>Define the medium</h6>
+<!---Defining the medium--->
+<h6>Defining the medium properties</h6>
 <hr>
 <p>
 Define the homogeneous medium. When dispersion is not considered, power law exponent is set to be 2.0.
