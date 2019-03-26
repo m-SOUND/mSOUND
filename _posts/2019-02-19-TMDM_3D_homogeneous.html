@@ -17,7 +17,7 @@ title: Simulation in a 3D homogeneous medium using the transient mixed domain me
 <p>
  <br>To define the temporal and spatial computational domain in 3D forward simulations, 
  the funciton <a href="/mSOUND/function.html#set_grid">set_grid</a> is used. For 3D problems,
- eight inputs are required to to call this function. Coordinates generated with the mgrid functiions are all in Cartesian coordinates.
+ eight inputs are required to to call this function. Coordinates generated with the mgrid functions are all in Cartesian coordinates.
  <pre>
  <code>        
 dx = 3.75e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
@@ -25,9 +25,9 @@ dy = 3.75e-04;   <font color="#03a852"> % step size in the y direction [m]</font
 dz = 3.75e-04;   <font color="#03a852"> % step size in the z direction [m]</font> 
 dt = 6.25e-08;   <font color="#03a852"> % time step size [s]</font> 
 
-x_length = 0.0300;     <font color="#03a852"> % total computatoinal domain size in x direction [m]</font> 
-y_length = 0.0300;     <font color="#03a852"> % total computatoinal domain size in y direction [m]</font> 
-z_length = 0.0150;     <font color="#03a852"> % total computatoinal domain size in z direction [m]</font> 
+x_length = 0.0300;     <font color="#03a852"> % total computational domain size in x direction [m]</font> 
+y_length = 0.0300;     <font color="#03a852"> % total computational domain size in y direction [m]</font> 
+z_length = 0.0150;     <font color="#03a852"> % total computational domain size in z direction [m]</font> 
 t_length = 1.60e-05;   <font color="#03a852"> % total temporal domain size [s]</font> 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
