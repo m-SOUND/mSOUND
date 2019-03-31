@@ -125,6 +125,17 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask);
   </tr>
  </table> 
 <br>
+<table>
+  <tr>
+    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>'correction'</td><td>apply phase and amplitude corrections for strong speed of sound contrast</td>
+  </tr>
+ </table> 
+
+
+<br>
 <h3>Outputs</h3> 
 <p>
 Time-domain results recorded at the sensor positions given by sensor_mask.
@@ -159,6 +170,15 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask);
   </tr>
  </table> 
 <br>
+<table>
+  <tr>
+    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>'correction'</td><td>apply phase and amplitude corrections for strong speed of sound contrast</td>
+  </tr>
+ </table> 
+<br>
 <h3>Outputs</h3> 
 <p>
 Time-domain results recorded at the sensor positions given by sensor_mask.
@@ -190,6 +210,15 @@ p = Forward3D(mgrid, medium,source_p, sensor_mask);
   </tr> 
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+  </tr>
+ </table> 
+<br>
+<table>
+  <tr>
+    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>'correction'</td><td>apply phase and amplitude corrections for strong speed of sound contrast</td>
   </tr>
  </table> 
 <br>  
