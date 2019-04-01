@@ -9,7 +9,7 @@ This example provides the demenstration of using the transient mixed domain meth
 in 2D heterogeneous media with strong speed of sound contrast. TMDM is accurate for wave propagation in media with weakly 
 speed of sound heterogeneity. To extend the MDM for modeling wave propagation in 
 strongly heterogeneous media (e.g., skull), phase and amplitude corrections to the MDM are proposed. This example shows how
-to apply the corrections for simulations. Generally, for soft tissue simulations or strong heterogeneous media with small
+to apply the corrections for simulations. Generally, for simulations with soft tissue or strongly heterogeneous media with small
 speed of sound contrast (contrast ratio less than 1.10), it is unnecessary to apply corrections. 
 <hr>
 <hr>
@@ -48,17 +48,17 @@ In this example, speed of sound contrast is 2.0.
 The 2D model used in this case is shown in the figure below. 
  <pre>
  <code>
-p0 = 1.0e6;   <font color="#03a852"> % source pressure magnitude [Pa]</font>  
-fc = 0.7e6;   <font color="#03a852"> % fundamental frequency [Hz]</font>  
-TR_focus  = 0.0643;   <font color="#03a852"> % transducer focus length [m]</font>         
-TR_radius = 0.0214;   <font color="#03a852"> % Transducer diameter [m]</font> 
+p0 = 1.0e6;   <font color="#03a852">% source pressure magnitude [Pa]</font>  
+fc = 0.7e6;   <font color="#03a852">% fundamental frequency [Hz]</font>  
+TR_focus  = 0.0643;   <font color="#03a852">% transducer focus length [m]</font>         
+TR_radius = 0.0214;   <font color="#03a852">% Transducer diameter [m]</font> 
 
-load annulus_model.mat   <font color="#03a852">% load the tissue model data</font>   
-medium.c    = c;        <font color="#03a852">% speed of sound [m/s]</font>      
-medium.rho  = rho;      <font color="#03a852">% density [kg/m^3]</font>             
-medium.beta = beta;     <font color="#03a852">% nonlinear coefficient </font>    
-medium.ca   = ca;       <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = cb;       <font color="#03a852">% power law exponent</font>    
+load 2D_strong_heterogeneous_model.mat  <font color="#03a852">% load the tissue model data</font>   
+medium.c    = c;       <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = rho;     <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = beta;    <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = ca;      <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = cb;      <font color="#03a852">% power law exponent</font>    
 </code>
 </pre>
 <img src="/mSOUND/img/TMDM_2D_strong_heterogeneous_model.jpg" alt="2D_strong_heterogeneous_model">
@@ -67,13 +67,16 @@ medium.cb   = cb;       <font color="#03a852">% power law exponent</font>
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <p>
-Transient pressure fields are calculated with the 2D forward simulation function 
+Transient pressure fields are calculated with the 2D forward simulation function. The figure below shows the (a) time-domain
+ signal and (b) frequency-domain signals recorded at the transducer focus.
  <a href="/mSOUND/function.html#Forward2D">Forward2D</a>.
 <pre><code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
 sensor_mask(100:300, :) = 1;
+<font color="#03a852">% forward simulation with corrections</font>  
 p_total = Forward2D(mgrid, medium, source_p, sensor_mask, 'correction'); 
+
 </code></pre>
 </p>
 <p>
