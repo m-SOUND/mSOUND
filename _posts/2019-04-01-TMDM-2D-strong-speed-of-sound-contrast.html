@@ -15,22 +15,43 @@ speed of sound contrast (contrast ratio less than 1.10), it is unnecessary to ap
 <hr>
 </p>
 
+<!---defining the structure grid--->
+<h6>Generating the grid structure to define the computational domain</h6>
+<hr>
+<p>  
+ <br>We first need to define the temporal and spatial computational domain in 2D forward simulations 
+ with the funciton <a href="/mSOUND/function.html#set_grid">set_grid</a>. For 2D problems,
+ six inputs are required to to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates.
+<pre>
+<code>        
+dx = 5.3571e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = 1.3393e-04;   <font color="#03a852"> % step size in the y direction [m]</font> 
+dt = 1.1905e-07;   <font color="#03a852"> % time step size [s]</font> 
+
+x_length = 0.1671;      <font color="#03a852">% total computational domain size in x direction [m]</font> 
+y_length = 0.0643;      <font color="#03a852">% total computational domain size in y direction [m]</font> 
+t_length = 6.8571e-05;  <font color="#03a852">% total temporal domain size [s]</font> 
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
+</code>   
+</pre>
+</p>
+
+
 <!---Defining the media--->
 <h6>Defining the medium properties</h6>
 <p>
 <br>
-Definition of the computational domain and transducer settings in this are similar to the case 
+Transducer settings in this case is similar to the case 
 <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation in a 
 2D homogeneous medium using the transient mixed domain method</a>.
-In this example, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
-all spatially varying functions. One thing to be careful is that medium.c0 is defined as the minimum value in the medium.c.
-The 2D tissue model used in this case is shown in the figure below. 
+In this example, speed of sound contrast is 2.0.
+The 2D model used in this case is shown in the figure below. 
  <pre>
  <code>
 p0 = 1;   <font color="#03a852"> % source pressure magnitude [Pa]</font>  
 fc = 0.7e6;   <font color="#03a852"> % fundamental frequency [Hz]</font>  
-TR_focus  = 0.0207;   <font color="#03a852"> % transducer focus length [m]</font>         
-TR_radius = 0.0111;   <font color="#03a852"> % Transducer diameter [m]</font> 
+TR_focus  = 0.0643;   <font color="#03a852"> % transducer focus length [m]</font>         
+TR_radius = 0.0214;   <font color="#03a852"> % Transducer diameter [m]</font> 
 
 load annulus_model.mat   <font color="#03a852">% load the tissue model data</font>   
 medium.c    = c;        <font color="#03a852">% speed of sound [m/s]</font>      
