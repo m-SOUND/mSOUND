@@ -5,10 +5,10 @@ title: Implementation of k-Wave for arbitrary shape transducer
 <br>
 <hr>
 <hr>
-This example shows how to implement the <a href="http://www.k-wave.org/">k-Wave</a> for simulations with curved transducer.
-Currently, only phased array transducer can be directly simulated in the mSOUND to generate focused beams. If other transducer settings
-are required, people can first use k-Wave to propagate the wave field for a small distance and record the data at a plane. 
-Then implement the recorded data at that plane to the mSOUND as source pressure. In this example, a curved transducer is first modeled
+This example shows how to implement the <a href="http://www.k-wave.org/">k-Wave</a> for simulations with curved transducers.
+Currently, only phased array transducers can be directly simulated in the mSOUND to generate focused beams. If other transducer settings
+are required, people can first use k-Wave to propagate the wave field for a small distance and record the data at a plane, 
+then implement the recorded data at that plane to the mSOUND as source pressure. In this example, a curved transducer is first modeled
 with k-Wave and then continues with the mSOUND.
 <hr>
 <hr>
@@ -82,7 +82,7 @@ sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
 <h6>Implementing signals to the TMDM</h6>
 <p>
  Pressure recorded at the sensor positions from k-Wave simulation will be used as the source pressure for the TMDM simulation.
- One thing to be notice is that sensor data from k-Wave is in indexed as [time, sensor_positions], while in the 
+ One thing to take notice of is that sensor data from k-Wave is indexed as [time, sensor_positions], while in the 
  TMDM is [sensor_positions, time]. If the time step or transverse saptial domain size in the k-Wave is different from TMDM, 
  sensor_data from the k-Wave needs to be resized.
 <pre> <code>
