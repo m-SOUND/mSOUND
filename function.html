@@ -199,8 +199,8 @@ Simulation of the 3D wave propagation which is based on the transient mixed doma
  for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
  (contrast ratio less than 1.10), it is unnecessary to apply corrections.                
 <pre>  <code>
-p = Forward3D(mgrid, medium,source_p, sensor_mask);
-p = Forward3D(mgrid, medium,source_p, sensor_mask, ...);
+p = Forward3D(mgrid, medium, source_p, sensor_mask);
+p = Forward3D(mgrid, medium, source_p, sensor_mask, ...);
 </code>  </pre>
 </p>
 <h3>Inputs</h3> 
@@ -344,8 +344,8 @@ Simulation of the 3D wave propagation at the fundamental frequency which
  for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
  (contrast ratio less than 1.10), it is unnecessary to apply corrections.       
 <pre>  <code>
-p = Forward3D_fund(mgrid, medium,  source_p, omega_c);  
-p = Forward3D_fund(mgrid, medium,  source_p, omega_c, ...);  
+p = Forward3D_fund(mgrid, medium, source_p, omega_c);  
+p = Forward3D_fund(mgrid, medium, source_p, omega_c, ...);  
 </code>  </pre>
 </p>
 <h3>Inputs</h3> 
