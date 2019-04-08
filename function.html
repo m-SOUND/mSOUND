@@ -126,6 +126,9 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, ...);
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
+  <tr>
+   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+  </tr> 
  </table> 
 <br>
 <table>
@@ -174,6 +177,9 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, ...);
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
+   <tr>
+   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+  </tr> 
  </table> 
 <br>
 <table>
@@ -220,6 +226,9 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, ...);
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
+   <tr>
+   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+  </tr> 
  </table> 
 <br>
 <table>
@@ -267,6 +276,9 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, ...);
    <tr>
     <td>omega_c </td><td>fundamental frequency </td>
   </tr>
+   <tr>
+   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+  </tr> 
  </table> 
 <br>
 <table>
@@ -275,12 +287,6 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, ...);
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong speed of sound contrast</td>
-  </tr>
-   <tr>
-    <td>'reflection1'</td><td>apply the first-order reflections</td>
-  </tr>
-    <tr>
-    <td>'reflection12'</td><td>apply the first-order and second-order reflections</td>
   </tr>
  </table> 
 
@@ -371,6 +377,9 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, ...);
    <tr>
     <td>omega_c </td><td>fundamental frequency </td>
   </tr>
+   <tr>
+   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+  </tr> 
  </table> 
 <br>
 <table>
@@ -379,12 +388,6 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, ...);
 </tr>
 <tr>
 <td>'correction'</td><td>apply phase and amplitude corrections for strong speed of sound contrast</td>
-</tr>
-<tr>
-<td>'reflection1'</td><td>apply the first-order reflections</td>
-</tr>
-<tr>
-<td>'reflection12'</td><td>apply the first-order and second-order reflections</td>
 </tr>
 </table> 
 <br>  
@@ -427,6 +430,9 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
    <tr>
     <td>omega_c </td><td>fundamental frequency </td>
   </tr>
+   <tr>
+   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+  </tr> 
  </table> 
 <br>
 <table>
