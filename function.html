@@ -127,7 +127,7 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
   <tr>
-   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+   <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
   </tr> 
  </table> 
 <br>
@@ -178,7 +178,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
    <tr>
-   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+   <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
   </tr> 
  </table> 
 <br>
@@ -227,7 +227,7 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
    <tr>
-   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+   <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
   </tr> 
  </table> 
 <br>
@@ -277,7 +277,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
     <td>omega_c </td><td>fundamental frequency </td>
   </tr>
    <tr>
-   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+   <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
   </tr> 
  </table> 
 <br>
@@ -378,7 +378,7 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
     <td>omega_c </td><td>fundamental frequency </td>
   </tr>
    <tr>
-   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
+   <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
   </tr> 
  </table> 
 <br>
@@ -430,9 +430,6 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
    <tr>
     <td>omega_c </td><td>fundamental frequency </td>
   </tr>
-   <tr>
-   <td>reflection_order</td><td>the order of reflections included to the simulation</td>
-  </tr> 
  </table> 
 <br>
 <table>
