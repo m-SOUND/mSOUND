@@ -100,8 +100,8 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 
 <hr>
 <p>
-Simulation of the 1D wave propagation which is based on the transient mixed domain method. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+Forward1D is a 1D forward simulation function based on the transient mixed domain method and will generate transient-domain results.
+ Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.
 <pre> <code>
 p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order);  
@@ -152,8 +152,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <h3 style="color: #c64949;">Forward2D  </h3>   
 <hr>
 <p>
-Simulation of the 2D wave propagation which is based on the transient mixed domain method. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+Forward2D is a 2D forward simulation function based on the transient mixed domain method and will generate transient-domain results.
+ Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.
 <pre>  <code>
 p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order); 
@@ -201,8 +201,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <h3 style="color: #c64949;">Forward3D</h3>     
 <hr>
 <p>
-Simulation of the 3D wave propagation which is based on the transient mixed domain method. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+Forward3D is a 3D forward simulation function based on the transient mixed domain method and will generate transient-domain results. 
+ Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.
 <pre>  <code>
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order);
@@ -250,8 +250,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <h3 style="color: #c64949;">Forward2D_fund</h3>     
 <hr>
 <p>
-Simulation of the 2D wave propagation at the fundamental frequency which is 
-based on the frequency-specific mixed domain method. Generally, 
+Forward2D_fund is a 2D forward simulation function based on the frequency-specific mixed domain method and
+ will generate spatially distributed pressure at the center frequency. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.           
 <pre>  <code>
@@ -274,7 +274,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
     <td>source_p</td><td>excitation signal [Pa]</td>
   </tr>
    <tr>
-    <td>omega_c </td><td>fundamental frequency </td>
+    <td>omega_c </td><td>transducer center frequency </td>
   </tr>
    <tr>
    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
@@ -293,7 +293,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 <br>  
 <h3>Outputs</h3> 
 <p>
-Pressure distribution throughout the spatial domain at the fundamental frequency.      
+Pressure distribution throughout the spatial domain at the center frequency.      
 </pr>
 
 
@@ -302,9 +302,11 @@ Pressure distribution throughout the spatial domain at the fundamental frequency
 <h3 style="color: #c64949;">Forward2D_sec</h3>    
 <hr>
 <p>
-Simulation of the 2D wave propagation at the second-harmonic frequency which is based on the frequency-specific mixed domain method. 
- To generate the second harmonic pressure field, we usually need to 
- generate the pressure field at the fundamental pressure first with the function <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>. 
+ Forward2D_sec is a 2D forward simulation function based on the frequency-specific mixed domain method and
+ will generate spatially distributed pressure at the second harmonic frequency. 
+ To generate the second harmonic pressure field, 
+ people must run the function <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a> first to 
+obtain the presure at the center frequency P_fundamental. 
  When calculating the second harmonic pressure, density heterogeneity is not considered. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.
@@ -325,10 +327,10 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);
     <td>medium </td><td>input structure including the media properties</td>
   </tr>
   <tr>
-    <td>P_fundamental</td><td>pressure at the fundamental frequency  [Pa]</td>
+    <td>P_fundamental</td><td>pressure at the center frequency  [Pa]</td>
   </tr>
    <tr>
-    <td>omega_c </td><td>fundamental frequency </td>
+    <td>omega_c </td><td>center frequency </td>
   </tr>
  </table> 
 <br>
@@ -351,8 +353,8 @@ Pressure distribution throughout the spatial domain at the second-harmonic frequ
 <h3 style="color: #c64949;">Forward3D_fund</h3>   
 <hr>
 <p>
-Simulation of the 3D wave propagation at the fundamental frequency which
- is based on the frequency-specific mixed domain method. Generally, 
+Forward3D_fund is a 3D forward simulation function based on the frequency-specific mixed domain method and
+ will generate spatially distributed pressure at the center frequency. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.      
 <pre>  <code>
@@ -375,7 +377,7 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
     <td>source_p</td><td>excitation signal [Pa]</td>
   </tr>
    <tr>
-    <td>omega_c </td><td>fundamental frequency </td>
+    <td>omega_c </td><td>center frequency </td>
   </tr>
    <tr>
    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
@@ -394,7 +396,7 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 <h3>Outputs</h3> 
 
 <p>
-Pressure distribution throughout the spatial domain at the fundamental frequency.    
+Pressure distribution throughout the spatial domain at the center frequency.    
 </pr>
 
 
@@ -402,9 +404,11 @@ Pressure distribution throughout the spatial domain at the fundamental frequency
 <h3 style="color: #c64949;">Forward3D_sec</h3>   
 <hr>
 <p>
-Simulation of the 3D wave propagation at the second-harmonic frequency which is based on the frequency-specific mixed domain method.
-To generate the second harmonic pressure field, we usually need to generate the pressure field at the fundamental frequency first 
- with the function <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>.
+ Forward3D_sec is a 3D forward simulation function based on the frequency-specific mixed domain method and
+ will generate spatially distributed pressure at the second harmonic frequency. 
+ To generate the second harmonic pressure field, 
+ people must run the function <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a> first to 
+obtain the presure at the center frequency P_fundamental. 
  When calculating the second harmonic pressure, density heterogeneity is not considered. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.   
@@ -425,10 +429,10 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
     <td>medium </td><td>input structure including the media properties</td>
   </tr>
   <tr>
-    <td>P_fundamental</td><td>pressure at the fundamental frequency  [Pa]</td>
+    <td>P_fundamental</td><td>pressure at the center frequency  [Pa]</td>
   </tr>
    <tr>
-    <td>omega_c </td><td>fundamental frequency </td>
+    <td>omega_c </td><td>center frequency </td>
   </tr>
  </table> 
 <br>
