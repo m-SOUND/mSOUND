@@ -101,8 +101,8 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 <hr>
 <p>
 Simulation of the 1D wave propagation which is based on the transient mixed domain method. Generally, 
- for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
- (contrast ratio less than 1.10), it is unnecessary to apply corrections.  
+ for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+ it is unnecessary to apply corrections.
 <pre> <code>
 p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order);  
 p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);  
@@ -153,8 +153,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <hr>
 <p>
 Simulation of the 2D wave propagation which is based on the transient mixed domain method. Generally, 
- for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
- (contrast ratio less than 1.10), it is unnecessary to apply corrections.         
+ for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+ it is unnecessary to apply corrections.
 <pre>  <code>
 p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order); 
 p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...); 
@@ -202,8 +202,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <hr>
 <p>
 Simulation of the 3D wave propagation which is based on the transient mixed domain method. Generally, 
- for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
- (contrast ratio less than 1.10), it is unnecessary to apply corrections.                
+ for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+ it is unnecessary to apply corrections.
 <pre>  <code>
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order);
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
@@ -252,8 +252,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <p>
 Simulation of the 2D wave propagation at the fundamental frequency which is 
 based on the frequency-specific mixed domain method. Generally, 
- for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
- (contrast ratio less than 1.10), it is unnecessary to apply corrections.                
+ for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+ it is unnecessary to apply corrections.           
 <pre>  <code>
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -305,9 +305,9 @@ Pressure distribution throughout the spatial domain at the fundamental frequency
 Simulation of the 2D wave propagation at the second-harmonic frequency which is based on the frequency-specific mixed domain method. 
  To generate the second harmonic pressure field, we usually need to 
  generate the pressure field at the fundamental pressure first with the function <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>. 
- When calculate the second harmonic pressure, density heterogeneity is not considered. 
- Generally, for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
- (contrast ratio less than 1.10), it is unnecessary to apply corrections.        
+ When calculate the second harmonic pressure, density heterogeneity is not considered. Generally, 
+ for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+ it is unnecessary to apply corrections.
 <pre>  <code>
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);  
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);  
@@ -353,8 +353,8 @@ Pressure distribution throughout the spatial domain at the second-harmonic frequ
 <p>
 Simulation of the 3D wave propagation at the fundamental frequency which
  is based on the frequency-specific mixed domain method. Generally, 
- for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
- (contrast ratio less than 1.10), it is unnecessary to apply corrections.       
+ for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+ it is unnecessary to apply corrections.      
 <pre>  <code>
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -405,9 +405,9 @@ Pressure distribution throughout the spatial domain at the fundamental frequency
 Simulation of the 3D wave propagation at the second-harmonic frequency which is based on the frequency-specific mixed domain method.
 To generate the second harmonic pressure field, we usually need to generate the pressure field at the fundamental frequency first 
  with the function <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>.
- When calculate the second harmonic pressure, density heterogeneity is not considered. 
- Generally, for simulations with soft tissue or strong heterogeneous media with small speed of sound contrast 
- (contrast ratio less than 1.10), it is unnecessary to apply corrections.      
+ When calculate the second harmonic pressure, density heterogeneity is not considered. Generally, 
+ for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+ it is unnecessary to apply corrections.   
 <pre>  <code>
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);   
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);   
