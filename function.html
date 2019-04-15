@@ -11,7 +11,7 @@ layout: default
 <h3 style="color: #c64949;"> set_grid </h3>         
 <hr>   
 <p>
-<span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">set_grid</span> 
+<span style="color: lighten($text-color, 10%);font-size: 14px;">set_grid</span> 
  is the grid class used across the mSOUND Toolbox and it can generate a structure containing the Cartesian grid coordinates, 	
 evenly spaced time array and wavenumber matrices used within the simulation in mSOUND.
 
@@ -101,7 +101,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 
 <hr>
 <p>
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">Forward1D</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">Forward1D</span> 
  is a 1D forward simulation function based on the transient mixed domain method and it will generate transient-domain results.
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.
@@ -157,7 +157,7 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <h3 style="color: #c64949;">Forward2D  </h3>   
 <hr>
 <p>
-<span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">Forward2D</span> 
+<span style="color: lighten($text-color, 10%);font-size: 14px;">Forward2D</span> 
  is a 2D forward simulation function based on the transient mixed domain method and it will generate transient-domain results.
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
@@ -165,8 +165,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> and
  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
  must be provided. Setting up a larger 
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> 
- or smaller <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_gamma</span> 
+ or smaller <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_alpha</span> 
  means more energy will be absorbed.
  
 <pre>  <code>
@@ -218,7 +218,7 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <h3 style="color: #c64949;">Forward3D</h3>     
 <hr>
 <p>
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">Forward3D</span>
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">Forward3D</span>
  is a 3D forward simulation function based on the transient mixed domain method and it will generate transient-domain results. 
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
@@ -226,8 +226,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> and
  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
  must be provided. Setting up a larger 
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> 
- or smaller<span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_gamma</span> 
+ or smaller <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_alpha</span> 
  means more energy will be absorbed.
  
 <pre>  <code>
@@ -279,7 +279,7 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <h3 style="color: #c64949;">Forward2D_fund</h3>     
 <hr>
 <p>
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">Forward2D_fund</span>
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">Forward2D_fund</span>
  is a 2D forward simulation function based on the frequency-specific mixed domain method and it
  will generate spatially distributed pressure at the center frequency. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
@@ -288,8 +288,8 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> and
  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
  must be provided. Setting up a larger 
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> 
- or smaller <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_gamma</span> 
+ or smaller <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_alpha</span> 
  means more energy will be absorbed.       
 <pre>  <code>
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
@@ -342,7 +342,7 @@ Pressure distribution throughout the spatial domain at the center frequency.
 <h3 style="color: #c64949;">Forward2D_sec</h3>    
 <hr>
 <p>
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">Forward2D_sec</span>
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">Forward2D_sec</span>
 is a 2D forward simulation function based on the frequency-specific mixed domain method and it
  will generate spatially distributed pressure at the second harmonic frequency. 
  To generate the second harmonic pressure field, 
@@ -355,8 +355,8 @@ obtain the presure at the center frequency P_fundamental.
  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> and
  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
  must be provided. Setting up a larger 
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> 
- or smaller<span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_gamma</span> 
+ or smaller <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);  
@@ -404,17 +404,17 @@ Pressure distribution throughout the spatial domain at the second-harmonic frequ
 <h3 style="color: #c64949;">Forward3D_fund</h3>   
 <hr>
 <p>
-  <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">Forward3D_fund</span>
+  <span style="color: lighten($text-color, 10%);font-size: 14px;">Forward3D_fund</span>
 is a 3D forward simulation function based on the frequency-specific mixed domain method and it
  will generate spatially distributed pressure at the center frequency. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> and
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_gamma</span> and
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_alpha</span> 
  must be provided. Setting up a larger 
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> 
- or smaller<span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_gamma</span> 
+ or smaller <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_alpha</span> 
  means more energy will be absorbed.   
 <pre>  <code>
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
@@ -466,7 +466,7 @@ Pressure distribution throughout the spatial domain at the center frequency.
 <h3 style="color: #c64949;">Forward3D_sec</h3>   
 <hr>
 <p>
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">Forward3D_sec</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">Forward3D_sec</span> 
  is a 3D forward simulation function based on the frequency-specific mixed domain method and it
  will generate spatially distributed pressure at the second harmonic frequency. 
  To generate the second harmonic pressure field, 
@@ -476,11 +476,11 @@ obtain the presure at the center frequency P_fundamental.
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> and
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_gamma</span> and
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_alpha</span> 
  must be provided. Setting up a larger 
- <span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_gamma</span> 
- or smaller<span style="color: lighten($text-color, 10%);font-size: 16px; font-weight: bold;">medium.absorp_alpha</span> 
+ <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_gamma</span> 
+ or smaller <span style="color: lighten($text-color, 10%);font-size: 14px;">medium.absorp_alpha</span> 
  means more energy will be absorbed. 
 <pre>  <code>
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);   
