@@ -133,10 +133,13 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
 <br>
 <table>
   <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+   <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
   </tr>
   <tr>
-    <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+   <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+  </tr>
+  <tr>
+  <td>'absorption'</td><td>apply absorption layer</td>
   </tr>
  </table> 
 
@@ -189,6 +192,9 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
   </tr>
+   <tr>
+  <td>'absorption'</td><td>apply absorption layer</td>
+  </tr>
  </table> 
 <br>
 <h3>Outputs</h3> 
@@ -237,6 +243,9 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+  </tr>
+   <tr>
+  <td>'absorption'</td><td>apply absorption layer</td>
   </tr>
  </table> 
 <br>  
@@ -287,6 +296,9 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+  </tr>
+   <tr>
+  <td>'absorption'</td><td>apply absorption layer</td>
   </tr>
  </table> 
 
@@ -341,6 +353,9 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
   </tr>
+   <tr>
+  <td>'absorption'</td><td>apply absorption layer</td>
+  </tr>
  </table> 
 <br>  
 <h3>Outputs</h3> 
@@ -391,6 +406,9 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 <tr>
 <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
 </tr>
+   <tr>
+  <td>'absorption'</td><td>apply absorption layer</td>
+  </tr>
 </table> 
 <br>  
 <h3>Outputs</h3> 
@@ -442,6 +460,9 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+  </tr>
+   <tr>
+  <td>'absorption'</td><td>apply absorption layer</td>
   </tr>
  </table> 
 <br>  
