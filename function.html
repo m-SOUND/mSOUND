@@ -157,7 +157,11 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <p>
 Forward2D is a 2D forward simulation function based on the transient mixed domain method and it will generate transient-domain results.
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections.
+ it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
+ absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
+ medium.absorp_gamma and medium.absorp_alpha must be provided. Setting up a larger medium.absorp_gamma
+ or smaller medium.absorp_alpha means more energy will be absorbed.
+ 
 <pre>  <code>
 p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order); 
 p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...); 
@@ -209,7 +213,10 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 <p>
 Forward3D is a 3D forward simulation function based on the transient mixed domain method and it will generate transient-domain results. 
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections.
+ it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
+ absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
+ medium.absorp_gamma and medium.absorp_alpha must be provided. Setting up a larger medium.absorp_gamma
+ or smaller medium.absorp_alpha means more energy will be absorbed.
 <pre>  <code>
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order);
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
@@ -262,7 +269,10 @@ Time-domain results recorded at the sensor positions given by sensor_mask.
 Forward2D_fund is a 2D forward simulation function based on the frequency-specific mixed domain method and it
  will generate spatially distributed pressure at the center frequency. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections.           
+ it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
+ absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
+ medium.absorp_gamma and medium.absorp_alpha must be provided. Setting up a larger medium.absorp_gamma
+ or smaller medium.absorp_alpha means more energy will be absorbed.           
 <pre>  <code>
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -321,7 +331,10 @@ Pressure distribution throughout the spatial domain at the center frequency.
 obtain the presure at the center frequency P_fundamental. 
  When calculating the second harmonic pressure, density heterogeneity is not considered. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections.
+ it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
+ absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
+ medium.absorp_gamma and medium.absorp_alpha must be provided. Setting up a larger medium.absorp_gamma
+ or smaller medium.absorp_alpha means more energy will be absorbed.
 <pre>  <code>
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);  
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);  
@@ -371,7 +384,10 @@ Pressure distribution throughout the spatial domain at the second-harmonic frequ
 Forward3D_fund is a 3D forward simulation function based on the frequency-specific mixed domain method and it
  will generate spatially distributed pressure at the center frequency. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections.      
+ it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
+ absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
+ medium.absorp_gamma and medium.absorp_alpha must be provided. Setting up a larger medium.absorp_gamma
+ or smaller medium.absorp_alpha means more energy will be absorbed.     
 <pre>  <code>
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -429,7 +445,10 @@ Pressure distribution throughout the spatial domain at the center frequency.
 obtain the presure at the center frequency P_fundamental. 
  When calculating the second harmonic pressure, density heterogeneity is not considered. Generally, 
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections.   
+ it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
+ absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
+ medium.absorp_gamma and medium.absorp_alpha must be provided. Setting up a larger medium.absorp_gamma
+ or smaller medium.absorp_alpha means more energy will be absorbed.   
 <pre>  <code>
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);   
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);   
