@@ -58,8 +58,7 @@ delay = delay - min(delay);
 A four-cycles Gaussian-modulated pulse is used for the excitation signal. The pulse is illustrated in the figure below.  
 <pre>
 <code>
-num_cycles = 4;  <font color="#03a852"> % number of cycles over which to define the pulse</font>  
-ts = [-num_cycles/fc:dt:num_cycles/fc].';   <font color="#03a852"> % define the pulse length [s]</font>  
+ts = [-4/fc:dt:4/fc].';  <font color="#03a852"> % define the pulse length [s]</font>  
 delay = repmat(delay, length(ts),1);    
 ts = repmat(ts, 1,mgrid.num_x);  
 
