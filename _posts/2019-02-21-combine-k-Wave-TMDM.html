@@ -86,10 +86,11 @@ sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
  TMDM is [sensor_positions, time]. If the time step or transverse saptial domain size in the k-Wave is different from TMDM, 
  sensor_data from the k-Wave needs to be resized.
 <pre> <code>
+<font color="#03a852">% defining the computational domain in TMDM</font>  
 x_length = kgrid.dx*kgrid.Nx;
 y_length = TR_focus - kgrid.dy*(Ny-20);
 t_length = max(kgrid.t_array); 
-dt = 6.2500e-08;  <font color="#03a852">% a larger time step is applied in TMDM</font>  
+dt = 6.2500e-08;  <font color="#03a852">% time step in TMDM [s]</font>  
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);  
 
 <font color="#03a852">% resize the sensor data as a larger time step is applied in the TMDM</font>  
@@ -102,11 +103,8 @@ medium.beta = 0.0;   <font color="#03a852"> % nonlinear coefficient</font>
 medium.ca   = 0;     <font color="#03a852"> % attenuation coefficient [dB/(MHz^y cm)]</font>      
 medium.cb   = 2.0;   <font color="#03a852"> % power law exponent</font>   
 medium.c0   = 1500;  <font color="#03a852"> % reference speed of sound [m/s]</font>    
-
-<font color="#03a852">% define sensor mask in the TMDM</font>   
-sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
-sensor_mask(:, end) = 1;
-</code> </pre>
+</code> 
+</pre>
 </p>
 
 <!---simulation and results--->
@@ -116,11 +114,14 @@ sensor_mask(:, end) = 1;
  at the geometrical focus of the transducer. The result generated
 with TMDM is compared with the result directly simulated with k-Wave.
  <pre> <code>
-<font color="#03a852">% run the simulation with TMDM</font>   
+ <font color="#03a852">% define sensor mask in the TMDM</font>   
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
+sensor_mask(:, end) = 1;
+
+<font color="#03a852">%2D forward simulation with TMDM</font>   
 p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
-<font color="#03a852">% reshape the data from simulation</font>   
-p_time = reshape(p_time, mgrid.num_t, mgrid.num_x);
-</code>  </pre>
+</code>  
+</pre>
  <img src="/mSOUND/img/combine_kwave.jpg" alt="Time-domain singal recorded at the transducer focus">
 
 </p>
