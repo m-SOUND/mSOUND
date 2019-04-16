@@ -33,7 +33,8 @@ medium.c    = c;        <font color="#03a852">% speed of sound [m/s]</font>
 medium.rho  = rho;      <font color="#03a852">% density [kg/m^3]</font>             
 medium.beta = beta;     <font color="#03a852">% nonlinear coefficient </font>    
 medium.ca   = ca;       <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = cb;       <font color="#03a852">% power law exponent</font>    
+medium.cb   = cb;       <font color="#03a852">% power law exponent</font> 
+medium.c0 = min(min(c));  <font color="#03a852">% reference speed of sound [m/s]</font> 
 </code>
 </pre>
 <img src="/mSOUND/img/tissue_model.jpg" alt="2D tissue model">
