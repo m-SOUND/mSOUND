@@ -57,7 +57,8 @@ Defining the homogeneous medium properties.
 medium.c    = 1500*ones(mgrid.num_x, mgrid.num_y+1); <font color="#03a852">% speed of sound [m/s]</font>      
 medium.rho  = 1000*ones(mgrid.num_x, mgrid.num_y+1); <font color="#03a852">% density [kg/m^3]</font>             
 medium.beta = 3.6*ones(mgrid.num_x, mgrid.num_y+1);  <font color="#03a852">% nonlinear coefficient </font>    
-medium.ca   = zeros(mgrid.num_x, mgrid.num_y+1);     <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+<font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.ca   = zeros(mgrid.num_x, mgrid.num_y+1);     
 medium.cb   = 2.0*ones(mgrid.num_x, mgrid.num_y+1);  <font color="#03a852">% power law exponent</font>   
 
 medium.absorb_gamma = 0.5;  <font color="#03a852">% constant for absorption layer</font> 
