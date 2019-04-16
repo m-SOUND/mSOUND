@@ -60,8 +60,7 @@ A four-cycles Gaussian-modulated pulse is used for the excitation signal. The pu
 <code>
 num_cycles = 4;  <font color="#03a852"> % number of cycles over which to define the pulse</font>  
 ts = [-num_cycles/fc:dt:num_cycles/fc].';   <font color="#03a852"> % define the pulse length [s]</font>  
-ts_length = length(ts);
-delay = repmat(delay, ts_length,1);    
+delay = repmat(delay, length(ts),1);    
 ts = repmat(ts, 1,mgrid.num_x);  
 
 <font color="#03a852">% define the excitation pulse </font>  
