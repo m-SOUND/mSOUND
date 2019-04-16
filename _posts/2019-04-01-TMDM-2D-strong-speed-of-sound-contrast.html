@@ -67,8 +67,9 @@ medium.cb   = cb;     <font color="#03a852">% power law exponent</font>
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <p>
-Transient pressure fields are calculated with the 2D forward simulation function. The figure below shows the (a) time-domain
- signal and (b) frequency-domain signals recorded at the transducer focus.
+Transient pressure fields are calculated with the 2D forward simulation function. Correction is applied in this case because of the
+ strong speed of sound and density contrast. Fourth-order reflections are also included in the simulation.
+ The figure below shows the (a) time-domain signal and (b) frequency-domain signals recorded at the transducer focus.
 <pre><code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
