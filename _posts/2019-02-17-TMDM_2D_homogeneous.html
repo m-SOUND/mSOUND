@@ -96,9 +96,14 @@ Transient pressure is calculated with the 2D forward simulation function <a href
 Time domain result recorded at the transducer focal point and spatially distributed fundamental pressure are shown below.
 <pre>
 <code>
+<font color="#03a852">% define where the pressure will be recorded</font>  
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
-sensor_mask(30:90,:) = 1;  <font color="#03a852">% define where the pressure will be recorded</font>  
-reflection_order = 0;  <font color="#03a852">% no reflection is included</font>  
+sensor_mask(30:90,:) = 1;  
+
+<font color="#03a852">% no reflection is included</font>  
+reflection_order = 0;  
+
+<font color="#03a852">% 2D forward simulation</font>  
 p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order); 
 </code>
 </pre>
