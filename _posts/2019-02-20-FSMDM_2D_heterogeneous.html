@@ -18,7 +18,7 @@ title: Simulation in the 2D heterogeneous media using the frequency-specific mix
 <p>
  Details of defining the computational domain and the phased-array transducer are shown in the case
 <a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
- Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a>.   
+ Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a>.  
 In this heterogeneous media, density, speed of sound, nonlinear coefficient and attenuation coefficients are all
   spatially varying functions. In this example, media properties are the same as that defined in 
   <a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
@@ -39,6 +39,9 @@ and the pressure at the second-harmonic frequency is then calculated with the fu
 <code>
 <font color="#03a852">% the maximum order of reflection included in the simulation </font>   
 reflection_order = 2;
+
+medium.absorb_gamma = 0.5;  <font color="#03a852">% constant for absorption layer</font> 
+medium.absorb_alpha = 0.1;  <font color="#03a852">% decay factor for absorption layer</font> 
 
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
 P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac,...
