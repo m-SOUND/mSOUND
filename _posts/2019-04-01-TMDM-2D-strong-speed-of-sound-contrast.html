@@ -54,11 +54,11 @@ TR_focus  = 0.0643;   <font color="#03a852">% transducer focus length [m]</font>
 TR_radius = 0.0214;   <font color="#03a852">% Transducer diameter [m]</font> 
 
 load 2D_strongly_heterogeneous_model.mat  <font color="#03a852">% load the tissue model data</font>   
-medium.c    = c;       <font color="#03a852">% speed of sound [m/s]</font>      
-medium.rho  = rho;     <font color="#03a852">% density [kg/m^3]</font>             
-medium.beta = beta;    <font color="#03a852">% nonlinear coefficient </font>    
-medium.ca   = ca;      <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = cb;      <font color="#03a852">% power law exponent</font>    
+medium.c    = c;      <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = rho;    <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = beta;   <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = ca;     <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = cb;     <font color="#03a852">% power law exponent</font>    
 </code>
 </pre>
 <img src="/mSOUND/img/TMDM_2D_strong_heterogeneous_model.jpg" alt="2D_strong_heterogeneous_model">
@@ -73,8 +73,12 @@ Transient pressure fields are calculated with the 2D forward simulation function
 <font color="#03a852">% define where the pressure will be recorded</font>  
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
 sensor_mask(100:300, :) = 1;
-<font color="#03a852">% forward simulation with corrections</font>  
-p_total = Forward2D(mgrid, medium, source_p, sensor_mask, 'correction'); 
+
+% the maximum order of reflection included in the simulation
+reflection_order = 4; 
+
+<font color="#03a852">% 2D forward simulation</font>  
+p_total = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_correction, 'correction'); 
 
 </code></pre>
 </p>
