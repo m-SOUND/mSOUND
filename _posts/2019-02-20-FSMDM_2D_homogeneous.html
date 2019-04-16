@@ -28,8 +28,8 @@ This example shows how to simulate the wave propagation in a 2D homogeneous medi
 dx = 3.75e-04;  <font color="#03a852"> % step size in the x direction [m]</font> 
 dy = 3.75e-04;  <font color="#03a852"> % step size in the y direction [m]</font> 
 
-x_length = 0.0600;  <font color="#03a852"> % total computational domain size in x direction [m]</font> 
-y_length = 0.0330;  <font color="#03a852"> % total computational domain size in y direction [m]</font> 
+x_length = 0.0300;  <font color="#03a852"> % total computational domain size in x direction [m]</font> 
+y_length = 0.0240;  <font color="#03a852"> % total computational domain size in y direction [m]</font> 
 mgrid = set_grid(0, 0, dx, x_length, dy, y_length);              
 </code>  
 </pre>
@@ -44,8 +44,8 @@ Continuous sine wave is used as the excitation signal.
 <pre>
 <code>  
 p0 = 1.0e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
-source_p = p0*exp(1i*omega_c*delay); <font color="#03a852"> % define the pulse </font>  
-source_p = source_p.*TR_mask.'; <font color="#03a852"> % apply the transducer mask </font>  
+source_p = p0*exp(1i*omega_c*delay);  <font color="#03a852"> % define the pulse </font>  
+excit_p(abs(mgrid.x)>TR_radius) = 0;  <font color="#03a852"> % apply the transducer mask </font>  
 </code>
 </pre>
  </p>
@@ -54,11 +54,14 @@ source_p = source_p.*TR_mask.'; <font color="#03a852"> % apply the transducer ma
  <p>
 Defining the homogeneous medium properties.
 <pre><code>
-medium.c    = 1500;   <font color="#03a852">% speed of sound [m/s]</font>      
-medium.rho  = 1000;   <font color="#03a852">% density [kg/m^3]</font>             
-medium.beta = 3.6;    <font color="#03a852">% nonlinear coefficient </font>    
-medium.ca   = 0;      <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = 2.0;    <font color="#03a852">% power law exponent</font>    
+medium.c    = 1500;  <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = 1000;  <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = 3.6;   <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = 0;     <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = 2.0;   <font color="#03a852">% power law exponent</font>   
+
+medium.absorb_gamma = 0.5;  <font color="#03a852">% constant for absorption layer</font> 
+medium.absorb_alpha = 0.1;  <font color="#03a852">% decay factor for absorption layer</font> 
  </code></pre>
  </p>
 
@@ -71,9 +74,10 @@ Pressure at the second-harmonic frequency is calculated with the function <a hre
  <pre>
 <code>
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-p_fundamental = Forward2D_fund(mgrid, medium, source_p); 
+P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac, 0, 'absorption');
+
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-p_second = Forward2D_sec(mgrid, medium, p_fundamental, omega_c); 
+P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'absorption');
 </code>
 </pre>
 <img src="/mSOUND/img/FSMDM_homo_2D.jpg" alt="fundamental and the second-harmonic pressure field generated with the phased array">
