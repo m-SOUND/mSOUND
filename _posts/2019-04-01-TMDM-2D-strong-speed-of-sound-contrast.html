@@ -79,7 +79,8 @@ sensor_mask(100:300, :) = 1;
 reflection_order = 4; 
 
 <font color="#03a852">% 2D forward simulation</font>  
-p_total = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_correction, 'correction'); 
+p_total = Forward2D(mgrid, medium, source_p, sensor_mask,...
+          reflection_correction, 'correction'); 
 
 </code></pre>
 </p>
