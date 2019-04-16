@@ -97,8 +97,9 @@ Time domain result recorded at the transducer focal point and spatially distribu
 <pre>
 <code>
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
-sensor_mask(30:90,:) = 1;  <font color="#03a852">% define where the pressure will be recorded</font>    
-p = Forward2D(mgrid, medium, source_p, sensor_mask); 
+sensor_mask(30:90,:) = 1;  <font color="#03a852">% define where the pressure will be recorded</font>  
+reflection_order = 0;  <font color="#03a852">% no reflection is included</font>  
+p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order); 
 </code>
 </pre>
 <img src="/mSOUND/img/TMDM_2D_homogeneous.jpg" alt="(a) Time-domain singal recorded at the transducer focus                                                    (b) Fundamental pressure distribution through the sensor mask">
