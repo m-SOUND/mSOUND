@@ -64,13 +64,7 @@ ts = repmat(ts, 1,mgrid.num_x);
 
 <font color="#03a852">% define the excitation pulse </font>  
 source_p = p0*sin(2*pi*fc*(ts+delay)).*exp(-(ts+delay).^2*fc^2/2); 
-
-<font color="#03a852">% define the transducer mask</font>  
-TR_mask = ones(mgrid.num_x,1);          
-TR_mask(abs(mgrid.x)>TR_radius,:) = 0;  
-
-<font color="#03a852"> % apply the transducer mask </font>  
-source_p = source_p.*repmat(TR_mask.', ts_length,1);  
+source_p(:, abs(mgrid.x)>TR_radius) = 0;
 </code>
 </pre>
  <img src="/mSOUND/img/Gaussian_pulse.jpg" alt="Guassian modulated pulse">
