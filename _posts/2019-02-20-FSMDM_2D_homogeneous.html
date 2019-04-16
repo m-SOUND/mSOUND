@@ -52,7 +52,7 @@ excit_p(abs(mgrid.x)>TR_radius) = 0;  <font color="#03a852"> % apply the transdu
 
 
  <p>
-Defining the homogeneous medium properties.
+Defining the homogeneous medium properties. Medium properties are defined with matrixes. 
 <pre><code>
 medium.c    = 1500*ones(mgrid.num_x, mgrid.num_y+1); <font color="#03a852">% speed of sound [m/s]</font>      
 medium.rho  = 1000*ones(mgrid.num_x, mgrid.num_y+1); <font color="#03a852">% density [kg/m^3]</font>             
