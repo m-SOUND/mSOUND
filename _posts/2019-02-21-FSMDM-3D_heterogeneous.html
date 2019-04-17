@@ -40,13 +40,17 @@ medium.cb   = cb;     <font color="#03a852">% power law exponent</font>
  <br>The fundamental pressure field is first calculated with the 3D forward simulation function 
   <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>, 
   and the pressure at the second-harmonic frequency is then calculated with the function 
-  <a href="/mSOUND/function.html#Forward3D_sec">Forward3D_sec</a>.
+  <a href="/mSOUND/function.html#Forward3D_sec">Forward3D_sec</a>. Correction is applied in the 
+ simulation because speed of sound contrast in this case
+ is 2.0.
   
 <pre> <code>
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-p_fundamental = Forward3D_fund(mgrid, medium, source_p); 
+p_fundamental = Forward3D_fund(mgrid, medium, source_p, ...
+                refleciton_order, 'correction'); 
+
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
+p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c, 'correction'); 
 </code> </pre>
                      
 </p>
