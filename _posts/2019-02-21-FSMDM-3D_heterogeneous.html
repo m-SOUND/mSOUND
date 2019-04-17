@@ -45,6 +45,8 @@ medium.cb   = cb;     <font color="#03a852">% power law exponent</font>
  is 2.0.
   
 <pre> <code>
+reflection_order = 4;
+
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
 p_fundamental = Forward3D_fund(mgrid, medium, source_p, ...
                 refleciton_order, 'correction'); 
