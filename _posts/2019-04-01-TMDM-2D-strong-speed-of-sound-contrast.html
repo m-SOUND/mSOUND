@@ -72,8 +72,8 @@ Transient pressure fields are calculated with the 2D forward simulation function
  The figure below shows the (a) time-domain signal and (b) frequency-domain signals recorded at the transducer focus.
 <pre><code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
-sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
-sensor_mask(100:300, :) = 1;
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
+sensor_mask(100:300, 2:end) = 1;
 
 <font color="#03a852">% the maximum order of reflection included in the simulation</font>  
 reflection_order = 4; 
