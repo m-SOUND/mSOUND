@@ -115,7 +115,7 @@ medium.c0   = 1500;  <font color="#03a852"> % reference speed of sound [m/s]</fo
 with TMDM is compared with the result directly simulated with k-Wave.
  <pre> <code>
  <font color="#03a852">% define sensor mask in the TMDM</font>   
-sensor_mask = zeros(mgrid.num_x, mgrid.num_y);
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
 sensor_mask(:, end) = 1;
 
 <font color="#03a852">%2D forward simulation with TMDM</font>   
