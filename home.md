@@ -12,7 +12,7 @@ mSOUND is an open-source toolbox written in [MATLAB](https://www.mathworks.com/p
 
 
 ## Acknowledgment
-This project is supported by the [National Institute of Health (NIH)](https://www.nih.gov/) under the Grant R01EB025205. From 2015-2018, Juanjuan Gu was also supported by a fellowship from China Scholarship Council (CSC).
+This project is supported by the [National Institute of Health (NIH)](https://www.nih.gov/) under the Grant R01EB025205. From 2015 to 2018, Juanjuan Gu was also supported by a fellowship from China Scholarship Council (CSC).
 
 ## References
 <p>[ 1 ] Juanjuan Gu and Yun Jing, "Simulation of the second harmonic ultrasound field in heterogeneous soft tissue using a mixed domain method," IEEE Ultrasonics, Ferroelectrics, and Frequency Control Society, 66, 669-675, 2019. <a href="https://github.com/MDM-series/MDM/tree/master/download/FSMDM.pdf" download="FSMDM.pdf">Download pdf</a></p>  
