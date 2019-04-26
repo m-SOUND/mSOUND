@@ -540,8 +540,8 @@ Pressure distribution throughout the spatial domain at the second-harmonic frequ
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections.
 <pre> <code>
-p = Forward1D(mgrid, medium, source_p, sensor_mask);  
-p = Forward1D(mgrid, medium, source_p, sensor_mask, ...);  
+p = Backward1D(mgrid, medium, source_p, sensor_mask);  
+p = Backward1D(mgrid, medium, source_p, sensor_mask, ...);  
 </code>  </pre>
 </p>
 
@@ -571,9 +571,6 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, ...);
   <tr>
    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
   </tr>
-  <tr>
-   <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
-  </tr>
  </table> 
 
 
@@ -598,8 +595,8 @@ smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
  means more energy will be absorbed.
  
 <pre>  <code>
-p = Forward2D(mgrid, medium, source_p, sensor_mask); 
-p = Forward2D(mgrid, medium, source_p, sensor_mask, ...); 
+p = Backward2D(mgrid, medium, source_p, sensor_mask); 
+p = Backward2D(mgrid, medium, source_p, sensor_mask, ...); 
 </code>  </pre>
 </p>
 <h3>Inputs</h3> 
@@ -619,9 +616,6 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, ...);
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
-   <tr>
-   <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
-  </tr> 
  </table> 
 <br>
 <table>
@@ -655,8 +649,8 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
-p = Forward3D(mgrid, medium, source_p, sensor_mask);
-p = Forward3D(mgrid, medium, source_p, sensor_mask, ...);
+p = Backward3D(mgrid, medium, source_p, sensor_mask);
+p = Backward3D(mgrid, medium, source_p, sensor_mask, ...);
 </code>  </pre>
 </p>
 <h3>Inputs</h3> 
@@ -676,9 +670,6 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, ...);
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
-   <tr>
-   <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
-  </tr> 
  </table> 
 <br>
 <table>
