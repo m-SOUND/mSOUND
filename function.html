@@ -588,7 +588,7 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <hr>
 <p>
  <a href="/mSOUND/function.html#Backward2D">Backward2D</a>
- is a 2D Backward simulation function based on the transient mixed domain method and it will generate transient-domain results.
+ is a 2D backward simulation function based on the transient mixed domain method and it will generate transient-domain results.
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
@@ -641,4 +641,60 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, ...);
 Time-domain results recorded at the sensor positions given by <span style="background-color:#f1f1f1">sensor_mask</span>.
  </pr>
 
+<a id="Backward3D"></a>
+<h3 style="color: #c64949;">Backward3D</h3>     
+<hr>
+<p>
+ <a href="/mSOUND/function.html#Backward3D">Backward3D</a>
+ is a 3D backward simulation function based on the transient mixed domain method and it will generate transient-domain results. 
+ Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
+ it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
+ absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
+ <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ means more energy will be absorbed.
+<pre>  <code>
+p = Forward3D(mgrid, medium, source_p, sensor_mask);
+p = Forward3D(mgrid, medium, source_p, sensor_mask, ...);
+</code>  </pre>
+</p>
+<h3>Inputs</h3> 
+<table>
+  <tr>
+    <th>INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>mgrid</td><td>structure returned by set_grid</td>
+  </tr>
+  <tr>
+    <td>medium </td><td>input structure including the media properties</td>
+  </tr>
+  <tr>
+    <td>source_p</td><td>excitation signal [Pa]</td>
+  </tr> 
+  <tr>
+    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+  </tr>
+   <tr>
+   <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
+  </tr> 
+ </table> 
+<br>
+<table>
+  <tr>
+    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+  </tr>
+  <tr>
+    <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+  </tr>
+   <tr>
+  <td>'absorption'</td><td>apply absorption layer</td>
+  </tr>
+ </table> 
+<br>  
+<h3>Outputs</h3> 
+<p>
+Time-domain results recorded at the sensor positions given by <span style="background-color:#f1f1f1">sensor_mask</span>.
+ </pr>
 
