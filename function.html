@@ -216,14 +216,20 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
 <br>
 <table>
   <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+  <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
   </tr>
   <tr>
-    <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+  <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
   </tr>
    <tr>
   <td>'absorption'</td><td>apply absorption layer</td>
   </tr>
+  <tr>
+  <td>'animation'</td><td>play the animation during the simulation</td>
+  </tr>
+  <tr>
+  <td>'record_animation'</td><td>record the animation</td>
+  </tr> 
  </table> 
 <br>
 <h3>Outputs</h3> 
@@ -282,6 +288,12 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
    <tr>
   <td>'absorption'</td><td>apply absorption layer</td>
   </tr>
+   <tr>
+  <td>'animation'</td><td>play the animation during the simulation</td>
+  </tr>
+  <tr>
+  <td>'record_animation'</td><td>record the animation</td>
+  </tr> 
  </table> 
 <br>  
 <h3>Outputs</h3> 
@@ -618,6 +630,12 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, ...);
    <tr>
   <td>'absorption'</td><td>apply absorption layer</td>
   </tr>
+   <tr>
+  <td>'animation'</td><td>play the animation during the simulation</td>
+  </tr>
+  <tr>
+  <td>'record_animation'</td><td>record the animation</td>
+  </tr> 
  </table> 
 <br>
 <h3>Outputs</h3> 
@@ -672,6 +690,12 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, ...);
    <tr>
   <td>'absorption'</td><td>apply absorption layer</td>
   </tr>
+   <tr>
+  <td>'animation'</td><td>play the animation during the simulation</td>
+  </tr>
+  <tr>
+  <td>'record_animation'</td><td>record the animation</td>
+  </tr> 
  </table> 
 <br>  
 <h3>Outputs</h3> 
