@@ -20,11 +20,11 @@ used to form the images with the TMDM backward projection.
 <p>  
 Homogneous medium is used in this example. The k-Wave is first used to simulate the propagation of the emited acousitc waves from 
 the 'mSOUND' shape. Then the singals received at the receiver located at the right-boundary shown in Figure 1(a) are assinged to the 
-Backward2D as source_p. Figure 1(b) shows the reconstructed image with the 'mSOUND' shape.
+<a href="/mSOUND/function.html#Backward2D">Backward2D</a> as source_p. Figure 1(b) shows the reconstructed image with the 'mSOUND' shape.
 <pre>
 <code>
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac, 0, 'absorption');
+p = Backward2D(mgrid, medium, source_p, sensor_mask, 'absorption'); 
 </code>
 </pre>
 <img src="/mSOUND/img/backward_logo.jpg" alt="backward projection example">
