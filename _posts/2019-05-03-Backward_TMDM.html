@@ -24,7 +24,7 @@ the 'mSOUND' source. Then the singals received at the linear receiver located at
 <a href="/mSOUND/function.html#Backward2D">Backward2D</a> as source_p. Figure 1(b) shows the reconstructed source in 'mSOUND' shape.
 <pre>
 <code>
-<font color="#03a852">% forward propagation of the fundamental pressure</font>   
+<font color="#03a852">% backward projection to reconstruct the initial source distribution</font>   
 p = Backward2D(mgrid, medium, source_p, sensor_mask, 'absorption'); 
 </code>
 </pre>
