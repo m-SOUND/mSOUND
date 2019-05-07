@@ -5,11 +5,12 @@ title: Imaging reconstruction using the TMDM backward projection
 <br>
 <hr>
 <hr>
-In photoacoustic tomography, light absorption by molecules creates a thermally 
-induced pressure jump that launches ultrasonic waves. The acoustic waves can be detected by transducers to form images. 
-A imaging reconstruction case is studied in this example. 
-The propagation of the emitted acoustic waves are simulated with the k-Wave toolbox. Then the received acoustic waves are
-used to form the images with the TMDM backward projection. 
+In photoacoustic tomography, short-pulses of laser light are first delivered into biological tissues. 
+Some of the light energy will be absorbed by the tissue. Ultrasonic waves will then be produced by the tissue part 
+through thermoelastic expansion. By projecting the ultrasonic wave backward to the tissue,  
+the initial ultrasonic wave distribution can be recognized. This can be used to characterize the tissue properties. 
+The propagation of the emitted ultrasonic wave from the source is simulated with the k-Wave toolbox. 
+The received signals are propagated with TMDM backward projection. 
 <hr>
 <hr>
 </p>
@@ -18,8 +19,8 @@ used to form the images with the TMDM backward projection.
 <h6>2D forward simulation</h6>
 <hr>
 <p>  
-Homogneous medium is used in this example. The k-Wave is first used to simulate the propagation of the emitted acousitc waves from 
-the 'mSOUND' source. Then the singals received at the receiver located at the right-boundary shown in Figure 1(a) are assinged to the 
+Homogneous medium is assumed in this example. The k-Wave is first used to simulate the propagation of the emitted acousitc waves from 
+the 'mSOUND' source. Then the singals received at the linear receiver located at the right-boundary shown in Figure 1(a) are assinged to the 
 <a href="/mSOUND/function.html#Backward2D">Backward2D</a> as source_p. Figure 1(b) shows the reconstructed source in 'mSOUND' shape.
 <pre>
 <code>
