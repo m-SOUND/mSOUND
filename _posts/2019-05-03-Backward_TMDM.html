@@ -20,8 +20,10 @@ The received signals are propagated with the TMDM backward projection.
 <hr>
 <p>  
 Homogneous medium is assumed in this example. The k-Wave is first used to simulate the propagation of the emitted acousitc waves from 
-the 'mSOUND' source. Then the singals received at the linear receiver located at the right-boundary shown in Figure 1(a) are assinged to the 
-<a href="/mSOUND/function.html#Backward2D">Backward2D</a> as source_p. Figure 1(b) shows the reconstructed source in 'mSOUND' shape.
+the 'mSOUND' source. Then the singal received at the linear receiver indicated by the red line in Fig. (a) is assinged 
+to the <a href="/mSOUND/function.html#Backward2D">Backward2D</a> as source_p. Figure (b) shows the recovered source distribution 
+with the time-reversal algorithm in the k-Wave and Fig. (c) shows the recovered source distribution with the backward projection 
+in the mSOUND. The animation for the image reconstruction is also shown below.
 <pre>
 <code>
 <font color="#03a852">% backward projection to reconstruct the initial source distribution</font>   
@@ -29,6 +31,8 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, 'absorption');
 </code>
 </pre>
 <img src="/mSOUND/img/backward_logo.jpg" alt="backward projection example">
+
+<object data=”backward_logo_animation.avi” type=”video/avi” />
 </p>
 
   <h6>Other examples</h6>
