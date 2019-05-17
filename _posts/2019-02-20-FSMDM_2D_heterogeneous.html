@@ -18,11 +18,11 @@ title: Simulation of a 2D heterogeneous medium using the frequency-specific mixe
 <p>
  Details of defining the computational domain and the phased-array transducer are shown in the case
 <a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
- Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a>.  
+ Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>.  
 In this heterogeneous media, density, speed of sound, nonlinear coefficient and attenuation coefficients are all
   spatially varying functions. In this example, media properties are the same as that defined in 
   <a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
-   Simulation in the 2D heterogeneous media using the transient mixed domain method</a>. But the density 
+   Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>. But the density 
  is set homogeneously in this case because in the current version, the function
  <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a> assumes a homogeneous density distribution.
  </p>
@@ -59,33 +59,34 @@ the right one was the second-harmonic pressure.
    <img src="/mSOUND/img/FSMDM_2D_heterogeneous.jpg" alt="fundamental and the second-harmonic pressure field">
  </p>
 
+
 <h6>Other examples</h6>
 <hr>
 <p>
-<br><h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
+ <br> <h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
  <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
-    Simulation in a 2D homogeneous medium using the transient mixed domain method</a>
+    Simulation of a 2D homogeneous medium using the transient mixed domain method</a>
  <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
-    Simulation in the 2D heterogeneous media using the transient mixed domain method</a>
+    Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
-    Simulation in a 3D homogeneous medium using the transient mixed domain method</a>
-<br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
-    Implementation of k-Wave for arbitrary shape transducer</a> 
- <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM-2D-strong-speed-of-sound-contrast">
-    Simulation in the 2D heterogeneous media with strong speed of sound contrast using the transient mixed domain method</a> 
+    Simulation of a 3D homogeneous medium using the transient mixed domain method</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
+    Integrating k-Wave with mSOUND for modeling sound field from transducers of arbitrary shape</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM-2D-strong-speed-of-sound-contrast">
+    Simulation of a 2D heterogeneous medium with a strong speed of sound contrast using the transient mixed domain method</a>  
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/Backward_TMDM">
-    Imaging reconstruction using the TMDM backward projection</a>   
+    Image reconstruction using backward projection</a>   
  
-<br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
+ 
+  <br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
-    Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a> 
+    Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_heterogeneous">
-    Simulation in the 2D heterogeneous media using the frequency-specific mixed domain method</a>
+    Simulation of a 2D heterogeneous medium using the frequency-specific mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
-    Simulation in a 3D homogeneous medium using the frequency-specific mixed domain method</a>
+    Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM-3D_heterogeneous">
-    Simulation in the 3D heterogeneous media using the frequency-specific mixed domain method</a>
-<br>&middot;<a href="https://m-sound.github.io/mSOUND/2D_absorption">
-    Add absorption layer to the FSMDM</a> 
+    Simulation of a 3D heterogeneous medium using the frequency-specific mixed domain method</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/2D_absorption">
+    Reducing the spatial aliasing error using the absorption layer</a>
 </p>
-
