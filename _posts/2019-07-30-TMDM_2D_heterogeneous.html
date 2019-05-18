@@ -6,7 +6,7 @@ title: Simulation of a 2D heterogeneous medium using the transient mixed domain 
 <hr>
 <hr>
 This example provides the demenstration of using the transient mixed domain method for simulating wave propagation 
-in 2D heterogeneous media. 
+in the 2D heterogeneous media. 
 <hr>
 <hr>
 </p>
@@ -15,12 +15,11 @@ in 2D heterogeneous media.
 <h6>Defining the medium properties</h6>
 <p>
 <br>
-Definition of the computational domain and transducer settings in this are similar to the case 
+Definition of the computational domain and transducer settings in this example are similar to the case 
 <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation of a
 2D homogeneous medium using the transient mixed domain method</a>.
-In this example, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
-all spatially varying functions. One thing needs to be careful is that 
-<span style="background-color:#f1f1f1">medium.c0</span> is defined as the minimum value in the 
+Besides, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
+all heterogeneous. <span style="background-color:#f1f1f1">medium.c0</span> is defined as the minimum value in the 
  <span style="background-color:#f1f1f1">medium.c</span>.
 The 2D tissue model used in this example is shown in the figure below. 
  <pre>
