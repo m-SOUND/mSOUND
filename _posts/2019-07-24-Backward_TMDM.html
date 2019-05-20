@@ -1,0 +1,65 @@
+---
+title: Image reconstruction using backward projection
+---
+<p>
+<br>
+<hr>
+<hr>
+In photoacoustic tomography, short-pulses of laser light are first delivered into biological tissues. 
+Some of the light energy will be absorbed by the tissue. Ultrasonic waves will then be produced by the tissue part 
+through thermoelastic expansion. By projecting the ultrasonic wave backward to the tissue,  
+the initial ultrasonic wave distribution can be recognized. This can be used to characterize the tissue properties. 
+The propagation of the emitted ultrasonic wave from the source is simulated with the k-Wave toolbox. 
+The received signals are propagated with the TMDM backward projection. 
+<hr>
+<hr>
+</p>
+
+<!---2D backward Simulation--->
+<h6>2D backward simulation</h6>
+<hr>
+<p>  
+Homogneous medium is assumed in this example. The k-Wave is first used to simulate the propagation of the emitted acousitc waves from 
+the 'mSOUND' source. Then the singal received at the linear receiver located at the right boundary of the Fig. (a) is assinged 
+to the backward projection function<a href="/mSOUND/function.html#Backward2D">Backward2D</a> as source pressure. Figure (b) shows the recovered source distribution 
+with the time-reversal algorithm in the k-Wave and Fig. (c) shows the recovered source distribution with the backward projection 
+in the mSOUND.
+<pre>
+<code>
+<font color="#03a852">% backward projection to reconstruct the initial source distribution</font>   
+p = Backward2D(mgrid, medium, source_p, sensor_mask, 'absorption'); 
+</code>
+</pre>
+<img src="/mSOUND/img/backward_logo.jpg" alt="backward projection example">
+</p>
+
+<h6>Other examples</h6>
+<hr>
+<p>
+<br> <h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM-2D-strong-speed-of-sound-contrast">
+    Simulation of a 2D heterogeneous medium with a strong speed of sound contrast using the transient mixed domain method</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
+    Integrating k-Wave with mSOUND for modeling sound field from transducers of arbitrary shape</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/Backward_TMDM">
+    Image reconstruction using backward projection</a>   
+ 
+ 
+  <br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM-3D_heterogeneous">
+    Simulation of a 3D heterogeneous medium using the frequency-specific mixed domain method</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/2D_absorption">
+    Reducing the spatial aliasing error using the absorption layer</a>
+</p>

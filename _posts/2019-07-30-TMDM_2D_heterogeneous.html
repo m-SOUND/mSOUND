@@ -1,0 +1,100 @@
+---
+title: Simulation of a 2D heterogeneous medium using the transient mixed domain method
+---
+<p>
+<br>
+<hr>
+<hr>
+This example provides the demenstration of using the transient mixed domain method for simulating wave propagation 
+in the 2D heterogeneous media. 
+<hr>
+<hr>
+</p>
+
+<!---Defining the media--->
+<h6>Defining the medium properties</h6>
+<p>
+<br>
+Definition of the computational domain and transducer settings in this example are similar to the case 
+<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation of a
+2D homogeneous medium using the transient mixed domain method</a>.
+Besides, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
+all heterogeneous. <span style="background-color:#f1f1f1">medium.c0</span> is defined as the minimum value in the 
+ <span style="background-color:#f1f1f1">medium.c</span>.
+The 2D tissue model used in this example is shown in the figure below. 
+ <pre>
+ <code>
+p0 = 1.0e6;   <font color="#03a852"> % source pressure magnitude [Pa]</font>  
+fc = 1.0e6;   <font color="#03a852"> % fundamental frequency [Hz]</font>  
+TR_focus  = 0.0210;   <font color="#03a852"> % transducer focus length [m]</font>         
+TR_radius = 0.0112;   <font color="#03a852"> % Transducer diameter [m]</font> 
+
+load tissue_model.mat   <font color="#03a852">% load the tissue model data</font>   
+medium.c    = c;        <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = rho;      <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = beta;     <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = ca;       <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = cb;       <font color="#03a852">% power law exponent</font> 
+medium.c0 = min(min(c));  <font color="#03a852">% reference speed of sound [m/s]</font> 
+</code>
+</pre>
+<img src="/mSOUND/img/tissue_model.jpg" alt="2D tissue model">
+</p>
+
+
+<!---2D forward Simulation--->
+<h6>2D forward simulation</h6>
+<p>
+Transient pressure fields are calculated with the 2D forward simulation function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>.
+<pre><code>
+<font color="#03a852">% define where the pressure will be recorded</font>  
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
+sensor_mask(100:300, 2:end) = 1;
+
+<font color="#03a852">% the maximum order of reflection included in the simulation</font>  
+reflection_order = 2; 
+
+<font color="#03a852">% 2D forward simulation</font>  
+p_total = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order); 
+</code>
+</pre>
+</p>
+
+<p>
+ The time-domain and the frequency-domain signal recorded at the transducer focus are shown in the top two figures. The saptially 
+ distributed pressure at the fundamental and the second-harmonic frequency are shown in the bottom two figures.
+<img src="/mSOUND/img/TMDM_2D_heterogeneous_focus.jpg" alt="time and frequency domain signal at the transducer focus">
+ 
+ <img src="/mSOUND/img/TMDM_2D_heterogeneous_spatially.jpg" alt="fundamental and the second-harmonic pressure field">
+</p>
+
+<h6>Other examples</h6>
+<hr>
+<p>
+<br> <h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM-2D-strong-speed-of-sound-contrast">
+    Simulation of a 2D heterogeneous medium with a strong speed of sound contrast using the transient mixed domain method</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
+    Integrating k-Wave with mSOUND for modeling sound field from transducers of arbitrary shape</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/Backward_TMDM">
+    Image reconstruction using backward projection</a>   
+ 
+ 
+  <br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM-3D_heterogeneous">
+    Simulation of a 3D heterogeneous medium using the frequency-specific mixed domain method</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/2D_absorption">
+    Reducing the spatial aliasing error using the absorption layer</a>
+</p>

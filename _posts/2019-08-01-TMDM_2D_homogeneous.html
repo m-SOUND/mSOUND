@@ -1,5 +1,5 @@
 ---
-title: Simulation in a 2D homogeneous medium using the transient mixed domain method
+title: Simulation of a 2D homogeneous medium using the transient mixed domain method
 ---
 <p>
 <br>
@@ -63,6 +63,7 @@ delay = repmat(delay, length(ts), 1);
 ts = repmat(ts, 1, mgrid.num_x);  
 
 <font color="#03a852">% define the excitation pulse </font>  
+p0 = 1; 
 source_p = p0*sin(2*pi*fc*(ts+delay)).*exp(-(ts+delay).^2*fc^2/2); 
 source_p(:, abs(mgrid.x)>TR_radius) = 0;
 </code>
@@ -105,31 +106,35 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, 0);
 <img src="/mSOUND/img/TMDM_2D_homogeneous.jpg" alt="(a) Time-domain singal recorded at the transducer focus                                                    (b) Fundamental pressure distribution through the sensor mask">
 </p>
 
-  <h6>Other examples</h6>
+
+<h6>Other examples</h6>
 <hr>
 <p>
- <br> <h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
- <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
-    Simulation in a 2D homogeneous medium using the transient mixed domain method</a>
- <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
-    Simulation in the 2D heterogeneous media using the transient mixed domain method</a>
-<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
-    Simulation in a 3D homogeneous medium using the transient mixed domain method</a>
- <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
-    Implementation of k-Wave for arbitrary shape transducer</a>
+<br> <h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM-2D-strong-speed-of-sound-contrast">
-    Simulation in the 2D heterogeneous media with strong speed of sound contrast using the transient mixed domain method</a>  
+    Simulation of a 2D heterogeneous medium with a strong speed of sound contrast using the transient mixed domain method</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
+    Integrating k-Wave with mSOUND for modeling sound field from transducers of arbitrary shape</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/Backward_TMDM">
+    Image reconstruction using backward projection</a>   
+ 
  
   <br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
-    Simulation in a 2D homogeneous medium using the frequency-specific mixed domain method</a>
+    Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_heterogeneous">
-    Simulation in the 2D heterogeneous media using the frequency-specific mixed domain method</a>
+    Simulation of a 2D heterogeneous medium using the frequency-specific mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
-    Simulation in a 3D homogeneous medium using the frequency-specific mixed domain method</a>
+    Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM-3D_heterogeneous">
-    Simulation in the 3D heterogeneous media using the frequency-specific mixed domain method</a>
+    Simulation of a 3D heterogeneous medium using the frequency-specific mixed domain method</a>
  <br>&middot;<a href="https://m-sound.github.io/mSOUND/2D_absorption">
-    Add absorption layer to the FSMDM</a>
+    Reducing the spatial aliasing error using the absorption layer</a>
 </p>
  

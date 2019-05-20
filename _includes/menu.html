@@ -1,5 +1,8 @@
-<nav {% if site.reverse == true %}id="nav-left"{% else %}id="nav"{% endif %}>
-	<div id="nav-list">
+ <nav 
+       {% if site.reverse == true %}id="nav-left"{% else %}id="nav"{% endif %}> 
+
+ 	<div>
+	<!-- <div id="nav-list"> -->	
 	
 		<!-- Nav pages -->
 		    <a href="/mSOUND/home" title="Home">Home</a>   
@@ -12,16 +15,17 @@
 		
 		    <a href="/mSOUND/Publications" title="Publications">Publications</a>
         
-		    <a href="/mSOUND/Contact" title="Contact">Contact</a>
-			    <!-- Nav links -->
-	                 {% include link.html %}
-	</div>
-  
-  <!-- Nav footer -->
+		    <a href="/mSOUND/Contact" title="Contact">Contact</a>	
+	
+			    <!-- Nav links {% include link.html %}-->
+	            
+	</div> 	 
+	 
+ <!-- Nav footer -->
 	{% if site.custom_nav_footer == true %}
 	  {% include nav-footer-custom.html %}
 	{% else %}
 	  {% include nav-footer.html %}
-	{% endif %}
+	{% endif %} 
 
 </nav>
