@@ -24,7 +24,6 @@ This project is supported by the [National Institute of Health (NIH)](https://ww
 <p>[ 4 ] Yun Jing, "On the use of an absorption layer for the angular spectrum approach (L)," The Journal of the Acoustical Society of America, 131, 999-1002, 2012. <a href="https://github.com/MDM-series/MDM/tree/master/download/Absorption_layer.pdf" download="Absorption_layer.pdf">Download pdf</a></p> 
 
 <p>[ 5 ] Yun Jing, Molei Tao, and Greg T. Clement, "Evaluation of a wave-vector-frequency-domain method for nonlinear wave propagation," The Journal of the Acoustical Society of America,129, 32-46, 2011. <a href="/mSOUND/download/WVFD.pdf" download="WVFD.pdf">Download pdf</a></p>       
-/mSOUND/download/WVFD.pdf
 
 ## License
 This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.txt).  
