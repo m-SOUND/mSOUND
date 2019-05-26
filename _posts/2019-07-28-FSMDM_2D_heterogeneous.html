@@ -38,15 +38,15 @@ and the pressure at the second-harmonic frequency is then calculated with the fu
 <font color="#03a852">% the maximum order of reflection included in the simulation </font>   
 reflection_order = 2;
 
-medium.absorb_gamma = 0.5;  <font color="#03a852">% constant for absorption layer</font> 
-medium.absorb_alpha = 0.1;  <font color="#03a852">% decay factor for absorption layer</font> 
+medium.NRL_gamma = 0.5;  <font color="#03a852">% constant for absorption layer</font> 
+medium.NRL_alpha = 0.1;  <font color="#03a852">% decay factor for absorption layer</font> 
 
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
 P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac,...
-                reflection_order, 'absorption');
+                reflection_order, 'NRL');
 
 <font color="#03a852">% forward propagation of the second-harmonic pressure  </font>   
-P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'absorption');
+P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL');
 </code>
 </pre>
 <br> The left figure below shows the spatial distribution of the fundamental pressure and
