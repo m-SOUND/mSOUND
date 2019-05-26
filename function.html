@@ -247,9 +247,9 @@ Time-domain results recorded at the sensor positions given by <span style="backg
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order);
@@ -312,9 +312,9 @@ Time-domain results recorded at the sensor positions given by <span style="backg
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
@@ -373,9 +373,9 @@ obtain the presure at the center frequency <span style="background-color:#f1f1f1
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);  
@@ -429,9 +429,9 @@ is a 3D forward simulation function based on the frequency-specific mixed domain
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
@@ -490,9 +490,9 @@ obtain the presure at the center frequency <span style="background-color:#f1f1f1
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);   
@@ -594,9 +594,9 @@ Time-domain results recorded at the sensor positions given by <span style="backg
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
  
 <pre>  <code>
@@ -655,9 +655,9 @@ Time-domain results recorded at the sensor positions given by <span style="backg
  Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Backward3D(mgrid, medium, source_p, sensor_mask);
@@ -716,9 +716,9 @@ Time-domain results recorded at the sensor positions given by <span style="backg
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRLalpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Backward2D_fund(mgrid, medium, source_p, omega_c);  
@@ -777,9 +777,9 @@ obtain the presure at the center frequency <span style="background-color:#f1f1f1
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Backward2D_sec(mgrid, medium, P_fundamental, omega_c);  
@@ -834,9 +834,9 @@ is a 3D backward simulation function based on the frequency-specific mixed domai
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Backward3D_fund(mgrid, medium, source_p, omega_c);  
@@ -895,9 +895,9 @@ obtain the presure at the center frequency <span style="background-color:#f1f1f1
  for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
  it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
  absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.absorb_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.absorb_alpha</span> 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
+smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
  means more energy will be absorbed.
 <pre>  <code>
 p = Backward3D_sec(mgrid, medium, P_fundamental, omega_c);   
