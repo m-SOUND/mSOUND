@@ -61,8 +61,8 @@ medium.beta = 3.6*ones(mgrid.num_x, mgrid.num_y+1);  <font color="#03a852">% non
 medium.ca   = zeros(mgrid.num_x, mgrid.num_y+1);     
 medium.cb   = 2.0*ones(mgrid.num_x, mgrid.num_y+1);  <font color="#03a852">% power law exponent</font>   
 
-medium.absorb_gamma = 0.5;  <font color="#03a852">% constant for absorption layer</font> 
-medium.absorb_alpha = 0.1;  <font color="#03a852">% decay factor for absorption layer</font> 
+medium.NRL_gamma = 0.5;  <font color="#03a852">% constant for non-reflecting layer</font> 
+medium.NRL_alpha = 0.1;  <font color="#03a852">% decay factor for non-relfecting layer</font> 
  </code></pre>
  </p>
 
@@ -75,10 +75,10 @@ Pressure at the second-harmonic frequency is calculated with the function <a hre
  <pre>
 <code>
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac, 0, 'absorption');
+P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac, 0, 'NRL');
 
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'absorption');
+P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL');
 </code>
 </pre>
 <img src="/mSOUND/img/FSMDM_2D_homogeneous.jpg" alt="fundamental and the second-harmonic pressure field generated with the phased array">
