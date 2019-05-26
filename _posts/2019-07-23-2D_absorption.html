@@ -5,10 +5,11 @@ title: Reducing the spatial aliasing error using the absorption layer
 <br>
 <hr>
 <hr>
-Adding absorption layer can help reduce the spatial aliasing error. But if the absorption is too strong, the acoustic field will become 
+Adding non-reflecting layer can help reduce the spatial aliasing error by absorbing the energy at the boundaries.
+But if the absorption is too strong, the acoustic field will become 
 inaccurate due to excess absoprtion. On the other hand, if the absoprtion is too small, then the aliasing error cannot be reduced.
-In this case, the effect of absorption layer is investigated by setting up different
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>.
+In this case, the effect of non-reflecting layer is investigated by setting up different
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>.
 <hr>
 <hr>
 </p>
@@ -22,17 +23,17 @@ This simulation setup is based on the
    <a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
   Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>. Computational domain and simulation 
   setup are the same in the two cases. In this case, three pairs of 
- <span style="background-color:#f1f1f1">medium.absorb_gamma</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha</span>
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
  are studied and they are: 
- <span style="background-color:#f1f1f1">medium.absorb_gamma=0.1</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha=0.5</span>,
- <span style="background-color:#f1f1f1">medium.absorb_gamma=0.5</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha=0.2</span>, and
- <span style="background-color:#f1f1f1">medium.absorb_gamma=0.8</span> and <span style="background-color:#f1f1f1">medium.absorb_alpha=0.08</span>. 
+ <span style="background-color:#f1f1f1">medium.NRL_gamma=0.1</span> and <span style="background-color:#f1f1f1">medium.NRLb_alpha=0.5</span>,
+ <span style="background-color:#f1f1f1">medium.NRL_gamma=0.5</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha=0.2</span>, and
+ <span style="background-color:#f1f1f1">medium.NRL_gamma=0.8</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha=0.08</span>. 
  The pressure distribution along the central axia simulated at different absorption layer configurations are shown in the figure below. For 
  each simulation case, coefficients for the absorption layer should be selected carefully.
 <pre>
 <code>
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac, 0, 'absorption');
+P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac, 0, 'NRL');
 </code>
 </pre>
 <img src="/mSOUND/img/FSMDM_2D_absorption.jpg" alt="axial pressure distribution at x=0">
