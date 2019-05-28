@@ -22,9 +22,7 @@ layout: default
 <br> <a href="/mSOUND/function.html#Backward2D">Backward2D</a>
 <br> <a href="/mSOUND/function.html#Backward3D">Backward3D</a> 
 <br> <a href="/mSOUND/function.html#Backward2D_fund">Backward2D_fund</a>
-<br> <a href="/mSOUND/function.html#Backward2D_sec">Backward2D_sec</a> 
 <br> <a href="/mSOUND/function.html#Backward3D_fund">Backward3D_fund</a>
-<br> <a href="/mSOUND/function.html#Backward3D_sec">Backward3D_sec</a>  
 </p>
 
 <hr>
@@ -762,68 +760,6 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, ...);
 Pressure distribution throughout the spatial domain at the center frequency.      
 </pr>
 
-
-<a id="Backward2D_sec"></a>
-<h3 style="color: #c64949;">Backward2D_sec</h3>    
-<hr>
-<p>
- <a href="/mSOUND/function.html#Backward2D_sec">Backward2D_sec</a>
-is a 2D backward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the second harmonic frequency. 
- To generate the second harmonic pressure field, 
- people must run the function <a href="/mSOUND/function.html#Backward2D_fund">Backward2D_fund</a> first to 
-obtain the presure at the center frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
- When calculating the second harmonic pressure, density heterogeneity is not considered. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
-<pre>  <code>
-p = Backward2D_sec(mgrid, medium, P_fundamental, omega_c);  
-p = Backward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);  
-</code>  </pre>
-</p>
-<h3>Inputs</h3> 
-<table>
-  <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
-  </tr>
-  <tr>
-    <td>mgrid</td><td>structure returned by set_grid</td>
-  </tr>
-  <tr>
-    <td>medium </td><td>input structure including the media properties</td>
-  </tr>
-  <tr>
-    <td>P_fundamental</td><td>pressure at the center frequency  [Pa]</td>
-  </tr>
-   <tr>
-    <td>omega_c </td><td>transducer center frequency [rad]</td>
-  </tr>
- </table> 
-<br>
-<table>
-  <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
-  </tr>
-  <tr>
-    <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
-  </tr>
-   <tr>
-  <td>'NRL'</td><td>apply non-reflecting layerr</td>
-  </tr>
- </table> 
-<br>  
-<h3>Outputs</h3> 
-<p>
-Pressure distribution throughout the spatial domain at the second-harmonic frequency.    
-</pr>
-
-
-
 <a id="Backward3D_fund"></a>
 <h3 style="color: #c64949;">Backward3D_fund</h3>   
 <hr>
@@ -880,63 +816,4 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, ...);
 Pressure distribution throughout the spatial domain at the center frequency.    
 </pr>
 
-
-<a id="Backward3D_sec"></a>
-<h3 style="color: #c64949;">Backward3D_sec</h3>   
-<hr>
-<p>
-<a href="/mSOUND/function.html#Backward3D_sec">Backward3D_sec</a>
- is a 3D backward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the second harmonic frequency. 
- To generate the second harmonic pressure field, 
- people must run the function <a href="/mSOUND/function.html#Backward3D_fund">Backward3D_fund</a> first to 
-obtain the presure at the center frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
- When calculating the second harmonic pressure, density heterogeneity is not considered. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- absorption layer to the computational domain. To apply absoprtion layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
-<pre>  <code>
-p = Backward3D_sec(mgrid, medium, P_fundamental, omega_c);   
-p = Backward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);   
-</code>  </pre>
-</p>
-<h3>Inputs</h3> 
-<table>
-  <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
-  </tr>
-  <tr>
-    <td>mgrid</td><td>structure returned by set_grid</td>
-  </tr>
-  <tr>
-    <td>medium </td><td>input structure including the media properties</td>
-  </tr>
-  <tr>
-    <td>P_fundamental</td><td>pressure at the center frequency  [Pa]</td>
-  </tr>
-   <tr>
-    <td>omega_c </td><td>transducer center frequency [rad]</td>
-  </tr>
- </table> 
-<br>
-<table>
-  <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
-  </tr>
-  <tr>
-    <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
-  </tr>
-   <tr>
-  <td>'NRL'</td><td>apply non-reflecting layerr</td>
-  </tr>
- </table> 
-<br>  
-<h3>Outputs</h3> 
-<p>
-Pressure distribution throughout the spatial domain at the second-harmonic frequency.    
-</pr>
 
