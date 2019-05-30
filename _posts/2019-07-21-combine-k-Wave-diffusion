@@ -1,0 +1,53 @@
+---
+title: Integrating k-Wave with mSOUND for thermal simulation
+---
+<p>
+<br>
+<hr>
+<hr>
+This example shows how to implement the <a href="http://www.k-wave.org/">k-Wave</a> for thermal simulations. The acoustic simulation
+is shown in <a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">Simulation of a 2D homogeneous medium using the 
+frequency-specific mixed domain method</a>. The thermal simulation is conducted with k-Wave.
+<hr>
+<hr>
+</p>
+
+<!---k-Wave simulation--->
+<h6>Thermal simulation</h6>
+<hr>
+<p>
+Thermal simulation with k-Wave.
+<pre> <code> 
+<font color="#03a852">% convert the absorption coefficient to nepers/m</font> 
+alpha_np = db2neper(medium.ca, medium.cb) * (omegac).^medium.cb;
+<font color="#03a852">% calculate the volume rate of heat deposition</font> 
+Q = alpha_np .* p.^2 ./ (medium.rho .* medium.c);
+<font color="#03a852">% set the background temperature and heating term</font> 
+source.Q = Q;
+source.T0 = 37;
+clear medium
+<font color="#03a852">% define medium properties related to diffusion</font> 
+medium.density = 1000;  <font color="#03a852">% [kg/m^3]</font> 
+medium.thermal_conductivity = 0.5; <font color="#03a852">% [W/(m.K)]</font> 
+medium.specific_heat = 3600; <font color="#03a852">% [J/(kg.K)]</font>  
+<font color="#03a852">% create the computational grid</font>  
+kgrid = kWaveGrid(mgrid.num_x, mgrid.dx, mgrid.num_y, mgrid.dy); 
+<font color="#03a852">% create kWaveDiffusion object</font>  
+kdiff = kWaveDiffusion(kgrid, medium, source, []);
+
+<font color="#03a852">% set source on time and off time</font>  
+on_time  = 10; <font color="#03a852">% [s]</font>  
+off_time = 20; <font color="#03a852">% [s]</font>  
+<font color="#03a852">% set time step size</font>  
+dt = 0.1;
+<font color="#03a852">% take time steps</font>    
+kdiff.takeTimeStep(round(on_time / dt), dt);   
+T1 = kdiff.T; <font color="#03a852">% store the current temperature field</font>    
+<font color="#03a852">% turn off heat source and take time steps</font>    
+kdiff.Q = 0; 
+kdiff.takeTimeStep(round(off_time / dt), dt);
+<font color="#03a852">% store the current temperature field</font>  
+T2 = kdiff.T;
+</code>  </pre>
+</p>
+
