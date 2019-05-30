@@ -54,12 +54,12 @@ excit_p(abs(mgrid.x)>TR_radius) = 0;  <font color="#03a852"> % apply the transdu
  <p>
 Defining the homogeneous medium properties. Medium properties are defined with matrixes. 
 <pre><code>
-medium.c    = 1500*ones(mgrid.num_x, mgrid.num_y+1); <font color="#03a852">% speed of sound [m/s]</font>      
-medium.rho  = 1000*ones(mgrid.num_x, mgrid.num_y+1); <font color="#03a852">% density [kg/m^3]</font>             
-medium.beta = 3.6*ones(mgrid.num_x, mgrid.num_y+1);  <font color="#03a852">% nonlinear coefficient </font>    
+medium.c    = 1500; <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = 1000; <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = 3.6;  <font color="#03a852">% nonlinear coefficient </font>    
 <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.ca   = zeros(mgrid.num_x, mgrid.num_y+1);     
-medium.cb   = 2.0*ones(mgrid.num_x, mgrid.num_y+1);  <font color="#03a852">% power law exponent</font>   
+medium.ca   = 0;     
+medium.cb   = 2.0;  <font color="#03a852">% power law exponent</font>   
 
 medium.NRL_gamma = 0.5;  <font color="#03a852">% constant for non-reflecting layer</font> 
 medium.NRL_alpha = 0.1;  <font color="#03a852">% decay factor for non-relfecting layer</font> 
