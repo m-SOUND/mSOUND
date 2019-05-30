@@ -53,8 +53,8 @@ kdiff = kWaveDiffusion(kgrid, medium, source, []);
  
 on_time  = 10; <font color="#03a852">% source on time [s]</font>  
 off_time = 20; <font color="#03a852">% source off time [s]</font>  
-
 dt = 0.1; <font color="#03a852">% set time step size [s]</font>  
+
 <font color="#03a852">% take time steps</font>    
 kdiff.takeTimeStep(round(on_time / dt), dt);   
 T1 = kdiff.T; <font color="#03a852">% store the current temperature field</font>    
