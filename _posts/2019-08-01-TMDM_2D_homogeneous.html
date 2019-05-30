@@ -104,7 +104,7 @@ sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
 sensor_mask(30:90,2:end) = 1;  
 
 <font color="#03a852">% 2D forward simulation</font>  
-p = Forward2D(mgrid, medium, source_p, sensor_mask, 0); 
+p = Forward2D(mgrid, medium, source_p, sensor_mask, 0, 'NRL'); 
 </code>
 </pre>
 <img src="/mSOUND/img/TMDM_2D_homogeneous.jpg" alt="(a) Time-domain singal recorded at the transducer focus                                                    (b) Fundamental pressure distribution through the sensor mask">
