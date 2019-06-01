@@ -5,12 +5,13 @@ title: Image reconstruction using backward projection
 <br>
 <hr>
 <hr>
-In photoacoustic tomography, short-pulses of laser light are first delivered into biological tissues. 
-Some of the light energy will be absorbed by the tissue. Ultrasonic waves will then be produced by the tissue part 
-through thermoelastic expansion. By projecting the ultrasonic wave backward to the tissue,  
-the initial ultrasonic wave distribution can be recognized. This can be used to characterize the tissue properties. 
-The propagation of the emitted ultrasonic wave from the source is simulated with the k-Wave toolbox. 
-The received signals are propagated with the TMDM backward projection. 
+In photoacoustic tomography (PAT), for example, short-pulses of laser are first delivered into biological tissues, 
+which are to be absorbed by the tissue, particularly the blood vessels. Ultrasonic waves are consequently produced via thermos-
+elastic expansion. By projecting the ultrasonic wave backward toward the tissue (in a way similar to time-reversal),
+the initial ultrasonic pressure distribution can be recognized, rendering an image of the vessels. 
+This can be used to characterize the tissue properties. The forward propagation of the emitted ultrasonic wave from the source 
+is simulated with the k-Wave toolbox. The received signals are backward projected with the mSOUND toolbox for the initial source 
+image reconstruction. 
 <hr>
 <hr>
 </p>
@@ -32,7 +33,6 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, 'absorption');
 </pre>
 <img src="/mSOUND/img/backward_logo.jpg" alt="backward projection example">
 </p>
-
 
 
 <h6>Other examples</h6>
