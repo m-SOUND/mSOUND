@@ -191,7 +191,6 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
 Time-domain results recorded at the sensor positions given by <span style="background-color:#f1f1f1">sensor_mask</span>.
  </pr>
 
-
 <a id="Forward2D"></a>
 <h3 style="color: #c64949;">Forward2D  </h3>   
 <hr>
@@ -289,13 +288,6 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <p>
  <a href="/mSOUND/function.html#Forward3D">Forward3D</a>
  is a 3D forward simulation function based on the transient mixed domain method and it will generate transient-domain results. 
- Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- the non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
 <pre>  <code>
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order);
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
@@ -386,14 +378,7 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <p>
  <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>
  is a 2D forward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the center frequency. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
+ will generate spatially distributed pressure at the center frequency. 
 <pre>  <code>
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -478,14 +463,7 @@ is a 2D forward simulation function based on the frequency-specific mixed domain
  To generate the second harmonic pressure field, 
  people must run the function <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a> first to 
 obtain the presure at the center frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
- When calculating the second harmonic pressure, density heterogeneity is not considered. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
+ When calculating the second harmonic pressure, density heterogeneity is not considered. 
 <pre>  <code>
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);  
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);  
@@ -560,14 +538,7 @@ Pressure distribution throughout the spatial domain at the second-harmonic frequ
 <p>
 <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>
 is a 3D forward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the center frequency. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
+ will generate spatially distributed pressure at the center frequency. 
 <pre>  <code>
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -651,14 +622,7 @@ Pressure distribution throughout the spatial domain at the center frequency.
  To generate the second harmonic pressure field, 
  people must run the function <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a> first to 
 obtain the presure at the center frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
- When calculating the second harmonic pressure, density heterogeneity is not considered. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
+ When calculating the second harmonic pressure, density heterogeneity is not considered. 
 <pre>  <code>
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);   
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);   
