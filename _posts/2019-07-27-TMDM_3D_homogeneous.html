@@ -89,6 +89,10 @@ source_p(:, RHO>TR_radius) = 0;
 <hr>
 <p>
 A nonlinear homogeneous medium with attenuation is defined.
+For 3D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y,
+mgrid.num_z+1). For homogeneous media, though, the medium properties can be described by a single scalar. 
+<span style="background-color:#f1f1f1">medium.c0</span> is the reference speed of sound and generally, 
+it is chosen as the minimum value of <span style="background-color:#f1f1f1">medium.c</span>.  
 <pre>
 <code>
 medium.c    = 1500;    <font color="#03a852">% speed of sound [m/s]</font>      
