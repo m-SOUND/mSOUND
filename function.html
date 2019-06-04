@@ -37,9 +37,9 @@ layout: default
 evenly spaced time array and wavenumber matrices used within the simulation in mSOUND.
 
 <pre> <code>
-mgrid = set_grid(dt, t_length, dx, x_length);                         
-mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);     
-mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);     
+mgrid = set_grid(dt, t_length, dx, x_length);   <font color="#03a852">% 1D</font>                         
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);  <font color="#03a852">% 2D</font>      
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);  <font color="#03a852">% 3D</font>      
 </code> </pre>
 </p>
 
