@@ -79,7 +79,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 <h3>Outputs</h3> 
 <table>
   <tr>
-    <th>OUTPUT</th><th>PROPERTIES</th>
+    <th>OUTPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>mgrid.x</td><td>coordinates in the x direction [m] </td>
@@ -135,7 +135,7 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
 <h3>Inputs</h3> 
 <table>
   <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
+    <th>INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>mgrid</td><td>structure returned by set_grid</td>
@@ -144,13 +144,10 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>medium </td><td>input structure including the media properties</td>
   </tr>
    <tr>
-    <td>source_p</td><td>excitation signal [Pa]. It is indexed as (time, source_position)</td>
+    <td>source_p</td><td>excitation signal [Pa]</td>
   </tr>
   <tr>
-    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded. 
-   The sensor_mask contains the positions in Cartesian coordinate with a matrix size 
-   (mgrid.num_x, mgrid.num_y+1) with the recording positions 
-   marked with logical value 1 while other positions are marked with 0.</td>
+    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
   </tr>
   <tr>
    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
@@ -196,7 +193,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
 <h3>Inputs</h3> 
 <table>
   <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
+    <th>INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>mgrid</td><td>structure returned by set_grid</td>
@@ -217,7 +214,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
 <br>
 <table>
   <tr>
-  <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+  <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
   <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -281,7 +278,7 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
 <br>
 <table>
   <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+    <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -325,7 +322,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 <h3>Inputs</h3> 
 <table>
   <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
+    <th>INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>mgrid</td><td>structure returned by set_grid</td>
@@ -404,7 +401,7 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);
 <br>
 <table>
   <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+    <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -460,7 +457,7 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 <br>
 <table>
 <tr>
-<th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+<th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
 </tr>
 <tr>
 <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -521,7 +518,7 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
 <br>
 <table>
   <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+    <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -554,7 +551,7 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, ...);
 <h3>Inputs</h3> 
 <table>
   <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
+    <th>INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>mgrid</td><td>structure returned by set_grid</td>
@@ -572,7 +569,7 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, ...);
 <br>
 <table>
   <tr>
-   <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+   <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
    <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -608,7 +605,7 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, ...);
 <h3>Inputs</h3> 
 <table>
   <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
+    <th>INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>mgrid</td><td>structure returned by set_grid</td>
@@ -626,7 +623,7 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, ...);
 <br>
 <table>
   <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+    <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -668,7 +665,7 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, ...);
 <h3>Inputs</h3> 
 <table>
   <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
+    <th>INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>mgrid</td><td>structure returned by set_grid</td>
@@ -686,7 +683,7 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, ...);
 <br>
 <table>
   <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+    <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -747,7 +744,7 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, ...);
 <br>
 <table>
   <tr>
-    <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+    <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
@@ -785,7 +782,7 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, ...);
 <h3>Inputs</h3> 
 <table>
   <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
+    <th>INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>mgrid</td><td>structure returned by set_grid</td>
@@ -803,7 +800,7 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, ...);
 <br>
 <table>
 <tr>
-<th>OPTIONAL INPUT</th><th>PROPERTIES</th>
+<th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
 </tr>
 <tr>
 <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
