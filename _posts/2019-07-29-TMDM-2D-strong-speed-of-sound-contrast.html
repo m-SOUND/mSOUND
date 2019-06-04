@@ -10,7 +10,7 @@ in 2D heterogeneous media with strong speed of sound contrast. TMDM is accurate 
 speed of sound heterogeneity. To extend the MDM for modeling wave propagation in 
 strongly heterogeneous media (e.g., skull), phase and amplitude corrections to the MDM are proposed. This example shows how
 to apply the corrections for simulations. Generally, for simulations with soft tissue or strongly heterogeneous media with small
-speed of sound contrast (contrast ratio less than 1.10), it is unnecessary to apply corrections. 
+speed of sound contrast (contrast ratio less than 1.05), it is unnecessary to apply corrections. 
 <hr>
 <hr>
 </p>
@@ -41,7 +41,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);
 <h6>Defining the medium properties</h6>
 <p>
 <br>
-Transducer settings in this case is similar to the case 
+Transducer settings in this case is similar to the example 
 <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation of a 
 2D homogeneous medium using the transient mixed domain method</a>.
 In this example, speed of sound contrast is 2.0.
@@ -67,8 +67,9 @@ medium.cb   = cb;     <font color="#03a852">% power law exponent</font>
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <p>
-Transient pressure fields are calculated with the 2D forward simulation function. Correction is applied in this case because of the
- strong speed of sound and density contrast. Fourth-order reflections are also included in the simulation.
+Transient pressure fields are calculated with the function <a href="/mSOUND/function.html#Forward2">Forward2D</a>.
+ Correction is applied in this case because of the
+ strong speed of sound and density contrast. Fourth-order reflections are also included in this simulation.
  The figure below shows the (a) time-domain signal and (b) frequency-domain signals recorded at the transducer focus.
 <pre><code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
