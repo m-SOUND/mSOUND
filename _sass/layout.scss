@@ -90,18 +90,18 @@
   }
   &.btn-close:before {
     top: 0;
-    -webkit-transform: rotate(45deg);
-       -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+    -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
     background-color: $background-color;
   }
   &.btn-close:after {
     top: -4px;
-    -webkit-transform: rotate(-45deg);
-       -moz-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
+    -webkit-transform: rotate(-0deg);
+       -moz-transform: rotate(-0deg);
+        -ms-transform: rotate(-0deg);
+            transform: rotate(-0deg);
     background-color: $background-color;
   }
 }
