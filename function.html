@@ -46,7 +46,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 <h3>Inputs </h3> 
 <table>
   <tr>
-    <th>INPUT</th><th>PROPERTIES</th>
+    <th>INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
     <td>dx</td><td>spatial step size in the x direction [m]</td>
@@ -144,10 +144,13 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>medium </td><td>input structure including the media properties</td>
   </tr>
    <tr>
-    <td>source_p</td><td>excitation signal [Pa]</td>
+    <td>source_p</td><td>excitation signal [Pa]. It is indexed as (time, source_position)</td>
   </tr>
   <tr>
-    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded. 
+   The sensor_mask contains the positions in Cartesian coordinate with a matrix size 
+   (mgrid.num_x, mgrid.num_y+1) with the recording positions 
+   marked with logical value 1 while other positions are marked with 0.</td>
   </tr>
   <tr>
    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
