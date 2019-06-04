@@ -768,14 +768,6 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <p>
  <a href="/mSOUND/function.html#Backward2D">Backward2D</a>
  is a 2D backward simulation function based on the transient mixed domain method and it will generate transient-domain results.
- Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
- 
 <pre>  <code>
 p = Backward2D(mgrid, medium, source_p, sensor_mask); 
 p = Backward2D(mgrid, medium, source_p, sensor_mask, ...); 
@@ -862,13 +854,6 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <p>
  <a href="/mSOUND/function.html#Backward3D">Backward3D</a>
  is a 3D backward simulation function based on the transient mixed domain method and it will generate transient-domain results. 
- Generally, for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
 <pre>  <code>
 p = Backward3D(mgrid, medium, source_p, sensor_mask);
 p = Backward3D(mgrid, medium, source_p, sensor_mask, ...);
@@ -955,14 +940,7 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <p>
  <a href="/mSOUND/function.html#Backward2D_fund">Backward2D_fund</a>
  is a 2D backward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the center frequency. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRLalpha</span> 
- means more energy will be absorbed.
+ will generate spatially distributed pressure at the center frequency.
 <pre>  <code>
 p = Backward2D_fund(mgrid, medium, source_p, omega_c);  
 p = Backward2D_fund(mgrid, medium, source_p, omega_c, ...);  
@@ -999,6 +977,36 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, ...);
   </tr>
  </table> 
 
+
+<br> 
+<h3> Details </h3>         
+<hr>   
+<p>
+1. <span style="background-color:#f1f1f1">medium</span> 
+ is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
+ attenuation coefficient, and power law exponent.  
+ For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1).
+ For homogeneous media, though, the medium properties can be described by a single scalar. 
+ <span style="background-color:#f1f1f1">medium.c0</span> 
+ is the reference speed of sound and generally, it is chosen as the minimum value of 
+ <span style="background-color:#f1f1f1">medium.c</span>.
+ <br><br>2. <span style="background-color:#f1f1f1">sensor_mask</span>
+ contains the positions in Cartesian coordinate with a matrix size (mgrid.num_x, mgrid.num_y+1)
+ with the recording positions marked with logical value 1 while other positions are marked with 0. 
+ <br><br>3. <span style="background-color:#f1f1f1">reflection_order</span>
+ indicates the maximum order of reflections to be included in the simulation. This number is 
+ recommended to be 2 for lossy biological media in order to achieve the best tradeoff between accuracy and computation time.
+ <br><br>4. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
+ <span style="background-color:#f1f1f1">correction</span> is recommended.
+ <br><br>5. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
+ domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
+ or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
+ thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
+ the acoustic filed becomes inaccurate due to excess absorption. 
+</p>
+
 <br>  
 <h3>Outputs</h3> 
 <p>
@@ -1011,14 +1019,7 @@ Pressure distribution throughout the spatial domain at the center frequency.
 <p>
 <a href="/mSOUND/function.html#Backward3D_fund">Backward3D_fund</a>
 is a 3D backward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the center frequency. Generally, 
- for simulations with small speed of sound or density contrast (contrast ratio less than 1.05), 
- it is unnecessary to apply corrections. The spatial aliasing error can be reduced by increasing the computational domain or applying
- non-reflecting layer to the computational domain. To apply non-reflecting layer to the computational domain, two parameters 
- <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be provided. Setting up a larger <span style="background-color:#f1f1f1">medium.NRL_gamma</span> or
-smaller <span style="background-color:#f1f1f1">medium.NRL_alpha</span> 
- means more energy will be absorbed.
+ will generate spatially distributed pressure at the center frequency. 
 <pre>  <code>
 p = Backward3D_fund(mgrid, medium, source_p, omega_c);  
 p = Backward3D_fund(mgrid, medium, source_p, omega_c, ...);  
@@ -1054,6 +1055,36 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, ...);
 <td>'NRL'</td><td>apply non-reflecting layerr</td>
   </tr>
 </table> 
+
+<br> 
+<h3> Details </h3>         
+<hr>   
+<p>
+1. <span style="background-color:#f1f1f1">medium</span> 
+ is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
+ attenuation coefficient, and power law exponent.  
+ For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
+ For homogeneous media, though, the medium properties can be described by a single scalar. 
+ <span style="background-color:#f1f1f1">medium.c0</span> 
+ is the reference speed of sound and generally, it is chosen as the minimum value of 
+ <span style="background-color:#f1f1f1">medium.c</span>.
+ <br><br>2. <span style="background-color:#f1f1f1">sensor_mask</span>
+ contains the positions in Cartesian coordinate with a matrix size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1)
+ with the recording positions marked with logical value 1 while other positions are marked with 0. 
+ <br><br>3. <span style="background-color:#f1f1f1">reflection_order</span>
+ indicates the maximum order of reflections to be included in the simulation. This number is 
+ recommended to be 2 for lossy biological media in order to achieve the best tradeoff between accuracy and computation time.
+ <br><br>4. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
+ <span style="background-color:#f1f1f1">correction</span> is recommended.
+ <br><br>5. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
+ domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
+ <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
+ must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
+ or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
+ thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
+ the acoustic filed becomes inaccurate due to excess absorption. 
+</p>
+
 <br>  
 <h3>Outputs</h3> 
 
