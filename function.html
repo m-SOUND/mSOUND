@@ -174,14 +174,11 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
- <br>
- 2. The excitation pressure <span style="background-color:#f1f1f1">source_p</span> is indexed as (time, source_position). 
- <br>
- 3. The <span style="background-color:#f1f1f1">sensor_mask</span>
+ <br><br>2. The excitation pressure <span style="background-color:#f1f1f1">source_p</span> is indexed as (time, source_position). 
+ <br><br>3. <span style="background-color:#f1f1f1">sensor_mask</span>
  contains the positions in Cartesian coordinate with a matrix size (mgrid.num_x+1, 1)
  with the recording positions marked with logical value 1 while other positions are marked with 0. 
- <br>
- 4. <span style="background-color:#f1f1f1">reflection_order</span>
+ <br><br>4. <span style="background-color:#f1f1f1">reflection_order</span>
  indicates the maximum order of reflections to be included in the simulation. This number is 
  recommended to be 2 for lossy biological media in order to achieve the best tradeoff between accuracy and computation time.
 </p>
