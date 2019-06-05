@@ -169,7 +169,7 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x+1, 1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -249,7 +249,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -338,7 +338,7 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -420,7 +420,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -501,7 +501,7 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -576,7 +576,7 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -659,7 +659,7 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -732,7 +732,7 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x+1, 1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -808,7 +808,7 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -893,7 +893,7 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -974,7 +974,7 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
@@ -1051,7 +1051,7 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, ...);
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
  For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
- For homogeneous media, though, the medium properties can be described by a single scalar. 
+ For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
