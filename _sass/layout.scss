@@ -36,11 +36,11 @@
 /* Toggle class to open menu */
 
 #nav.menu-open {
-  @include open(14rem);
+  @include open(10rem);
 }
 
 #nav-left.menu-open-left {
-  @include open(14rem);
+  @include open(10rem);
 }
 
 /* Separator after menu */
@@ -48,7 +48,7 @@
 #nav-list:after {
   display: block;
   content: '';
-  width: 4rem;
+  width: 5rem;
   height: 1px;
   margin: 23px auto;
   background-color: $background-color;
