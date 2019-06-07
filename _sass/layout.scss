@@ -36,11 +36,11 @@
 /* Toggle class to open menu */
 
 #nav.menu-open {
-  @include open(10rem);
+  @include open(9rem);
 }
 
 #nav-left.menu-open-left {
-  @include open(10rem);
+  @include open(9rem);
 }
 
 /* Separator after menu */
