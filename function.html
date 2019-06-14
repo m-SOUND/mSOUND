@@ -123,7 +123,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);  <font
 <hr>
 <p>
  <a href="/mSOUND/function.html#Forward1D">Forward1D</a>
- is a 1D forward simulation function based on the transient mixed domain method and it will generate transient-domain results.
+ is a 1D forward simulation function based on the transient mixed domain method and it generates time-domain results.
 <pre> <code>
 p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order);  
 p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);  
@@ -139,13 +139,13 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>mgrid</td><td>structure returned by set_grid</td>
   </tr>
   <tr>
-    <td>medium </td><td>input structure including the media properties</td>
+    <td>medium </td><td>input structure including the medium properties</td>
   </tr>
    <tr>
     <td>source_p</td><td>excitation signal [Pa]</td>
   </tr>
   <tr>
-    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+    <td>sensor_mask</td><td>a set of Cartesian points where the waveform is recorded</td>
   </tr>
   <tr>
    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
@@ -157,12 +157,12 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
    <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
-   <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+   <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
  </table> 
 
 <br> 
-<h3> Details </h3>         
+<h3> Remarks </h3>         
 <hr>   
 <p>
 1. <span style="background-color:#f1f1f1">medium</span> 
@@ -178,7 +178,7 @@ p = Forward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  contains the positions in Cartesian coordinate with a matrix size (1, mgrid.num_x+1)
  with the recording positions marked with logical value 1 while other positions are marked with 0. 
  <br><br>4. <span style="background-color:#f1f1f1">reflection_order</span>
- indicates the maximum order of reflections to be included in the simulation. This number is 
+ indicates the maximum order of reflection to be included in the simulation. This number is 
  recommended to be 2 for lossy biological media in order to achieve the best tradeoff between accuracy and computation time.
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
@@ -194,7 +194,7 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <hr>
 <p>
  <a href="/mSOUND/function.html#Forward2D">Forward2D</a>
- is a 2D forward simulation function based on the transient mixed domain method and it will generate transient-domain results.
+ is a 2D forward simulation function based on the transient mixed domain method and it generates time-domain results.
  
 <pre>  <code>
 p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order); 
@@ -210,13 +210,13 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>mgrid</td><td>structure returned by set_grid</td>
   </tr>
   <tr>
-    <td>medium </td><td>input structure including the media properties</td>
+    <td>medium </td><td>input structure including the medium properties</td>
   </tr>
    <tr>
     <td>source_p</td><td>excitation signal [Pa]</td>
   </tr>
   <tr>
-    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+    <td>sensor_mask</td><td>a set of Cartesian points where the waveform is recorded</td>
   </tr>
    <tr>
    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
@@ -228,13 +228,13 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
   <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
-  <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+  <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
    <tr>
-  <td>'NRL'</td><td>apply non-reflecting layerr</td>
+  <td>'NRL'</td><td>apply the non-reflecting layer</td>
   </tr>
   <tr>
-  <td>'animation'</td><td>play the animation during the simulation</td>
+  <td>'animation'</td><td>play the wave-moving animation during the simulation</td>
   </tr>
   <tr>
   <td>'record_animation'</td><td>record the animation</td>
@@ -242,13 +242,13 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  </table> 
 
 <br> 
-<h3> Details </h3>         
+<h3> Remarks </h3>         
 <hr>   
 <p>
 1. <span style="background-color:#f1f1f1">medium</span> 
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
- For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1).
+ For 2D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1).
  For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
@@ -258,7 +258,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  contains the positions in Cartesian coordinate with a matrix size (mgrid.num_x, mgrid.num_y+1)
  with the recording positions marked with logical value 1 while other positions are marked with 0. 
  <br><br>4. <span style="background-color:#f1f1f1">reflection_order</span>
- indicates the maximum order of reflections to be included in the simulation. This number is 
+ indicates the maximum order of reflection to be included in the simulation. This number is 
  recommended to be 2 for lossy biological media in order to achieve the best tradeoff between accuracy and computation time.
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
@@ -284,7 +284,7 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <hr>
 <p>
  <a href="/mSOUND/function.html#Forward3D">Forward3D</a>
- is a 3D forward simulation function based on the transient mixed domain method and it will generate transient-domain results. 
+ is a 3D forward simulation function based on the transient mixed domain method and it generates time-domain results. 
 <pre>  <code>
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order);
 p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
@@ -299,13 +299,13 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>mgrid</td><td>structure returned by set_grid</td>
   </tr>
   <tr>
-    <td>medium </td><td>input structure including the media properties</td>
+    <td>medium </td><td>input structure including the medium properties</td>
   </tr>
   <tr>
     <td>source_p</td><td>excitation signal [Pa]</td>
   </tr> 
   <tr>
-    <td>sensor_mask</td><td>a set of Cartesian points where the pressure is recorded</td>
+    <td>sensor_mask</td><td>a set of Cartesian points where the waveform is recorded</td>
   </tr>
    <tr>
    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
@@ -317,7 +317,7 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
   <tr>
-    <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+    <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
    <tr>
   <td>'NRL'</td><td>apply non-reflecting layer</td>
@@ -331,13 +331,13 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  </table> 
 
 <br> 
-<h3> Details </h3>         
+<h3> Remarks </h3>         
 <hr>   
 <p>
 1. <span style="background-color:#f1f1f1">medium</span> 
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
- For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
+ For 3D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
  For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
@@ -347,7 +347,7 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  contains the positions in Cartesian coordinate with a matrix size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1)
  with the recording positions marked with logical value 1 while other positions are marked with 0. 
  <br><br>4. <span style="background-color:#f1f1f1">reflection_order</span>
- indicates the maximum order of reflections to be included in the simulation. This number is 
+ indicates the maximum order of reflection to be included in the simulation. This number is 
  recommended to be 2 for lossy biological media in order to achieve the best tradeoff between accuracy and computation time.
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
@@ -374,7 +374,7 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <p>
  <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>
  is a 2D forward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the center frequency. 
+ generates the pressure field at the center frequency. 
 <pre>  <code>
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -390,13 +390,13 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
     <td>mgrid</td><td>structure returned by set_grid</td>
   </tr>
   <tr>
-    <td>medium</td><td>input structure including the media properties</td>
+    <td>medium</td><td>input structure including the medium properties</td>
   </tr>
   <tr>
     <td>source_p</td><td>excitation signal [Pa]</td>
   </tr>
    <tr>
-    <td>omega_c </td><td>transducer center frequency [rad]</td>
+    <td>omega_c </td><td>Ultrasound center frequency [rad]</td>
   </tr>
  </table> 
 <br>
@@ -405,7 +405,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
     <th>OPTIONAL INPUT</th><th>PROPERTIES</th>
   </tr>
   <tr>
-    <td>'correction'</td><td>apply phase and amplitude corrections for strong heterogeneities</td>
+    <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
    <tr>
   <td>'NRL'</td><td>apply non-reflecting layer</td>
@@ -413,7 +413,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  </table> 
 
 <br> 
-<h3> Details </h3>         
+<h3> Remarks </h3>         
 <hr>   
 <p>
 1. <span style="background-color:#f1f1f1">medium</span> 
@@ -453,7 +453,7 @@ Pressure distribution throughout the spatial domain at the center frequency.
 <p>
  <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>
 is a 2D forward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the second harmonic frequency. 
+ generates the pressure field at the second harmonics. 
  To generate the second harmonic pressure field, 
  people must run the function <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a> first to 
 obtain the presure at the center frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
@@ -531,7 +531,7 @@ Pressure distribution throughout the spatial domain at the second-harmonic frequ
 <p>
 <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>
 is a 3D forward simulation function based on the frequency-specific mixed domain method and it
- will generate spatially distributed pressure at the center frequency. 
+generates the pressure field at the center frequency. 
 <pre>  <code>
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -569,13 +569,13 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 </table> 
 
 <br> 
-<h3> Details </h3>         
+<h3> Remarks </h3>         
 <hr>   
 <p>
 1. <span style="background-color:#f1f1f1">medium</span> 
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
- For 1D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
+ For 3D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
  For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
