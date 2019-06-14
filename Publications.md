@@ -14,6 +14,6 @@ title: Publications
 
 <p>[ 5 ] Yun Jing, Molei Tao, and Greg T. Clement, "Evaluation of a wave-vector-frequency-domain method for nonlinear wave propagation," The Journal of the Acoustical Society of America,129, 32-46, 2011. <a href="https://github.com/m-SOUND/mSOUND/tree/master/download/WVFD.pdf" download="WVFD.pdf">Download pdf</a></p>  
 
-<p>[ 6 ] Yun Jing, "An improved wave-vector frequency-domain method for nonlinear wave modeling,"  IEEE Transactions on Ultrasonics, Ferroelectrics and Frequency Control, 61, 515-524, 2014. <a href="https://github.com/m-SOUND/mSOUND/tree/master/download/Absorption_layer.pdf" download="improved_WVFD.pdf">Download pdf</a></p> 
+<p>[ 6 ] Yun Jing, "An improved wave-vector frequency-domain method for nonlinear wave modeling," IEEE Transactions on Ultrasonics, Ferroelectrics and Frequency Control, 61, 515-524, 2014. <a href="https://github.com/m-SOUND/mSOUND/blob/master/download/improved_WVFD.pdf" download="improved_WVFD.pdf">Download pdf</a></p> 
 
-<p>[ 7 ] Yun Jing, Molei Tao, and Greg T. Clement, "Verification of the westervelt equation for focused transducers," IEEE Transactions on Ultrasonics, Ferroelectrics and Frequency Control, 58, 1097-1101, 2011. <a href="https://github.com/m-SOUND/mSOUND/tree/master/download/WVFD.pdf" download="Verification.pdf">Download pdf</a></p>  
+<p>[ 7 ] Yun Jing, Molei Tao, and Greg T. Clement, "Verification of the westervelt equation for focused transducers," IEEE Transactions on Ultrasonics, Ferroelectrics and Frequency Control, 58, 1097-1101, 2011. <a href="https://github.com/m-SOUND/mSOUND/blob/master/download/Verification.pdf" download="Verification.pdf">Download pdf</a></p>  
