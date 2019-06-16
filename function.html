@@ -374,7 +374,8 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <p>
  <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>
  is a 2D forward simulation function based on the frequency-specific mixed domain method and it
- generates the pressure field at the center frequency. 
+ generates the pressure field at the center frequency. Only use this function when the excitation is a continuous wave (sinusoidal wave) and 
+ linear or weakly nonlinear wave propagation is considered. 
 <pre>  <code>
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -457,7 +458,9 @@ is a 2D forward simulation function based on the frequency-specific mixed domain
  To generate the second harmonics pressure field, 
  users must run the function <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a> first to 
 obtain the pressure field at the center frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
- When calculating the second harmonics pressure field, density heterogeneity is not considered by default. It can be considered though by invoking "correction".
+ When calculating the second harmonics pressure field, density heterogeneity is by dafault not considered. 
+ It can be considered, however, by invoking "correction". Only use this function when the excitation is a continuous wave (sinusoidal wave) and
+  weakly nonlinear wave propagation is considered. 
 <pre>  <code>
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c);  
 p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);  
@@ -531,7 +534,8 @@ Pressure field distribution at the second harmonics.
 <p>
 <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>
 is a 3D forward simulation function based on the frequency-specific mixed domain method and it
-generates the pressure field at the center frequency. 
+generates the pressure field at the center frequency. Only use this function when the excitation is a continuous wave (sinusoidal wave) 
+ and linear or weakly nonlinear wave propagation is considered. 
 <pre>  <code>
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order);  
 p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);  
@@ -614,7 +618,9 @@ is a 3D forward simulation function based on the frequency-specific mixed domain
  To generate the second harmonics pressure field, 
  users must run the function <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a> first to 
 obtain the pressure field at the center frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
- When calculating the second harmonics pressure field, density heterogeneity is not considered by fault. It can be considered though by invoking "correction".
+ When calculating the second harmonics pressure field, density heterogeneity is by dafault not considered. It can be considered, 
+ however, by invoking "correction". Only use this function when the excitation is a continuous wave (sinusoidal wave) and
+  weakly nonlinear wave propagation is considered. 
 <pre>  <code>
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);   
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);   
@@ -928,7 +934,8 @@ Time-domain results recorded at the sensor positions given by <span style="backg
 <p>
  <a href="/mSOUND/function.html#Backward2D_fund">Backward2D_fund</a>
  is a 2D backward simulation function based on the frequency-specific mixed domain method and it
- generates the pressure field at the center frequency. Only use this for linear wave propagation. 
+ generates the pressure field at the center frequency. Only use this function when the excitation is 
+ a continuous wave (sinusoidal wave) and linear wave propagation is considered. 
 <pre>  <code>
 p = Backward2D_fund(mgrid, medium, source_p, omega_c);  
 p = Backward2D_fund(mgrid, medium, source_p, omega_c, ...);  
@@ -1006,7 +1013,8 @@ Pressure field distribution at the center frequency.
 <p>
 <a href="/mSOUND/function.html#Backward3D_fund">Backward3D_fund</a>
 is a 3D backward simulation function based on the frequency-specific mixed domain method and it
-generates the pressure field at the center frequency. Only use this for linear wave propagation. 
+generates the pressure field at the center frequency. Only use this function when the excitation is 
+ a continuous wave (sinusoidal wave) and linear wave propagation is considered. 
 <pre>  <code>
 p = Backward3D_fund(mgrid, medium, source_p, omega_c);  
 p = Backward3D_fund(mgrid, medium, source_p, omega_c, ...);  
