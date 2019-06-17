@@ -253,15 +253,20 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <span style="background-color:#f1f1f1">medium.c0</span> 
  is the reference speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
+ 
  <br><br>2. The excitation pressure <span style="background-color:#f1f1f1">source_p</span> is indexed as (time, source_position). 
+ 
  <br><br>3. <span style="background-color:#f1f1f1">sensor_mask</span>
  contains the positions in Cartesian coordinate with a matrix size (mgrid.num_x, mgrid.num_y+1)
  with the recording positions marked with logical value 1 while other positions are marked with 0. 
+ 
  <br><br>4. <span style="background-color:#f1f1f1">reflection_order</span>
  indicates the maximum order of reflection to be included in the simulation. This number is 
  recommended to be 2 for lossy biological media in order to achieve the best tradeoff between accuracy and computation time.
+ 
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
+ 
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
@@ -269,6 +274,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
  thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
  the acoustic filed becomes inaccurate due to excess absorption. 
+ 
  <br><br>7. <span style="background-color:#f1f1f1">record_animation</span> will record the animation and save the animation 
  file as ‘animation.avi’.
 </p>
