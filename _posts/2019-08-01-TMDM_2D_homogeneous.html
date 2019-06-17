@@ -15,9 +15,11 @@ title: Simulation of a 2D homogeneous medium using the transient mixed domain me
 <h6>Generating the grid structure to define the computational domain</h6>
 <hr>
 <p>  
- <br>We first need to define the temporal and spatial computational domain in 2D forward simulations 
- with the funciton <a href="/mSOUND/function.html#set_grid">set_grid</a>. For 2D problems,
- six inputs are required to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates.
+ <br>We first need to define the temporal and spatial domains in 2D forward simulations 
+ with the function <a href="/mSOUND/function.html#set_grid">set_grid</a>. For 2D problems,
+ six inputs are required to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates. 
+ The spatial resolution should in principle be a small fraction of the wavelength (e.g., 1/4 of the wavelength). The temporal resolution
+ should satisfy the Nyquist criteria. 
 <pre>
 <code>        
 dx = 3.75e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
@@ -80,7 +82,7 @@ For 2D simulations, the medium properties should be given as matrices with a siz
  For homogeneous media, though, the medium properties can be described by a single scalar. 
 <span style="background-color:#f1f1f1">medium.c0</span> is the reference speed of sound and generally, 
 it is chosen as the minimum value of <span style="background-color:#f1f1f1">medium.c</span>.   
-When dispersion is not considered, power law exponent is set to be 2.0.
+When the power law exponent is 2.0, dispersion gets shut down.
 <pre>
 <code>  
 medium.c    = 1500;    <font color="#03a852">% speed of sound [m/s]</font>      
@@ -101,7 +103,7 @@ medium.NRL_alpha = 0.05;
 <hr>
 <p>  
 Transient pressure is calculated with the 2D forward simulation function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>. 
-Time domain result recorded at the transducer focal point and the spatially distributed fundamental pressure are shown below.
+The waveform recorded at the transducer focal point and the center frequency pressure field are shown below.
 <pre>
 <code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
