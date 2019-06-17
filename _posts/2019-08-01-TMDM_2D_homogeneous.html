@@ -78,7 +78,7 @@ source_p(:, abs(mgrid.x)>TR_radius) = 0;
 <hr>
 <p>
 Define the homogeneous medium. 
-For 2D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y). 
+For 2D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1). 
  For homogeneous media, though, the medium properties can be described by a single scalar. 
 <span style="background-color:#f1f1f1">medium.c0</span> is the reference speed of sound and generally, 
 it is chosen as the minimum value of <span style="background-color:#f1f1f1">medium.c</span>.   
