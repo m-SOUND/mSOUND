@@ -8,7 +8,7 @@ mSOUND is an open-source toolbox written in [MATLAB](https://www.mathworks.com/p
    
 
 ## Download
-[Download version 1.0](https://github.com/m-SOUND/FileDownloader/MDM_code.zip" download="MDM_code.zip)               
+[Download beta-version 0.1](https://github.com/m-SOUND/FileDownloader/MDM_code.zip" download="MDM_code.zip)               
 
 
 ## Acknowledgment
