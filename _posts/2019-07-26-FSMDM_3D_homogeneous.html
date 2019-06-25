@@ -60,13 +60,11 @@ source_p(RHO>TR_radius) = 0;  <font color="#03a852"> % filter out the signals ou
 Define the homogeneous medium.
  <pre>
  <code>
-<font color="#03a852">% speed of sound [m/s]</font>      
-medium.c    = 1500*ones(mgrid.num_x, mgrid.num_y, mgrid.num_z+1);
-<font color="#03a852">% density [kg/m^3]</font>   
-medium.rho  = 1000*ones(mgrid.num_x, mgrid.num_y, mgrid.num_z+1);             
-medium.beta = 3.6;    <font color="#03a852">% nonlinear coefficient </font>    
-medium.ca   = 0.005;  <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = 2.0;    <font color="#03a852">% power law exponent</font>    
+medium.c    = 1500;  <font color="#03a852">% speed of sound [m/s]</font>   
+medium.rho  = 1000;  <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = 3.6;   <font color="#03a852">% nonlinear coefficient </font>    
+medium.ca   = 0.005; <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = 2.0;   <font color="#03a852">% power law exponent</font>    
 </code>
 </pre>
 </p>
