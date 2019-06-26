@@ -757,6 +757,9 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
   <tr>
    <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
+  <tr>
+   <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+  </tr> 
  </table> 
 
 <br> 
@@ -831,6 +834,9 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
+   <tr>
+   <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+  </tr> 
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layer</td>
   </tr>
@@ -925,6 +931,9 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
   <tr>
     <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
+   <tr>
+   <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+  </tr> 
    <tr>
 <td>'NRL'</td><td>apply the non-reflecting layerr</td>
   </tr>
@@ -1022,6 +1031,9 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
     <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
    <tr>
+   <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+  </tr> 
+   <tr>
   <td>'NRL'</td><td>apply the non-reflecting layerr</td>
   </tr>
  </table> 
@@ -1107,7 +1119,10 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 <tr>
 <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
 </tr>
-   <tr>
+  <tr>
+  <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+  </tr> 
+  <tr>
 <td>'NRL'</td><td>apply the non-reflecting layer</td>
   </tr>
 </table> 
