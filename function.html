@@ -758,7 +758,7 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
    <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
   <tr>
-   <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+   <td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
   </tr> 
  </table> 
 
@@ -788,8 +788,11 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>6. <span style="background-color:#f1f1f1">refl_correction</span> should be used to correct the reflections when 
- the speed of sound or density contrast is strong (contrast ratio being larger than 1.50).
+ <br><br>6. <span style="background-color:#f1f1f1">no_refl_correction</span>Reflection correction is automatically included in the
+ backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
+ sound and density contrast are weak (contrast ratio being less than 1.50), the correction can be turned off with optional input
+<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
+ 
 </p>
 
 <h3>Outputs</h3> 
@@ -826,7 +829,7 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>sensor_mask</td><td>a set of Cartesian points where the waveform is recorded</td>
   </tr>
     <tr>
-    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
+   <td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
   </tr>
  </table> 
 <br>
@@ -877,8 +880,10 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
-  <br><br>6. <span style="background-color:#f1f1f1">refl_correction</span> should be used to correct the reflections when 
- the speed of sound or density contrast is strong (contrast ratio being larger than 1.50).
+ <br><br>6. <span style="background-color:#f1f1f1">no_refl_correction</span>Reflection correction is automatically included in the
+ backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
+ sound and density contrast are weak (contrast ratio being less than 1.50), the correction can be turned off with optional input
+<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
  
  <br><br>7. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -938,7 +943,7 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
    <tr>
-   <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+  <td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
   </tr> 
    <tr>
 <td>'NRL'</td><td>apply the non-reflecting layerr</td>
@@ -977,8 +982,10 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
-  <br><br>6. <span style="background-color:#f1f1f1">refl_correction</span> should be used to correct the reflections when 
- the speed of sound or density contrast is strong (contrast ratio being larger than 1.50).
+ <br><br>6. <span style="background-color:#f1f1f1">no_refl_correction</span>Reflection correction is automatically included in the
+ backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
+ sound and density contrast are weak (contrast ratio being less than 1.50), the correction can be turned off with optional input
+<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
  
  <br><br>7. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -1040,7 +1047,7 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
     <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
    <tr>
-   <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+<td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
   </tr> 
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layerr</td>
@@ -1072,8 +1079,10 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
  <br><br>4. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
-  <br><br>5. <span style="background-color:#f1f1f1">refl_correction</span> should be used to correct the reflections when 
- the speed of sound or density contrast is strong (contrast ratio being larger than 1.50).
+ <br><br>5. <span style="background-color:#f1f1f1">no_refl_correction</span>Reflection correction is automatically included in the
+ backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
+ sound and density contrast are weak (contrast ratio being less than 1.50), the correction can be turned off with optional input
+<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
  
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -1132,7 +1141,7 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
 </tr>
   <tr>
-  <td>'refl_correction'</td><td>correct the reflections in backward propagation</td>
+ <td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
   </tr> 
   <tr>
 <td>'NRL'</td><td>apply the non-reflecting layer</td>
@@ -1162,11 +1171,12 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  
  <br><br>4. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
- 
-  <br><br>5. <span style="background-color:#f1f1f1">refl_correction</span> should be used to correct the reflections when 
- the speed of sound or density contrast is strong (contrast ratio being larger than 1.50).
- 
 
+ <br><br>6. <span style="background-color:#f1f1f1">no_refl_correction</span>Reflection correction is automatically included in the
+ backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
+ sound and density contrast are weak (contrast ratio being less than 1.50), the correction can be turned off with optional input
+<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
+ 
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
