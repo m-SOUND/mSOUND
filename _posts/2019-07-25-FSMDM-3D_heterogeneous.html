@@ -26,7 +26,9 @@ medium.c    = c;      <font color="#03a852">% speed of sound [m/s]</font>
 medium.rho  = rho;    <font color="#03a852">% density [kg/m^3]</font>             
 medium.beta = beta;   <font color="#03a852">% nonlinear coefficient </font>    
 medium.ca   = ca;     <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = cb;     <font color="#03a852">% power law exponent</font>    
+medium.cb   = cb;     <font color="#03a852">% power law exponent</font>   
+medium.NRL_gamma = 0.5;
+medium.NRL_alpha = 0.1;
 </code>
 </pre>
 <img src="/mSOUND/img/3D_heterogeneous_model.jpg" alt="3D model">
@@ -46,7 +48,6 @@ medium.cb   = cb;     <font color="#03a852">% power law exponent</font>
   
 <pre> <code>
 reflection_order = 4;
-
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
 p_fundamental = Forward3D_fund(mgrid, medium, source_p, ...
                 refleciton_order, 'correction', 'NRL'); 
