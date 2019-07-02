@@ -49,10 +49,10 @@ reflection_order = 4;
 
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
 p_fundamental = Forward3D_fund(mgrid, medium, source_p, ...
-                refleciton_order, 'correction'); 
+                refleciton_order, 'correction', 'NRL'); 
 
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c, 'correction'); 
+p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c, 'correction', 'NRL'); 
 </code> </pre>
                      
 </p>
