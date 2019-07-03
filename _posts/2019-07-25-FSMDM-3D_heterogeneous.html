@@ -51,21 +51,18 @@ reflection_order = 4;
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
 p_fundamental = Forward3D_fund(mgrid, medium, source_p, ...
                 refleciton_order, 'correction', 'NRL'); 
-
-<font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c, 'correction', 'NRL'); 
 </code> </pre>
                      
 </p>
 <p>
-The figure below shows the fundamental pressure in the (a) xz plane, (b) yz plane and (c) xy plane.
-<img src="/mSOUND/img/FSMDM_3D_heterogeneous_fund.jpg" alt="fundamental and the fundamental pressure field">
+The figure below shows pressure field in the (a) xz plane, (b) yz plane and (c) xy plane simulated with FSMDM.
+<img src="/mSOUND/img/FSMDM_3D_heterogeneous.jpg" alt="fundamental and the fundamental pressure field">
 </p>
                                                                                                         
 
 <p>
-The figure below shows the second-harmonic pressure in the (a) xz plane, (b) yz plane and (c) xy plane.                                                                                                              
-<img src="/mSOUND/img/FSMDM_3D_heterogeneous_sec.jpg" alt="fundamental and the second-harmonic pressure field">
+The figure below shows pressure field in the (a) xz plane, (b) yz plane and (c) xy plane simulated with k-Wave.                                                                                                            
+<img src="/mSOUND/img/KWAVE_3D_heterogeneous.jpg" alt="fundamental and the second-harmonic pressure field">
 </p>
                                                                                                                
 
