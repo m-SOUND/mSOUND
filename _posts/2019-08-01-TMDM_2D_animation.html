@@ -1,0 +1,40 @@
+---
+title: Efficient simulation with TMDM
+---
+<p>
+<br>
+<hr>
+<hr>
+Due to the periodic property of Fourier Transform, the total temporal domain size in TMDM can be chosen as small as the 
+pulse length to save computation time and computer memeory. Though a smaller temporal domain won't affact the pressure field, 
+artifical signals will apear in the animation when the temproal domain is smaller than the real propagation time.
+<hr>
+<hr>
+</p>
+
+<!---Forward propagation--->
+<h6>Forward propagation</h6>
+<p>
+<br>
+This example is based on the example
+<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">Simulation of a
+2D homogeneous medium using the transient mixed domain method</a>. Two different temporal domain sizes are used and they are 
+<span style="background-color:#f1f1f1">t_length = 8.0000e-06</span>
+and <span style="background-color:#f1f1f1">t_length = 3.2000e-05</span>.
+<pre>
+code>
+p_total = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, 'animation'); 
+ </code>
+</pre>
+<img src="/mSOUND/img/animation_2D_small_domain.jpg" alt="snap shot of the animation for the simulation with smaller temporal domain">
+<img src="/mSOUND/img/animation_2D_large_domain.jpg" alt="snap shot of the animation for the simulation with larger temporal domain">
+</p>
+
+<p>
+<br>
+The first figure shows the snapshot of the animation for the simulation with <span style="background-color:#f1f1f1">t_length = 8.0000e-06</span>.
+The second figure shows the snapshot of the animaiton for the simulation with <span style="background-color:#f1f1f1">t_length = 3.2000e-05</span>.
+In the first figure, only the right-most signal is the real signal while the following signals are the artifical ones from 
+the Fourier transform due to the peoridic perperty. The second figure is more clean and only the real singal shows up in the snapshot.
+
+</p>
