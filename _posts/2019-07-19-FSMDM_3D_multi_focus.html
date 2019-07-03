@@ -1,0 +1,85 @@
+---
+title: Reconstruction of the source with FSMDM in a 3D homogeneous medium
+---
+<p>
+<br>
+<hr>
+<hr>
+In this example, the source plane was reconstructed by using the backward projection with FSMDM.
+<hr>
+<hr>
+</p>
+
+
+<!---Forward propagation--->
+<h6>Forward propagation</h6>
+<p>
+<br>
+This example is based on the example
+<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">Simulation of a 3D homogeneous medium using the frequency-specific 
+mixed domain method</a>. The transducer definition is shown below.
+<pre>
+<code>
+<font color="#03a852">% define the transducer</font>   
+X = (ones(mgrid.num_y,1)*mgrid.x).';
+Y = ones(mgrid.num_x,1)*mgrid.y;
+RHO = sqrt(X.^2+Y.^2);
+
+source_map1 = sqrt((X-lambda*3).^2 + (Y+lambda*3).^2);   
+source_map2 = sqrt((X+lambda*3).^2 + (Y+lambda*3).^2); 
+source_map3 = sqrt((X-lambda*3).^2 + (Y-lambda*3).^2); 
+source_map4 = sqrt((X+lambda*3).^2 + (Y-lambda*3).^2); 
+
+<font color="#03a852">% radius of each small circle in the transducer</font>  
+TR_radius = 0.0037; 
+
+source_map1(source_map1<=TR_radius) = 1;
+source_map2(source_map2<=TR_radius) = 1;
+source_map3(source_map3<=TR_radius) = 1;
+source_map4(source_map4<=TR_radius) = 1;
+source_map = source_map1  + source_map2 + source_map3 + source_map4;
+p0 = 1; <font color="#03a852">% pressure amplitude[Pa]</font> 
+source_p = p0*source_map; 
+</code>
+</pre>
+<img src="/mSOUND/img/animation_2D_small_domain.jpg" alt="snap shot of the animation for the simulation with smaller temporal domain">
+</p>
+
+<!---3D forward simulation--->
+<h6>3D forward simulation</h6>
+<hr>
+<p>
+ <br>The pressure field at a xy plane 21 mm away from the source plane is first calculated with the function 
+  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>.
+<pre> <code>
+reflection_order = 0;
+<font color="#03a852">% forward propagation </font>   
+p_fundamental = Forward3D_fund(mgrid, medium, source_p, ...
+                refleciton_order, 'NRL'); 
+</code> </pre>            
+</p>
+
+<!---3D backward simulation--->
+<h6>source image reconstruction</h6>
+<hr>
+<p>
+ <br>The original source pressure distribution is obtained with the function
+  <a href="/mSOUND/function.html#Backward3D_fund">Backward3D_fund</a>.
+<pre> <code>
+reflection_order = 0;
+source_p = p_fundamental(:,:,end);
+<font color="#03a852">% forward propagation </font>   
+p_fundamental = Backward3D_fund(mgrid, medium, source_p, ...
+                refleciton_order, 'NRL'); 
+</code> </pre>    
+The figure below shows (a) ground-truth source distribution, (b) pressure distribution at the xy plane 21 mm away from the source plane
+and (c) the reconstructed source pressure distribution.                                                                                                           
+<img src="/mSOUND/img/FSMDM_3D_multi_sources.jpg" alt="(a) ground-truth source distribution, 
+(b) pressure distribution at the xy plane 21 mm away from the source plane
+and (c) the reconstructed source pressure distribution">
+</p>
+
+
+
+
+
