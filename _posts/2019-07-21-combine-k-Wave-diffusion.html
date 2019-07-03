@@ -21,7 +21,28 @@ Then we need to extract the pressure amplitdue from the acoustic simulation resu
 <span style="background-color:#f1f1f1">P_fundamental</span>. The output pressure
 <span style="background-color:#f1f1f1">P_fundamental</span> includes the values at the source plane. In the thermal simulation,
 the pressure at the source plane will be excluded. 
-<pre> <code> 
+<pre> <code>
+<font color="#03a852">% define the computational domain</font> 
+x_length = 0.0451; <font color="#03a852"> % total computational domain size in x direction [m]</font> 
+y_length = 0.0450; <font color="#03a852"> % total computational domain size in xy direction [m]</font> 
+dx = 1.5000e-04; <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = 1.5000e-04; <font color="#03a852"> % step size in the y direction [m]</font>
+mgrid = set_grid(0, 0, dx, x_length, dy, y_length);
+
+TR_focus = 0.0360;  <font color="#03a852">% transducer focal length</font>    
+TR_radius = 0.0090; <font color="#03a852">% transducer aperture radius</font> 
+
+<font color="#03a852">% calculate the phase delay</font>     
+delay = sqrt((mgrid.x).^2 + (TR_focus)^2)/medium.c0;  % [s]
+delay = delay - min(delay);
+
+p0 = 0.8e6; <font color="#03a852">% pressure magnitude at the source [Pa]</font>  
+fc = 1.0e6;	<font color="#03a852">% fundamental frequency	[Hz]</font>    
+omegac = 2*pi*fc; <font color="#03a852">% angular frquency [rad/s]</font>   
+source_p = p0*exp(1i*omegac*delay);  <font color="#03a852">% define the pulse</font>   
+source_p(abs(mgrid.x)>TR_radius) = 0;
+
+medium.c0   = 1500; <font color="#03a852">% reference speed of sound [m/s]</font> 
 medium.c    = 1500; <font color="#03a852">% speed of sound [m/s]</font>      
 medium.rho  = 1000; <font color="#03a852">% density [kg/m^3]</font>             
 medium.beta = 0;    <font color="#03a852">% nonlinear coefficient </font>    
