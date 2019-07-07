@@ -5,8 +5,8 @@ title: Simulation of a 2D homogeneous medium using the frequency-specific mixed 
 <br>
 <hr>
 <hr>
-This example shows how to simulate the wave propagation in a 2D homogeneous medium with the frequency-specific 
- mixed domain method and the focused beam is generated with the phased-array.
+This example shows how to simulate the wave propagation in a 2D homogeneous medium with the 
+frequency-specific mixed domain method. A focused beam is simulated.
 <hr>
 <hr>
 </p>
@@ -19,9 +19,11 @@ This example shows how to simulate the wave propagation in a 2D homogeneous medi
  This simulation setup is based on the 
  <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
  Simulation of a 2D homogeneous medium using the transient mixed domain method</a>.
- The phase delay for each element in the transducer are the same in the two cases. 
- We first need to define the temporal and spatial computational domain in 2D forward simulations. In FSMDM, time step and 
- temporal domain size are set to 0. 
+ The phase delay for each element in the transducer is similarly defined, albeit one is in the time-domain and 
+ the other one is in the frequency-domain.
+ We first need to define the temporal and spatial computational domain in 2D forward simulations. In FSMDM, . 
+ In FSMDM, any arbitrary values can be set for the time step and temporal domain size , since they are not being used. 
+ Here, we set them to 0. 
  <pre>
  <code>        
 dx = 2.5000e-04;  <font color="#03a852"> % step size in the x direction [m]</font> 
@@ -39,9 +41,11 @@ mgrid = set_grid(0, 0, dx, x_length, dy, y_length);
 <h6>Excitation signal</h6>
 <hr>
 <p>
-Continuous sine wave is used as the excitation signal.
+Since the simulation is conducted in the frequency domain, a continuous sine wave is assumed as the excitation signal.
+ Note that in this case, the pressure would be a complex number rather than a real number as in the TMDM. 
 <pre>
 <code>  
+omega_c = 2*pi*fc;  <font color="#03a852"> % angular frequency [rad/s]</font> 
 p0 = 0.6e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
 source_p = p0*exp(1i*omega_c*delay);  <font color="#03a852"> % define the pulse </font>  
 excit_p(abs(mgrid.x)>TR_radius) = 0;  <font color="#03a852"> % apply the transducer mask </font>  
@@ -53,7 +57,7 @@ excit_p(abs(mgrid.x)>TR_radius) = 0;  <font color="#03a852"> % apply the transdu
 <h6>Defining the medium properties</h6>
 <hr>
 <p>
-For 2D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y). For homogeneous media, 
+For 2D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1). For homogeneous medium, 
 though, the medium properties can be described by a single scalar. 
 <span style="background-color:#f1f1f1">medium.c0</span> is the reference speed of sound and generally, 
 it is chosen as the minimum value of <span style="background-color:#f1f1f1">medium.c</span>.  
@@ -73,9 +77,11 @@ medium.NRL_alpha = 0.1;  <font color="#03a852">% decay factor for non-relfecting
 <h6>2D forward simulation</h6>
 <hr>
 <p>
-Fundamental pressure field is calculated with the 2D forward simulation function 
+The fundamental pressure field is calculated with the 2D forward simulation function 
  <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>. 
-Pressure at the second-harmonic frequency is calculated with the function <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>. 
+The pressure field at the second-harmonic frequency under the quasi-linear approximation (weakly nonlinear wave propagation) 
+ is calculated with the function 
+ <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>. 
  <pre>
 <code>
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
