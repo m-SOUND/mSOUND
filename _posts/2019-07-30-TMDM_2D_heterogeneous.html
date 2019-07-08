@@ -5,8 +5,7 @@ title: Simulation of a 2D heterogeneous medium using the transient mixed domain 
 <br>
 <hr>
 <hr>
-This example provides the demenstration of using the transient mixed domain method for simulating wave propagation 
-in the 2D heterogeneous media. 
+This example demonstrates how to use the transient mixed domain method for simulating wave propagation in 2D heterogeneous media.
 <hr>
 <hr>
 </p>
@@ -15,19 +14,21 @@ in the 2D heterogeneous media.
 <h6>Defining the medium properties</h6>
 <p>
 <br>
-Definition of the computational domain and transducer settings in this example are similar to the example
+The setup of the computational domain and transducer in this example is similar to that in 
 <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation of a
 2D homogeneous medium using the transient mixed domain method</a>.
-Besides, speed of sound, density, nonlinear coefficient, attenuation coefficient and power law exponent are 
-all heterogeneous. <span style="background-color:#f1f1f1">medium.c0</span> is defined as the minimum value in the 
+All relevant acoustical properties including the speed of sound, density, nonlinearity coefficient, attenuation coefficient and power
+ law exponent can vary in space in order to model truly heterogeneous media. <span style="background-color:#f1f1f1">medium.c0</span> 
+ is defined as the minimum value in the 
  <span style="background-color:#f1f1f1">medium.c</span>.
 The 2D tissue model used in this example is shown in the figure below. 
+ The red line on the left boundary indicates the array position. The red dot is the geometrical focus.
  <pre>
  <code>
 p0 = 1.0e6;   <font color="#03a852"> % source pressure magnitude [Pa]</font>  
 fc = 1.0e6;   <font color="#03a852"> % fundamental frequency [Hz]</font>  
-TR_focus  = 0.0210;   <font color="#03a852"> % transducer focus length [m]</font>         
-TR_radius = 0.0112;   <font color="#03a852"> % Transducer diameter [m]</font> 
+TR_focus  = 0.0210;   <font color="#03a852"> % transducer focal length [m]</font>         
+TR_radius = 0.0112;   <font color="#03a852"> % Transducer radius [m]</font> 
 
 load tissue_model.mat   <font color="#03a852">% load the tissue model data</font>   
 medium.c    = c;        <font color="#03a852">% speed of sound [m/s]</font>      
@@ -45,7 +46,7 @@ medium.c0 = min(min(c));  <font color="#03a852">% reference speed of sound [m/s]
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <p>
-Transient pressure fields are calculated with the 2D forward simulation function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>.
+The acoustic pressure field is calculated with the 2D forward simulation function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>.
 <pre><code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
@@ -61,8 +62,8 @@ p_total = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order);
 </p>
 
 <p>
- The time-domain and the frequency-domain signal recorded at the transducer focus are shown in the top two figures shown below. The saptially 
- distributed pressure at the fundamental and the second-harmonic frequency are shown in the bottom two figures shown below.
+The acoustic signal recorded at the transducer focus as well as its Fourier components are shown in the top two figures
+shown below. The pressure distribution at the fundamental and the second-harmonic frequencies are shown in the bottom two figures.
 <img src="/mSOUND/img/TMDM_2D_heterogeneous_focus.jpg" alt="time and frequency domain signal at the transducer focus">
  
  <img src="/mSOUND/img/TMDM_2D_heterogeneous_spatially.jpg" alt="fundamental and the second-harmonic pressure field">
