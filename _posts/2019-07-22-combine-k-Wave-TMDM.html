@@ -119,7 +119,8 @@ sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
 sensor_mask(:, end) = 1;
 
 <font color="#03a852">%2D forward simulation with TMDM</font>   
-p_time = Forward2D(mgrid, medium, source_p, sensor_mask);
+reflection_order = 0;
+p_time = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order);
 </code>  
 </pre>
  <img src="/mSOUND/img/combine_kwave.jpg" alt="Time-domain singal recorded at the transducer focus">
