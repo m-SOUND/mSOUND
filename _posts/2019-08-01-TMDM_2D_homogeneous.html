@@ -43,8 +43,8 @@ In this example, a phased array transducer is used to generate the focused ultra
 <pre>
 <code>
 fc = 1.0e6;           <font color="#03a852"> % fundamental frequency [Hz]</font>   
-TR_focus  = 0.0180;   <font color="#03a852"> % transducer focus length [m]</font>         
-TR_radius = 0.0090;   <font color="#03a852"> % transducer diameter [m]</font>  
+TR_focus  = 0.0180;   <font color="#03a852"> % transducer focal length [m]</font>         
+TR_radius = 0.0090;   <font color="#03a852"> % transducer radius [m]</font>  
 
 <font color="#03a852">% calculate the phase delay</font>  
 delay = sqrt((mgrid.x).^2 + TR_focus^2)/medium.c0;  
