@@ -37,6 +37,9 @@ medium.beta = beta;     <font color="#03a852">% nonlinear coefficient </font>
 medium.ca   = ca;       <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
 medium.cb   = cb;       <font color="#03a852">% power law exponent</font> 
 medium.c0 = min(min(c));  <font color="#03a852">% reference speed of sound [m/s]</font> 
+
+medium.NRL_gamma = 0.5;
+medium.NRL_alpha = 0.05;
 </code>
 </pre>
 <img src="/mSOUND/img/tissue_model.jpg" alt="2D tissue model">
@@ -56,14 +59,14 @@ sensor_mask(100:300, 2:end) = 1;
 reflection_order = 2; 
 
 <font color="#03a852">% 2D forward simulation</font>  
-p_total = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order); 
+p_total = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, 'NRL'); 
 </code>
 </pre>
 </p>
 
 <p>
 The acoustic signal recorded at the transducer focus as well as its Fourier components are shown in the top two figures
-shown below. The pressure distribution at the fundamental and the second-harmonic frequencies are shown in the bottom two figures.
+shown below. Acoustic pressure fields at the fundamental and the second-harmonic frequencies are shown in the bottom two figures.
 <img src="/mSOUND/img/TMDM_2D_heterogeneous_focus.jpg" alt="time and frequency domain signal at the transducer focus">
  
  <img src="/mSOUND/img/TMDM_2D_heterogeneous_spatially.jpg" alt="fundamental and the second-harmonic pressure field">
