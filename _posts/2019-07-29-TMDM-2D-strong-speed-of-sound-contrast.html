@@ -32,7 +32,7 @@ dy = 1.3393e-04;  <font color="#03a852"> % step size in the y direction [m]</fon
 dt = 1.1905e-07;  <font color="#03a852"> % time step size [s]</font> 
 
 x_length = 0.1671;      <font color="#03a852">% computational domain size in x direction [m]</font> 
-y_length = 0.0643;      <font color="#03a852">% computational domain size in y direction [m]</font> 
+y_length = 0.0857;      <font color="#03a852">% computational domain size in y direction [m]</font> 
 t_length = 6.8571e-05;  <font color="#03a852">% temporal domain size [s]</font> 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
 </code>   
@@ -47,7 +47,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);
 The transducer setting in this case is similar to the example 
 <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation of a 
 2D homogeneous medium using the transient mixed domain method</a>.
-In this example, the speed of sound contrast and density contrast are all 2.0.
+In this example, the speed of sound contrast and density contrast are all 1.5.
 The 2D model used in this example is shown in the figure below. 
  <pre>
  <code>
@@ -73,8 +73,6 @@ medium.cb   = cb;     <font color="#03a852">% power law exponent</font>
 The acoustic pressure field is calculated with the function <a href="/mSOUND/function.html#Forward2">Forward2D</a>.
 Corrections are applied in this example because of the strong speed of sound and density contrast. Reflections up to 
  the fourth-order are also included in this simulation. 
- The figure below shows the (a) waveform and (b) frequency-domain spectrum for the signal recorded at the transducer focal 
- point.
 <pre><code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
@@ -90,10 +88,13 @@ p_total = Forward2D(mgrid, medium, source_p, sensor_mask,...
 </code></pre>
 </p>
 <p>
-<img src="/mSOUND/img/TMDM_2D_strong_heterogeneous.jpg" alt="(a) time-domain and (b) frequency-domain signal at the transducer focus">
+ The figure below shows the (a) waveform and (b) frequency-domain spectrum for the signal recorded at the transducer focal 
+ point.
+<img src="/mSOUND/img/TMDM_2D_strong_heterogeneous_point.jpg" alt="(a) time-domain and (b) frequency-domain signal at the transducer focus">
+ The figure below shows the spatially distributed pressure (a) at the fundamental and (b) at the second-harmonic frequency.
+ 
+<img src="/mSOUND/img/TMDM_2D_strong_heterogeneous_spatially.jpg" alt="(a) time-domain and (b) frequency-domain signal at the transducer focus">
 </p>
-
-
 
 <h6>Other examples</h6>
 <hr>
