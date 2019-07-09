@@ -5,12 +5,12 @@ title: Simulation of a strongly 2D heterogeneous medium using the transient mixe
 <br>
 <hr>
 <hr>
-This example provides the demenstration of using the transient mixed domain method for simulating wave propagation 
-in 2D heterogeneous media with strong speed of sound contrast. TMDM is accurate for wave propagation in media with a weak 
-speed of sound heterogeneity. To extend the MDM for modeling wave propagation in 
-strongly heterogeneous media (e.g., skull), phase and amplitude corrections to the MDM are proposed. This example shows how
-to apply the corrections for simulations. Generally, for simulations with soft tissue or strongly heterogeneous media with small
-speed of sound contrast (contrast ratio less than 1.05), it is unnecessary to apply corrections. 
+This example demonstrates how to use the transient mixed domain method (TMDM) for simulating 
+wave propagation in 2D, strongly heterogeneous media. For strongly heterogeneous media (e.g., skulls),
+phase and amplitude corrections are needed as the original mixed domain method only applies to weakly heterogeneous 
+media (in terms of speed of sound and density variations). This example shows how to apply these corrections. 
+Generally, for simulations of heterogeneous media with small speed of sound or density contrast 
+(contrast ratio being less than 1.05), it is unnecessary to apply corrections.
 <hr>
 <hr>
 </p>
@@ -19,7 +19,7 @@ speed of sound contrast (contrast ratio less than 1.05), it is unnecessary to ap
 <h6>Generating the grid structure to define the computational domain</h6>
 <hr>
 <p>  
- <br>We first need to define the temporal and spatial computational domain in 2D forward simulations 
+ <br>We first need to define the temporal and spatial computational domains in 2D forward simulations 
  with the funciton <a href="/mSOUND/function.html#set_grid">set_grid</a>. For 2D problems,
  six inputs are required to to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates.
 <pre>
