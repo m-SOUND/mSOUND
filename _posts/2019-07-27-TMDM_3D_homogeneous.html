@@ -26,9 +26,9 @@ dy = 3.75e-04;   <font color="#03a852"> % step size in the y direction [m]</font
 dz = 3.75e-04;   <font color="#03a852"> % step size in the z direction [m]</font> 
 dt = 6.25e-08;   <font color="#03a852"> % time step size [s]</font> 
 
-x_length = 0.0300;    <font color="#03a852"> % computational domain size in x direction [m]</font> 
-y_length = 0.0300;    <font color="#03a852"> % computational domain size in y direction [m]</font> 
-z_length = 0.0210;    <font color="#03a852"> % computational domain size in z direction [m]</font> 
+x_length = 0.0300;    <font color="#03a852"> % computational domain size in the x direction [m]</font> 
+y_length = 0.0300;    <font color="#03a852"> % computational domain size in the y direction [m]</font> 
+z_length = 0.0210;    <font color="#03a852"> % computational domain size in the z direction [m]</font> 
 t_length = 1.60e-05;  <font color="#03a852"> % temporal domain size [s]</font> 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
@@ -45,7 +45,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 <code>
 p0 = 1.0e6;   <font color="#03a852"> % source pressure magnitude [Pa]</font>   
 TR_focus  = 0.0120;   <font color="#03a852"> % transducer focal length [m]</font>         
-TR_radius = 0.0075;   <font color="#03a852"> % transducer radius [m]</font>  
+TR_radius = 0.0075;   <font color="#03a852"> % transducer aperture radius [m]</font>  
 
 <font color="#03a852">% calculate the phase delay</font> 
 X = (ones(mgrid.num_y,1)*mgrid.x).';
