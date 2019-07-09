@@ -20,17 +20,20 @@ Generally, for simulations of heterogeneous media with small speed of sound or d
 <hr>
 <p>  
  <br>We first need to define the temporal and spatial computational domains in 2D forward simulations 
- with the funciton <a href="/mSOUND/function.html#set_grid">set_grid</a>. For 2D problems,
- six inputs are required to to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates.
+ with the funciton <a href="/mSOUND/function.html#set_grid">set_grid</a>. For 2D problems, six inputs
+ are required to call this function. Coordinates defined within the
+ <span style="background-color:#f1f1f1">mgrid</span> structure are all in the Cartesian coordinates. 
+ The spatial resolution should in principle be a small fraction of the wavelength (e.g., 1/4 of the wavelength). 
+ The temporal resolution should at least satisfy the Nyquist criteria.
 <pre>
 <code>        
 dx = 5.3571e-04;  <font color="#03a852"> % step size in the x direction [m]</font> 
 dy = 1.3393e-04;  <font color="#03a852"> % step size in the y direction [m]</font> 
 dt = 1.1905e-07;  <font color="#03a852"> % time step size [s]</font> 
 
-x_length = 0.1671;      <font color="#03a852">% total computational domain size in x direction [m]</font> 
-y_length = 0.0643;      <font color="#03a852">% total computational domain size in y direction [m]</font> 
-t_length = 6.8571e-05;  <font color="#03a852">% total temporal domain size [s]</font> 
+x_length = 0.1671;      <font color="#03a852">% computational domain size in x direction [m]</font> 
+y_length = 0.0643;      <font color="#03a852">% computational domain size in y direction [m]</font> 
+t_length = 6.8571e-05;  <font color="#03a852">% temporal domain size [s]</font> 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
 </code>   
 </pre>
@@ -41,11 +44,11 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);
 <h6>Defining the medium properties</h6>
 <p>
 <br>
-Transducer settings in this case is similar to the example 
+The transducer setting in this case is similar to the example 
 <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">Simulation of a 
 2D homogeneous medium using the transient mixed domain method</a>.
-In this example, speed of sound contrast is 2.0.
-The 2D model used in this case is shown in the figure below. 
+In this example, the speed of sound contrast and density contrast are all 1.5.
+The 2D model used in this example is shown in the figure below. 
  <pre>
  <code>
 p0 = 1.0e6;   <font color="#03a852">% source pressure magnitude [Pa]</font>  
@@ -67,10 +70,11 @@ medium.cb   = cb;     <font color="#03a852">% power law exponent</font>
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <p>
-Transient pressure fields are calculated with the function <a href="/mSOUND/function.html#Forward2">Forward2D</a>.
- Correction is applied in this case because of the
- strong speed of sound and density contrast. Fourth-order reflections are also included in this simulation.
- The figure below shows the (a) time-domain signal and (b) frequency-domain signals recorded at the transducer focus.
+The acoustic pressure field is calculated with the function <a href="/mSOUND/function.html#Forward2">Forward2D</a>.
+Corrections are applied in this example because of the strong speed of sound and density contrast. Reflections up to 
+ the fourth-order are also included in this simulation. 
+ The figure below shows the (a) waveform and (b) frequency-domain spectrum for the signal recorded at the transducer focal 
+ point.
 <pre><code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
