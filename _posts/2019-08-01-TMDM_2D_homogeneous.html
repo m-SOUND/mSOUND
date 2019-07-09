@@ -26,8 +26,8 @@ dx = 3.75e-04;   <font color="#03a852"> % step size in the x direction [m]</font
 dy = 3.75e-04;   <font color="#03a852"> % step size in the y direction [m]</font> 
 dt = 6.25e-08;   <font color="#03a852"> % time step size [s]</font> 
 
-x_length = 0.0454;   <font color="#03a852">% computational domain size in x direction [m]</font> 
-y_length = 0.0240;   <font color="#03a852">% computational domain size in y direction [m]</font> 
+x_length = 0.0454;   <font color="#03a852">% computational domain size in the x direction [m]</font> 
+y_length = 0.0240;   <font color="#03a852">% computational domain size in the y direction [m]</font> 
 t_length = 6e-05;    <font color="#03a852">% temporal domain size [s]</font> 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
 </code>   
@@ -44,7 +44,7 @@ In this example, a phased array transducer is used to generate the focused ultra
 <code>
 fc = 1.0e6;           <font color="#03a852"> % fundamental frequency [Hz]</font>   
 TR_focus  = 0.0180;   <font color="#03a852"> % transducer focal length [m]</font>         
-TR_radius = 0.0090;   <font color="#03a852"> % transducer radius [m]</font>  
+TR_radius = 0.0090;   <font color="#03a852"> % transducer aperture radius [m]</font>  
 
 <font color="#03a852">% calculate the phase delay</font>  
 delay = sqrt((mgrid.x).^2 + TR_focus^2)/medium.c0;  
