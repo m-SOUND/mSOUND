@@ -21,8 +21,7 @@ Details of defining the computational domain and the phased-array transducer are
  Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>.
 Medium properties are defined in the example
   <a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
-   Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>. The density, however,  
- is set homogeneously in this example.
+   Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>.
 
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
@@ -49,10 +48,28 @@ P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac,...
 P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL');
 </code>
 </pre>
-<br> The left figure below shows the spatial distribution of the fundamental pressure and
-the right one was the second-harmonic pressure.
+<br> The left figure below shows the acoustic pressure field at the fundamental frequency and
+the right one shows the pressure field at the second-harmonic.
 
-   <img src="/mSOUND/img/FSMDM_2D_heterogeneous.jpg" alt="fundamental and the second-harmonic pressure field">
+<img src="/mSOUND/img/FSMDM_2D_heterogeneous_nocorrection.jpg" alt="fundamental and the second-harmonic pressure field">
+
+<br>When the two figures above are compared with the pressure fields generated with the transiment mixed domain method (shown in
+the example <a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>), some
+differences for the pressure field at the second-harmonic are observed. This is because density heterogeniety is not automatically  
+considered in the function <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>. 
+To include the density heterogeneity, <span style="background-color:#f1f1f1">'correction'</span> must be enabled. 
+ <pre>
+<code>
+<font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
+P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL', 'correction');
+</code>
+</pre>
+<br> The figure below shows the acoustic pressure field at the second-harmonic when 
+<span style="background-color:#f1f1f1">'correction'</span> is enabled in the function 
+<a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>.
+<br><img src="/mSOUND/img/FSMDM_2D_heterogeneous_correction.jpg" alt="the second-harmonic pressure field with correction">
+
  </p>
 
 
