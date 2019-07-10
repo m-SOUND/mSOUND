@@ -59,18 +59,19 @@ Simulation of a 2D heterogeneous medium using the transient mixed domain method<
 differences for the pressure field at the second-harmonic are observed. This is because density heterogeniety is not automatically  
 considered in the function <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>. 
 To include the density heterogeneity, <span style="background-color:#f1f1f1">'correction'</span> must be enabled. 
- <pre>
-<code>
+<pre> <code>
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
 P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL', 'correction');
-</code>
-</pre>
+</code></pre>
 <br> The figure below shows the acoustic pressure field at the second-harmonic when 
 <span style="background-color:#f1f1f1">'correction'</span> is enabled in the function 
 <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>.
-<br><img src="/mSOUND/img/FSMDM_2D_heterogeneous_correction.jpg" alt="the second-harmonic pressure field with correction">
-
+<img src="/mSOUND/img/FSMDM_2D_heterogeneous_correction.jpg" alt="the second-harmonic pressure field with correction">
  </p>
+
+<img src="/mSOUND/img/FSMDM_3D_multi_sources.jpg" alt="(a) ground-truth source distribution, 
+(b) pressure distribution at the xy plane 21 mm away from the source plane
+and (c) the reconstructed source pressure distribution">
 
 
 <h6>Other examples</h6>
