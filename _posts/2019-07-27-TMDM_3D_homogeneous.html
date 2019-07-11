@@ -5,8 +5,8 @@ title: Simulation of a 3D homogeneous medium using the transient mixed domain me
 <br>
 <hr>
 <hr>
- This example shows how to simulate the wave propagation in a 3D 
- homogeneous medium with the transient mixed domain method. The focused beam is generated with a phased-array.
+This example shows how to simulate the wave propagation in a 3D homogeneous medium
+with the transient mixed domain method. A focused beam is studied in this example.
 <hr>
 <hr>
 </p>
@@ -15,10 +15,12 @@ title: Simulation of a 3D homogeneous medium using the transient mixed domain me
 <h6>Generating the grid structure to define the computational domain</h6>
 <hr>
 <p>
-To define the temporal and spatial computational domain in 3D forward simulations, 
- the funciton <a href="/mSOUND/function.html#set_grid">set_grid</a> is used. For 3D problems,
- eight inputs are required to to call this function. Coordinates generated with this function
- are all in Cartesian coordinates.
+To define the temporal and spatial computational domains in 3D forward simulations, the funciton
+ <a href="/mSOUND/function.html#set_grid">set_grid</a> is used.For 3D problems, 
+ eight inputs are required to call this function. Coordinates generated with this function are all 
+ in Cartesian coordinates. We assume the z-axis is perpendicular to the transducer surface. The spatial 
+ resolution should in principle be a small fraction of the wavelength (e.g., 1/4 of the wavelength). 
+ The temporal resolution should at least satisfy the Nyquist criteria.
  <pre>
  <code>        
 dx = 3.75e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
@@ -40,7 +42,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length, dz, z_length);
 <h6>Defining a 3D phased array transducer</h6>
 <hr>
 <p>
- In this example, phased array transducer is used to generate the foucsed ultrasound beam. 
+In this example, a phased array transducer is used to generate the focused ultrasound beam.
  <pre>
 <code>
 p0 = 1.0e6;   <font color="#03a852"> % source pressure magnitude [Pa]</font>   
@@ -60,7 +62,7 @@ delay = delay - min(min(delay));
 <h6>Excitation signal</h6>
 <hr>
 <p>
-A four-cycles gaussian-modulated pulse is used as the excitation signal.     
+A four-cycle Gaussian-modulated pulse is used as the excitation signal.     
 <pre>
 <code>
 <font color="#03a852">% define the pulse length [s]</font>   
@@ -108,7 +110,7 @@ medium.cb   = 2.0;     <font color="#03a852">% power law exponent</font>
 <h6>3D forward simulation</h6>
 <hr>
 <p>
-Transient pressure field results are calculated with the 3D forward simulation function 
+The acoustic pressure field is calculated with the 3D forward simulation function 
  <a href="/mSOUND/function.html#Forward3D">Forward3D</a>.  
 <pre>
 <code>
@@ -123,13 +125,11 @@ p_total = Forward3D(mgrid, medium, excit_ps, sensor_mask, 0);
 The time-domain and freuqency-domain signals recorded at the transducer focus are shown in the figures below.
 
 <img src="/mSOUND/img/TMDM_3D_homogeneous_time_freq.jpg" alt="Time and frequency-domain signals recorded at the transducer focus">
-The pressure fields generated with the phased array transducer is shown in the figure below. The 
-top two figures show the fundamental pressure field at the xz and xy plane. The bottom two figures show the second harmonic 
-pressure at the xz and xy plane.
+The acoustic signal recorded at the transducer focus as well as its Fourier components are shown in the two figures below. 
+The pressure fields at the fundamental (top) and the second harmonic frequencies (bottom) are shown below. The two figures on the left 
+show the pressure fields on the xz plane while the two figures on the right show the pressure fields on the xy plane.
 <img src="/mSOUND/img/TMDM_3D_homogeneous.jpg" alt="Pressure field generated with the phased array">
 </p>
-
-
 
 <h6>Other examples</h6>
 <hr>
