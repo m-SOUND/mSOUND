@@ -5,8 +5,8 @@ title: Simulation of a 2D heterogeneous medium using the frequency-specific mixe
 <br>
 <hr>
 <hr>
- This example shows how to simulate the second-harmonic wave field in the heterogeneous 
-  media using the frequency-specific mixed domain method.
+This example shows how to simulate the frequency-domain wave field in heterogeneous media using
+the frequency-specific mixed domain method.
 <hr>
 <hr>
 </p>
@@ -27,10 +27,12 @@ Medium properties are defined in the example
 <h6>2D forward simulation</h6>
 <hr>
 <p>
-The fundamental pressure field is first calculated with the 2D forward simulation function
- <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>, 
-and the pressure at the second-harmonic frequency is then calculated with the function
- <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>. The first and the seconc-order reflections
+Assuming linear wave propagation, the center/fundamental frequency pressure field can be calculated 
+ with the 2D forward simulation function 
+ <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>.
+For weakly nonlinear wave propagation, the pressure field at the second-harmonic frequency can be further 
+ calculated with the function 
+ <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>.The first and second-order reflections 
  are included in the fundamental pressure simulation.
  <pre>
 <code>
@@ -48,22 +50,25 @@ P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac,...
 P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL');
 </code>
 </pre>
-<br> The left figure below shows the acoustic pressure field at the fundamental frequency and
-the right one shows the pressure field at the second-harmonic.
+<br>The figure on the left below shows the acoustic pressure field at the center/fundamental frequency and the one on 
+the right shows the pressure field at the second-harmonic frequency. 
 
 <img src="/mSOUND/img/FSMDM_2D_heterogeneous_nocorrection.jpg" alt="fundamental and the second-harmonic pressure field">
 
-<br>When the two figures above are compared with the pressure fields generated with the transiment mixed domain method (shown in
-the example <a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
-Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>), samll
-differences for the pressure field at the second-harmonic can be observed. This is because density heterogeniety is not automatically  
-considered in the function <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>. 
-To include the density heterogeneity, <span style="background-color:#f1f1f1">'correction'</span> must be enabled. 
+<br>These results can be directly compared with the ones in the example 
+<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>. Two points should be noted here. 
+First, multiple reflection is not considered in the function <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>.
+Second, the density heterogeneity is not automatically considered in the function 
+<a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>.
+To include the density heterogeneity, <span style="background-color:#f1f1f1">'correction'</span> must be enabled, and the scattering due to 
+the density variation will be considered in an empirical manner.
 <pre> <code>
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
 P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL', 'correction');
 </code></pre>
-<br> The figure below shows the acoustic pressure field at the second-harmonic when 
+
+<br> The figure below shows the acoustic pressure field at the second-harmonic frequency when 
 <span style="background-color:#f1f1f1">'correction'</span> is enabled in the function 
 <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>.
 <img src="/mSOUND/img/FSMDM_2D_heterogeneous_correction.jpg" alt="the second-harmonic pressure field with correction">
