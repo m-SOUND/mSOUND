@@ -47,8 +47,9 @@ Since the simulation is conducted in the frequency domain, a continuous sine wav
 <code>  
 omega_c = 2*pi*fc;  <font color="#03a852"> % angular frequency [rad/s]</font> 
 p0 = 0.6e6;   <font color="#03a852"> % pressure magnitude at the source [Pa] </font>  
-source_p = p0*exp(1i*omega_c*delay);  <font color="#03a852"> % define the pulse </font>  
-excit_p(abs(mgrid.x)>TR_radius) = 0;  <font color="#03a852"> % apply the transducer mask </font>  
+source_p = p0*exp(1i*omega_c*delay);  <font color="#03a852"> % define the excitation </font>  
+<font color="#03a852"> % apply truncation to construct the linear 1D array</font>  
+excit_p(abs(mgrid.x)>TR_radius) = 0;  
 </code>
 </pre>
  </p>
