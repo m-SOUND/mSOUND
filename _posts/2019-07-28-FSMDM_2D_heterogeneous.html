@@ -63,6 +63,7 @@ Second, the density heterogeneity is not automatically considered in the functio
 <a href="/mSOUND/function.html#Forward2D_sec">Forward2D_sec</a>.
 To include the density heterogeneity, <span style="background-color:#f1f1f1">'correction'</span> must be enabled, and the scattering due to 
 the density variation will be considered in an empirical manner.
+To include the density heterogeneity in a more accurate way, Forward2D can be used. It is, however, more time-consuming.
 <pre> <code>
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
 P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL', 'correction');
