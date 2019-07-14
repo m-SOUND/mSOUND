@@ -51,7 +51,8 @@ Since the simulation is conducted in the frequency domain, a continuous sine wav
 p0 = 1.0e6;   <font color="#03a852">% pressure magnitude at the source [Pa] </font>  
 source_p = p0*exp(1i*omega_c*delay);  <font color="#03a852"> % define the excitation </font>  
 RHO = sqrt(X.^2+Y.^2);
-source_p(RHO>TR_radius) = 0;  <font color="#03a852"> % apply truncation to construct the circular transducer</font>  
+<font color="#03a852">% apply truncation to construct the circular transducer</font>  
+source_p(RHO>TR_radius) = 0; 
 </code>
 </pre>
  </p>
