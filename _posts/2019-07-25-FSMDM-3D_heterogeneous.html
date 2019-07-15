@@ -5,8 +5,8 @@ title: Simulation of a 3D heterogeneous medium using the frequency-specific mixe
 <br>
 <hr>
 <hr>
-This example shows how to simulate the wave propagation in the 3D heterogeneous media with the frequency-specific mixed 
- domain method and the focused beam is generated with the phased-array.
+This example shows how to simulate the wave propagation in 3D heterogeneous media with the frequency-specific mixed domain method. 
+A skull-like medium and a focused beam are assumed in this example. 
 <hr>
 <hr>
 </p>
@@ -15,16 +15,16 @@ This example shows how to simulate the wave propagation in the 3D heterogeneous 
 <h6>Defining the medium properties</h6>
 <hr>
 <p>
- <br>Details of defining the computational domain and the phased array settings are shown in the case
-   <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
-    Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>. A 2D view in the xz plane
- of the 3D model used in this simulation is illustrated in the figure below.
+ <br>Details of defining the computational domain and the phased-array transducer are shown in the example 
+ <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
+ Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>. 
+ A 2D view in the xz plane of the 3D model used in this simulation is illustrated in the figure below.
    <pre>
  <code>
 load 3D_heterogeneous_model.mat; 
 medium.c    = c;      <font color="#03a852">% speed of sound [m/s]</font>      
 medium.rho  = rho;    <font color="#03a852">% density [kg/m^3]</font>             
-medium.beta = beta;   <font color="#03a852">% nonlinear coefficient </font>    
+medium.beta = beta;   <font color="#03a852">% nonlinearity coefficient </font>    
 medium.ca   = ca;     <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
 medium.cb   = cb;     <font color="#03a852">% power law exponent</font>   
 medium.NRL_gamma = 0.5;
@@ -39,18 +39,15 @@ medium.NRL_alpha = 0.1;
 <h6>3D forward simulation</h6>
 <hr>
 <p>
- <br>The fundamental pressure field is first calculated with the 3D forward simulation function 
-  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>, 
-  and the pressure at the second-harmonic frequency is then calculated with the function 
-  <a href="/mSOUND/function.html#Forward3D_sec">Forward3D_sec</a>. Correction is applied in this 
- example because speed of sound and density contrast in this case
-are all 1.5.
-  
+ <br>
+ The fundamental frequency pressure field is first calculated with the 3D forward simulation function
+ <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. 
+ Correction is applied in this example because the speed of sound and density contrast in this case are both 1.5. 
 <pre> <code>
 reflection_order = 4;
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-p_fundamental = Forward3D_fund(mgrid, medium, source_p, ...
-                refleciton_order, 'correction', 'NRL'); 
+p_fundamental = Forward3D_fund(mgrid, medium, source_p, omega_c,...
+                reflection_order, 'correction', 'NRL'); 
 </code> </pre>
                      
 </p>
