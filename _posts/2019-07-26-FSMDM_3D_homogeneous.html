@@ -84,11 +84,12 @@ medium.cb   = 2.0;   <font color="#03a852">% power law exponent</font>
  is calculated with the function 
  <a href="/mSOUND/function.html#Forward3D_sec">Forward3D_sec</a>. 
 <pre> <code>
+fc = 1.0e6;  <font color="#03a852">% transducer center frequency</font>   
+omega_c = 2*pi*fc;
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-p_fundamental = Forward3D_fund(mgrid, medium, source_p, 0); 
+p_fundamental = Forward3D_fund(mgrid, medium, source_p, omega_c, 0); 
 
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font> 
-omega_c = 2*pi*fc;
 p_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
 </code> </pre>
 
