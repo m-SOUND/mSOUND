@@ -53,7 +53,7 @@ medium.absorb_gamma = 0.5;
 medium.absorb_alpha = 0.05;
 
 <font color="#03a852">% forward propagation of the fundamental pressure</font>    
-P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac, 0, 'NRL');
+P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omega_c, 0, 'NRL');
 <font color="#03a852">% extract the pressure amplitude and exclude the values at the source plane</font>    
 p = abs(P_fundamental(:,2:end)); 
 </code>  </pre>
