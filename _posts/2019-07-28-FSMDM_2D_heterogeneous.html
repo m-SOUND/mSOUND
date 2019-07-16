@@ -43,11 +43,11 @@ medium.NRL_gamma = 0.5;  <font color="#03a852">% constant for absorption layer</
 medium.NRL_alpha = 0.1;  <font color="#03a852">% decay factor for absorption layer</font> 
 
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac,...
+P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omega_c,...
                 reflection_order, 'NRL');
 
 <font color="#03a852">% forward propagation of the second-harmonic pressure  </font>   
-P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL');
+P_second = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, 'NRL');
 </code>
 </pre>
 <br>The figure on the left shows the acoustic pressure field at the center/fundamental frequency and the one on 
@@ -66,7 +66,7 @@ the density variation will be considered in an empirical manner.
 To include the density heterogeneity in a more accurate way, Forward2D can be used. It is, however, more time-consuming.
 <pre> <code>
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL', 'correction');
+P_second = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, 'NRL', 'correction');
 
 </code></pre>
 
