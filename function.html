@@ -794,11 +794,13 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>6. Reflection correction is automatically included in the
- backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
- sound and density contrast are weak, the correction can be turned off with optional input
-<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
- 
+ <br><br>6. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain method could 
+ produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction algorithm, 
+ however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be disabled without 
+ sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, when multiple reflection is 
+ not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm can be turned off. 
+ Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly heterogeneous media such as 
+ soft tissue. 
 </p>
 
 <h3>Outputs</h3> 
@@ -886,10 +888,13 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>6. Reflection correction is automatically included in the
- backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
- sound and density contrast are weak, the correction can be turned off with optional input
-<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
+ <br><br>6. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain method could 
+ produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction algorithm, 
+ however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be disabled without 
+ sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, when multiple reflection is 
+ not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm can be turned off. 
+ Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly heterogeneous media such as 
+ soft tissue. 
  
  <br><br>7. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -988,10 +993,13 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>6. Reflection correction is automatically included in the
- backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
- sound and density contrast are weak, the correction can be turned off with optional input
-<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
+ <br><br>6. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
+ method could produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction 
+ algorithm, however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be 
+ disabled without sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, 
+ when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
+ can be turned off. Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly 
+ heterogeneous media such as soft tissue. 
  
  <br><br>7. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -1085,10 +1093,13 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
  <br><br>4. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>5. Reflection correction is automatically included in the
- backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
- sound and density contrast are weak, the correction can be turned off with optional input
-<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
+ <br><br>5. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
+ method could produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction 
+ algorithm, however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be 
+ disabled without sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, 
+ when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
+ can be turned off. Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly 
+ heterogeneous media such as soft tissue. 
  
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -1178,10 +1189,13 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  <br><br>4. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
 
- <br><br>6. Reflection correction is automatically included in the
- backward projection when <span style="background-color:#f1f1f1">reflection_order</span> is set to a nonzero value. When the speed of 
- sound and density contrast are weak, the correction can be turned off with optional input
-<span style="background-color:#f1f1f1">no_refl_correction</span> to save computation time.
+ <br><br>5. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
+ method could produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction 
+ algorithm, however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be 
+ disabled without sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, 
+ when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
+ can be turned off. Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly 
+ heterogeneous media such as soft tissue. 
  
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
