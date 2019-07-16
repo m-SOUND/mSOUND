@@ -67,7 +67,7 @@ p_fundamental = Forward3D_fund(mgrid, medium, source_p, ...
 <pre> <code>
 reflection_order = 0;
 source_p = p_fundamental(:,:,end);
-<font color="#03a852">% forward propagation </font>   
+<font color="#03a852">% backward propagation </font>   
 p_fundamental = Backward3D_fund(mgrid, medium, source_p, ...
                 omega_c, refleciton_order, 'NRL'); 
 </code> </pre>    
