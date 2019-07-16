@@ -86,10 +86,10 @@ The pressure field at the second-harmonic frequency under the quasi-linear appro
  <pre>
 <code>
 <font color="#03a852">% forward propagation of the fundamental pressure</font>   
-P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omegac, 0, 'NRL');
+P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omega_c, 0, 'NRL');
 
 <font color="#03a852">% forward propagation of the second-harmonic pressure</font>   
-P_second = Forward2D_sec(mgrid, medium, P_fundamental, omegac, 'NRL');
+P_second = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, 'NRL');
 </code>
 </pre>
 <img src="/mSOUND/img/FSMDM_2D_homogeneous.jpg" alt="fundamental and the second-harmonic pressure field generated with the phased array">
