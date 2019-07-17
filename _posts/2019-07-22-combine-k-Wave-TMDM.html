@@ -1,21 +1,23 @@
 ---
-title: Integrating mSOUND with k-Wave for transducers of arbitrary shape
+title: Integrating mSOUND with k-Wave for transducers of curved shape
 ---
 <p>
 <br>
 <hr>
 <hr>
-This example shows how to implement the <a href="http://www.k-wave.org/">k-Wave</a> for simulations with curved transducers.
-Currently, only phased array transducers can be directly simulated in the mSOUND to generate focused beams. If other transducer settings
-are required, people can first use k-Wave to propagate the wave field for a small distance and record the data at a plane, 
-then implement the recorded data at that plane to the mSOUND as source pressure. In this example, a curved transducer is first modeled
-with k-Wave and then continues with the mSOUND.
+This example shows how to integrate mSOUND with <a href="http://www.k-wave.org/">k-Wave</a>
+for simulations involving curved transducers. Currently, 
+only planar phased-arrays can be directly set up in mSOUND for modeling focused beams. To more accurately model a physically 
+curved transducer, the user needs to first use k-Wave (or other software such as FOCUS, Field II, etc.) 
+to propagate the wave field from the curved transducer for a small distance and record the pressure field on a plane. 
+The recorded pressure field can be then used as the input to mSOUND to further propagate the sound. In this example, 
+a 2D curved transducer is first modeled with k-Wave and then with mSOUND.
 <hr>
 <hr>
 </p>
 
 <!---k-Wave simulation--->
-<h6>Generating the source pressure with k-Wave</h6>
+<h6>Defining the computational domain in k-Wave</h6>
 <hr>
 <p>
 Define the computational domain in the k-Wave calculation. 
@@ -31,17 +33,17 @@ kgrid = kWaveGrid(Nx, dx, Ny, dy);
 </p>
 
 <!---define a curved transducer with k-Wave--->
-<h6>Defining a curved transducer with k-Wave</h6>
+<h6>Defining a curved transducer in k-Wave</h6>
 <hr>
 <p>
- In this example, a curved transducer is defined with k-Wave using the function 
-   <a href="http://www.k-wave.org/documentation/makeCircle.php">makeCircle</a>. 
+ In this example, a curved transducer is defined in k-Wave using the function 
+ <a href="http://www.k-wave.org/documentation/makeCircle.php">makeCircle</a>. 
 <pre> <code> 
 TR_radius = 0.0060;   <font color="#03a852">% transducer aperture radius [m] </font> 
 TR_focus  = 0.0150;   <font color="#03a852">% transducer focal length [m]</font>       
 focus  = round(TR_focus/dx);  <font color="#03a852">  % transducer focal length [grid points]</font>   
-cx = round(Nx/2);  <font color="#03a852">% x coordinate of the tranducer center[grid points] </font>   
-cy = 10 + focus;   <font color="#03a852">% y coordinate of the tranducer center[grid points] </font>   
+cx = round(Nx/2);  <font color="#03a852">% x coordinate of the transducer center[grid points] </font>   
+cy = 10 + focus;   <font color="#03a852">% y coordinate of the transducer center[grid points] </font>   
 
 arc_angle1 = asin(TR_radius/TR_focus);  <font color="#03a852">% [radians] </font>     
 arc_angle2 = pi*2;                      <font color="#03a852">% [radians] </font>    
@@ -61,7 +63,7 @@ sensor.mask(:, Ny/2+offcenter) = 1;  <font color="#03a852">% define sensor mask 
 <!---excitation signale--->
 <h6>Excitation signal</h6>
 <p>
- A four-cycles Gaussian-modulated pulse is used as the excitation signal. 
+ A four-cycle Gaussian-modulated pulse is used as the excitation signal. 
 <pre> <code>  
 source_mag = 1;  <font color="#03a852">% [Pa] </font>   
 fc = 1.0e6;      <font color="#03a852">% [Hz] </font>   
@@ -81,19 +83,19 @@ sensor_data = reshape(sensor_data, Nx, length(kgrid.t_array));
 <!---implement signal to the TMDM--->
 <h6>Implementing signals to the TMDM</h6>
 <p>
- Pressure recorded at the sensor positions from k-Wave simulation will be used as the source pressure for the TMDM simulation.
- One thing to take notice of is that sensor data from k-Wave is indexed as [time, sensor_positions], while in the 
- TMDM is [sensor_positions, time]. If the time step or transverse saptial domain size in the k-Wave is different from TMDM, 
+ Pressure recorded at the sensor positions from the k-Wave simulation will be used as the source pressure in mSOUND. 
+ It is noted that sensor data from k-Wave is indexed as [time, sensor_positions], while in mSOUND it is [sensor_positions, time]. 
+ If the time step or transverse spatial domain size in k-Wave is different from that in mSOUND, 
  sensor_data from the k-Wave needs to be resized.
 <pre> <code>
-<font color="#03a852">% defining the computational domain in TMDM</font>  
+<font color="#03a852">% defining the computational domain in mSOUND</font>  
 x_length = kgrid.dx*kgrid.Nx;
 y_length = TR_focus - kgrid.dy*(Ny-20);
 t_length = max(kgrid.t_array); 
-dt = 6.2500e-08;  <font color="#03a852">% time step in TMDM [s]</font>  
+dt = 6.2500e-08;  <font color="#03a852">% time step in mSOUND [s]</font>  
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);  
 
-<font color="#03a852">% resize the sensor data as a larger time step is applied in the TMDM</font>  
+<font color="#03a852">% resize the sensor data as a larger time step is applied in mSOUND</font>  
 source_p = sensor_data(:, 1:2:end).'; 
 
 <font color="#03a852">% Define the medium properties in the TMDM</font>   
@@ -110,15 +112,14 @@ medium.c0   = 1500;  <font color="#03a852"> % reference speed of sound [m/s]</fo
 <!---simulation and results--->
 <h6>Forward simulation with TMDM</h6>
 <p>
- The figure below shows the time domain results 
- at the geometrical focus of the transducer. The result generated
-with TMDM is compared with the result directly simulated with k-Wave.
+ The figure below shows the waveform at the geometrical focus of the transducer. 
+ The result generated with mSOUND is compared with the result directly simulated with k-Wave and excellent agreement can be seen.
  <pre> <code>
- <font color="#03a852">% define sensor mask in the TMDM</font>   
+ <font color="#03a852">% define sensor mask in mSOUND</font>   
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
 sensor_mask(:, end) = 1;
 
-<font color="#03a852">%2D forward simulation with TMDM</font>   
+<font color="#03a852">% 2D forward simulation with mSOUND</font>   
 reflection_order = 0;
 p_time = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order);
 </code>  
