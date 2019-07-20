@@ -114,6 +114,7 @@ medium.c0   = 1500;  <font color="#03a852"> % reference speed of sound [m/s]</fo
 <p>
  The figure below shows the waveform at the geometrical focus of the transducer. 
  The result generated with mSOUND is compared with the result directly simulated with k-Wave and excellent agreement can be seen.
+ The result generated with mSOUND using a phased array is also compared in this figure. 
  <pre> <code>
  <font color="#03a852">% define sensor mask in mSOUND</font>   
 sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
@@ -124,7 +125,7 @@ reflection_order = 0;
 p_time = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order);
 </code>  
 </pre>
- <img src="/mSOUND/img/combine_kwave.jpg" alt="Time-domain singal recorded at the transducer focus">
+ <img src="/mSOUND/img/combine_kwave_curved_phased_array.jpg" alt="Time-domain singal recorded at the transducer focus">
 
 </p>
 
