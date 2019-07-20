@@ -27,8 +27,11 @@ dy = 1.8750e-04;   <font color="#03a852">% step size in the y direction [m]</fon
 dt = 3.1250e-08;   <font color="#03a852">% time step size [s]</font> 
 
 Nx = 240;   <font color="#03a852">% computational domain size in the x direction [grid points]</font> 
-Ny = 40;    <font color="#03a852">% computational domain size in the y direction [grid points]</font> 
-kgrid = kWaveGrid(Nx, dx, Ny, dy);              
+Ny = 50;    <font color="#03a852">% computational domain size in the y direction [grid points]</font> 
+kgrid = kWaveGrid(Nx, dx, Ny, dy);     
+
+fc = 1.0e6;  <font color="#03a852">% fundamental frequency [Hz]</font>
+kgrid.t_array = 0:dt:40/fc;  <font color="#03a852">% time array [s]</font> 
 </code>  </pre>
 </p>
 
@@ -39,7 +42,7 @@ kgrid = kWaveGrid(Nx, dx, Ny, dy);
  In this example, a curved transducer is defined in k-Wave using the function 
  <a href="http://www.k-wave.org/documentation/makeCircle.php">makeCircle</a>. 
 <pre> <code> 
-TR_radius = 0.0060;   <font color="#03a852">% transducer aperture radius [m] </font> 
+TR_radius = 0.0120;   <font color="#03a852">% transducer aperture radius [m] </font> 
 TR_focus  = 0.0150;   <font color="#03a852">% transducer focal length [m]</font>       
 focus  = round(TR_focus/dx);  <font color="#03a852">  % transducer focal length [grid points]</font>   
 cx = round(Nx/2);  <font color="#03a852">% x coordinate of the transducer center[grid points] </font>   
@@ -66,7 +69,6 @@ sensor.mask(:, Ny/2+offcenter) = 1;  <font color="#03a852">% define sensor mask 
  A four-cycle Gaussian-modulated pulse is used as the excitation signal. 
 <pre> <code>  
 source_mag = 1;  <font color="#03a852">% [Pa] </font>   
-fc = 1.0e6;      <font color="#03a852">% [Hz] </font>   
 ts = [-num_cycles/fc:dt:num_cycles/fc];   <font color="#03a852">% excitation pulse length </font>   
 excit_p = sin(2*pi*fc*(ts)).*exp(-(ts).^2*fc^2/2);   <font color="#03a852">% excitation pulse</font>     
 source.p = excit_p*source_mag;
