@@ -15,7 +15,11 @@ The acoustic simulation is conducted with mSOUND first and the thermal simulatio
 <h6>Acoustic simulation</h6>
 <hr>
 <p>
-The acoustic simulation is first conducted with function <a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>. 
+The acoustic simulation is first conducted with function
+<a href="/mSOUND/function.html#Forward2D_fund">Forward2D_fund</a>, 
+to generate the pressure field P_fundamental for the subsequent thermal simulation. 
+In the thermal simulation, the pressure on the source plane will be excluded.
+ 
 Then we need to extract the pressure amplitdue from the acoustic simulation result 
 <span style="background-color:#f1f1f1">P_fundamental</span>. The output pressure
 <span style="background-color:#f1f1f1">P_fundamental</span> includes the values at the source plane. In the thermal simulation,
@@ -37,7 +41,7 @@ delay = delay - min(delay);
 
 p0 = 0.8e6; <font color="#03a852">% pressure magnitude at the source [Pa]</font>  
 fc = 1.0e6;	<font color="#03a852">% fundamental frequency	[Hz]</font>    
-omegac = 2*pi*fc; <font color="#03a852">% angular frquency [rad/s]</font>   
+omega_c = 2*pi*fc; <font color="#03a852">% angular frquency [rad/s]</font>   
 source_p = p0*exp(1i*omegac*delay);  <font color="#03a852">% define the pulse</font>   
 source_p(abs(mgrid.x)>TR_radius) = 0;
 
@@ -52,9 +56,9 @@ medium.cb   = 1.5;  <font color="#03a852">% power law exponent</font>
 medium.absorb_gamma = 0.5;
 medium.absorb_alpha = 0.05;
 
-<font color="#03a852">% forward propagation of the fundamental pressure</font>    
-P_fundamental = Forward2D_fund(mgrid, medium, excit_p, omega_c, 0, 'NRL');
-<font color="#03a852">% extract the pressure amplitude and exclude the values at the source plane</font>    
+<font color="#03a852">% forward wave propagation </font>    
+P_fundamental = Forward2D_fund(mgrid, medium, source_p, omega_c, 0, 'NRL');
+<font color="#03a852">% extract the pressure amplitude and exclude the values on the source plane</font>    
 p = abs(P_fundamental(:,2:end)); 
 </code>  </pre>
 </p>
@@ -97,12 +101,12 @@ kdiff.takeTimeStep(round(off_time / dt), dt);
 T2 = kdiff.T;
 </code>  </pre>
 
-Figures below show the acoustic and thermal simulation results. The acoustic simulation is conducted with FSMDM and the
-thermal simulation is conducted with k-Wave.
+The figures below show the acoustic and thermal simulation results. The acoustic simulation is conducted 
+with mSOUND and the thermal simulation is conducted with k-Wave. 
 <img src="/mSOUND/img/FSMDM2D_thermal.jpg" alt="The resulting pressure, volume rate of heat deposition, 
                                                             temperature field, thermal dose, and ablation volume">
 
-Figures below show the acoustic and thermal simulation results. Both the acoustic and thermal simulations are
+The figures below show the acoustic and thermal simulation results. Both the acoustic and thermal simulations are
 conducted with k-Wave.
 <img src="/mSOUND/img/kwave2D_thermal.jpg" alt="The resulting pressure, volume rate of heat deposition, 
                                                             temperature field, thermal dose, and ablation volume">
