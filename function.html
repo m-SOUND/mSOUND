@@ -894,7 +894,7 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, when multiple reflection is 
  not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm can be turned off. 
  Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly heterogeneous media such as 
- soft tissue. 
+ soft tissue. When the speed of sound and density are constants, the correcton algorithm will be turned off automatically.
  
  <br><br>7. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -1000,6 +1000,7 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
  can be turned off. Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly 
  heterogeneous media such as soft tissue. 
+ When the speed of sound and density are constants, the correcton algorithm will be turned off automatically.
  
  <br><br>7. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -1100,6 +1101,7 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
  when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
  can be turned off. Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly 
  heterogeneous media such as soft tissue. 
+ When the speed of sound and density are constants, the correcton algorithm will be turned off automatically.
  
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
@@ -1196,6 +1198,7 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
  can be turned off. Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly 
  heterogeneous media such as soft tissue. 
+ When the speed of sound and density are constants, the correcton algorithm will be turned off automatically.
  
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
