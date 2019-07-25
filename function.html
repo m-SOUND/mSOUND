@@ -800,7 +800,7 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, when multiple reflection is 
  not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm can be turned off. 
  Even if "reflection_order" is not equal to 0, the correction algorithm can be turned off for weakly heterogeneous media such as 
- soft tissue. 
+ soft tissue. When the speed of sound and density are constants, the correcton algorithm will be turned off automatically.
 </p>
 
 <h3>Outputs</h3> 
