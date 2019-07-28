@@ -34,10 +34,17 @@ This example is based on the example
 and <span style="background-color:#f1f1f1">t_length = 3.2000e-05</span>.
 <pre>
 <code>
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
+sensor_mask(round(mgrid.num_x/2), 113) = 1;
+reflection_order = 2;
 p_total = Forward2D(mgrid, medium, source_p, sensor_mask, 
           reflection_order, 'animation'); 
 </code>
 </pre>
+Figure a-d below show the time/frequency domain results recorded at the transducer when different temporal domain size is used.
+The frequency domian result of figure b is shown in figure d.
+<img src="/mSOUND/img/animation_2D_time_results.jpg" alt="time and frequency domain results at the transducer focus">
+
 The first figure shows the snapshot of the animation for the simulation with <span style="background-color:#f1f1f1">t_length = 8.0e-06</span>.
 The second figure shows the snapshot of the animation for the simulation with <span style="background-color:#f1f1f1">t_length = 3.2e-05</span>.
 Comparing these two figures, it can be seen that the two wavefronts on the left and in the middle of the first figure are artifacts. 
