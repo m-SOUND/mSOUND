@@ -9,7 +9,7 @@ Normally, it is suggested that the temporal domain size (length of the time axis
 majority of the wave would exit the computational spatial domain. However, this is not a mandatory requirement if the interest 
 is merely to predict the waveform at a certain point in space. Since discrete Fourier transform assumes period functions, 
 the when the wave approaches and eventually enters the end of the time axis, it is going to come out from the other side of the axis 
-(please see the first set of figures below). 
+(please see the first set of figures below. Figure d is obtained by applying the MATLAB function fftshift to the result shown in figure b). 
 Though ultimately this can be considered as an error caused by the under-sampling of the frequency domain, we can leverage this to 
 achieve faster computation. Specifically, the temporal domain size in the TMDM can be chosen to be slightly larger than the pulse 
 length to significantly save the computation time and memory required. It is noted that, using a small temporal domain size would 
