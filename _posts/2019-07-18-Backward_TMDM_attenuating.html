@@ -26,7 +26,15 @@ medium.density     = 1000*ones(Nx, Ny);
 medium.alpha_coeff = 0.5; 
 medium.alpha_power = 1.5;
  </code></pre>
+The source reconstruction is conducted with the function <a href="/mSOUND/function.html#Backward2D">Backward2D</a>
+in mSOUND. The figure (a) below shows the reconstruction with 
+assuming a lossless medium and figure (b) below shows the reconstruction with considering the the effects from
+attenuation and dispersion. When absorption and dispersion are considered, backward projection is more accurate.
+Moreover, mSOUND automatically takes these effects into account in backward projection.
+img src="/mSOUND/img/backward_attenuation.jpg" alt="backward projection example">
  </p>
+
+
  
  
  
