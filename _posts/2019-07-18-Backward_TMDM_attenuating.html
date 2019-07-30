@@ -1,0 +1,35 @@
+---
+title: Photoacoustic image reconstruction in an absorbing acoustic medium using backward projection
+---
+<p>
+<br>
+<hr>
+<hr>
+This example is based on the example <a href="https://m-sound.github.io/mSOUND/Backward_TMDM">
+Photoacoustic image reconstruction using backward projection</a>. Attenuation is considered in this case. We compared the reconstruction
+images with and without considering the attenuation.
+<hr>
+<hr>
+</p>
+
+<!---Medium Properties--->
+<h6>Defining the medium properties</h6>
+<hr>
+<p>
+The forward propagation of the emitted ultrasonic wave from the source is simulated with the k-Wave toolbox. 
+An initial source with the ‘mSOUND’ shape is used in this example. The medium properties for the forward propagation is shown below.
+<pre><code>
+<font color="#03a852">% assign the properties of the propagation medium</font>   
+medium.sound_speed = 1500*ones(Nx, Ny);
+medium.BonA        = 2.0*(0-1.0);
+medium.density     = 1000*ones(Nx, Ny);
+medium.alpha_coeff = 0.5; 
+medium.alpha_power = 1.5;
+ </code></pre>
+ </p>
+ 
+ 
+ 
+ 
+ 
+ 
