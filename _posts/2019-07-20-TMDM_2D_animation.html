@@ -8,17 +8,17 @@ title: Selecting the proper temporal domain size for the TMDM
 Normally, it is suggested that the temporal domain size (length of the time axis) should be at least sufficiently large so that the 
 majority of the wave would exit the computational spatial domain. However, this is not a mandatory requirement if the interest 
 is merely to predict the waveform at a certain point in space. Since discrete Fourier transform assumes period functions, 
-the when the wave approaches and eventually enters the end of the time axis, it is going to come out from the other side of the axis 
-(please see the first set of figures below. Figure d is obtained by applying the MATLAB function fftshift to the result shown in figure b). 
-Though ultimately this can be considered as an error caused by the under-sampling of the frequency domain, we can leverage this to 
-achieve faster computation. Specifically, the temporal domain size in the TMDM can be chosen to be slightly larger than the pulse 
-length to significantly save the computation time and memory required. It is noted that, using a small temporal domain size would 
-preclude multiple reflection events that trail behind the main wavefront and lose the track on the arrival time (though the arrival 
-time can be manually calculated for simple scenarios like wave propagation in homogeneous media). Additionally, artificial waveforms 
-will appear in the animation (a similar type of artifact also exists in the spatial domain and can be minimized by absorption layers. 
-Please refer to  <a href=https://m-sound.github.io/mSOUND/2D_absvorption>  Reducing the spatial aliasing error using the non-reflecting 
+when the wave approaches and eventually enters the end of the time axis, it is going to come out from the other side of the axis. 
+Though ultimately this can be considered as an error caused by the under-sampling of the frequency domain, 
+we can leverage this to achieve faster computation. Specifically, the temporal domain size in the TMDM can be chosen to be slightly 
+larger than the pulse length to significantly save the computation time and required memory size. 
+It is noted that, using a small temporal domain size would preclude multiple reflection events that trail behind 
+the main wavefront and lose the track on the arrival time (though the arrival time can be manually calculated for simple 
+scenarios like wave propagation in homogeneous media). Additionally, artificial waveforms will appear in the animation 
+(a similar type of artifact also exists in the spatial domain and can be minimized by absorption layers. 
+Please refer to <a href=https://m-sound.github.io/mSOUND/2D_absvorption>  Reducing the spatial aliasing error using the non-reflecting 
 layer</a>). Therefore, the proper temporal domain size should be carefully chosen based on the specific application that the user 
-has in mind. 
+has in mind.
 
 <hr>
 <hr>
@@ -42,18 +42,22 @@ p_total = Forward2D(mgrid, medium, source_p, sensor_mask,
           reflection_order, 'animation'); 
 </code>
 </pre>
+Figures (a)-(c) below show the waveforms at three different positions in space, with 
+(a) being the position closest to the source and (c) being the position furthest from the source. 
+The wave clearly enters the very end of the temporal domain and comes out from the other side. 
+To rearrange Fig. b in order to have a more physically meaning waveform, “fftshift” is used to generate Fig. (d).    
 <img src="/mSOUND/img/animation_2D_time_results.jpg" alt="time domain results at the transducer focus">
 
 The first figure below shows the snapshot of the animation for the simulation with <span style="background-color:#f1f1f1">t_length = 8.0e-06</span>.
 The second figure below shows the snapshot of the animation for the simulation with <span style="background-color:#f1f1f1">t_length = 3.2e-05</span>.
 Comparing these two figures, it can be seen that the two wavefronts on the left and in the middle of the first figure are artifacts. 
 In terms of the computation time, the first simulation is about xx times faster than the second simulation. 
-These are in fact two wavefronts occurring at earlier time instants, but are now shown concurrently with the true wavefront 
-second one.
+These are in fact two wavefronts occurring at earlier time instants, but are now shown concurrently with the true wavefront. 
+In terms of the computation time, the first simulation is about 10 times faster than the second simulation. 
+
 <img src="/mSOUND/img/animation_2D_small_domain.jpg" alt="snap shot of the animation for the simulation with smaller temporal domain">
 <img src="/mSOUND/img/animation_2D_large_domain.jpg" alt="snap shot of the animation for the simulation with larger temporal domain">
-</p>
-
+</p
 
 
 <h6>Other examples</h6>
