@@ -11,6 +11,10 @@ mSOUND is an open-source toolbox written in [MATLAB](https://www.mathworks.com/p
 [Download beta-version 0.1](https://github.com/m-SOUND/mSOUND/blob/master/download/MDM_code.7z)               
 
 
+## Installation
+1. Download and unpack the zip file to a suitable folder.
+2. Add this file folder path to the MATLAB path. This can be done using the "Set Path" dialog box which is accessed by typing `pathtool` at the MATLAB command prompt. Once the dialog box is open, the toolbox is installed by clicking "Add Folder", selecting the mSOUND Toolbox folder, and clicking "save". Alternatively, the toolbox can be installed by adding the line: `addpath('...full pathname used above...\mSOUND')`;
+
 ## Acknowledgment
 This project is supported by the [National Institute of Health (NIH)](https://www.nih.gov/) under the Grant R01EB025205. From 2015 to 2018, Juanjuan Gu was also supported by a fellowship award from China Scholarship Council (CSC).
 
