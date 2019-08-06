@@ -71,11 +71,26 @@ medium.rho  = 1000;    <font color="#03a852">% density [kg/m^3]</font>
 medium.beta = 3.6;     <font color="#03a852">% nonlinearity coefficient </font>    
 medium.ca   = 0.005;   <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
 medium.cb   = 2.0;     <font color="#03a852">% power law exponent</font>    
-
-<font color="#03a852">% non-reflecting layer</font> 
-medium.NRL_gamma = 0.5;  
-medium.NRL_alpha = 0.05;
 </code></pre>
+</p>
+
+
+<!---2D forward Simulation--->
+<h6>2D forward simulation</h6>
+<hr>
+<p>  
+The pressure field is calculated with the 2D forward simulation function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>. 
+The waveform recorded at the transducer focal point and the center frequency pressure field distribution are shown below.
+<pre>
+<code>
+<font color="#03a852">% define where the pressure will be recorded</font>  
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
+sensor_mask(round(mgrid.num_x/2), focus+1) = 1;  
+
+<font color="#03a852">% 2D forward simulation</font>  
+p = Forward2D(mgrid, medium, source_p, sensor_mask, 0); 
+</code></pre>
+
 <img src="/mSOUND/img/shock_small_attenuation.jpg" alt="Shock front with smaller attenuation">
 
 Now we increase the time step size and spatial step size and <span style="background-color:#f1f1f1">dt = 6.25e-08</span>
@@ -88,9 +103,6 @@ The figure below on the right shows the simulation result at the transducer focu
 and stronger attenuation">
 
 </p>
-
-
-
 
 
 
