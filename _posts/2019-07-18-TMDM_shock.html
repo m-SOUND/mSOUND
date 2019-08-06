@@ -1,0 +1,102 @@
+---
+title: Shock wave simulation with TMDM
+---
+<p>
+<br>
+<hr>
+<hr>
+This example is based on the example <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+Simulation of a 2D homogeneous medium using the transient mixed domain method</a>. The shock-front can be captured by using a
+very small time step <span style="background-color:#f1f1f1">dt</span> and a small spatial step size
+<span style="background-color:#f1f1f1">dy</span> along the propagation distance. When artifical attenuation is included, 
+the shock-front can be captured with a relatively larger time step <span style="background-color:#f1f1f1">dt</span> 
+and spatial step size <span style="background-color:#f1f1f1">dy</span>.
+<hr>
+<hr>
+</p>
+
+<!---defining the structure grid--->
+<h6>Generating the grid structure to define the computational domain</h6>
+<hr>
+<p>  
+<br>We first need to define the temporal and spatial domains in 2D forward simulations 
+ with the function <a href="/mSOUND/function.html#set_grid">set_grid</a>. A small temporal domain size is used in this example to
+ to achieve faster computation.  
+<pre>
+<code>        
+dx = 3.75e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = 3.75e-04;   <font color="#03a852"> % step size in the y direction [m]</font> 
+dt = 6.25e-08;   <font color="#03a852"> % time step size [s]</font> 
+
+x_length = 0.0454;   <font color="#03a852">% computational domain size in the x direction [m]</font> 
+y_length = 0.0240;   <font color="#03a852">% computational domain size in the y direction [m]</font> 
+t_length = 6e-05;    <font color="#03a852">% temporal domain size [s]</font> 
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
+</code>   
+</pre>
+</p>
+
+
+<!---Excitation signal--->
+<h6>Excitation signal</h6>
+<hr>
+<p>
+An Eight-cycle sine wave is used for the excitation signal.
+<pre> <code>
+ts = [-8/fc:dt:8/fc].';  <font color="#03a852"> % define the excitation signal length [s]</font>  
+delay = repmat(delay, length(ts), 1);    
+ts = repmat(ts, 1, mgrid.num_x);  
+
+p0 = 6.5e6;  <font color="#03a852"> % pressure magnitude [Pa]</font>  
+source_p = p0*sin(2*pi*fc*(ts+delay)); 
+source_p(:, abs(mgrid.x)>TR_radius) = 0;
+</code> </pre>
+</p>
+
+
+<!---Defining the medium--->
+<h6>Defining the medium properties</h6>
+<hr>
+<p>
+Define the homogeneous medium. 
+For 2D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1). 
+For homogeneous media, though, the medium properties can be described by a single scalar. 
+<span style="background-color:#f1f1f1">medium.c0</span> is the reference speed of sound and generally, 
+it is chosen as the minimum value of <span style="background-color:#f1f1f1">medium.c</span>.   
+When the power law exponent is 2.0(thermo-viscous losses), dispersion becomes absent.
+<pre>
+<code>  
+medium.c    = 1500;    <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = 1000;    <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = 3.6;     <font color="#03a852">% nonlinearity coefficient </font>    
+medium.ca   = 0.005;   <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = 2.0;     <font color="#03a852">% power law exponent</font>    
+
+<font color="#03a852">% non-reflecting layer</font> 
+medium.NRL_gamma = 0.5;  
+medium.NRL_alpha = 0.05;
+</code></pre>
+<img src="/mSOUND/img/shock_small_attenuation.jpg" alt="Shock front with smaller attenuation">
+
+Now we increase the time step size and spatial step size and <span style="background-color:#f1f1f1">dt = 6.25e-08</span>
+and <span style="background-color:#f1f1f1">dy = 6.25e-08</span>. The figure below on the left shows the simulation result at the
+transducer focus. The Gibbs effect is obvious in this figure. 
+Then we increase the attenuatoin coefficient and <span style="background-color:#f1f1f1">medium.ca = 0.5</span>.
+The figure below on the right shows the simulation result at the transducer focus when larger attenuation is used.
+
+<img src="/mSOUND/img/shock_attenuation.jpg" alt="Wavefront at the focus (a) with larger step size and (b)with larger step size
+and stronger attenuation">
+
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
