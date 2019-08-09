@@ -1,0 +1,149 @@
+---
+title: Shock wave simulation with TMDM
+---
+<p>
+<br>
+<hr>
+<hr>
+This example is based on the example <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+Simulation of a 2D homogeneous medium using the transient mixed domain method</a>. The shock-front can be captured by using a
+very small time step and a small spatial step size along the propagation direction. When artifical attenuation is included, 
+the shock-front can be captured with a relatively larger time step and spatial step size along the propagation direction.
+<hr>
+<hr>
+</p>
+
+<!---defining the structure grid--->
+<h6>Generating the grid structure to define the computational domain</h6>
+<hr>
+<p>  
+<br>We first need to define the temporal and spatial domains in 2D forward simulations 
+ with the function <a href="/mSOUND/function.html#set_grid">set_grid</a>. A small temporal domain size is used in this example to
+ to achieve faster computation.
+ Three cases are studied in this example. In the first case, we have
+<span style="background-color:#f1f1f1">medium.ca = 0.02</span>, 
+<span style="background-color:#f1f1f1">dy = 1.5000e-06</span> and
+<span style="background-color:#f1f1f1">dt = 1.0000e-09</span>. In the second case, we increase the step size and 
+<span style="background-color:#f1f1f1">dy = 7.5000e-06</span> and
+<span style="background-color:#f1f1f1">dt = 5.0000e-09</span>. In the third case, we also increase the attenuation and we have
+<span style="background-color:#f1f1f1">dy = 7.5000e-06</span>,
+<span style="background-color:#f1f1f1">dt = 5.0000e-09</span> and
+<span style="background-color:#f1f1f1">medium.ca = 0.1</span>. Simulation setup for the first case is shown below.
+<pre>
+<code>        
+dx = 1.8750e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = 1.5000e-06;   <font color="#03a852"> % step size in the y direction [m]</font> 
+dt = 1.0000e-09;   <font color="#03a852"> % time step size [s]</font> 
+
+x_length = 0.0454;      <font color="#03a852">% computational domain size in the x direction [m]</font> 
+y_length = 0.0240;      <font color="#03a852">% computational domain size in the y direction [m]</font> 
+t_length = 1.6000e-05;  <font color="#03a852">% temporal domain size [s]</font> 
+mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
+</code>   
+</pre>
+</p>
+
+<!---Excitation signal--->
+<h6>Excitation signal</h6>
+<hr>
+<p>
+Continuous wave is used as the excitation signal.
+<pre> <code>
+ts = [0:dt:16/fc].';  <font color="#03a852"> % define the excitation signal length [s]</font>  
+delay = repmat(delay, length(ts), 1);    
+ts = repmat(ts, 1, mgrid.num_x);  
+
+p0 = 6.5e6;  <font color="#03a852"> % pressure magnitude [Pa]</font>  
+source_p = p0*sin(2*pi*fc*(ts+delay)); 
+source_p(:, abs(mgrid.x)>TR_radius) = 0;
+</code> </pre>
+</p>
+
+
+<!---Defining the medium--->
+<h6>Defining the medium properties</h6>
+<hr>
+<p>
+<pre>
+<code>  
+medium.c    = 1500;    <font color="#03a852">% speed of sound [m/s]</font>      
+medium.rho  = 1000;    <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = 3.6;     <font color="#03a852">% nonlinearity coefficient </font>    
+medium.ca   = 0.02;   <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = 2.0;     <font color="#03a852">% power law exponent</font>  
+
+</code></pre>
+</p>
+
+<!---2D forward Simulation--->
+<h6>2D forward simulation</h6>
+<hr>
+<p>  
+The pressure field is calculated with the function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>. 
+<pre>
+<code>
+<font color="#03a852">% define where the pressure will be recorded</font>  
+sensor_mask = zeros(mgrid.num_x, mgrid.num_y+1);
+sensor_mask(round(mgrid.num_x/2), focus+1) = 1;  
+
+<font color="#03a852">% 2D forward simulation</font>  
+p = Forward2D(mgrid, medium, source_p, sensor_mask, 0); 
+
+</code></pre>
+The figures below compare the simulation results from the three different cases. The first figure compares the time-domain
+waveform recorded at the transducer focus and the second figure compares the frequency-domain signals. With artifical attenuation, 
+the shock-front can be captured with larger step size and shorter simulation time. In this examplm, the simulation
+time for the case 3 is around 24 times faster than the case 1.
+
+<img src="/mSOUND/img/shock_time.jpg" alt="time-domain results">
+
+<img src="/mSOUND/img/shock_frequency.jpg" alt="frequency-domain results">
+
+</p>
+
+
+<h6>Other examples</h6>
+<hr>
+<p>
+<br> <h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM-2D-strong-speed-of-sound-contrast">
+    Simulation of a strongly 2D heterogeneous medium using the transient mixed domain method</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_animation">
+    Efficient simulation with TMDM</a>   
+ 
+<br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM-3D_heterogeneous">
+    Simulation of a 3D heterogeneous medium using the frequency-specific mixed domain method</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/2D_absorption">
+    Reducing the spatial aliasing error using the non-reflecting layer</a>
+
+ <br><h7 style='font-weight:bold;'>&#11166;Backward Propagation</h7>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/Backward_TMDM">
+    Image reconstruction using backward projection</a>    
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+    Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>
+ 
+ <br><h7 style='font-weight:bold;'>&#11166;Integration with Other Simulators</h7>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
+    Integrating mSOUND with k-Wave for transducers of arbitrary shape</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-diffusion">
+    Integrating mSOUND with k-Wave for thermal simulations</a> 
+</p>
+
+
+
+
+
+
