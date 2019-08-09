@@ -19,29 +19,37 @@ the shock-front can be captured with a relatively larger time step and spatial s
 <p>  
 <br>We first need to define the temporal and spatial domains in 2D forward simulations 
  with the function <a href="/mSOUND/function.html#set_grid">set_grid</a>. A small temporal domain size is used in this example to
- to achieve faster computation.  
+ to achieve faster computation.
+ Three cases are studied in this example. In the first case, we have
+<span style="background-color:#f1f1f1">medium.ca = 0.02</span>, 
+<span style="background-color:#f1f1f1">dy = 1.5000e-06</span> and
+<span style="background-color:#f1f1f1">dt = 1.0000e-09</span>. In the second case, we increase the step size and 
+<span style="background-color:#f1f1f1">dy = 7.5000e-06</span> and
+<span style="background-color:#f1f1f1">dt = 5.0000e-09</span>. In the third case, we also increase the attenuation and we have
+<span style="background-color:#f1f1f1">dy = 7.5000e-06</span>,
+<span style="background-color:#f1f1f1">dt = 5.0000e-09</span> and
+<span style="background-color:#f1f1f1">medium.ca = 0.1</span>. Simulation setup for the first case is shown below.
 <pre>
 <code>        
-dx = 3.75e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
-dy = 3.75e-04;   <font color="#03a852"> % step size in the y direction [m]</font> 
-dt = 6.25e-08;   <font color="#03a852"> % time step size [s]</font> 
+dx = 1.8750e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = 1.5000e-06;   <font color="#03a852"> % step size in the y direction [m]</font> 
+dt = 1.0000e-09;   <font color="#03a852"> % time step size [s]</font> 
 
-x_length = 0.0454;   <font color="#03a852">% computational domain size in the x direction [m]</font> 
-y_length = 0.0240;   <font color="#03a852">% computational domain size in the y direction [m]</font> 
-t_length = 6e-05;    <font color="#03a852">% temporal domain size [s]</font> 
+x_length = 0.0454;      <font color="#03a852">% computational domain size in the x direction [m]</font> 
+y_length = 0.0240;      <font color="#03a852">% computational domain size in the y direction [m]</font> 
+t_length = 1.6000e-05;  <font color="#03a852">% temporal domain size [s]</font> 
 mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);              
 </code>   
 </pre>
 </p>
 
-
 <!---Excitation signal--->
 <h6>Excitation signal</h6>
 <hr>
 <p>
-An Eight-cycle sine wave is used for the excitation signal.
+Continuous wave is used as the excitation signal.
 <pre> <code>
-ts = [-8/fc:dt:8/fc].';  <font color="#03a852"> % define the excitation signal length [s]</font>  
+ts = [0:dt:16/fc].';  <font color="#03a852"> % define the excitation signal length [s]</font>  
 delay = repmat(delay, length(ts), 1);    
 ts = repmat(ts, 1, mgrid.num_x);  
 
@@ -56,30 +64,22 @@ source_p(:, abs(mgrid.x)>TR_radius) = 0;
 <h6>Defining the medium properties</h6>
 <hr>
 <p>
-Define the homogeneous medium. 
-For 2D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y+1). 
-For homogeneous media, though, the medium properties can be described by a single scalar. 
-<span style="background-color:#f1f1f1">medium.c0</span> is the reference speed of sound and generally, 
-it is chosen as the minimum value of <span style="background-color:#f1f1f1">medium.c</span>.   
-When the power law exponent is 2.0(thermo-viscous losses), dispersion becomes absent.
 <pre>
 <code>  
 medium.c    = 1500;    <font color="#03a852">% speed of sound [m/s]</font>      
 medium.rho  = 1000;    <font color="#03a852">% density [kg/m^3]</font>             
 medium.beta = 3.6;     <font color="#03a852">% nonlinearity coefficient </font>    
-medium.ca   = 0.005;   <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.ca   = 0.02;   <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
 medium.cb   = 2.0;     <font color="#03a852">% power law exponent</font>  
 
 </code></pre>
 </p>
 
-
 <!---2D forward Simulation--->
 <h6>2D forward simulation</h6>
 <hr>
 <p>  
-The pressure field is calculated with the 2D forward simulation function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>. 
-The waveform recorded at the transducer focal point and the center frequency pressure field distribution are shown below.
+The pressure field is calculated with the function <a href="/mSOUND/function.html#Forward2D">Forward2D</a>. 
 <pre>
 <code>
 <font color="#03a852">% define where the pressure will be recorded</font>  
@@ -90,17 +90,13 @@ sensor_mask(round(mgrid.num_x/2), focus+1) = 1;
 p = Forward2D(mgrid, medium, source_p, sensor_mask, 0); 
 
 </code></pre>
+The figures below compare the simulation results from the three different setup. The first figure compares the time-domain
+waveform recorded at the transducer focus and the second figure compares the frequency-domain signals. With artifical attenuation, 
+the shock-front can be captured with larger step size.
 
-<img src="/mSOUND/img/shock_small_attenuation.jpg" alt="Shock front at the focus with smaller attenuation">
+<img src="/mSOUND/img/shock_time.jpg" alt="time-domain results">
 
-Now we increase the time step size and spatial step size and <span style="background-color:#f1f1f1">dt = 6.25e-08</span>
-and <span style="background-color:#f1f1f1">dy = 6.25e-08</span>. The figure below on the left shows the simulation result at the
-transducer focus. The Gibbs effect is obvious in this figure. 
-Then we increase the attenuatoin coefficient and <span style="background-color:#f1f1f1">medium.ca = 0.5</span>.
-The figure below on the right shows the simulation result at the transducer focus when larger attenuation is used.
-
-<img src="/mSOUND/img/shock_attenuation.jpg" alt="Wavefront at the focus (a) with larger step size and (b)with larger step size
-and stronger attenuation">
+<img src="/mSOUND/img/shock_frequency.jpg" alt="frequency-domain results">
 
 </p>
 
