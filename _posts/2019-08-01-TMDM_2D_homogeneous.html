@@ -20,6 +20,16 @@ using the transient mixed domain method. A focused beam is simulated.
  six inputs are required to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates. 
  The spatial resolution should in principle be a small fraction of the wavelength (e.g., 1/4 of the wavelength). The temporal resolution
  should at least satisfy the Nyquist criteria. 
+ 
+ 
+ We first need to define the temporal and spatial domains in 2D forward simulations with the function 
+ <a href="/mSOUND/function.html#set_grid">set_grid</a>. For 2D problems, 
+ six inputs are required to call this function. Coordinates defined within the mgrid structure are all in the Cartesian coordinates.  
+ In mSOUND simulations, the spatial resolution (dx for 2D; dx and dy for 3D) and the marching step size (dy for 2D; dz for 3D) 
+ should in principle be a small fraction of the wavelength (e.g., 1/4 of the smallest wavelength) for stability and accuracy, 
+ and it is common to have a marching step size different from the spatial resolution. One exception is that for homogeneous media, 
+ the step size can be arbitrarily large. The temporal resolution should at least satisfy the Nyquist criteria. In practice, 
+ the best course of action is to have a convergence study conducted to determine the proper step size, spatial and temporal resolutions.
 <pre>
 <code>        
 dx = 3.75e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
