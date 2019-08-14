@@ -1,14 +1,16 @@
 ---
-title: Shock wave simulation with TMDM
+title: Shock wave simulations with TMDM
 ---
 <p>
 <br>
 <hr>
 <hr>
-This example is based on the example <a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
-Simulation of a 2D homogeneous medium using the transient mixed domain method</a>. The shock-front can be captured by using a
-very small time step and a small spatial step size along the propagation direction. When artifical attenuation is included, 
-the shock-front can be captured with a relatively larger time step and spatial step size along the propagation direction.
+Due to the lack of a shock-capturing algorithm, mSOUND is currently not ideal for modeling shock waves. Shock waves, however, 
+can still be modeled with either very fine step size, spatial and temporal resolutions, or by using artificial attenuations 
+to dampen the excessive high frequency components. 
+This example demonstrates how to model a shock wave using TMDM and it is extended from 
+<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+Simulation of a 2D homogeneous medium using the transient mixed domain method</a>.
 <hr>
 <hr>
 </p>
@@ -18,17 +20,21 @@ the shock-front can be captured with a relatively larger time step and spatial s
 <hr>
 <p>  
 <br>We first need to define the temporal and spatial domains in 2D forward simulations 
- with the function <a href="/mSOUND/function.html#set_grid">set_grid</a>. A small temporal domain size is used in this example to
- to achieve faster computation.
+ with the function <a href="/mSOUND/function.html#set_grid">set_grid</a>. A relatively small temporal domain size is used 
+ in this example to reduce the computation (please refer to the example 
+ <a href="https://m-sound.github.io/mSOUND/TMDM_2D_animation">
+Selecting the proper temporal domain size for the TMDM</a>).
  Three cases are studied in this example. In the first case, we have
 <span style="background-color:#f1f1f1">medium.ca = 0.02</span>, 
 <span style="background-color:#f1f1f1">dy = 1.5000e-06</span> and
-<span style="background-color:#f1f1f1">dt = 1.0000e-09</span>. In the second case, we increase the step size and 
-<span style="background-color:#f1f1f1">dy = 7.5000e-06</span> and
-<span style="background-color:#f1f1f1">dt = 5.0000e-09</span>. In the third case, we also increase the attenuation and we have
+<span style="background-color:#f1f1f1">dt = 1.0000e-09</span> (so that 500 harmonics are considered). 
+In the second case, we increase <span style="background-color:#f1f1f1">dy</span> and <span style="background-color:#f1f1f1">dt</span>, 
+so that <span style="background-color:#f1f1f1">dy = 7.5000e-06</span> and
+<span style="background-color:#f1f1f1">dt = 5.0000e-09</span> (100 harmonics are considered). 
+In the third case, we artificially increase the attenuation so that  
 <span style="background-color:#f1f1f1">dy = 7.5000e-06</span>,
 <span style="background-color:#f1f1f1">dt = 5.0000e-09</span> and
-<span style="background-color:#f1f1f1">medium.ca = 0.1</span>. Simulation setup for the first case is shown below.
+<span style="background-color:#f1f1f1">medium.ca = 0.1</span>. The simulation setup for the first case is shown below.
 <pre>
 <code>        
 dx = 1.8750e-04;   <font color="#03a852"> % step size in the x direction [m]</font> 
@@ -47,7 +53,7 @@ mgrid = set_grid(dt, t_length, dx, x_length, dy, y_length);
 <h6>Excitation signal</h6>
 <hr>
 <p>
-Continuous wave is used as the excitation signal.
+A sine wave is used as the excitation signal.
 <pre> <code>
 ts = [0:dt:16/fc].';  <font color="#03a852"> % define the excitation signal length [s]</font>  
 delay = repmat(delay, length(ts), 1);    
@@ -90,10 +96,14 @@ sensor_mask(round(mgrid.num_x/2), focus+1) = 1;
 p = Forward2D(mgrid, medium, source_p, sensor_mask, 0); 
 
 </code></pre>
-The figures below compare the simulation results from the three different cases. The first figure compares the time-domain
-waveform recorded at the transducer focus and the second figure compares the frequency-domain signals. With artifical attenuation, 
-the shock-front can be captured with larger step size and shorter simulation time. In this examplm, the simulation
-time for the case 3 is around 24 times faster than the case 1.
+The figures below compare the simulation results from the three different cases. 
+The first figure compares the waveforms recorded at the transducer focus and the second figure 
+compares the frequency-domain spectra (only the high frequency components are shown). 
+Case 1 yields satisfactory results due to the fine step size, spatial resolution, and temporal resolution. 
+It is therefore considered as the benchmark here. With the artificial attenuation, 
+the shock-front can be captured reasonably well with a fairly large step size and coarse temporal resolution (case 3), 
+while the one without the artificial attenuation produces large a Gibbs noise (case 2). 
+In this example, the simulation time for case 3 is around 24 times faster than that of case 1.
 
 <img src="/mSOUND/img/shock_time.jpg" alt="time-domain results">
 
@@ -115,7 +125,9 @@ time for the case 3 is around 24 times faster than the case 1.
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
     Simulation of a 3D homogeneous medium using the transient mixed domain method</a>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_animation">
-    Efficient simulation with TMDM</a>   
+    Selecting the proper temporal domain size for the TMDM</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_shock">
+    Shock wave simulations with TMDM</a>   
  
 <br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
 <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
