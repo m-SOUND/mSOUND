@@ -270,10 +270,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given. 
  
  <br><br>7. <span style="background-color:#f1f1f1">record_animation</span> will record the animation and save the animation 
  file as ‘animation.avi’.
@@ -365,10 +362,8 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>6. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given.
+ 
  <br><br>7. <span style="background-color:#f1f1f1">record_animation</span> will record the animation and save the animation 
  file as ‘animation.avi’.
 </p>
@@ -450,10 +445,7 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  <br><br>4. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given.
 </p>
   
 <h3>Outputs</h3> 
@@ -529,10 +521,7 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);
  <br><br>3. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given. 
 </p>
 
 <h3>Outputs</h3> 
@@ -611,10 +600,7 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  <br><br>4. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given. 
 </p>
   
 <h3>Outputs</h3> 
@@ -692,10 +678,7 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
  <br><br>3. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given. 
  
 </p>
 
@@ -729,7 +712,7 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>medium </td><td>input structure including the medium properties</td>
   </tr>
    <tr>
-    <td>source_p</td><td>excitation signal [Pa]</td>
+    <td>source_p</td><td>pressure field to be backward propagated</td>
   </tr>
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the waveform is recorded</td>
@@ -815,7 +798,7 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>medium </td><td>input structure including the medium properties</td>
   </tr>
    <tr>
-    <td>source_p</td><td>excitation signal [Pa]</td>
+    <td>source_p</td><td>pressure field to be backward propagated</td>
   </tr>
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the waveform is recorded</td>
@@ -883,10 +866,7 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>7. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given. 
  
  <br><br>8. <span style="background-color:#f1f1f1">record_animation</span> will record the animation and save the animation 
  file as ‘animation.avi’.
@@ -920,7 +900,7 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>medium </td><td>input structure including the medium properties</td>
   </tr>
   <tr>
-    <td>source_p</td><td>excitation signal [Pa]</td>
+    <td>source_p</td><td>pressure field to be backward propagated</td>
   </tr> 
   <tr>
     <td>sensor_mask</td><td>a set of Cartesian points where the waveform is recorded</td>
@@ -989,10 +969,7 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>7. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption.
+ must be given. 
  
  <br><br>8. <span style="background-color:#f1f1f1">record_animation</span> will record the animation and save the animation 
  file as ‘animation.avi’.
@@ -1028,7 +1005,7 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
     <td>medium </td><td>input structure including the medium properties</td>
   </tr>
   <tr>
-    <td>source_p</td><td>excitation signal [Pa]</td>
+    <td>source_p</td><td>pressure field to be backward propagated</td>
   </tr>
    <tr>
     <td>omega_c </td><td>center frequency [rad]</td>
@@ -1086,10 +1063,7 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
  <br><br>5. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given. 
 </p>
  
 <h3>Outputs</h3> 
@@ -1122,7 +1096,7 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
     <td>medium </td><td>input structure including the medium properties</td>
   </tr>
   <tr>
-    <td>source_p</td><td>excitation signal [Pa]</td>
+    <td>source_p</td><td>pressure field to be backward propagated</td>
   </tr>
    <tr>
     <td>omega_c </td><td>center frequency [rad]</td>
@@ -1179,10 +1153,7 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  <br><br>5. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
- must be given. A large <span style="background-color:#f1f1f1">medium.NRL_gamma</span> 
- or a small <span style="background-color:#f1f1f1">medium.NRL_alpha</span> implies more energy will be absorbed and 
- thus reducing the aliasing error. On the contrary, if <span style="background-color:#f1f1f1">medium.NRL_alpha</span> is too small, 
- the acoustic filed becomes inaccurate due to excess absorption. 
+ must be given.
 </p>
 
 <h3>Outputs</h3> 
