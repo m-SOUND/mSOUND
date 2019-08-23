@@ -1,0 +1,140 @@
+---
+title: One step reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium
+---
+<p>
+<br>
+<hr>
+<hr>
+This example shows that when reconstrcting the pressure distribution in homogeneous medium, the step size can be chosen as large as the 
+propagation distance. Results in this example are compared with the results in 
+<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>, in which a smaller step size is used. 
+Simulation step up are very similar in these two examples.
+<hr>
+<hr>
+</p>
+
+<!---defining the structure grid--->
+<h6>Generating the grid structure to define the computational domain</h6>
+<hr>
+<p>
+<br>
+We first need to define the temporal and spatial computational domains in 3D forward simulations. 
+In FSMDM, any arbitrary values can be set for the time step and temporal domain size, since they are not being used. 
+Here, we set them to 0.
+ <pre>
+<code>      
+dx = 1.8750e-04;  <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = 1.8750e-04;  <font color="#03a852"> % step size in the y direction [m]</font> 
+dz = 0.0210;      <font color="#03a852"> % step size in the z direction [m]</font> 
+
+x_length = 0.0900;  <font color="#03a852"> % computational domain size in the x direction [m]</font> 
+y_length = 0.0900;  <font color="#03a852"> % computational domain size in the y direction [m]</font> 
+z_length = 0.0210;  <font color="#03a852"> % computational domain size in the z direction [m]</font> 
+    
+mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);              
+</code>   
+</pre>
+</p>
+
+<!---3D forward simulation--->
+<h6>3D forward simulation</h6>
+<hr>
+<p>
+ <br>The pressure field on a plane 21 mm away from the source plane is first calculated with the function 
+  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. In this example, the spatial aliasing errors
+  are reduced by increasing the transverse domain size, while in the example <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>, absorbing layers are used. The reason 
+we choose to increase the domain size is because, in one-step reconstruction, it's hard to choose a proper values for the 
+absorbing layers.
+<pre> <code>
+omega_c = 2*pi*fc;
+reflection_order = 0;
+<font color="#03a852">% forward propagation </font>   
+p = Forward3D_fund(mgrid, medium, source_p, ...
+    omega_c, reflection_order); 
+</code> </pre>            
+</p>
+
+<!---3D backward simulation--->
+<h6>Reconstruction</h6>
+<hr>
+<p>
+ <br>The source plane pressure distribution is obtained with the function 
+  <a href="/mSOUND/function.html#Backward3D_fund">Backward3D_fund</a>.
+<pre> <code>
+reflection_order = 0;
+source_p = p(:,:,end);
+<font color="#03a852">% backward propagation </font>   
+p = Backward3D_fund(mgrid, medium, source_p, ...
+                omega_c, reflection_order); 
+</code> </pre>    
+
+
+The figure below shows (a) ground-truth pressure distribution, (b) pressure distribution on the xy plane 21 mm away from the source 
+plane and (c) the reconstructed source plane pressure distribution with one-step reconstruction method.
+
+
+<img src="/mSOUND/img/FSMDM_3D_multi_sources_one_step.jpg" alt="(a) ground-truth source distribution, 
+(b) pressure distribution at the xy plane 21 mm away from the source plane
+and (c) the reconstructed source pressure distribution">
+
+
+The figure below shows (a) ground-truth pressure distribution, (b) pressure distribution on the xy plane 21 mm away from the source 
+plane and (c) the reconstructed source plane pressure distribution with a smaller step size with simulation setup shown in 
+the example <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>.
+
+
+<img src="/mSOUND/img/FSMDM_3D_multi_sources2.jpg" alt="(a) ground-truth source distribution, 
+(b) pressure distribution at the xy plane 21 mm away from the source plane
+and (c) the reconstructed source pressure distribution">
+</p>
+
+<h6>Other examples</h6>
+<hr>
+<p>
+<br> <h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM-2D-strong-speed-of-sound-contrast">
+    Simulation of a strongly 2D heterogeneous medium using the transient mixed domain method</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_animation">
+    Selecting the proper temporal domain size for the TMDM</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_shock">
+    Shock wave simulations with TMDM</a>   
+ 
+<br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM-3D_heterogeneous">
+    Simulation of a 3D heterogeneous medium using the frequency-specific mixed domain method</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/2D_absorption">
+    Reducing the spatial aliasing error using the non-reflecting layer</a>
+
+ <br><h7 style='font-weight:bold;'>&#11166;Backward Propagation</h7>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/Backward_TMDM">
+    Image reconstruction using backward projection</a>    
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+    Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>
+ 
+ <br><h7 style='font-weight:bold;'>&#11166;Integration with Other Simulators</h7>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
+    Integrating mSOUND with k-Wave for transducers of arbitrary shape</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-diffusion">
+    Integrating mSOUND with k-Wave for thermal simulations</a> 
+</p>
+
+
+
+
+
+
