@@ -45,14 +45,13 @@ mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);
   <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. In this example, the spatial aliasing errors
   are reduced by increasing the transverse domain size, while in the example <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
 Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>, absorbing layers are used. The reason 
-we choose to increase the domain size is because, in one-step reconstruction, it's hard to choose a proper values for the 
-absorbing layers.
+we choose to increase the domain size is because, in one-step reconstruction, it's hard to choose a proper value for the 
+absorbing layer.
 <pre> <code>
 omega_c = 2*pi*fc;
 reflection_order = 0;
 <font color="#03a852">% forward propagation </font>   
-p = Forward3D_fund(mgrid, medium, source_p, ...
-    omega_c, reflection_order); 
+p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order); 
 </code> </pre>            
 </p>
 
@@ -63,11 +62,9 @@ p = Forward3D_fund(mgrid, medium, source_p, ...
  <br>The source plane pressure distribution is obtained with the function 
   <a href="/mSOUND/function.html#Backward3D_fund">Backward3D_fund</a>.
 <pre> <code>
-reflection_order = 0;
 source_p = p(:,:,end);
 <font color="#03a852">% backward propagation </font>   
-p = Backward3D_fund(mgrid, medium, source_p, ...
-                omega_c, reflection_order); 
+p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order); 
 </code> </pre>    
 
 
