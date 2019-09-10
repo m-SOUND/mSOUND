@@ -1,21 +1,15 @@
 ---
-title: Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium
+title: One step reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium
 ---
 <p>
 <br>
 <hr>
 <hr>
-In this example, the pressure distribution on the source plane is reconstructed by using the backward projection with FSMDM. 
-This is essentially the process of acoustical holography. In this manner, 
-a field measured away from a transducer could be used to predict field behavior closer to the radiator or on the surface of the radiator.
-Alternatively, a desired field could be synthetically generated and then projected backward to provide information on the requirement 
-of the radiational and dimensional requirements of the source. When using the FSMDM for backward projection, 
-this process requires the frequency-domain information of a sound field over a given plane as well the acoustic properties 
-of the propagation medium. Note that acoustical holography can also be implemented with the TMDM (by using 
-<a href="/mSOUND/function.html#Backward3D">Backward3D</a>), 
-where the process requires the time history of a sound field over a given spatial plane as well as the acoustic 
-properties of the medium. 
-
+This example shows that when reconstrcting the pressure distribution in homogeneous medium, the step size can be chosen as large as the 
+propagation distance. Results in this example are compared with the results in 
+<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>, in which a smaller step size is used. 
+Simulation step up are very similar in these two examples.
 <hr>
 <hr>
 </p>
@@ -34,49 +28,12 @@ dx = 1.8750e-04;  <font color="#03a852"> % step size in the x direction [m]</fon
 dy = 1.8750e-04;  <font color="#03a852"> % step size in the y direction [m]</font> 
 dz = 0.0210;      <font color="#03a852"> % step size in the z direction [m]</font> 
 
-x_length = 0.0450;  <font color="#03a852"> % computational domain size in the x direction [m]</font> 
-y_length = 0.0450;  <font color="#03a852"> % computational domain size in the y direction [m]</font> 
+x_length = 0.0900;  <font color="#03a852"> % computational domain size in the x direction [m]</font> 
+y_length = 0.0900;  <font color="#03a852"> % computational domain size in the y direction [m]</font> 
 z_length = 0.0210;  <font color="#03a852"> % computational domain size in the z direction [m]</font> 
     
 mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
-</pre>
-</p>
-
-
-
-
-<!---Forward propagation--->
-<h6>Forward propagation</h6>
-<p>
-<br>
-This example is based on the example <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
-Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>
-The source pressure distribution is defined as shown below (four piston transducers).
-<pre>
-<code>
-<font color="#03a852">% define the source</font>   
-X = (ones(mgrid.num_y,1)*mgrid.x).';
-Y = ones(mgrid.num_x,1)*mgrid.y;
-RHO = sqrt(X.^2+Y.^2);
-
-source_map1 = sqrt((X-lambda*3).^2 + (Y+lambda*3).^2);   
-source_map2 = sqrt((X+lambda*3).^2 + (Y+lambda*3).^2); 
-source_map3 = sqrt((X-lambda*3).^2 + (Y-lambda*3).^2); 
-source_map4 = sqrt((X+lambda*3).^2 + (Y-lambda*3).^2); 
-
-<font color="#03a852">% radius of each piston transducer</font>  
-TR_radius = 0.0037; 
-
-source_map1(source_map1<=TR_radius) = 1;
-source_map2(source_map2<=TR_radius) = 1;
-source_map3(source_map3<=TR_radius) = 1;
-source_map4(source_map4<=TR_radius) = 1;
-source_map = source_map1  + source_map2 + source_map3 + source_map4;
-source_map(source_map<1)=0;
-p0 = 1; <font color="#03a852">% pressure amplitude[Pa]</font> 
-source_p = p0*source_map; 
-</code>
 </pre>
 </p>
 
@@ -85,13 +42,16 @@ source_p = p0*source_map;
 <hr>
 <p>
  <br>The pressure field on a plane 21 mm away from the source plane is first calculated with the function 
-  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>.
+  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. In this example, the spatial aliasing errors
+  are reduced by increasing the transverse domain size, while in the example <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>, absorbing layers are used. The reason 
+we choose to increase the domain size is because, in one-step reconstruction, it's hard to choose a proper value for the 
+absorbing layer.
 <pre> <code>
 omega_c = 2*pi*fc;
 reflection_order = 0;
 <font color="#03a852">% forward propagation </font>   
-p = Forward3D_fund(mgrid, medium, source_p, ...
-    omega_c, reflection_order, 'NRL'); 
+p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order); 
 </code> </pre>            
 </p>
 
@@ -102,27 +62,32 @@ p = Forward3D_fund(mgrid, medium, source_p, ...
  <br>The source plane pressure distribution is obtained with the function 
   <a href="/mSOUND/function.html#Backward3D_fund">Backward3D_fund</a>.
 <pre> <code>
-reflection_order = 0;
 source_p = p(:,:,end);
 <font color="#03a852">% backward propagation </font>   
-p = Backward3D_fund(mgrid, medium, source_p, ...
-                omega_c, reflection_order, 'NRL'); 
+p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order); 
 </code> </pre>    
-The figure below shows (a) ground-truth pressure distribution, (b) pressure distribution on the xy plane 21 mm away from the source 
-plane and (c) the reconstructed source plane pressure distribution. It should be noted that mSOUND does not automatically 
-allows near-field acoustic holography, as the evanescent waves are filtered out during the backward propagation. 
-To disable this filter, the user can go to 
-<span style="background-color:#f1f1f1">Backward3D_fund.m</span>  
-and comment out all the lines with the format
-<span style="background-color:#f1f1f1">F(real(Ktemp1)<=0) = 0</span>. In this way, subwavelength information 
-can be restored from the backward projection. 
+
+
+The figure below was generated with the one-step recostruction method and it shows (a) ground-truth pressure distribution, 
+(b) pressure distribution on the xy plane 21 mm away from the source plane and (c) the reconstructed source plane pressure distribution.
+
+
+<img src="/mSOUND/img/FSMDM_3D_multi_sources_one_step.jpg" alt="(a) ground-truth source distribution, 
+(b) pressure distribution at the xy plane 21 mm away from the source plane
+and (c) the reconstructed source pressure distribution">
+
+
+The figure below was generated with the simulation setup shown in the example <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a> and it shows 
+(a) ground-truth pressure distribution, (b) pressure distribution on the xy plane 21 mm away from the source plane and 
+(c) the reconstructed source plane pressure distribution.
+
 
 
 <img src="/mSOUND/img/FSMDM_3D_multi_sources2.jpg" alt="(a) ground-truth source distribution, 
 (b) pressure distribution at the xy plane 21 mm away from the source plane
 and (c) the reconstructed source pressure distribution">
 </p>
-
 
 <h6>Other examples</h6>
 <hr>
@@ -165,3 +130,9 @@ and (c) the reconstructed source pressure distribution">
  <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-diffusion">
     Integrating mSOUND with k-Wave for thermal simulations</a> 
 </p>
+
+
+
+
+
+
