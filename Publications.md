@@ -3,7 +3,7 @@ title: Publications
 ---   
 ## Publications        
 ***   
-<p>[ 1 ] Juanjuan Gu and Yun Jing, "Simulation of the second harmonic ultrasound field in heterogeneous soft tissue using a mixed domain method," IEEE Ultrasonics, Ferroelectrics, and Frequency Control Society, 66, 669-675, 2019. <a href="https://github.com/m-SOUND/mSOUND/tree/master/download/FSMDM.pdf" download="FSMDM.pdf">Download pdf</a></p>   
+<p>[ 1 ] Juanjuan Gu and Yun Jing, "A modified mixed domain method for modeling acoustic wave propagation in strongly heterogeneous media," The Journal of the Acoustical Society of America, 147, 4055-4068, 2020. <a href="https://github.com/MDM-series/MDM/tree/master/download/MMDM.pdf" download="MMDM.pdf">Download pdf</a></p>   
 
 <p>[ 2 ] Juanjuan Gu and Yun Jing, "Simulation of the second harmonic ultrasound field in heterogeneous soft tissue using a mixed domain method," IEEE Ultrasonics, Ferroelectrics, and Frequency Control Society, 66, 669-675, 2019. <a href="https://github.com/m-SOUND/mSOUND/tree/master/download/FSMDM.pdf" download="FSMDM.pdf">Download pdf</a></p>  
 
