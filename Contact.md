@@ -4,9 +4,8 @@ title: Contact
 ---
 ## Contact ##            
 ***                 
-If you have any questions/comments regarding mSOUND toolbox or would like to report bugs, please contact                 
-Juanjuan Gu: jgu4@ncsu.edu                
-Yun Jing: yjing2@ncsu.edu              
+If you have any questions/comments regarding mSOUND or would like to report bugs, please contact                 
+Juanjuan Gu: jgu4@ncsu.edu or Yun Jing: yqj5201@psu.edu                            
 &nbsp;    
 &nbsp;  
 &nbsp;          
