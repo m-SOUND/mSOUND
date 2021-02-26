@@ -20,7 +20,7 @@ mSOUND is an open-source toolbox written in [MATLAB](https://www.mathworks.com/p
 This project is supported by the [National Institute of Health (NIH)](https://www.nih.gov/) under the Grant R01EB025205. From 2015 to 2018, Juanjuan Gu was also supported by a fellowship award from China Scholarship Council (CSC).
 
 ## References
-<p>[ 1 ] Juanjuan Gu and Yun Jing, "mSOUND: An Open Source Toolbox for Modeling Acoustic Wave Propagation in Heterogeneous Media,"IEEE Ultrasonics, Ferroelectrics, and Frequency Control Society, 2021. <a href="https://github.com/MDM-series/MDM/tree/master/download/MSOUND.pdf" download="MSOUND.pdf">Download pdf</a></p> 
+<p>[ 1 ] Juanjuan Gu and Yun Jing, "mSOUND: An Open Source Toolbox for Modeling Acoustic Wave Propagation in Heterogeneous Media," IEEE Ultrasonics, Ferroelectrics, and Frequency Control Society, 2021. <a href="https://github.com/MDM-series/MDM/tree/master/download/MSOUND.pdf" download="MSOUND.pdf">Download pdf</a></p> 
 
 <p>[ 2 ] Juanjuan Gu and Yun Jing, "A modified mixed domain method for modeling acoustic wave propagation in strongly heterogeneous media," The Journal of the Acoustical Society of America, 147, 4055-4068, 2020. <a href="https://github.com/MDM-series/MDM/tree/master/download/MMDM.pdf" download="MMDM.pdf">Download pdf</a></p> 
 
