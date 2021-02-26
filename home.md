@@ -16,8 +16,9 @@ mSOUND is an open-source toolbox written in [MATLAB](https://www.mathworks.com/p
 1. Download and unpack the mSOUND.zip file to a suitable folder.
 2. Add this file folder path to the MATLAB path. This can be done using the "Set Path" dialog box which is accessed by typing `pathtool` at the MATLAB command prompt. Once the dialog box is open, the toolbox is installed by clicking "Add Folder", selecting the mSOUND Toolbox folder, and clicking "save". Alternatively, the toolbox can be installed by adding the line: `addpath('...full pathname used above...\mSOUND')`;
 
-## Acknowledgment
-This project is supported by the [National Institute of Health (NIH)](https://www.nih.gov/) under the Grant R01EB025205. From 2015 to 2018, Juanjuan Gu was also supported by a fellowship award from China Scholarship Council (CSC).
+## Release note
+version 0.2: Some bugs have been fixed; 2D and 3D codes can now run on GPUs.
+
 
 ## References
 <p>[ 1 ] Juanjuan Gu and Yun Jing, "mSOUND: An Open Source Toolbox for Modeling Acoustic Wave Propagation in Heterogeneous Media," IEEE Ultrasonics, Ferroelectrics, and Frequency Control Society, 2021. <a href="https://github.com/MDM-series/MDM/tree/master/download/MSOUND.pdf" download="MSOUND.pdf">Download pdf</a></p> 
@@ -40,4 +41,7 @@ This project is supported by the [National Institute of Health (NIH)](https://ww
 
 ## License
 This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.txt).  
+
+## Acknowledgment
+This project is supported by the [National Institute of Health (NIH)](https://www.nih.gov/) under the Grant R01EB025205. From 2015 to 2018, Juanjuan Gu was also supported by a fellowship award from China Scholarship Council (CSC).
 
