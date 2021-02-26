@@ -795,7 +795,7 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
    <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
   <tr>
-   <td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
+   <td>'no_refl_correction'</td><td>turn off the reflection correction in backward propagation</td>
   </tr> 
  </table> 
 
@@ -825,8 +825,8 @@ p = Backward1D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>6. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain method could 
- produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction algorithm, 
+ <br><br>6. For a heterogeneous medium, when using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain method could 
+ produce spurious reflections. An algorithm, therefore, is designed to mitigate this issue. This correction algorithm, 
  however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be disabled without 
  sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, when multiple reflection is 
  not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm can be turned off. 
@@ -880,7 +880,7 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
     <tr>
-   <td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
+   <td>'no_refl_correction'</td><td>turn off the reflection correction in backward propagation</td>
   </tr>
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layer</td>
@@ -919,8 +919,8 @@ p = Backward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>6. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain method could 
- produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction algorithm, 
+ <br><br>6. For a heterogeneous medium, when using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain method could 
+ produce spurious reflections. An algorithm, therefore, is designed to mitigate this issue. This correction algorithm, 
  however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be disabled without 
  sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, when multiple reflection is 
  not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm can be turned off. 
@@ -982,7 +982,7 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
     <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
    <tr>
-  <td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
+  <td>'no_refl_correction'</td><td>turn off the reflection correction in backward propagation</td>
   </tr> 
    <tr>
 <td>'NRL'</td><td>apply the non-reflecting layerr</td>
@@ -1021,8 +1021,8 @@ p = Backward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  <br><br>5. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>6. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
- method could produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction 
+ <br><br>6. For a heterogeneous medium, when using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
+ method could produce spurious reflections. An algorithm, therefore, is designed to mitigate this issue. This correction 
  algorithm, however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be 
  disabled without sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, 
  when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
@@ -1087,7 +1087,7 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
     <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
   </tr>
    <tr>
-<td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
+<td>'no_refl_correction'</td><td>turn off the reflection correction in backward propagation</td>
   </tr> 
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layerr</td>
@@ -1115,8 +1115,8 @@ p = Backward2D_fund(mgrid, medium, source_p, omega_c, reflection_order...);
  <br><br>3. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
  
- <br><br>4. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
- method could produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction 
+ <br><br>4. For a heterogeneous medium, when using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
+ method could produce spurious reflections. An algorithm, therefore, is designed to mitigate this issue. This correction 
  algorithm, however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be 
  disabled without sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, 
  when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
@@ -1178,7 +1178,7 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
 <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
 </tr>
   <tr>
- <td>'no_refl_correction'</td><td>turnoff the reflection correction in backward propagation</td>
+ <td>'no_refl_correction'</td><td>turn off the reflection correction in backward propagation</td>
   </tr> 
   <tr>
 <td>'NRL'</td><td>apply the non-reflecting layer</td>
@@ -1205,8 +1205,8 @@ p = Backward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  <br><br>3. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
  <span style="background-color:#f1f1f1">correction</span> is recommended.
 
- <br><br>4. When using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
- method could produce spurious reflections. An algorithm, therefore, is designed to reduce the spurious reflection. This correction 
+ <br><br>4. For a heterogeneous medium, when using full-wave-solver-generated data or measured data as the input for backward projection, the mixed domain 
+ method could produce spurious reflections. An algorithm, therefore, is designed to mitigate this issue. This correction 
  algorithm, however, roughly doubles the computational time. There are a few scenarios where this correction algorithm can be 
  disabled without sacrificing much of the accuracy. This can be done by activating "no_refl_correction". For example, 
  when multiple reflection is not considered in the backward projection, i.e., when "reflection_order"=0, the correction algorithm 
