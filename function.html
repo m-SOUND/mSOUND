@@ -283,7 +283,7 @@ p = Forward2D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
 
  <br><br>8.  <span style="background-color:#f1f1f1">GPU</span> runs the simulation on an available Graphic Processing Unit using Matlab’s Parallel Computing ToolboxTM. 
 
-  <br><br>9. <span style="background-color:#f1f1f1">single</span> runs the bulk of the simulation in single precision, rather than Matlab’s default of double precision
+  <br><br>9. <span style="background-color:#f1f1f1">single</span> runs the bulk of the simulation in single precision, rather than Matlab’s default of double precision.
 
 
 </p>
@@ -343,6 +343,12 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
   <tr>
   <td>'record_animation'</td><td>record the animation</td>
   </tr> 
+ <tr>
+  <td>'GPU'</td><td>run simulation on Graphics Processing Unit</td>
+  </tr> 
+ <tr>
+  <td>'single'</td><td>run simulation in single precision</td>
+  </tr> 
  </table> 
 
 <br> 
@@ -378,6 +384,11 @@ p = Forward3D(mgrid, medium, source_p, sensor_mask, reflection_order, ...);
  
  <br><br>7. <span style="background-color:#f1f1f1">record_animation</span> will record the animation and save the animation 
  file as ‘animation.avi’.
+ 
+ <br><br>8.  <span style="background-color:#f1f1f1">GPU</span> runs the simulation on an available Graphic Processing Unit using Matlab’s Parallel Computing ToolboxTM. 
+
+  <br><br>9. <span style="background-color:#f1f1f1">single</span> runs the bulk of the simulation in single precision, rather than Matlab’s default of double precision.
+ 
 </p>
 
 <h3>Outputs</h3> 
@@ -432,6 +443,12 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layer</td>
   </tr>
+ <tr>
+  <td>'GPU'</td><td>run simulation on Graphics Processing Unit</td>
+  </tr> 
+ <tr>
+  <td>'single'</td><td>run simulation in single precision</td>
+  </tr> 
  </table> 
 
 <br> 
@@ -458,6 +475,11 @@ p = Forward2D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
  must be given.
+
+ <br><br>5.  <span style="background-color:#f1f1f1">GPU</span> runs the simulation on an available Graphic Processing Unit using Matlab’s Parallel Computing ToolboxTM. 
+
+  <br><br>6. <span style="background-color:#f1f1f1">single</span> runs the bulk of the simulation in single precision, rather than Matlab’s default of double precision.
+
 </p>
   
 <h3>Outputs</h3> 
@@ -513,6 +535,12 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layer</td>
   </tr>
+ <tr>
+  <td>'GPU'</td><td>run simulation on Graphics Processing Unit</td>
+  </tr> 
+ <tr>
+  <td>'single'</td><td>run simulation in single precision</td>
+  </tr> 
  </table> 
 <br> 
 <h3> Remarks </h3>         
@@ -534,6 +562,10 @@ p = Forward2D_sec(mgrid, medium, P_fundamental, omega_c, ...);
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
  must be given. 
+ 
+  <br><br>4.  <span style="background-color:#f1f1f1">GPU</span> runs the simulation on an available Graphic Processing Unit using Matlab’s Parallel Computing ToolboxTM. 
+
+  <br><br>5. <span style="background-color:#f1f1f1">single</span> runs the bulk of the simulation in single precision, rather than Matlab’s default of double precision.
 </p>
 
 <h3>Outputs</h3> 
@@ -587,6 +619,12 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layer</td>
   </tr>
+ <tr>
+  <td>'GPU'</td><td>run simulation on Graphics Processing Unit</td>
+  </tr> 
+ <tr>
+  <td>'single'</td><td>run simulation in single precision</td>
+  </tr> 
 </table> 
 
 <br> 
@@ -613,6 +651,10 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, ...);
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
  must be given. 
+ 
+  <br><br>5.  <span style="background-color:#f1f1f1">GPU</span> runs the simulation on an available Graphic Processing Unit using Matlab’s Parallel Computing ToolboxTM. 
+
+  <br><br>6. <span style="background-color:#f1f1f1">single</span> runs the bulk of the simulation in single precision, rather than Matlab’s default of double precision.
 </p>
   
 <h3>Outputs</h3> 
@@ -669,6 +711,12 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layer</td>
   </tr>
+ <tr>
+  <td>'GPU'</td><td>run simulation on Graphics Processing Unit</td>
+  </tr> 
+ <tr>
+  <td>'single'</td><td>run simulation in single precision</td>
+  </tr> 
  </table> 
 
 <br> 
@@ -691,6 +739,10 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
  <span style="background-color:#f1f1f1">medium.NRL_gamma</span> and <span style="background-color:#f1f1f1">medium.NRL_alpha</span>
  must be given. 
+ 
+  <br><br>4.  <span style="background-color:#f1f1f1">GPU</span> runs the simulation on an available Graphic Processing Unit using Matlab’s Parallel Computing ToolboxTM. 
+
+  <br><br>5. <span style="background-color:#f1f1f1">single</span> runs the bulk of the simulation in single precision, rather than Matlab’s default of double precision.
  
 </p>
 
