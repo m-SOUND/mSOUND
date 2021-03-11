@@ -42,10 +42,11 @@ p_total = Forward2D(mgrid, medium, source_p, sensor_mask,
           reflection_order, 'animation'); 
 </code>
 </pre>
-Figures (a)-(c) below show the waveforms at three different positions in space, with 
-(a) being the position closest to the source and (c) being the position furthest from the source. 
-The wave clearly enters the very end of the temporal domain and comes out from the other side. 
-To rearrange Fig. b in order to have a more physically meaning waveform, “fftshift” is used to generate Fig. (d).    
+Figures (a)-(c) below show the waveforms at the same position with different temporal domain sizes. 
+Fig. (a) shows the smallest temporal domain size while Fig. (c) shows the largest temporal domain size. 
+Fig. (b) clearly shows that the wave enters the very end of the temporal domain and comes out from 
+the other side. To rearrange Fig. b in order to have a more physically meaning waveform, “fftshift” 
+is used to generate Fig. (d). 
 <img src="/mSOUND/img/animation_2D_time_results.jpg" alt="time domain results at the transducer focus">
 
 The first figure below shows the snapshot of the animation for the simulation with <span style="background-color:#f1f1f1">t_length = 8.0e-06</span>.
