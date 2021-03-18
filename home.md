@@ -11,7 +11,8 @@ Please include a reference to our paper "mSOUND: An Open Source Toolbox for Mode
 
 ## Download
 [Download beta-version 0.1](https://github.com/m-SOUND/mSOUND/blob/master/download/mSOUND.zip)        
-[Download beta-version 0.2](https://github.com/m-SOUND/mSOUND/blob/master/download/mSOUND v02.zip)           
+[Download beta-version 0.2](https://github.com/m-SOUND/mSOUND/blob/master/download/mSOUND v02.zip)  
+Several issues were identified in version 0.2. Please continue using version 0.1 until we provide an updated version.  
 
 
 ## Installation
