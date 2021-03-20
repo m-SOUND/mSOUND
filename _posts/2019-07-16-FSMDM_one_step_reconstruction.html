@@ -46,7 +46,7 @@ mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);
   are reduced by increasing the transverse domain size, while in the example <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
 Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>, absorbing layers are used. The reason 
 we choose to increase the domain size here is because, in the one-step reconstruction/projection case, the absorption layer is not effective anymore. The absorption layer can 
- only be modeled accurately by marching the wave field in the z-direction (3D) or y-direction (2D). 
+ only be modeled accurately by marching the wave field step-by-step in the z-direction (3D) or y-direction (2D). 
 <pre> <code>
 omega_c = 2*pi*fc;
 reflection_order = 0;
