@@ -11,8 +11,6 @@ Please include a reference to our paper "mSOUND: An Open Source Toolbox for Mode
 
 ## Download
 [Download beta-version 0.1](https://github.com/m-SOUND/mSOUND/blob/master/download/mSOUND v01.zip)        
-[Download beta-version 0.2](https://github.com/m-SOUND/mSOUND/blob/master/download/mSOUND v02.zip)  
-Several issues were identified in version 0.2. Please continue using version 0.1 until we provide an updated version.  
 
 
 ## Installation
@@ -20,7 +18,7 @@ Several issues were identified in version 0.2. Please continue using version 0.1
 2. Add this file folder path to the MATLAB path. This can be done using the "Set Path" dialog box which is accessed by typing `pathtool` at the MATLAB command prompt. Once the dialog box is open, the toolbox is installed by clicking "Add Folder", selecting the mSOUND Toolbox folder, and clicking "save". Alternatively, the toolbox can be installed by adding the line: `addpath('...full pathname used above...\mSOUND')`;
 
 ## Release note
-version 0.2: Some bugs have been fixed; 2D and 3D forward propagation codes can now run on GPUs; single precision is now allowed to speed up the modeling and to reduce the memory required for the modeling. 
+version 0.1: this version was updated on 3/19 to fix some bugs. 
 
 
 ## References
