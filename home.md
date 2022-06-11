@@ -18,6 +18,8 @@ Please include a reference to our paper "mSOUND: An Open Source Toolbox for Mode
 2. Add this file folder path to the MATLAB path. This can be done using the "Set Path" dialog box which is accessed by typing `pathtool` at the MATLAB command prompt. Once the dialog box is open, the toolbox is installed by clicking "Add Folder", selecting the mSOUND Toolbox folder, and clicking "save". Alternatively, the toolbox can be installed by adding the line: `addpath('...full pathname used above...\mSOUND')`;
 
 ## Release note
+We will upload a new version of mSOUND by 6/30/2022. Please stay tuned. (6/11/2022 by YJ)
+
 version 0.1: this version was updated on 4/9/2021 to fix some bugs. We are currently working on the next version of mSOUND to improve the modeling for strongly heterogeneous media. 
 
 
