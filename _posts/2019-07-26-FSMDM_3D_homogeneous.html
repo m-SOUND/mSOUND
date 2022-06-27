@@ -25,13 +25,25 @@ In FSMDM, any arbitrary values can be set for the time step and temporal domain 
 Here, we set them to 0.
  <pre>
 <code>      
-dx = 1.8750e-04;  <font color="#03a852"> % step size in the x direction [m]</font> 
-dy = 1.8750e-04;  <font color="#03a852"> % step size in the y direction [m]</font> 
-dz = 1.8750e-04;  <font color="#03a852"> % step size in the z direction [m]</font> 
+fc = 0.5e6;	     <font color="#03a852"> % fundamental frequency	[Hz]
+p0 = 60e3;	      <font color="#03a852"> % initial pressure amplitude  [Pa]
+omegac = 2*fc*pi; <font color="#03a852">% fundamental angular frequency
 
-x_length = 0.0300;  <font color="#03a852"> % computational domain size in the x direction [m]</font> 
-y_length = 0.0300;  <font color="#03a852"> % computational domain size in the y direction [m]</font> 
-z_length = 0.0210;  <font color="#03a852"> % computational domain size in the z direction [m]</font> 
+medium.c0 = 1500;      <font color="#03a852"> % speed of Sound [m/s]
+medium.rho0 = 1000;    <font color="#03a852"> % density of medium [kg/m^3]
+medium.beta0 = 3.6;    <font color="#03a852"> % nonlinearity coefficient     
+medium.ca0 = 4;        <font color="#03a852"> % attenuation coefficient [dB/(MHz^y cm)]; 1 dB/cm at 500 kHz 
+medium.cb0 = 2.0;      <font color="#03a852"> % power law exponent  
+
+lambda = medium.c0/fc; <font color="#03a852"> % wavelength [m]
+
+dx = lambda/6;  <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = lambda/6;  <font color="#03a852"> % step size in the y direction [m]</font> 
+dz = lambda/6;  <font color="#03a852"> % step size in the z direction [m]</font> 
+
+x_length = 70e-3*2+dx;  <font color="#03a852"> % computational domain size in the x direction [m]</font> 
+y_length = 70e-3*2+dx;  <font color="#03a852"> % computational domain size in the y direction [m]</font> 
+z_length = 120e-3;      <font color="#03a852"> % computational domain size in the z direction [m]</font> 
     
 mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);              
 </code>   
