@@ -20,7 +20,7 @@ Please include a reference to our paper "mSOUND: An Open Source Toolbox for Mode
 ## Release note
 We will upload a new version of mSOUND by 6/30/2022. Please stay tuned. (6/11/2022 by YJ)
 
-version 0.1: this version was updated on 4/9/2021 to fix some bugs. We are currently working on the next version of mSOUND to improve the modeling for strongly heterogeneous media. 
+version 0.1: this version was updated to fix some bugs. We are currently working on the next version of mSOUND to improve the modeling for strongly heterogeneous media. (4/9/2022 by YJ)
 
 
 ## References
