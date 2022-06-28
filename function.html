@@ -620,7 +620,8 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, c_ref, ..
  recommended to be 2 for lossy biological media in order to achieve the best tradeoff between accuracy and computation time.
  
  <br><br>3. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
- <span style="background-color:#f1f1f1">correction</span> is recommended.
+ <span style="background-color:#f1f1f1">correction</span> is recommended. <span style="background-color:#f1f1f1">c_ref</span> 
+ must be entered when <span style="background-color:#f1f1f1">correction</span> is enabled. 
  
   <br><br>4. <span style="background-color:#f1f1f1">layer</span> should only be used when the layer interface is perpendicular to the z-axis. 
  This function is applicable to arbitrary inhomogeneities. 
@@ -711,7 +712,8 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, c_ref, ...);
  <span style="background-color:#f1f1f1">medium.c</span>.
  
  <br><br>2. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
- <span style="background-color:#f1f1f1">correction</span> is recommended.
+ <span style="background-color:#f1f1f1">correction</span> is recommended. <span style="background-color:#f1f1f1">c_ref</span> 
+ must be entered when <span style="background-color:#f1f1f1">correction</span> is enabled. 
  
  <br><br>3. By invoking <span style="background-color:#f1f1f1">NRL</span>, non-reflecting layers are added to the computational 
  domain and would minimize the spatial aliasing error. If the non-reflecting layer is activated,
