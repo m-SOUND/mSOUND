@@ -612,7 +612,7 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, c_ref, ..
  For 3D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z).
  For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
- is the reference speed of sound and generally, it is chosen as the minimum value of 
+ is the background speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
  
  <br><br>2. <span style="background-color:#f1f1f1">reflection_order</span>
@@ -649,13 +649,12 @@ is a 3D forward simulation function based on the frequency-specific mixed domain
  generates the pressure field at the second harmonics. 
  To generate the second harmonics pressure field, 
  users must run the function <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a> first to 
-obtain the pressure field at the center frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
- When calculating the second harmonics pressure field, density heterogeneity is by dafault not considered. It can be considered, 
- however, by invoking "correction". Only use this function when the excitation is a continuous wave (sinusoidal wave) and
-  weakly nonlinear wave propagation is considered. Multiple reflections are not considered in this function. 
+obtain the pressure field at the fundamental frequency <span style="background-color:#f1f1f1">P_fundamental</span>. 
+ Only use this function when the excitation is a continuous wave (sinusoidal wave) and
+  weakly nonlinear wave propagation is considered. Multiple reflections are currently not considered in this function. 
 <pre>  <code>
 p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c);   
-p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);   
+p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, c_ref, ...);   
 </code>  </pre>
 </p>
 <h3>Inputs</h3> 
@@ -670,10 +669,10 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
     <td>medium </td><td>input structure including the medium properties</td>
   </tr>
   <tr>
-    <td>P_fundamental</td><td>pressure at the center frequency  [Pa]</td>
+    <td>P_fundamental</td><td>pressure at the fundamental frequency  [Pa]</td>
   </tr>
    <tr>
-    <td>omega_c </td><td>center frequency [rad]</td>
+    <td>omega_c </td><td>fundamental frequency [rad]</td>
   </tr>
  </table> 
 <br>
@@ -681,13 +680,18 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
   <tr>
     <th>OPTIONAL INPUT</th><th>DESCRIPTION</th>
   </tr>
-  <tr>
-    <td>'correction'</td><td>apply phase and amplitude corrections for strongly heterogeneous media</td>
-  </tr>
+ <tr>
+<td>'correction'</td><td>use the wave solver for strongly inhomogeneous media</td>
+</tr>
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layer</td>
+  </tr> 
+ <tr>
+  <td>'riemann'</td><td>use a lower order numerical scheme for faster computation</td>
   </tr>
- 
+   <tr>
+  <td>'single'</td><td>cast data type to single to reduce data size and speed up the computation</td>
+  </tr>
  </table> 
 
 <br> 
@@ -697,10 +701,10 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, ...);
 1. <span style="background-color:#f1f1f1">medium</span> 
  is a structure containing spatially distributed speed of sound, density, nonlinear coefficient, 
  attenuation coefficient, and power law exponent.  
- For 3D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z+1).
+ For 3D simulations, the medium properties should be given as matrices with a size (mgrid.num_x, mgrid.num_y, mgrid.num_z).
  For homogeneous media, the medium properties can be described by a single scalar. 
  <span style="background-color:#f1f1f1">medium.c0</span> 
- is the reference speed of sound and generally, it is chosen as the minimum value of 
+ is the background speed of sound and generally, it is chosen as the minimum value of 
  <span style="background-color:#f1f1f1">medium.c</span>.
  
  <br><br>2. For simulations with large speed of sound or density contrast (contrast ratio being larger than 1.05), 
