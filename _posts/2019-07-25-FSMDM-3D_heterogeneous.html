@@ -49,7 +49,18 @@ medium.NRL_alpha = 0.01;
 <img src="/mSOUND/img/skull_SOS.jpg" alt="3D model">
 </p>
 
-load FOCUS_input_plane_unfocused_lossless_0.25mm.mat
+<!---Excitation signal--->
+<h6>Excitation signal</h6>
+<hr>
+<p>
+This examples assumes a baffled source. Since mSOUND currently only models pressure release boundary, the pressure field on the input plane is generated using FOCUS. 
+ <br>
+ <pre>
+<code>  
+load FOCUS_input_plane_unfocused_lossless_0.25mm.mat     
+</code>
+</pre>
+ </p>
 
 
 <!---3D forward simulation--->
@@ -57,9 +68,10 @@ load FOCUS_input_plane_unfocused_lossless_0.25mm.mat
 <hr>
 <p>
  <br>
- The fundamental frequency pressure field is first calculated with the 3D forward simulation function
+ The pressure field is calculated with the 3D forward simulation function
  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. 
  The optinal input "Correction" is applied in this example because both the speed of sound and density contrasts are large. 
+ Since only two velocities are present in this problem (1500 m/s for the background and 2800 m/s for the skull), "c_ref" is entered as []1500 2800].
 <pre> <code>
 reflection_order = 4;
 <font color="#03a852">% forward propagation of the fundamental frequency pressure</font>   
