@@ -53,7 +53,8 @@ medium.NRL_alpha = 0.01;
 <h6>Excitation signal</h6>
 <hr>
 <p>
-This examples assumes a baffled source. Since mSOUND currently only models pressure release boundary, the pressure field on the input plane is generated using FOCUS. 
+This examples assumes a baffled source. Since mSOUND currently only models pressure release boundary, the pressure field on the input plane is generated using FOCUS.
+ The FOCUS code is also included in the package. 
  <br>
  <pre>
 <code>  
@@ -71,7 +72,7 @@ load FOCUS_input_plane_unfocused_lossless_0.25mm.mat
  The pressure field is calculated with the 3D forward simulation function
  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. 
  The optinal input "Correction" is applied in this example because both the speed of sound and density contrasts are large. 
- Since only two velocities are present in this problem (1500 m/s for the background and 2800 m/s for the skull), "c_ref" is entered as []1500 2800].
+ Since only two velocities are present in this problem (1500 m/s for the background and 2800 m/s for the skull), "c_ref" is entered as [1500 2800].
 <pre> <code>
 reflection_order = 4;
 <font color="#03a852">% forward propagation of the fundamental frequency pressure</font>   
@@ -81,17 +82,20 @@ p_fundamental = Forward3D_fund(mgrid, medium, source_p, omega_c,...
                      
 </p>
 <p>
-The figure below shows the pressure fields in the (a) xz plane, (b) yz plane and (c) xy plane simulated with mSOUND. 
-<img src="/mSOUND/img/FSMDM_3D_heterogeneous.jpg" alt="fundamental and the fundamental pressure field">
+The figure below shows the pressure field on the x-z plane obtained by using mSOUND. 
+<img src="/mSOUND/img/msound_skull.jpg" alt="fundamental and the fundamental pressure field">
 </p>
                                                                                                         
 
 <p>
-The figure below shows pressure field in the (a) xz plane, (b) yz plane and (c) xy plane simulated with k-Wave.                                                                                                            
-<img src="/mSOUND/img/KWAVE_3D_heterogeneous.jpg" alt="fundamental and the second-harmonic pressure field">
+The figure below shows the pressure field on the x-z plane obtained by using kWAVE.                                                                                                           
+<img src="/mSOUND/img/kwave_skull.jpg" alt="fundamental and the second-harmonic pressure field">
 </p>
                                                                                                                
-
+<p>
+The figure below shows the pressure field distribution along the axial direction (x=y=0 mm) and transverse direction (z=60 mm).                                                                                                
+<img src="/mSOUND/img/msound_kwave_skull.jpg" alt="fundamental and the second-harmonic pressure field">
+</p>
 
 <h6>Other examples</h6>
 <hr>
