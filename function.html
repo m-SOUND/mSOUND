@@ -576,7 +576,7 @@ p = Forward3D_fund(mgrid, medium, source_p, omega_c, reflection_order, c_ref, ..
    <td>reflection_order</td><td>the maximum order of reflection included in the simulation</td>
   </tr> 
     <tr>
-   <td>c_ref</td><td>a set of reference sound velocities covering the sound velocity distribution of the acoustic medium </td>
+   <td>c_ref</td><td>a set of reference sound velocities covering the sound velocity distribution of the medium </td>
   </tr>
  </table> 
 <br>
@@ -683,6 +683,9 @@ p = Forward3D_sec(mgrid, medium, P_fundamental, omega_c, c_ref, ...);
  <tr>
 <td>'correction'</td><td>use the wave solver for strongly inhomogeneous media</td>
 </tr>
+     <tr>
+   <td>c_ref</td><td>a set of reference sound velocities covering the sound velocity distribution of the medium </td>
+  </tr>
    <tr>
   <td>'NRL'</td><td>apply the non-reflecting layer</td>
   </tr> 
