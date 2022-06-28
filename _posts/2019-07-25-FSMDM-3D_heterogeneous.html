@@ -6,7 +6,9 @@ title: Simulation of a 3D heterogeneous medium using the frequency-specific mixe
 <hr>
 <hr>
 This example shows how to simulate the wave propagation in 3D heterogeneous media with the frequency-specific mixed domain method. 
-A skull-like medium and a focused beam are assumed in this example. 
+A skull-like medium and a flat transducer are modeled in this example. The input plane pressure is obtained from
+FOCUS to consider a baffled source (rigid boundary condition), as mSOUND currently only considers the pressure-release boundary condition. The 
+transducer is circular and its diameter is 20 mm. 
 <hr>
 <hr>
 </p>
@@ -15,24 +17,39 @@ A skull-like medium and a focused beam are assumed in this example.
 <h6>Defining the medium properties</h6>
 <hr>
 <p>
- <br>Details of defining the computational domain and the phased-array transducer are shown in the example 
- <a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
- Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>. 
- A 2D view in the xz plane of the 3D model used in this simulation is illustrated in the figure below.
+ <br> We first define the background medium and computational domain, and then load the skull data. 
+ Speed of sound distributions of the skull in the x-z and y-z planes are illustrated in the figure below. The speed of sound and density are assumed to be 
+ uniform inside the skull and are 2800 m/s and 1850 kg/m^3, respectively. 
    <pre>
  <code>
-load 3D_heterogeneous_model.mat; 
-medium.c    = c;      <font color="#03a852">% speed of sound [m/s]</font>      
-medium.rho  = rho;    <font color="#03a852">% density [kg/m^3]</font>             
-medium.beta = beta;   <font color="#03a852">% nonlinearity coefficient </font>    
-medium.ca   = ca;     <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
-medium.cb   = cb;     <font color="#03a852">% power law exponent</font>   
-medium.NRL_gamma = 0.5;
-medium.NRL_alpha = 0.1;
+
+medium.c0 = 1500;      <font color="#03a852">% speed of sound [m/s]</font>
+medium.rho0 = 1000;    <font color="#03a852">% density of medium [kg/m^3]</font>
+medium.beta0 = 0;      <font color="#03a852">% nonlinearity coefficient</font> 
+medium.ca0 = 0;        <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)]</font> 
+medium.cb0 = 2;        <font color="#03a852">% power law exponent</font>
+
+dx = lambda/12; <font color="#03a852">% grid size in the x direction [m]</font>
+dy = lambda/12; <font color="#03a852">% grid size in the y direction [m]</font>
+dz = lambda/12; <font color="#03a852">% marching step size in the z direction [m]</font>
+
+x_length = 70e-3*4+dx;  <font color="#03a852">% computational domain size in the x direction [m]</font>
+y_length = 70e-3*4+dy;  <font color="#03a852">% computational domain size in the y direction [m]</font>
+z_length = 120e-3;      <font color="#03a852">% computational domain size in the z direction [m]</font>
+
+<font color="#03a852">% load the skull data</font>
+load skull_mask_dx_0.25mm.mat;
+
+<font color="#03a852">% define the non-reflecting layer</font>
+medium.NRL_gamma = 0.08;
+medium.NRL_alpha = 0.01;
+
 </code>
 </pre>
-<img src="/mSOUND/img/3D_heterogeneous_model.jpg" alt="3D model">
+<img src="/mSOUND/img/skull_SOS.jpg" alt="3D model">
 </p>
+
+load FOCUS_input_plane_unfocused_lossless_0.25mm.mat
 
 
 <!---3D forward simulation--->
@@ -42,12 +59,12 @@ medium.NRL_alpha = 0.1;
  <br>
  The fundamental frequency pressure field is first calculated with the 3D forward simulation function
  <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. 
- Correction is applied in this example because the speed of sound and density contrast in this case are both 1.5. 
+ The optinal input "Correction" is applied in this example because both the speed of sound and density contrasts are large. 
 <pre> <code>
 reflection_order = 4;
-<font color="#03a852">% forward propagation of the fundamental pressure</font>   
+<font color="#03a852">% forward propagation of the fundamental frequency pressure</font>   
 p_fundamental = Forward3D_fund(mgrid, medium, source_p, omega_c,...
-                reflection_order, 'correction', 'NRL'); 
+                reflection_order, [1500 2800], 'correction', 'NRL','single','riemann'); 
 </code> </pre>
                      
 </p>
