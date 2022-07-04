@@ -1,1 +1,158 @@
+---
+title: Integrating mSOUND with FOCUS for transducers of curved shape
+---
+<p>
+<br>
+<hr>
+<hr>
+This example shows how to integrate mSOUND with FOCUS for simulations involving curved transducers. Currently, only planar phased-arrays 
+can be directly set up in mSOUND for modeling focused beams. To more accurately model a physically curved transducer, the user can use FOCUS to generate
+the input plane pressure field (right in front of the edge of the transducer), which would then be used in mSOUND to further propagate the wave. 
+In this example, a 3D bowl transducer is first modeled with FOCUS and then with mSOUND. The diameter of the bowl transducer is 64 mm. The radius of curvature is
+also 64 mm.
+<hr>
+<hr>
+</p>
+
+<!---defining the structure grid--->
+<h6>Generating the grid structure to define the computational domain</h6>
+<hr>
+<p>
+<br>
+<!--This simulation setup is based on the 
+<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
+Simulation of a 3D homogeneous medium using the transient mixed domain method</a>.
+The phase delay for each element in the transducer are the same in the two cases. -->
+We first need to define the temporal and spatial computational domains in 3D forward simulations. 
+In FSMDM, any arbitrary values can be set for the time step and temporal domain size, since they are not being used. 
+Here, we set them to 0. We also define the background acoustic medium in this section. 
+ <pre>
+<code>      
+
+medium.c0 = 1500;      <font color="#03a852"> % speed of Sound [m/s]</font> 
+medium.rho0 = 1000;    <font color="#03a852"> % density of medium [kg/m^3]</font> 
+medium.beta0 = 3.6;    <font color="#03a852"> % nonlinearity coefficient</font>      
+medium.ca0 = 4;        <font color="#03a852"> % attenuation coefficient [dB/(MHz^y cm)]; 1 dB/cm at 500 kHz</font>  
+medium.cb0 = 2.0;      <font color="#03a852"> % power law exponent</font>   
+
+dx = lambda/6;  <font color="#03a852"> % step size in the x direction [m]</font> 
+dy = lambda/6;  <font color="#03a852"> % step size in the y direction [m]</font> 
+dz = lambda/6;  <font color="#03a852"> % step size in the z direction [m]</font> 
+
+x_length = 70e-3*2+dx;  <font color="#03a852"> % computational domain size in the x direction [m]</font> 
+y_length = 70e-3*2+dx;  <font color="#03a852"> % computational domain size in the y direction [m]</font> 
+z_length = 120e-3;      <font color="#03a852"> % computational domain size in the z direction [m]</font> 
+    
+mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);              
+</code>   
+</pre>
+</p>
+
+
+<!---Excitation signal--->
+<h6>Excitation signal</h6>
+<hr>
+<p>
+Since the simulation is conducted in the frequency domain, a continuous sine wave is assumed as the excitation signal. 
+ Note that in this case, the pressure would be a complex number rather than a real number as in the TMDM.
+ <br>
+ <pre>
+<code>  
+source_p = p0*exp(1i*omega_c*delay);  <font color="#03a852"> % define the excitation </font>  
+RHO = sqrt(X.^2+Y.^2);               
+ <font color="#03a852">% apply spatial truncation to construct a circular transducer</font>  
+source_p(RHO>TR_radius) = 0;         
+</code>
+</pre>
+ </p>
+
+<p>
+<h6>Defining the medium properties</h6>
+<hr>
+Define the homogeneous medium. It is the same as the background medium. 
+ <pre>
+ <code>
+medium.c    = medium.c0;     <font color="#03a852">% speed of sound [m/s]</font>   
+medium.rho  = medium.rho0;   <font color="#03a852">% density [kg/m^3]</font>             
+medium.beta = medium.beta0;  <font color="#03a852">% nonlinearity coefficient </font>    
+medium.ca   = medium.ca0;    <font color="#03a852">% attenuation coefficient [dB/(MHz^y cm)] </font>    
+medium.cb   = medium.cb0;    <font color="#03a852">% power law exponent</font>    
+</code>
+</pre>
+</p>
+
+
+
+<!---3D forward Simulation--->
+<h6>3D forward simulation</h6>
+<hr>
+<p>
+ The fundamental pressure field is calculated with the 3D forward simulation function 
+ <a href="/mSOUND/function.html#Forward3D_fund">Forward3D_fund</a>. 
+ The pressure field at the second-harmonic frequency under the quasi-linear approximation (weakly nonlinear wave propagation) 
+ is calculated with the function 
+ <a href="/mSOUND/function.html#Forward3D_sec">Forward3D_sec</a>. 
+<pre> <code>
+fc = 0.5e6;        <font color="#03a852">% ultrasound frequency/ Hz</font>   
+omega_c = 2*pi*fc; <font color="#03a852">% angular frequency</font>   
+<font color="#03a852">% forward propagation of the fundamental pressure</font>   
+P_fundamental = Forward3D_fund(mgrid, medium, source_p, omega_c); 
+
+<font color="#03a852">% forward propagation of the second-harmonic pressure</font> 
+P_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
+</code> </pre>
+
+The three figures below show the fundamental frequency pressure field distribution in the 
+(left) xz plane, (middle) yz plane and (right) xy plane crossing the
+ focal point. 
+<img src="/mSOUND/img/FSMDM_3D_homogeneous_fund_new.jpg" alt="fundamental pressure field generated with the phased array">
+<br>The three figures below show the second-harmonic frequency pressure field distribution in the (left) xz plane, (middle) yz plane and (right) xy plane
+crossing the focal point. As expected, a smaller focal region can be seen at the 2nd harmonics.  
+    <img src="/mSOUND/img/FSMDM_3D_homogeneous_sec_new.jpg" alt="second-harmonic pressure field generated with the phased-array">
+ </p>
+
+
+
+
+<h6>Other examples</h6>
+<hr>
+<p>
+<br> <h7 style='font-weight:bold;'>&#11166;Forward TMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM-2D-strong-speed-of-sound-contrast">
+    Simulation of a strongly 2D heterogeneous medium using the transient mixed domain method</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the transient mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_2D_animation">
+    Selecting the proper temporal domain size for the TMDM</a>  
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/TMDM_shock">
+    Shock wave simulations with TMDM</a>   
+ 
+<br><h7 style='font-weight:bold;'>&#11166;Forward FSMDM</h7>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_homogeneous">
+    Simulation of a 2D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_2D_heterogeneous">
+    Simulation of a 2D heterogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_homogeneous">
+    Simulation of a 3D homogeneous medium using the frequency-specific mixed domain method</a>
+<br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM-3D_heterogeneous">
+    Simulation of a 3D heterogeneous medium using the frequency-specific mixed domain method</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/2D_absorption">
+    Reducing the spatial aliasing error using the non-reflecting layer</a>
+
+ <br><h7 style='font-weight:bold;'>&#11166;Backward Propagation</h7>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/Backward_TMDM">
+    Image reconstruction using backward projection</a>    
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/FSMDM_3D_multi_sources">
+    Reconstruction of the source pressure distribution with FSMDM in a 3D homogeneous medium</a>
+ 
+ <br><h7 style='font-weight:bold;'>&#11166;Integration with Other Simulators</h7>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-TMDM">
+    Integrating mSOUND with k-Wave for transducers of arbitrary shape</a>
+ <br>&middot;<a href="https://m-sound.github.io/mSOUND/combine-k-Wave-diffusion">
+    Integrating mSOUND with k-Wave for thermal simulations</a> 
+</p>
 
