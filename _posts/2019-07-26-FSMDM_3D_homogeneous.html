@@ -92,10 +92,10 @@ medium.cb   = medium.cb0;    <font color="#03a852">% power law exponent</font>
 <pre> <code>
 fc = 0.5e6;        <font color="#03a852">% ultrasound frequency/ Hz</font>   
 omega_c = 2*pi*fc; <font color="#03a852">% angular frequency</font>   
-<font color="#03a852">% forward propagation of the fundamental pressure</font>   
+<font color="#03a852">% forward propagation of the wave at the fundamental frequency</font>   
 P_fundamental = Forward3D_fund(mgrid, medium, source_p, omega_c); 
 
-<font color="#03a852">% forward propagation of the second-harmonic pressure</font> 
+<font color="#03a852">% forward propagation of the wave at the 2nd harmonics</font> 
 P_second = Forward3D_sec(mgrid, medium, p_fundamental, omega_c); 
 </code> </pre>
 
