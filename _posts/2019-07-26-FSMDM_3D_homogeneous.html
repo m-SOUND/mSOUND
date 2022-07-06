@@ -55,12 +55,12 @@ mgrid = set_grid(0, 0, dx, x_length, dy, y_length, dz, z_length);
 Since the simulation is conducted in the frequency domain, a continuous sine wave is assumed as the excitation signal. 
  Note that in this case, the pressure would be a complex number rather than a real number as in the TMDM.
  <br>
- <pre>
+<pre>
 <code>  
- <font color="#03a852"> % apply phase delay to generate the focused beam </font> 
+<font color="#03a852"> % apply phase delay to generate the focused beam </font> 
 source_p = p0*exp(1i*omega_c*delay);  
 RHO = sqrt(X.^2+Y.^2);               
- <font color="#03a852">% apply spatial truncation to construct a circular transducer</font>  
+<font color="#03a852">% apply spatial truncation to construct a circular transducer</font>  
 source_p(RHO>TR_radius) = 0;         
 </code>
 </pre>
