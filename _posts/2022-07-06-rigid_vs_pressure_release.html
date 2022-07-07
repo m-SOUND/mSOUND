@@ -10,7 +10,7 @@ ultrasound transducers. Currently, mSOUND uses the pressure release boundary con
 and the pressure is zero everywhere else on the input plane. When modeling a baffled source, where the rigid boundary condition is assumed, the transducer is assigned with
 a certain particle velocity distribution and the particle velocity in the normal direction is zero everywhere else. These two boundary conditions normally would produce different results 
 mainly in the near-field, but the difference becomes less significant in the far-field. In this example, we use mSOUND to model a planar transducer with the pressure release boundary condition.
-We also use mSOUND to model the same transducer with the boundary condition. In this case, the input plane pressure is first obtained from FOCUS. 
+We also use mSOUND to model the same transducer with the rigid boundary condition. In this case, the input plane pressure is obtained from FOCUS. 
 The flat transducer has a diameter of 20 mm.
 <hr>
 <hr>
@@ -102,17 +102,18 @@ medium.NRL_alpha = 0.02;
 <pre> <code>
 fc = 0.5e6;        <font color="#03a852">% ultrasound frequency/ Hz</font>   
 omega_c = 2*pi*fc; <font color="#03a852">% angular frequency</font>   
-<font color="#03a852">% forward propagation of the wave at the fundamental frequency for the two boundary conditions </font>   
+<font color="#03a852">% forward propagation of the wave at the fundamental frequency 
+%for the two boundary conditions </font>   
 [P_fundamental] = Forward3D_fund(mgrid, medium, source_p, omegac, 0 ,[],'NRL');
 [P_fundamental1] = Forward3D_fund(mgrid, medium, source_p1, omegac, 0 ,[],'NRL');
 </code>
 </pre>
 </p>
 
-The two figures below show the pressure field distribution along the axial direction and transverse direction (on the focal plane). The results obtained from FOCUS alone 
-are also shown for comparison. Excellent agreement can be observed. 
-<img src="/mSOUND/img/FOCUS_mSOUND_axial.jpg" alt="Axial pressure field of the bowl transducer">
-<img src="/mSOUND/img/FOCUS_mSOUND_transverse.jpg" alt="Transverse pressure field of the bowl transducer">
+The two figures below show the pressure field distribution along the axial direction and transverse direction (at 60 mm depth). The results obtained from FOCUS alone (blue line) 
+are also shown for comparison. As expected, the difference between the two different boundary conditions mainly exist in the near field. 
+<img src="/mSOUND/img/rigidvsrelease_axial.jpg" alt="Axial pressure field of the flat transducer">
+<img src="/mSOUND/img/rigidvsrelease_transverse.jpg" alt="Transverse pressure field of the flat transducer">
 
 
 
